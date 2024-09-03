@@ -1,10 +1,10 @@
 .splash-grid {
   /* padding-top: 5vh; */
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 35% 65%;
   width: 80vw;
   gap: 3vw;
-  margin: 10vh 15vw;
+  margin: 10vh 23vw;
 }
 
 .grid-item {
@@ -13,9 +13,29 @@
 h1 {
   font-size: 5.5rem;
   font-style: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #resume {
   height: 28vw;
   /* max-width: 100%; */
+}
+
+.img-array {
+  padding-top: 5vh;
+  /* border: 2px solid blue; */
+  /* border-radius: 5px; */
+}
+
+.img-array > img {
+  /* background-color: red; */
+  z-index: 100;
+  border: 3px solid #4c539e;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(29, 57, 57, 0.5);
+}
+
+.img-array > img:hover {
+  transition: transform 0.5s ease; /* Smooth transition effect */
+  transform: scale(1.1); /* Scale up by 10% */
 }

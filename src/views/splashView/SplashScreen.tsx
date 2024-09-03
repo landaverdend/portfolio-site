@@ -6,7 +6,6 @@ import BackgroundCanvas from '@components/BackgroundCanvas/BackgroundCanvas.tsx'
 function SplashScreen() {
   return (
     <>
-      <BackgroundCanvas />
       <div className="splash-grid">
         <div className="grid-item">
           <h1 className="gothic-a1-bold">My Resume as a Service</h1>
@@ -25,6 +24,7 @@ function SplashScreen() {
           </div>
         </div>
       </div>
+      <BackgroundCanvas />
     </>
   );
 }

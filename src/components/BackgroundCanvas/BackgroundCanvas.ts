@@ -78,21 +78,28 @@ export function animateCanvas(canvas: HTMLCanvasElement) {
   const ctx = canvas.getContext('2d');
   let frame = 0;
 
-  const speed = 0.002;
-  const amplitude = 100;
+  const waveSpeed = 0.003;
+  const waveAmplitude = 75;
 
-  const colors = [
-    '#32CD32', // Medium Green (Lime Green)
-    '#90EE90', // Light Green
-    '#FFB6C1', // Light Pink
-    '#D8BFD8', // Light Purple (Thistle)
-    '#9a7cd6', // medium purple
+  const colors: string[] = [
+    '#4CAF50', // Medium Green
+    '#66BB6A', // Lighter Green
+    '#81C784', // Even Lighter Green
+    '#9CCC65', // Light Green
+    '#A5D6A7', // Very Light Green
+
+    '#7B1FA2', // Medium Purple
+    '#8E24AA', // Lighter Purple
+    '#CE93D8', // Light Purple
+    '#E1BEE7', // Very Light Purple
+
+    '#3F51B5', // Medium Indigo
   ];
 
   const animate = () => {
     if (ctx) {
-      const gradient = getAnimatedGradient(ctx, canvas.width, 0, frame, colors, 0.05, amplitude); // Calculate the gradient...
-      drawBanner(ctx, gradient, canvas.height, canvas.width, Math.sin(frame * speed) * amplitude);
+      const gradient = getAnimatedGradient(ctx, canvas.width, 0, frame, colors, 0.05, 50); // Calculate the gradient...
+      drawBanner(ctx, gradient, canvas.height, canvas.width, Math.sin(frame * waveSpeed) * waveAmplitude);
 
       frame++;
     }
