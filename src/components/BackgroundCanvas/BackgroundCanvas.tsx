@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useRef } from 'react';
 import './background-canvas.css';
+import { animateCanvas } from './BackgroundCanvas';
 
 function resizeCanvas(canvas: HTMLCanvasElement) {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  console.log('Width: ' + canvas.width + ' Height: ' + canvas.height);
+  animateCanvas(canvas);
 }
 
 function BackgroundCanvas() {
@@ -22,8 +23,6 @@ function BackgroundCanvas() {
     const canvas = canvasRef.current;
 
     if (canvas) {
-      // const ctx = canvas.getContext('2d');
-
       handleResize();
 
       window.addEventListener('resize', handleResize);

@@ -1,7 +1,7 @@
 import './splash-screen.css';
 import '@styles/fonts.css';
 import blurredResume from '@assets/images/blurred-resume.png';
-import BackgroundCanvas from '@components/BackgroundCanvas/BackgroundCanvas';
+import BackgroundCanvas from '@components/BackgroundCanvas/BackgroundCanvas.tsx';
 
 function SplashScreen() {
   return (
