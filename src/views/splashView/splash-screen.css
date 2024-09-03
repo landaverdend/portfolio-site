@@ -2,7 +2,6 @@
   /* padding-top: 5vh; */
   display: grid;
   grid-template-columns: 30% 70%;
-  /* margin: 0 auto 0 auto; */
   width: 80vw;
   gap: 3vw;
   margin: 10vh 15vw;
@@ -14,10 +13,6 @@
 h1 {
   font-size: 5.5rem;
   font-style: bold;
-}
-
-p {
-
 }
 
 #resume {

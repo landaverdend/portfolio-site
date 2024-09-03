@@ -1,10 +1,13 @@
 import './splash-screen.css';
-import '@styles/fonts.css'
+import '@/styles/fonts.css';
 import blurredResume from '@/assets/images/blurred-resume.png';
+import BackgroundCanvas from '@/components/BackgroundCanvas';
+
 
 function SplashScreen() {
   return (
     <>
+      <BackgroundCanvas />
       <div className="splash-grid">
         <div className="grid-item">
           <h1 className="gothic-a1-bold">My Resume as a service</h1>
