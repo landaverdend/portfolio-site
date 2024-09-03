@@ -9,7 +9,7 @@ function SplashScreen() {
       <BackgroundCanvas />
       <div className="splash-grid">
         <div className="grid-item">
-          <h1 className="gothic-a1-bold">My Resume as a service</h1>
+          <h1 className="gothic-a1-bold">My Resume as a Service</h1>
           <p className="inter">
             Join the growing number of recruiters who use my groundbreaking{' '}
             <b>
