@@ -18,13 +18,10 @@ h1 {
 
 #resume {
   height: 28vw;
-  /* max-width: 100%; */
 }
 
 .img-array {
   padding-top: 5vh;
-  /* border: 2px solid blue; */
-  /* border-radius: 5px; */
 }
 
 .img-array > img {

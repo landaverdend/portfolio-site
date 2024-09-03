@@ -1,7 +1,7 @@
+import CardStack from '@/components/cardStack/CardStack';
 import './splash-screen.css';
 import '@styles/fonts.css';
-import blurredResume from '@assets/images/blurred-resume.png';
-import BackgroundCanvas from '@components/BackgroundCanvas/BackgroundCanvas.tsx';
+import BackgroundCanvas from '@components/backgroundCanvas/BackgroundCanvas.tsx';
 
 function SplashScreen() {
   return (
@@ -19,9 +19,7 @@ function SplashScreen() {
           </p>
         </div>
         <div className="grid-item">
-          <div className="img-array">
-            <img id="resume" src={blurredResume} />
-          </div>
+          <CardStack />
         </div>
       </div>
       <BackgroundCanvas />
