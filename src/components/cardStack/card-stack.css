@@ -1,20 +1,16 @@
-#resume {
-  height: 28vw;
-}
-
-.img-array {
+.card-array {
   padding-top: 5vh;
 }
 
-.img-array > img {
-  /* background-color: red; */
+.card {
   z-index: 100;
   border: 3px solid #4c539e;
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(29, 57, 57, 0.5);
+  height: 28vw;
 }
 
-.img-array > img:hover {
+.card:hover {
   transition: transform 0.5s ease; /* Smooth transition effect */
   transform: scale(1.1); /* Scale up by 10% */
 }
