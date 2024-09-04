@@ -19,12 +19,7 @@
   z-index: var(--card-z-index, 1);
 }
 
-/* only the top card should have a hover thing. */
-.card--active img {
-  z-index: 100;
-}
-
-.card--active img:hover {
+.card__container--active:hover * {
   transition: transform 0.3s ease; /* Smooth transition effect */
   transform: scale(1.05); /* Scale up by 10% */
 }
