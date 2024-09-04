@@ -23,12 +23,14 @@ function Card(props: CardProps) {
   };
 
   return (
-    <img
-      className={'card--image ' + (isFirst ? 'card--active' : '')}
-      src={props.src}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    />
+    <div className="card__container">
+      <img
+        // className={'card__image'}
+        src={props.src}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      />
+    </div>
   );
 }
 
