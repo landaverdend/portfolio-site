@@ -2,7 +2,7 @@
   padding-top: 5vh;
 }
 
-.card img {
+.card--image {
   z-index: 100;
   border: 3px solid #4c539e;
   border-radius: 5px;
@@ -20,22 +20,25 @@
 }
 
 /* only the top card should have a hover thing.*/
-.active {
+.card--active img {
+  z-index: 100;
+}
+
+.card--active:hover {
   transition: transform 0.3s ease; /* Smooth transition effect */
   transform: scale(1.05); /* Scale up by 10% */
-  z-index: 10;
 }
 
-.card-stack > .card:nth-child(1) {
-  --card-z-index: 3;
+.card-stack .card--image:nth-child(1) {
+  --card-z-index: 10;
 }
 
-.card-stack > .card:nth-child(2) {
+.card-stack .card--image:nth-child(2) {
   --card-transform: translateY(30px) translateX(30px); /* Offset card */
   --card-z-index: 2;
 }
 
-.card-stack > .card:nth-child(3) {
+.card-stack .card--image:nth-child(3) {
   --card-transform: translateY(60px) translateX(60px); /* Offset card */
   --card-z-index: 0;
 }
