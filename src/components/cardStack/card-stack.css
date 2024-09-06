@@ -1,9 +1,13 @@
-.card-stack {
+.cardstack {
   padding-top: 5vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.card__container {
-  position: absolute;
+.cardstack__container {
+  position: relative;
+  width: 22.5vw; /* Set the container width to match the card size */
+  height: calc(55vh + 60px); /* Set the container height to match the card size plus the offset.*/
 }
 
 .card__image,
@@ -19,7 +23,8 @@
   z-index: var(--card-z-index, 1);
 }
 
-.card__image {
+.card__image,
+.card__text {
   border: 3px solid #4c539e;
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(29, 57, 57, 0.5);
@@ -32,25 +37,29 @@
   justify-content: center;
   color: #f1f1f1;
   background-color: rgba(0, 0, 0, 0.5);
-  border: 3px solid rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
 }
 
-.card__container--active:hover * {
+.cardstack__container--active:hover * {
   transition: transform 0.1s ease-in-out; /* Smooth transition effect */
   /* transform: scale(1.05); Scale up by 10% */
 }
 
-.card-stack > .card__container:nth-child(1) {
+.cardstack__container > .card__container:nth-child(1) {
   --card-z-index: 10;
 }
 
-.card-stack .card__container:nth-child(2) {
+.cardstack__container .card__container:nth-child(2) {
   --card-transform: translateY(30px) translateX(30px); /* Offset card */
   --card-z-index: 2;
 }
 
-.card-stack .card__container:nth-child(3) {
+.cardstack__container .card__container:nth-child(3) {
   --card-transform: translateY(60px) translateX(60px); /* Offset card */
   --card-z-index: 0;
+}
+
+.cardstack__controls {
+  margin-top: 5vh;
+  width: 22.5vw;
+  text-align: center;
 }

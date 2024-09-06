@@ -41,13 +41,14 @@ function CardStack() {
   // This could also just be a prop
   const cards = [
     <Card key={blurredResume} src={blurredResume} hoverText={'Pay as you go access to my resume!'} isFirst={true} />,
-    <Card key={coverLetterBlurred} src={coverLetterBlurred} hoverText={'lol'} isFirst={false} />,
-    <Card key={gigachadBlurred} src={gigachadBlurred} hoverText={'lol'} isFirst={false} />,
+    <Card key={coverLetterBlurred} src={coverLetterBlurred} hoverText={'Access to customized cover letters'} isFirst={false} />,
+    <Card key={gigachadBlurred} src={gigachadBlurred} hoverText={'Headshots!'} isFirst={false} />,
   ];
 
   return (
-    <div>
-      <div className="card-stack">{cards}</div>
+    <div className="cardstack">
+      <div className="cardstack__container">{cards}</div>
+      <div className="cardstack__controls">left and right</div>
     </div>
   );
 }
