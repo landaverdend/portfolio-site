@@ -23,7 +23,7 @@ h1 {
 
 .start__button {
   color: white;
-  background: var(--primary-gradient);
+  background: var(--primary-gradient-horizontal);
   border-radius: 15px; /* Adjust the radius as needed */
   padding: 5px;
   width: 5rem;
@@ -33,5 +33,5 @@ h1 {
 
 .start__button:hover {
   cursor: pointer;
-  background: var(--primary-gradient-hover)
+  background: var(--primary-gradient-horizontal-hover);
 }

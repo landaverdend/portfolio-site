@@ -62,23 +62,24 @@
 }
 
 /* For the controls section. */
-
 .cardstack__controls {
   margin-top: 5vh;
   width: calc(22.5vw + 60px);
   text-align: center;
   position: relative;
+}
 
+.cardstack__control {
   /* Below is necessary to change the color of the icons to a linear gradient*/
-  font-size: 4.5vh; /* Adjust size as needed */
-  background: var(--primary-gradient);
+  font-size: 4.5vh;
+  background: var(--secondary-gradient);
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .cardstack__control i:hover {
   cursor: pointer;
-  background: var(--primary-gradient-hover);
+  background: var(--secondary-gradient-hover);
   -webkit-background-clip: text;
   color: transparent;
 }
