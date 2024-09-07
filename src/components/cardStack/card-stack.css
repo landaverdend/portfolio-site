@@ -30,6 +30,10 @@
   box-shadow: 5px 5px 5px rgba(29, 57, 57, 0.5);
 }
 
+.card__text:hover {
+  cursor: pointer;
+}
+
 .card__text {
   z-index: 11;
   display: flex;
@@ -41,7 +45,6 @@
 
 .cardstack__container--active:hover * {
   transition: transform 0.1s ease-in-out; /* Smooth transition effect */
-  /* transform: scale(1.05); Scale up by 10% */
 }
 
 .cardstack__container .card__container:nth-child(1) {
@@ -68,14 +71,14 @@
 
   /* Below is necessary to change the color of the icons to a linear gradient*/
   font-size: 4.5vh; /* Adjust size as needed */
-  background: linear-gradient(rgb(163, 92, 163), rgb(125, 228, 125));
+  background: var(--primary-gradient);
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .cardstack__control i:hover {
   cursor: pointer;
-  background: linear-gradient(purple, green);
+  background: var(--primary-gradient-hover);
   -webkit-background-clip: text;
   color: transparent;
 }

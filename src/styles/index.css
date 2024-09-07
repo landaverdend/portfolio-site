@@ -1,1 +1,4 @@
-
+:root {
+  --primary-gradient: linear-gradient(rgb(163, 92, 163), rgb(125, 228, 125));
+  --primary-gradient-hover: linear-gradient(purple, green);
+}

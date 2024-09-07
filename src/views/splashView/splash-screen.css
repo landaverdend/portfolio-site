@@ -7,7 +7,12 @@
   margin: 10vh 23vw;
 }
 
-.grid-item {
+.griditem {
+}
+
+.splashtext__container {
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -16,3 +21,17 @@ h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.start__button {
+  color: white;
+  background: var(--primary-gradient);
+  border-radius: 15px; /* Adjust the radius as needed */
+  padding: 5px;
+  width: 5rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+.start__button:hover {
+  cursor: pointer;
+  background: var(--primary-gradient-hover)
+}

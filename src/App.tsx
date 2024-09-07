@@ -1,4 +1,3 @@
-import './App.css';
 import SplashScreen from './views/splashView/SplashScreen';
 
 function App() {
