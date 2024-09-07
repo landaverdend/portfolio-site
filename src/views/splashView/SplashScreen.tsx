@@ -2,14 +2,18 @@ import CardStack from '@/components/cardStack/CardStack';
 import './splash-screen.css';
 import '@styles/fonts.css';
 import BackgroundCanvas from '@components/backgroundCanvas/BackgroundCanvas.tsx';
+import LoadingScreen from '@/components/loadingScreen/loadingScreen';
+import { useState } from 'react';
 
 function SplashScreen() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const handleTransition = () => {
-    console.log('lol');
+    setIsLoading(true);
   };
 
   return (
-    <>
+    <LoadingScreen isLoading={isLoading}>
       <div className="splash-grid inter">
         <div className="griditem">
           <div className="splashtext__container">
@@ -24,7 +28,7 @@ function SplashScreen() {
             </p>
 
             <span className="start__button" onClick={handleTransition}>
-              Let's Go
+              Get started <i className="fa-solid fa-arrow-right"></i>
             </span>
           </div>
         </div>
@@ -33,7 +37,7 @@ function SplashScreen() {
         </div>
       </div>
       <BackgroundCanvas />
-    </>
+    </LoadingScreen>
   );
 }
 

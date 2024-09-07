@@ -7,7 +7,6 @@
   margin: 10vh 23vw;
 }
 
-
 .splashtext__container {
   display: flex;
   flex-direction: column;
@@ -23,13 +22,27 @@ h1 {
   color: white;
   background: var(--primary-gradient-horizontal);
   border-radius: 15px; /* Adjust the radius as needed */
-  padding: 5px;
-  width: 5rem;
+  padding: 10px;
+  width: fit-content;
   text-align: center;
-  font-weight: 400;
+  font-weight: 200;
+  font-size: x-large;
+  animation: scaleUpDown 10s ease-in-out infinite;
 }
 
 .start__button:hover {
   cursor: pointer;
   background: var(--primary-gradient-horizontal-hover);
+}
+
+@keyframes scaleUpDown {
+  0% {
+    transform: scale(1); /* Initial scale */
+  }
+  50% {
+    transform: scale(1.06); /* Scale up to 120% */
+  }
+  100% {
+    transform: scale(1); /* Scale back to 100% */
+  }
 }
