@@ -45,15 +45,18 @@ function CardStack() {
     { src: coverLetterBlurred, hoverText: 'Access to customized cover letters' },
     { src: gigachadBlurred, hoverText: 'Access to headshots' },
   ]);
-  
-  const handleLeft = () => {};
+
+  const handleLeft = () => {
+    const bottom = cardOrder.pop() as CardData;
+    const tmp = [bottom, ...cardOrder];
+
+    setCardOrder(tmp);
+  };
 
   const handleRight = () => {
-    const tmp = [...cardOrder];
+    const card = cardOrder.shift() as CardData;
+    const tmp = [...cardOrder, card];
 
-    const card = tmp.shift() as CardData;
-
-    tmp.push(card);
     setCardOrder(tmp);
   };
 
