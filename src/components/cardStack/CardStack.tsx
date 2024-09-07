@@ -9,7 +9,6 @@ interface CardProps {
   src: string;
   hoverText: string;
   isFirst: boolean;
-  // isActive: boolean;
 }
 function Card(props: CardProps) {
   const { isFirst, hoverText } = props;
@@ -17,12 +16,10 @@ function Card(props: CardProps) {
 
   const handleMouseEnter = () => {
     setIsActive(true);
-    console.log('entered');
   };
 
   const handleMouseLeave = () => {
     setIsActive(false);
-    console.log('left');
   };
 
   return (
@@ -37,18 +34,44 @@ function Card(props: CardProps) {
   );
 }
 
+type CardData = {
+  src: string;
+  hoverText: string;
+};
+
 function CardStack() {
-  // This could also just be a prop
-  const cards = [
-    <Card key={blurredResume} src={blurredResume} hoverText={'Pay as you go access to my resume!'} isFirst={true} />,
-    <Card key={coverLetterBlurred} src={coverLetterBlurred} hoverText={'Access to customized cover letters'} isFirst={false} />,
-    <Card key={gigachadBlurred} src={gigachadBlurred} hoverText={'Headshots!'} isFirst={false} />,
-  ];
+  const [cardOrder, setCardOrder] = useState<Array<CardData>>([
+    { src: blurredResume, hoverText: 'Pay as you go access to my resume!' },
+    { src: coverLetterBlurred, hoverText: 'Access to customized cover letters' },
+    { src: gigachadBlurred, hoverText: 'Access to headshots' },
+  ]);
+  
+  const handleLeft = () => {};
+
+  const handleRight = () => {
+    const tmp = [...cardOrder];
+
+    const card = tmp.shift() as CardData;
+
+    tmp.push(card);
+    setCardOrder(tmp);
+  };
 
   return (
     <div className="cardstack">
-      <div className="cardstack__container">{cards}</div>
-      <div className="cardstack__controls">left and right</div>
+      <div className="cardstack__container">
+        {cardOrder.map((c, ind) => (
+          <Card key={c.src} isFirst={ind === 0} hoverText={c.hoverText} src={c.src} />
+        ))}
+      </div>
+      <div className="cardstack__controls">
+        <span className="cardstack__control cardstack__control--left" onClick={handleLeft}>
+          Left
+        </span>
+        <span className="cardstack__control cardstack__control--right" onClick={handleRight}>
+          Right
+        </span>
+      </div>
     </div>
   );
 }

@@ -44,7 +44,7 @@
   /* transform: scale(1.05); Scale up by 10% */
 }
 
-.cardstack__container > .card__container:nth-child(1) {
+.cardstack__container .card__container:nth-child(1) {
   --card-z-index: 10;
 }
 
@@ -58,8 +58,26 @@
   --card-z-index: 0;
 }
 
+/* For the controls section. */
+
 .cardstack__controls {
   margin-top: 5vh;
   width: 22.5vw;
   text-align: center;
+  position: relative;
+  background-image: linear-gradient();
+}
+
+.cardstack__controls:hover {
+  cursor: pointer;
+}
+
+.cardstack__control--left {
+  left: 0;
+  position: absolute;
+}
+
+.cardstack__control--right {
+  position: absolute;
+  right: 0;
 }
