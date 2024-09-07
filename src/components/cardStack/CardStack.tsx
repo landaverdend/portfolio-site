@@ -4,6 +4,7 @@ import gigachadBlurred from '@assets/images/gigachadBlurred.png';
 import './card-stack.css';
 import '@styles/fonts.css';
 import { useState } from 'react';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 interface CardProps {
   src: string;
@@ -68,11 +69,11 @@ function CardStack() {
         ))}
       </div>
       <div className="cardstack__controls">
-        <span className="cardstack__control cardstack__control--left" onClick={handleLeft}>
-          Left
+        <span className="cardstack__control cardstack__control--left">
+          <i className="fas fa-chevron-left" onClick={handleLeft}></i>
         </span>
-        <span className="cardstack__control cardstack__control--right" onClick={handleRight}>
-          Right
+        <span className="cardstack__control cardstack__control--right">
+          <i className="fas fa-chevron-right" onClick={handleRight}></i>
         </span>
       </div>
     </div>
