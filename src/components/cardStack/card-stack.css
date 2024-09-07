@@ -74,6 +74,8 @@
   font-size: 4.5vh;
   background: var(--secondary-gradient);
   -webkit-background-clip: text;
+  background-clip: text;
+
   color: transparent;
 }
 
@@ -81,13 +83,14 @@
   cursor: pointer;
   background: var(--secondary-gradient-hover);
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
 }
 
 .cardstack__control--left {
-  padding-right: 2.5px;
+  padding-right: 10px;
 }
 
 .cardstack__control--right {
-  padding-left: 2.5px;
+  padding-left: 10px;
 }

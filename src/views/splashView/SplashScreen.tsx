@@ -4,6 +4,10 @@ import '@styles/fonts.css';
 import BackgroundCanvas from '@components/backgroundCanvas/BackgroundCanvas.tsx';
 
 function SplashScreen() {
+  const handleTransition = () => {
+    console.log('lol');
+  };
+
   return (
     <>
       <div className="splash-grid inter">
@@ -19,7 +23,9 @@ function SplashScreen() {
               recruitment game with the first-ever site designed for seamless access to my resume.
             </p>
 
-            <span className="start__button">Let's Go</span>
+            <span className="start__button" onClick={handleTransition}>
+              Let's Go
+            </span>
           </div>
         </div>
         <div className="griditem">
