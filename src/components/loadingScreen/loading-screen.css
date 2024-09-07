@@ -6,12 +6,12 @@
   height: 100%;
   width: 100%;
   z-index: 1000;
-  transform: translateY(-100%); /* Start position off-screen */
+  transform: translateX(-100%); /* Start position off-screen */
   transition: transform .9s ease-in-out; /* Animation */
 }
 
 .loading__container--active {
-  transform: translateY(0); /* Move to visible position */
+  transform: translateX(0); /* Move to visible position */
 }
 
 .loading__container--inactive {
