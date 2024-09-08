@@ -1,8 +1,8 @@
+type RGBA = [number, number, number, number];
+
 // The ordering of colors for the gradient. Each color maintains a record of
 // its initial value, orig, the current value, val, and the index of the color
 // that it is animating towards, next.
-type RGBA = [number, number, number, number];
-
 type Color = { orig: RGBA; val: RGBA; next: number };
 
 function getAnimatedGradient(canvas: HTMLCanvasElement, colors: Array<Color>) {
@@ -11,32 +11,27 @@ function getAnimatedGradient(canvas: HTMLCanvasElement, colors: Array<Color>) {
     // Create a linear gradient from the top left to the bottom right corner.
     const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
 
-    // Shift each color towards the next one in the sequence.
-    colors[0].val = shiftColor(colors[0].val, colors[colors[0].next].orig);
-    colors[1].val = shiftColor(colors[1].val, colors[colors[1].next].orig);
-    colors[2].val = shiftColor(colors[2].val, colors[colors[2].next].orig);
+    let equalToSuccessor = false;
+    for (const color of colors) {
+      // Shift each color towards the next one in the sequence.
+      color.val = shiftColor(color.val, colors[color.next].orig);
+      equalToSuccessor &&= color.val.join() === colors[color.next].orig.join();
+    }
 
-    // If the colors are all equal to their successors, shift the indices
-    // so we animate each color towards a different value.
-    if (
-      colors[0].val.join() === colors[colors[0].next].orig.join() &&
-      colors[1].val.join() === colors[colors[1].next].orig.join() &&
-      colors[2].val.join() === colors[colors[2].next].orig.join()
-    ) {
-      // Update color indices for the next stepping.
-      colors[0].next = (colors[0].next + 1) % colors.length;
-      colors[1].next = (colors[1].next + 1) % colors.length;
-      colors[2].next = (colors[2].next + 1) % colors.length;
+    if (equalToSuccessor) {
+      for (const color of colors) {
+        color.next = (color.next + 1) % colors.length;
+      }
     }
 
     // Create the gradient based on the latest color values.
-    gradient.addColorStop(0.0, 'rgba(' + colors[0].val[0] + ', ' + colors[0].val[1] + ', ' + colors[0].val[2] + ', 1.0)');
-    gradient.addColorStop(0.2, 'rgba(' + colors[0].val[0] + ', ' + colors[0].val[1] + ', ' + colors[0].val[2] + ', 1.0)');
-    gradient.addColorStop(0.4, 'rgba(' + colors[1].val[0] + ', ' + colors[1].val[1] + ', ' + colors[1].val[2] + ', 1.0)');
-    gradient.addColorStop(0.6, 'rgba(' + colors[1].val[0] + ', ' + colors[1].val[1] + ', ' + colors[1].val[2] + ', 1.0)');
-    gradient.addColorStop(0.8, 'rgba(' + colors[2].val[0] + ', ' + colors[2].val[1] + ', ' + colors[2].val[2] + ', 1.0)');
-    gradient.addColorStop(1.0, 'rgba(' + colors[2].val[0] + ', ' + colors[2].val[1] + ', ' + colors[2].val[2] + ', 1.0)');
-
+    let colorStop = 0;
+    for (const color of colors) {
+      const { val } = color;
+      gradient.addColorStop(colorStop, `rgba(${val[0]}, ${val[1]}, ${val[2]} , 1.0)`);
+      colorStop += 1 / colors.length;
+    }
+    
     return gradient;
   }
 }
@@ -119,13 +114,13 @@ export function animateCanvas(canvas: HTMLCanvasElement) {
     '#4CAF50', // Medium Green
     '#66BB6A', // Lighter Green
     '#81C784', // Even Lighter Green
-    '#9CCC65', // Light Green
-    '#A5D6A7', // Very Light Green
-    '#7B1FA2', // Medium Purple
-    '#8E24AA', // Lighter Purple
+    // '#9CCC65', // Light Green
+    // '#A5D6A7', // Very Light Green
+    // '#7B1FA2', // Medium Purple
+    // '#8E24AA', // Lighter Purple
     '#CE93D8', // Light Purple
     '#E1BEE7', // Very Light Purple
-    '#3F51B5', // Medium Indigo
+    '#7f7dff', // Medium Indigo
   ];
 
   const colorArray: Array<Color> = hexColors.map((hex, ind) => {
