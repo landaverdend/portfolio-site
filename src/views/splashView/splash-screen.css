@@ -36,16 +36,20 @@
 /* ========== Desktop (Large Screens) ========== */
 .splash-grid {
   display: grid;
-  grid-template-columns: 35% 55%; /* Make sure these don't all add up to over 100*/
-  gap: 6vw;
+  grid-template-columns: 30% 55%; /* Make sure these don't all add up to over 100*/
+  gap: 8vw;
   margin-top: 10vh;
-  margin-left: 10vw;
+  margin-left: 15vw;
 }
 
 h1 {
   font-size: 5.5rem;
   font-style: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  font-size: large;
 }
 
 /* ========== Smaller Desktops & Tablets (Medium Screens) ========== */
@@ -74,21 +78,22 @@ h1 {
     margin: 6vh auto;
   }
 
-  /* .griditem:nth-child(2) {
-    display: none;
-  } */
-
   h1 {
-    font-size: 4rem;
+    font-size: 7rem;
+    max-width: 80vw;
+  }
+
+  p {
+    font-size: x-large;
   }
 
   .start__button {
-    font-size: large;
+    font-size: x-large;
     padding: 8px;
   }
 }
 
-/* ========== Phones (Small Screens) ========== */
+/* ========== (Small Screens) ========== */
 @media (max-width: 768px) {
   .splash-grid {
     grid-template-columns: 1fr;
@@ -96,14 +101,19 @@ h1 {
     margin: 5vh auto;
   }
 
-  .griditem:nth-child(2) {
-    display: none;
+  .splashtext__container {
+    padding-left: 3.5vw;
   }
 
   h1 {
-    font-size: 3.5rem;
+    font-size: 5rem;
+    max-width: 55vh;
   }
 
+  p {
+    font-size: x-large;
+    max-width: 80vw;
+  }
   .start__button {
     font-size: medium;
     padding: 6px;
@@ -114,7 +124,6 @@ h1 {
 @media (max-width: 576px) {
   .splash-grid {
     grid-template-columns: 1fr;
-    width: 100vw;
     margin: 4vh auto;
     gap: 2vw;
   }
@@ -124,16 +133,20 @@ h1 {
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 4rem;
+    max-width: 55vw;
   }
 
   .start__button {
-    font-size: medium;
-    padding: 5px;
-    width: 100%;
+    margin-top: 25px;
+    font-size: x-large;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 25px auto 0 auto;
   }
 
   p {
-    font-size: 1.5rem;
+    font-size: large;
   }
 }

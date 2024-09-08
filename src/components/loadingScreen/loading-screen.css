@@ -7,7 +7,7 @@
   width: 100%;
   z-index: 1000;
   transform: translateX(-100%); /* Start position off-screen */
-  transition: transform .9s ease-in-out; /* Animation */
+  transition: transform 0.9s ease-in-out; /* Animation */
 }
 
 .loading__container--active {
@@ -17,4 +17,9 @@
 .loading__container--inactive {
   /* display: none; */
   visibility: hidden;
+}
+
+.panel--left {
+}
+.panel--right {
 }

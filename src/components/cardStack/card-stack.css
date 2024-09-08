@@ -7,7 +7,6 @@
 
 .cardstack__container {
   position: relative;
-  width: 22.5vw; /* Adjust this value based on card size */
   height: calc(55vh + 60px); /* Adjust this value based on card size plus offset */
 }
 
@@ -89,4 +88,10 @@
 
 .cardstack__control--right {
   padding-left: 10px;
+}
+
+@media (max-width: 992px) {
+  .cardstack {
+    margin-left: 20vw;
+  }
 }

@@ -11,11 +11,11 @@ function LoadingScreen(props: LoadingScreenProps) {
 
   return (
     <>
-      {/* {
+      {
         <div className={'loading__container ' + (!isLoading ? 'loading__container--inactive' : 'loading__container--active')}>
           Loading...
         </div>
-      } */}
+      }
       <div>{children}</div>
     </>
   );
