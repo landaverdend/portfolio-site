@@ -34,33 +34,26 @@
 }
 
 /* ========== Desktop (Large Screens) ========== */
-@media (min-width: 1201px) {
-  .splash-grid {
-    display: grid;
-    grid-template-columns: 35% 55%; /* Make sure these don't all add up to over 100*/
-    gap: 6vw;
-    margin-top: 10vh;
-    margin-left: 10vw;
-  }
+.splash-grid {
+  display: grid;
+  grid-template-columns: 35% 55%; /* Make sure these don't all add up to over 100*/
+  gap: 6vw;
+  margin-top: 10vh;
+  margin-left: 10vw;
+}
 
-  h1 {
-    font-size: 5.5rem;
-    font-style: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  }
+h1 {
+  font-size: 5.5rem;
+  font-style: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* ========== Smaller Desktops & Tablets (Medium Screens) ========== */
 @media (max-width: 1200px) {
   .splash-grid {
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 33% 60%;
     width: 85vw;
     margin: 8vh auto; /* Adjusted to auto-center */
-  }
-
-  /* Just remove the */
-  .griditem:nth-child(2) {
-    display: none;
   }
 
   h1 {
@@ -81,9 +74,9 @@
     margin: 6vh auto;
   }
 
-  .griditem:nth-child(2) {
+  /* .griditem:nth-child(2) {
     display: none;
-  }
+  } */
 
   h1 {
     font-size: 4rem;
