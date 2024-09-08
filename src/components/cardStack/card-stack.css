@@ -1,3 +1,4 @@
+/* Base Styles */
 .cardstack {
   padding-top: 5vh;
   display: flex;
@@ -6,32 +7,25 @@
 
 .cardstack__container {
   position: relative;
-  width: 22.5vw; /* Set the container width to match the card size */
-  height: calc(55vh + 60px); /* Set the container height to match the card size plus the offset.*/
+  width: 22.5vw; /* Adjust this value based on card size */
+  height: calc(55vh + 60px); /* Adjust this value based on card size plus offset */
 }
 
 .card__image,
 .card__text {
   z-index: 10;
+
   height: 55vh;
   width: 22.5vw;
 
-  /* The card stack/transition stuff*/
   position: absolute;
   transition: transform 0.3s ease-in-out;
   transform: var(--card-transform, translateY(0) translateX(5));
-  z-index: var(--card-z-index, 1);
-}
 
-.card__image,
-.card__text {
+  z-index: var(--card-z-index, 1);
   border: 3px solid #4c539e;
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(29, 57, 57, 0.5);
-}
-
-.card__text:hover {
-  cursor: pointer;
 }
 
 .card__text {
@@ -41,6 +35,10 @@
   justify-content: center;
   color: #f1f1f1;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card__text:hover {
+  cursor: pointer;
 }
 
 .cardstack__container--active:hover * {
@@ -61,7 +59,7 @@
   --card-z-index: 0;
 }
 
-/* For the controls section. */
+/* Controls */
 .cardstack__controls {
   margin-top: 5vh;
   width: calc(22.5vw + 60px);
@@ -70,12 +68,10 @@
 }
 
 .cardstack__control {
-  /* Below is necessary to change the color of the icons to a linear gradient*/
   font-size: 4.5vh;
   background: var(--secondary-gradient);
   -webkit-background-clip: text;
   background-clip: text;
-
   color: transparent;
 }
 

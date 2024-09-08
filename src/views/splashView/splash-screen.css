@@ -1,27 +1,13 @@
-.splash-grid {
-  /* padding-top: 5vh; */
-  display: grid;
-  grid-template-columns: 35% 65%;
-  width: 80vw;
-  gap: 3vw;
-  margin: 10vh 23vw;
-}
-
+/* ========== Global Styles ========== */
 .splashtext__container {
   display: flex;
   flex-direction: column;
 }
 
-h1 {
-  font-size: 5.5rem;
-  font-style: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
 .start__button {
   color: white;
   background: var(--primary-gradient-horizontal);
-  border-radius: 15px; /* Adjust the radius as needed */
+  border-radius: 15px;
   padding: 10px;
   width: fit-content;
   text-align: center;
@@ -37,12 +23,125 @@ h1 {
 
 @keyframes scaleUpDown {
   0% {
-    transform: scale(1); /* Initial scale */
+    transform: scale(1);
   }
   50% {
-    transform: scale(1.06); /* Scale up to 120% */
+    transform: scale(1.06);
   }
   100% {
-    transform: scale(1); /* Scale back to 100% */
+    transform: scale(1);
+  }
+}
+
+/* ========== Desktop (Large Screens) ========== */
+@media (min-width: 1201px) {
+  .splash-grid {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    width: 80vw;
+    gap: 5vw;
+    margin: 10vh auto auto 15vw;
+  }
+
+  h1 {
+    font-size: 5.5rem;
+    font-style: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ========== Smaller Desktops & Tablets (Medium Screens) ========== */
+@media (max-width: 1200px) {
+  .splash-grid {
+    grid-template-columns: 30% 70%;
+    width: 85vw;
+    margin: 8vh auto; /* Adjusted to auto-center */
+  }
+
+  /* Just remove the */
+  .griditem:nth-child(2) {
+    display: none;
+  }
+
+  h1 {
+    font-size: 4.5rem;
+  }
+
+  .start__button {
+    font-size: large;
+    padding: 8px;
+  }
+}
+
+/* ========== Tablets (Small-Medium Screens) ========== */
+@media (max-width: 992px) {
+  .splash-grid {
+    grid-template-columns: 1fr;
+    width: 90vw;
+    margin: 6vh auto;
+  }
+
+  .griditem:nth-child(2) {
+    display: none;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  .start__button {
+    font-size: large;
+    padding: 8px;
+  }
+}
+
+/* ========== Phones (Small Screens) ========== */
+@media (max-width: 768px) {
+  .splash-grid {
+    grid-template-columns: 1fr;
+    width: 95vw;
+    margin: 5vh auto;
+  }
+
+  .griditem:nth-child(2) {
+    display: none;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  .start__button {
+    font-size: medium;
+    padding: 6px;
+  }
+}
+
+/* ========== Extra Small Devices (Phones) ========== */
+@media (max-width: 576px) {
+  .splash-grid {
+    grid-template-columns: 1fr;
+    width: 100vw;
+    margin: 4vh auto;
+    gap: 2vw;
+  }
+
+  .griditem:nth-child(2) {
+    display: none;
+  }
+
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .start__button {
+    font-size: medium;
+    padding: 5px;
+    width: 100%;
+  }
+
+  p {
+    font-size: 1.5rem;
   }
 }
