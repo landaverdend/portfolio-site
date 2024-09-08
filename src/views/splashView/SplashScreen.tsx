@@ -33,7 +33,7 @@ function SplashScreen() {
           </div>
         </div>
         <div className="griditem">
-          {/* <CardStack /> */}
+          <CardStack />
         </div>
       </div>
       <BackgroundCanvas />

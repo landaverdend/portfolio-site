@@ -37,10 +37,10 @@
 @media (min-width: 1201px) {
   .splash-grid {
     display: grid;
-    grid-template-columns: 35% 65%;
-    width: 80vw;
-    gap: 5vw;
-    margin: 10vh auto auto 15vw;
+    grid-template-columns: 35% 55%; /* Make sure these don't all add up to over 100*/
+    gap: 6vw;
+    margin-top: 10vh;
+    margin-left: 10vw;
   }
 
   h1 {
@@ -132,7 +132,6 @@
 
   h1 {
     font-size: 3rem;
-    text-align: center;
   }
 
   .start__button {
