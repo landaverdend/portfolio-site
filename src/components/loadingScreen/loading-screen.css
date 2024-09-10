@@ -1,25 +1,58 @@
-.loading__container {
+.curtain-container {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgb(249, 249, 249);
-  height: 100%;
   width: 100%;
-  z-index: 1000;
-  transform: translateX(-100%); /* Start position off-screen */
-  transition: transform 0.9s ease-in-out; /* Animation */
+  height: 100%;
+  z-index: 9999;
+  visibility: hidden; /* ensure everything is hidden*/
 }
 
-.loading__container--active {
-  transform: translateX(0); /* Move to visible position */
+.curtain {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 50vw;
+  background-color: #000; /* Change to whatever color you want */
+  z-index: 100;
 }
 
-.loading__container--inactive {
-  /* display: none; */
-  visibility: hidden;
+/* Initial position (off-screen) */
+.curtain--left {
+  left: -50vw;
+  background: linear-gradient(to right, lavender, white);
 }
 
-.panel--left {
+.curtain--right {
+  right: -50vw;
+  background: linear-gradient(to left, rgb(183, 255, 183), white);
 }
-.panel--right {
+
+/* When the animation is triggered, move to center */
+.curtain-container--active .curtain--left {
+  animation: curtain-slide--left 2s ease-in-out forwards;
+  visibility: visible;
+}
+
+.curtain-container--active .curtain--right {
+  animation: curtain-slide--right 2s ease-in-out forwards;
+  visibility: visible;
+}
+
+@keyframes curtain-slide--left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50vw);
+  }
+}
+
+@keyframes curtain-slide--right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50vw);
+  }
 }

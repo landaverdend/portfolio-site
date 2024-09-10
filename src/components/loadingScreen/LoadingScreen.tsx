@@ -11,11 +11,10 @@ function LoadingScreen(props: LoadingScreenProps) {
 
   return (
     <>
-      {
-        <div className={'loading__container ' + (!isLoading ? 'loading__container--inactive' : 'loading__container--active')}>
-          Loading...
-        </div>
-      }
+      <div className={`curtain-container ${isLoading ? 'curtain-container--active' : ''}`}>
+        <div className="curtain curtain--left" onAnimationEnd={() => console.log('done.')}></div>
+        <div className="curtain curtain--right"></div>
+      </div>
       <div>{children}</div>
     </>
   );
