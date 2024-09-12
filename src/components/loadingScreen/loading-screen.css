@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 9999;
+  z-index: 999;
   visibility: hidden; /* ensure everything is hidden*/
 }
 
@@ -56,3 +56,20 @@
     transform: translateX(-50vw);
   }
 }
+
+.curtain-content {
+  z-index: 1000;
+  /* position: relative; */
+
+  display: flex;
+  justify-content: center;
+}
+
+.curtain-content__image {
+  height: 125px;
+  width: 125px;
+  border-radius: 50%;
+  border: 2px solid var(--color-3);
+  top: -100px;
+}
+
