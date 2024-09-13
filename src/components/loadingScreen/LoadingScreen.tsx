@@ -27,7 +27,7 @@ function LoadingScreen(props: LoadingScreenProps) {
       </div>
 
       {!curtainAnimationDone ? (
-        <div>{children}</div> // render the children
+        <>{children}</>
       ) : (
         <div className="curtain-content">
           <img className="curtain-content__image " src={logo} />

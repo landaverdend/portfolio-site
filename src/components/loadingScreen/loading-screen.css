@@ -73,7 +73,7 @@
   position: relative;
   top: -150px;
 
-  animation: logo-slide 1.5s ease-in-out forwards, bounce 2s ease-in-out 1.5s infinite; /* Delay bounce animation to start after logo-slide */ /* animation-delay: 0.25s; */
+  animation: logo-slide 1.5s ease-in-out forwards, bounce 2.2s ease-in-out 1.5s infinite; /* Delay bounce animation to start after logo-slide */ /* animation-delay: 0.25s; */
 }
 
 @keyframes logo-slide {
@@ -96,9 +96,9 @@
     transform: translateY(40vh);
   }
   40% {
-    transform: translateY(calc(40vh - 4vh));
+    transform: translateY(36vh);
   }
   60% {
-    transform: translateY(calc(40vh - 2vh));
+    transform: translateY(38vh);
   }
 }
