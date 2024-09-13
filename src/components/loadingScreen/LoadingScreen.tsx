@@ -30,7 +30,7 @@ function LoadingScreen(props: LoadingScreenProps) {
         <div>{children}</div> // render the children
       ) : (
         <div className="curtain-content">
-          <img className="curtain-content__image" src={logo} />
+          <img className="curtain-content__image " src={logo} />
         </div>
       )}
     </>
