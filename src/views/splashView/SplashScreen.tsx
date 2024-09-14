@@ -1,4 +1,4 @@
-import CardStack from '@/components/cardStack/CardStack';
+import CardStack from '@components/cardStack/CardStack';
 import './splash-screen.css';
 import '@styles/fonts.css';
 import BackgroundCanvas from '@components/backgroundCanvas/BackgroundCanvas.tsx';

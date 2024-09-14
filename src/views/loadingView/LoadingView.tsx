@@ -1,6 +1,8 @@
 import { ReactNode, useState } from 'react';
 import './loading-view.css';
 import logo from '@assets/images/logo.png';
+import LoadingBar from '@components/loadingBar/LoadingBar';
+import TriviaWidget from '@components/widgets/trivia/TriviaWidget';
 
 interface LoadingViewProps {
   children: ReactNode;
@@ -31,6 +33,10 @@ function LoadingView(props: LoadingViewProps) {
       ) : (
         <div className="curtain-content">
           <img className="curtain-content__image " src={logo} />
+          <div className="curtain-content__loading-bar-container">
+            <TriviaWidget />
+            <LoadingBar />
+          </div>
         </div>
       )}
     </>
