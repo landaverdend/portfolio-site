@@ -1,13 +1,13 @@
 import { ReactNode, useState } from 'react';
-import './loading-screen.css';
+import './loading-view.css';
 import logo from '@assets/images/logo.png';
 
-interface LoadingScreenProps {
+interface LoadingViewProps {
   children: ReactNode;
   isLoading: boolean;
 }
 
-function LoadingScreen(props: LoadingScreenProps) {
+function LoadingView(props: LoadingViewProps) {
   const { children, isLoading } = props;
   const [curtainAnimationDone, setCurtainAnimationDone] = useState(false);
 
@@ -37,4 +37,4 @@ function LoadingScreen(props: LoadingScreenProps) {
   );
 }
 
-export default LoadingScreen;
+export default LoadingView;

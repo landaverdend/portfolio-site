@@ -2,7 +2,7 @@ import CardStack from '@/components/cardStack/CardStack';
 import './splash-screen.css';
 import '@styles/fonts.css';
 import BackgroundCanvas from '@components/backgroundCanvas/BackgroundCanvas.tsx';
-import LoadingScreen from '@/components/loadingScreen/loadingScreen';
+import LoadingView from '../loadingView/LoadingView';
 import { useState } from 'react';
 
 function SplashScreen() {
@@ -13,7 +13,7 @@ function SplashScreen() {
   };
 
   return (
-    <LoadingScreen isLoading={isLoading}>
+    <LoadingView isLoading={isLoading}>
       <div className="splash-grid inter">
         <div className="griditem">
           <div className="splashtext__container">
@@ -37,7 +37,7 @@ function SplashScreen() {
         </div>
       </div>
       <BackgroundCanvas />
-    </LoadingScreen>
+    </LoadingView>
   );
 }
 
