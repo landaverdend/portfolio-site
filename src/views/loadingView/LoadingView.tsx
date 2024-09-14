@@ -31,13 +31,15 @@ function LoadingView(props: LoadingViewProps) {
       {!curtainAnimationDone ? (
         <>{children}</>
       ) : (
-        <div className="curtain-content">
-          <img className="curtain-content__image " src={logo} />
-          <div className="curtain-content__loading-bar-container">
-            <TriviaWidget />
-            <LoadingBar />
+        <>
+          <div className="curtain-content">
+            <img className="curtain-content__image " src={logo} />
+            <div className="curtain-content__trivia">
+              <TriviaWidget />
+              <LoadingBar />
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );

@@ -14,3 +14,10 @@
   --secondary-gradient: linear-gradient(var(--color-1), var(--color-2), var(--color-3));
   --secondary-gradient-hover: linear-gradient(var(--hover-color-1), var(--hover-color-2), var(--hover-color-3));
 }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 175;
+  font-style: thin;
+}
