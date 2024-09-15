@@ -1,7 +1,7 @@
 import '@styles/fonts.css';
 import { useEffect, useState } from 'react';
-
-const trivia = [''];
+import trivia from './trivia';
+import './trivia-styles.css';
 
 interface TypewriterTextProps {
   text: string;
@@ -32,14 +32,25 @@ function TypewriterText(props: TypewriterTextProps) {
 }
 
 function TriviaWidget() {
-  return (
-    <span>
-      <h2 className="gothic-a1-bold">
-        <TypewriterText text="Did you know?" speed={100} />
-      </h2>
+  const [triviaIndex, setTriviaIndex] = useState(0);
 
-      <p></p>
-    </span>
+  useEffect(() => {
+    const triviaChangeInterval = setInterval(() => {
+      setTriviaIndex(Math.floor(Math.random() * trivia.length));
+    }, 6000);
+
+    return () => {
+      clearInterval(triviaChangeInterval);
+    };
+  }, [triviaIndex]);
+
+  return (
+    <div className="trivia-container">
+      <h2 className="gothic-a1-bold">Did you know?</h2>
+      <p>
+        <TypewriterText text={trivia[triviaIndex]} speed={35} />
+      </p>
+    </div>
   );
 }
 
