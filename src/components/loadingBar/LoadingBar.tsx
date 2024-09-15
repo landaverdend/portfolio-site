@@ -28,8 +28,6 @@ function LoadingBar() {
       const tick = Math.random();
 
       setProgress((prevProgress) => {
-        console.log('running');
-
         if (prevProgress >= 100) clearInterval(tickProgress); // remove unnecessary calls.
         return prevProgress + tick;
       });
@@ -41,6 +39,7 @@ function LoadingBar() {
 
     return () => {
       clearInterval(tickProgress);
+      clearInterval(setServiceCall);
     };
   }, []);
 
