@@ -3,7 +3,7 @@ import './loading-bar.css';
 
 const fakeServiceCalls = [
   'Connecting to the ByteBuster Bitter Botter API...',
-  'Spinning up instance of Gizzer Ginker Load Drinker...',
+  'Spinning up instance of Gizzer Ginker Load Balancer...',
   'Securing your packets using the Gitmo Garbler...',
   'Whirling up the GiggleSync Chirpy-Tweet Server...',
   'Balancing loads with the FiddleFaddle Load-Juggler...',
@@ -29,7 +29,7 @@ function LoadingBar() {
 
       setProgress((prevProgress) => {
         if (prevProgress >= 100) clearInterval(tickProgress); // remove unnecessary calls.
-        return prevProgress + tick;
+        return prevProgress + tick / 2;
       });
     }, 100);
 
@@ -42,6 +42,8 @@ function LoadingBar() {
       clearInterval(setServiceCall);
     };
   }, []);
+
+  if (progress >= 100) console.log('lol');
 
   return (
     <div className="loading-container">

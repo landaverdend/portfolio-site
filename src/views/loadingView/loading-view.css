@@ -20,7 +20,7 @@
 /* Initial position (off-screen) */
 .curtain--left {
   left: -50vw;
-  background: linear-gradient(to right, lavender, white);
+  background: linear-gradient(to right, rgb(196, 196, 245), white);
 }
 
 .curtain--right {
@@ -122,4 +122,38 @@
   100% {
     opacity: 1;
   }
+}
+
+.curtain__stripe-right {
+  background-color: var(--color-3);
+  width: 40vw;
+  height: 35px;
+  position: fixed;
+  top: 22.5vh;
+  left: 30vw;
+  transform: rotate(-19deg) skew(-25deg);
+  box-shadow: 10px 10px black;
+}
+
+.curtain__stripe-left {
+  background-color: var(--color-2);
+  width: 40vw;
+  height: 30px;
+  position: fixed;
+  top: 65vh;
+  right: 30vw;
+  transform: rotate(-19deg) skew(-25deg);
+  box-shadow: 10px 10px black;
+}
+
+.curtain__stripe-left2 {
+  background-color: var(--color-1);
+  width: 25vw;
+  height: 25px;
+  position: fixed;
+  top: 55vh;
+  right: 35vw;
+  transform: rotate(-19deg) skew(-25deg);
+  box-shadow: 10px 10px rgba(0,0,0, 1);
+  
 }

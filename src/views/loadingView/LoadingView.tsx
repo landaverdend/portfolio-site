@@ -20,12 +20,18 @@ function LoadingView(props: LoadingViewProps) {
           className="curtain curtain--left"
           onAnimationEnd={() => {
             setCurtainAnimationDone(true);
-          }}></div>
+          }}>
+          <div className="curtain__stripe-left"></div>
+          <div className="curtain__stripe-left2"></div>
+
+        </div>
         <div
           className="curtain curtain--right"
           onAnimationEnd={() => {
             setCurtainAnimationDone(true);
-          }}></div>
+          }}>
+          <div className="curtain__stripe-right"></div>
+        </div>
       </div>
 
       {!curtainAnimationDone ? (
