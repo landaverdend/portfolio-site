@@ -1,3 +1,14 @@
+.loading-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-container__label {
+  color: rgb(108, 103, 103);
+  font-size: 0.8em;
+  margin-bottom: 10px;
+}
+
 progress {
   width: 40vw;
   height: 50px;
@@ -14,8 +25,13 @@ progress[value]::-webkit-progress-bar {
 }
 
 progress[value]::-webkit-progress-value {
-  /* background: linear-gradient( purple, lightgreen); */
-  background-color: #0c8208;
+  background-color: #4c9f49;
   border-radius: 100px;
   background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+@media (max-width: 576px) {
+  progress {
+    width: 80vw;
+  }
 }

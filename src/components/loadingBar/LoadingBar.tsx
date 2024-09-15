@@ -10,20 +10,23 @@ function LoadingBar() {
       const tick = Math.random();
 
       setProgress((prevProgress) => {
+        console.log('running');
+
+        if (prevProgress >= 100) clearInterval(tickProgress); // remove unnecessary calls.
         return prevProgress + tick;
-      }); // Use functional update to access the latest state
+      });
     }, 100);
-    
+
     return () => {
       clearInterval(tickProgress);
-      console.log('unmounting progress bar...');
     };
   }, []);
 
   return (
-    <>
-      <progress max={100} value={progress}></progress>
-    </>
+    <div className="loading-container">
+      <span className="loading-container__label">hello</span>
+      <progress className="loading-container__progress" max={100} value={progress}></progress>
+    </div>
   );
 }
 
