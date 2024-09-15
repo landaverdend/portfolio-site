@@ -43,8 +43,6 @@ function LoadingBar() {
     };
   }, []);
 
-  if (progress >= 100) console.log('lol');
-
   return (
     <div className="loading-container">
       <span className="loading-container__label">{fakeServiceCalls[ind]}</span>
