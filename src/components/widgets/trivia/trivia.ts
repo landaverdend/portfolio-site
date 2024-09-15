@@ -8,7 +8,8 @@ const trivia = [
   'I have hyperhidrosis?',
   "I've been trying to dress more like a cowboy lately?",
   'My social security number is: 625-74-5599?',
-  'The 3 digits on the back of my Chase Sapphire Rewards credit card are: 725?',
+  'The 3 digits on the back of my Chase Sapphire Rewards Credit Card are: 725?',
+  
   // Jokes below.
   'I used to be circumcised?',
   'I am 2% west african?',

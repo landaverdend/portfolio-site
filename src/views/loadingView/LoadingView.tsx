@@ -35,8 +35,8 @@ function LoadingView(props: LoadingViewProps) {
           <div className="curtain-content">
             <img className="curtain-content__image " src={logo} />
             <div className="curtain-content__trivia">
-              <TriviaWidget />
               <LoadingBar />
+              <TriviaWidget />
             </div>
           </div>
         </>

@@ -1,0 +1,21 @@
+progress {
+  width: 40vw;
+  height: 50px;
+
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #f8f8f8b9;
+  border-radius: 100px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  /* background: linear-gradient( purple, lightgreen); */
+  background-color: #0c8208;
+  border-radius: 100px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}

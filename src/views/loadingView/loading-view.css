@@ -81,6 +81,9 @@
 .curtain-content__trivia {
   position: fixed;
   top: 45vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @keyframes logo-slide {
