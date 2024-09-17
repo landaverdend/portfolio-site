@@ -1,11 +1,11 @@
 import CardStack from '@components/cardStack/CardStack';
-import './splash-screen.css';
+import './splash-view.css';
 import '@styles/fonts.css';
 import BackgroundCanvas from '@components/backgroundCanvas/BackgroundCanvas.tsx';
 import LoadingView from '../loadingView/LoadingView';
 import { useState } from 'react';
 
-function SplashScreen() {
+function SplashView() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleTransition = () => {
@@ -41,4 +41,4 @@ function SplashScreen() {
   );
 }
 
-export default SplashScreen;
+export default SplashView;

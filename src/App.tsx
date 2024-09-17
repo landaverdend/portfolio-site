@@ -1,9 +1,9 @@
-import SplashScreen from './views/splashView/SplashScreen';
+import SplashView from './views/splashView/SplashView';
 
 function App() {
   return (
     <>
-      <SplashScreen />
+      <SplashView />
     </>
   );
 }
