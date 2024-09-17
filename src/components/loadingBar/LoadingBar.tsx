@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './loading-bar.css';
+import { GlobalStateContext } from '../../App';
 
 const fakeServiceCalls = [
   'Connecting to the ByteBuster Bitter Botter API...',
@@ -23,6 +24,8 @@ function LoadingBar() {
   const [progress, setProgress] = useState(15);
   const [ind, setInd] = useState(0);
 
+  const globalStateContext = useContext(GlobalStateContext);
+
   useEffect(() => {
     const tickProgress = setInterval(() => {
       const tick = Math.random() * 0.7;
@@ -30,8 +33,8 @@ function LoadingBar() {
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {
           clearInterval(tickProgress);
-          console.log('done...');
-        } // remove unnecessary calls.
+          globalStateContext.setIsLoading(true);
+        }
         return prevProgress + tick;
       });
     }, 100);
