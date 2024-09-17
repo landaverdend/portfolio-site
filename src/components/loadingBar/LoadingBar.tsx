@@ -25,11 +25,14 @@ function LoadingBar() {
 
   useEffect(() => {
     const tickProgress = setInterval(() => {
-      const tick = Math.random();
+      const tick = Math.random() * 0.7;
 
       setProgress((prevProgress) => {
-        if (prevProgress >= 100) clearInterval(tickProgress); // remove unnecessary calls.
-        return prevProgress + tick / 2;
+        if (prevProgress >= 100) {
+          clearInterval(tickProgress);
+          console.log('done...');
+        } // remove unnecessary calls.
+        return prevProgress + tick;
       });
     }, 100);
 
