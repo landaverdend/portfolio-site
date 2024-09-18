@@ -1,3 +1,5 @@
+@import './animations.css';
+
 .curtain-container {
   position: fixed;
   top: 0;
@@ -28,35 +30,6 @@
   background: linear-gradient(to left, rgb(183, 255, 183), white);
 }
 
-/* When the animation is triggered, move to center */
-.curtain-container--active .curtain--left {
-  animation: curtain-slide--left 2s ease-in-out forwards;
-  visibility: visible;
-}
-
-.curtain-container--active .curtain--right {
-  animation: curtain-slide--right 2s ease-in-out forwards;
-  visibility: visible;
-}
-
-@keyframes curtain-slide--left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(50vw);
-  }
-}
-
-@keyframes curtain-slide--right {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50vw);
-  }
-}
-
 .curtain-content {
   z-index: 101;
   position: relative;
@@ -64,64 +37,6 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
-
-.curtain-content__image {
-  z-index: 101;
-  height: 125px;
-  width: 125px;
-  border-radius: 50%;
-  border: 2px solid var(--color-3);
-  position: relative;
-  top: -150px;
-
-  animation: logo-slide 1.5s ease-in-out forwards, bounce 2.2s ease-in-out 1.5s infinite; /* Delay bounce animation to start after logo-slide */ /* animation-delay: 0.25s; */
-}
-
-.curtain-content__trivia {
-  position: fixed;
-  top: 45vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  animation: fade-in 2s ease-in-out forwards;
-}
-
-@keyframes logo-slide {
-  0% {
-    opacity: 0;
-    transform: translateY(0vh); /* Start at the bottom */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(35vh); /* End back at the bottom */
-  }
-}
-
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(35vh);
-  }
-  40% {
-    transform: translateY(31vh);
-  }
-  60% {
-    transform: translateY(33vh);
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 .curtain__stripe-right {
@@ -154,6 +69,5 @@
   top: 55vh;
   right: 35vw;
   transform: rotate(-19deg) skew(-25deg);
-  box-shadow: 10px 10px rgba(0,0,0, 1);
-  
+  box-shadow: 10px 10px rgba(0, 0, 0, 1);
 }

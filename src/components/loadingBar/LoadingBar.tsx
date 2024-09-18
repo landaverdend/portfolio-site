@@ -26,20 +26,21 @@ function LoadingBar() {
 
   const globalStateContext = useContext(GlobalStateContext);
 
+  // for state.
   useEffect(() => {
     if (progress >= 100) {
       globalStateContext.setIsLoading(false);
     }
   }, [progress]);
 
+  // For intervals.
   useEffect(() => {
     const tickProgress = setInterval(() => {
-      const tick = Math.random() * 5;
+      const tick = Math.random() * 0.7;
 
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {
           clearInterval(tickProgress);
-          // globalStateContext.setIsLoading(false);
         }
         return prevProgress + tick;
       });

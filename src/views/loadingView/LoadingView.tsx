@@ -12,6 +12,8 @@ interface LoadingViewProps {
 function LoadingView(props: LoadingViewProps) {
   const { children } = props;
   const [curtainAnimationDone, setCurtainAnimationDone] = useState(false);
+  const [triggerCloseAnimation, setTriggerCloseAnimation] = useState(false);
+  const [triggerOpenAnimation, setTriggerOpenAnimation] = useState(false);
 
   const { isLoading } = useContext(GlobalStateContext);
 

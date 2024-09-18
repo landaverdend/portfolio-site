@@ -6,7 +6,7 @@ import { createContext, useState } from 'react';
 export const GlobalStateContext = createContext<AppState>({
   component: <SplashView />,
   isLoading: false,
-  setNext: () => {},
+  setView: () => {},
   setIsLoading: () => {},
 });
 
@@ -15,7 +15,7 @@ type AppState = {
   component: React.ReactNode;
   isLoading: boolean;
 
-  setNext: Function;
+  setView: Function;
   setIsLoading: Function;
 };
 
@@ -28,10 +28,10 @@ function App() {
       value={{
         component: view,
         isLoading: isLoading,
-        setNext: (next: React.ReactNode) => setView(next),
+        setView: (next: React.ReactNode) => setView(next),
         setIsLoading: (val: boolean) => setIsLoading(val),
       }}>
-      <LoadingView isLoading={isLoading}>{view}</LoadingView>
+      <LoadingView>{view}</LoadingView>
     </GlobalStateContext.Provider>
   );
 }
