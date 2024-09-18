@@ -29,7 +29,7 @@ function LoadingBar() {
   // for state.
   useEffect(() => {
     if (progress >= 100) {
-      globalStateContext.setIsLoading(false);
+      // globalStateContext.setIsLoading(false);
     }
   }, [progress]);
 
