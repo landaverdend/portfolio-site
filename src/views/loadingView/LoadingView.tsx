@@ -19,20 +19,16 @@ function LoadingView(props: LoadingViewProps) {
 
   return (
     <>
-      <div className={`curtain-container ${isLoading ? 'curtain-container--active' : ''}`}>
-        <div
-          className="curtain curtain--left"
-          onAnimationEnd={() => {
-            setCurtainAnimationDone(true);
-          }}>
+      <div
+        className={`curtain-container ${isLoading ? 'curtain-container--active' : ''}`}
+        onAnimationEnd={() => {
+          setCurtainAnimationDone(true);
+        }}>
+        <div className="curtain curtain--left">
           <div className="curtain__stripe-left"></div>
           <div className="curtain__stripe-left2"></div>
         </div>
-        <div
-          className="curtain curtain--right"
-          onAnimationEnd={() => {
-            setCurtainAnimationDone(true);
-          }}>
+        <div className="curtain curtain--right">
           <div className="curtain__stripe-right"></div>
         </div>
       </div>
