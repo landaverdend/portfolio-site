@@ -1,17 +1,19 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useContext, useState } from 'react';
 import './loading-view.css';
 import logo from '@assets/images/logo.png';
 import LoadingBar from '@components/loadingBar/LoadingBar';
 import TriviaWidget from '@components/widgets/trivia/TriviaWidget';
+import { GlobalStateContext } from '@/App';
 
 interface LoadingViewProps {
   children: ReactNode;
-  isLoading: boolean;
 }
 
 function LoadingView(props: LoadingViewProps) {
-  const { children, isLoading } = props;
+  const { children } = props;
   const [curtainAnimationDone, setCurtainAnimationDone] = useState(false);
+
+  const { isLoading } = useContext(GlobalStateContext);
 
   return (
     <>
@@ -23,7 +25,6 @@ function LoadingView(props: LoadingViewProps) {
           }}>
           <div className="curtain__stripe-left"></div>
           <div className="curtain__stripe-left2"></div>
-
         </div>
         <div
           className="curtain curtain--right"

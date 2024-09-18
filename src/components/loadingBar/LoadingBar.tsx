@@ -27,13 +27,19 @@ function LoadingBar() {
   const globalStateContext = useContext(GlobalStateContext);
 
   useEffect(() => {
+    if (progress >= 100) {
+      globalStateContext.setIsLoading(false);
+    }
+  }, [progress]);
+
+  useEffect(() => {
     const tickProgress = setInterval(() => {
-      const tick = Math.random() * 0.7;
+      const tick = Math.random() * 5;
 
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {
           clearInterval(tickProgress);
-          globalStateContext.setIsLoading(true);
+          // globalStateContext.setIsLoading(false);
         }
         return prevProgress + tick;
       });
