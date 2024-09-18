@@ -1,4 +1,4 @@
-import { ReactNode, useContext, useState } from 'react';
+import { ReactNode, useContext, useEffect, useState } from 'react';
 import './loading-view.css';
 import logo from '@assets/images/logo.png';
 import LoadingBar from '@components/loadingBar/LoadingBar';
@@ -12,10 +12,19 @@ interface LoadingViewProps {
 function LoadingView(props: LoadingViewProps) {
   const { children } = props;
   const [curtainAnimationDone, setCurtainAnimationDone] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+
   const [triggerCloseAnimation, setTriggerCloseAnimation] = useState(false);
   const [triggerOpenAnimation, setTriggerOpenAnimation] = useState(false);
 
   const { isLoading } = useContext(GlobalStateContext);
+  useEffect(() => {
+    if (isLoading) {
+      setIsClosing(true);
+    } else {
+      setIsClosing(false);
+    }
+  }, [isLoading]);
 
   return (
     <>
@@ -24,11 +33,11 @@ function LoadingView(props: LoadingViewProps) {
         onAnimationEnd={() => {
           setCurtainAnimationDone(true);
         }}>
-        <div className="curtain curtain--left">
+        <div className={`curtain curtain--left ${isClosing ? 'close' : 'open'}`}>
           <div className="curtain__stripe-left"></div>
           <div className="curtain__stripe-left2"></div>
         </div>
-        <div className="curtain curtain--right">
+        <div className={`curtain curtain--right ${isClosing ? 'close' : 'open'}`}>
           <div className="curtain__stripe-right"></div>
         </div>
       </div>

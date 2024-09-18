@@ -1,13 +1,24 @@
 /* vvvvvvvvv CURTAIN CLOSING ANIMATION vvvvvvvvv */
-.curtain-container--active .curtain--left {
+.curtain-container--active .curtain--left.close {
   animation: curtain-slide--left 2s ease-in-out forwards;
   visibility: visible;
 }
 
-.curtain-container--active .curtain--right {
+.curtain-container--active .curtain--right.close {
   animation: curtain-slide--right 2s ease-in-out forwards;
   visibility: visible;
 }
+
+.curtain-container--active .curtain--left.open {
+  animation: curtain-slide--left 2s ease-in-out reverse;
+  visibility: visible;
+}
+
+.curtain-container--active .curtain--right.open {
+  animation: curtain-slide--right 2s ease-in-out reverse;
+  visibility: visible;
+}
+
 
 @keyframes curtain-slide--left {
   0% {
