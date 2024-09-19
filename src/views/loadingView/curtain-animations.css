@@ -1,0 +1,70 @@
+/* vvvvvvvvv CURTAIN CLOSING ANIMATION vvvvvvvvv */
+
+/* The closed states/positions for the curtains. */
+.lc-closed-pos {
+  left: 0vw;
+}
+
+.lc-open-pos {
+  left: -50vw;
+}
+
+.rc-closed-pos {
+  right: 0vw;
+}
+
+.rc-open-pos {
+  right: -50vw;
+}
+
+.lc-open {
+  animation: lc-open 2s ease-in-out forwards;
+}
+
+.lc-close {
+  animation: lc-close 2s ease-in-out forwards;
+}
+
+.rc-open {
+  animation: rc-open 2s ease-in-out forwards;
+}
+
+.rc-close {
+  animation: rc-close 2s ease-in-out forwards;
+}
+
+@keyframes lc-open {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50vw);
+  }
+}
+
+@keyframes lc-close {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50vw);
+  }
+}
+
+@keyframes rc-open {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50vw);
+  }
+}
+
+@keyframes rc-close {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50vw);
+  }
+}

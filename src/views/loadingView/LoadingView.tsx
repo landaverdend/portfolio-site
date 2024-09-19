@@ -9,59 +9,72 @@ interface LoadingViewProps {
   children: ReactNode;
 }
 
-type AnimationState = 'idle' | 'running' | 'done';
+type Animation = {
+  start: string; // the position to start the animation at (in css)
+  end: string; // the position to end the animation at (in css)
+};
+
+// The State of the Curtain (which class to render)
+type CurtainState = {
+  openAnim: Animation;
+  closeAnim: Animation;
+};
 
 function LoadingView(props: LoadingViewProps) {
   const { children } = props;
   const { isLoading } = useContext(GlobalStateContext);
 
-  // NOTE: The 'closing' state is when the curtains close, so it should be initiated when isLoading
-  const [openAnimationState, setOpenAnimationState] = useState<AnimationState>('idle');
-  const [closeAnimationState, setCloseAnimationState] = useState<AnimationState>('idle');
+  const [animType, setAnimType] = useState<keyof CurtainState>('closeAnim');
 
   useEffect(() => {
-    // The start animation will
     if (isLoading) {
-      setCloseAnimationState('running');
-      console.log(isLoading);
+      setAnimType('closeAnim');
+    } else {
+      setAnimType('openAnim');
     }
   }, [isLoading]);
 
-  let animationClass = '';
+  const [lCurtainState, setLCurtainState] = useState<CurtainState>({
+    openAnim: {
+      start: 'lc-closed-pos',
+      end: 'lc-open',
+    },
+    closeAnim: {
+      start: 'lc-open-pos',
+      end: 'lc-close',
+    },
+  });
 
-  if (closeAnimationState === 'running' || closeAnimationState === 'done') animationClass = 'close';
-  if (openAnimationState === 'running') animationClass = 'open';
+  const [rCurtainState, setRCurtainState] = useState<CurtainState>({
+    openAnim: {
+      start: 'rc-closed-pos',
+      end: 'rc-open',
+    },
+    closeAnim: {
+      start: 'rc-open-pos',
+      end: 'rc-close',
+    },
+  });
 
   return (
     <>
       <div
-        className={`curtain-container ${!isLoading ? 'hidden' : ''}`}
+        className={`curtain-container`}
         onAnimationEnd={() => {
-          // This will get called twice, since both children are being animated. This shouldn't be an issue.
-          setCloseAnimationState('done');
+          // This will get called twice, since both children are being animated.
+          console.log('ended');
+        }}
+        onAnimationStart={() => {
+          console.log('started');
         }}>
-        <div className={`curtain curtain--left ${animationClass}-left`}>
+        <div className={`curtain curtain--left-gradient ${lCurtainState[animType].start} ${lCurtainState[animType].end}`}>
           {/* <div className="curtain__stripe-left"></div> */}
           {/* <div className="curtain__stripe-left2"></div> */}
         </div>
-        <div className={`curtain curtain--right ${animationClass}-right`}>
+        <div className={`curtain curtain--right-gradient ${rCurtainState[animType].start} ${rCurtainState[animType].end} `}>
           {/* <div className="curtain__stripe-right"></div> */}
         </div>
       </div>
-
-      {/* Control whether or not to render children during the animation. */}
-      {(closeAnimationState === 'running' || closeAnimationState === 'idle') && children}
-
-      {/* Controls for the trivia/loading bar. */}
-      {closeAnimationState === 'done' && (
-        <div className="curtain-content">
-          <img className="curtain-content__image " src={logo} />
-          <div className="curtain-content__trivia">
-            <LoadingBar />
-            <TriviaWidget />
-          </div>
-        </div>
-      )}
     </>
   );
 }
