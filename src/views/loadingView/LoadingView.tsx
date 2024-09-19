@@ -57,6 +57,13 @@ function LoadingView(props: LoadingViewProps) {
           <div className={`curtain curtain--right-gradient ${rCurtainState[animType]} `}>
             <div className="curtain__stripe-right"></div>
           </div>
+          <div className="curtain-content">
+            <img className="curtain-content__image " src={logo} />
+            <div className="curtain-content__trivia">
+              <LoadingBar />
+              <TriviaWidget />
+            </div>
+          </div>
         </div>
       )}
       {(!isLoading || isAnimating) && children}

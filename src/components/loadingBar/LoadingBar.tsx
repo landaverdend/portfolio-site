@@ -20,7 +20,7 @@ const fakeServiceCalls = [
 ];
 
 // TODO: style this for mozilla.
-function LoadingBar({ openTrigger }: { openTrigger: Function }) {
+function LoadingBar() {
   const [progress, setProgress] = useState(15);
   const [ind, setInd] = useState(0);
 
@@ -29,14 +29,14 @@ function LoadingBar({ openTrigger }: { openTrigger: Function }) {
   // for state.
   useEffect(() => {
     if (progress >= 100) {
-      openTrigger();
+      console.log('done.');
     }
   }, [progress]);
 
   // For intervals.
   useEffect(() => {
     const tickProgress = setInterval(() => {
-      const tick = Math.random() * 5;
+      const tick = Math.random() * .65;
 
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {

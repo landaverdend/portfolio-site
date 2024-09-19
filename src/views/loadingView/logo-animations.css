@@ -9,7 +9,9 @@
   position: relative;
   top: -150px;
 
-  animation: logo-slide 1.5s ease-in-out forwards, bounce 2.2s ease-in-out 1.5s infinite; /* Delay bounce animation to start after logo-slide */ /* animation-delay: 0.25s; */
+  animation: 
+  logo-slide 1.5s ease-in-out 2s forwards, /* delay of 2 seconds for curtains to close.*/ 
+  bounce 2.2s ease-in-out 3.5s infinite; /* Delay bounce animation to start after logo-slide */ /* animation-delay: 0.25s; */
 }
 
 @keyframes logo-slide {
@@ -47,7 +49,7 @@
   flex-direction: column;
   align-items: center;
   opacity: 0;
-  animation: fade-in 2s ease-in-out forwards;
+  animation: fade-in 2s ease-in-out 2.2s forwards;
 }
 
 @keyframes fade-in {
