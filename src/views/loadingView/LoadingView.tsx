@@ -23,6 +23,7 @@ type CurtainState = {
 function LoadingView(props: LoadingViewProps) {
   const { children } = props;
   const { isLoading } = useContext(GlobalStateContext);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   const [animType, setAnimType] = useState<keyof CurtainState>('closeAnim');
 
@@ -46,23 +47,27 @@ function LoadingView(props: LoadingViewProps) {
 
   return (
     <>
-      <div
-        className={`curtain-container`}
-        onAnimationEnd={() => {
-          // This will get called twice, since both children are being animated.
-          setAnimType('closeAnim')
-        }}
-        onAnimationStart={() => {
-          console.log('started');
-        }}>
-        <div className={`curtain curtain--left-gradient ${lCurtainState[animType]} `}>
-          <div className="curtain__stripe-left"></div>
-          <div className="curtain__stripe-left2"></div>
+      {(!isLoading || isAnimating) && children}
+      {isLoading && (
+        <div
+          className={`curtain-container`}
+          onAnimationEnd={() => {
+            // This will get called twice, since both children are being animated.
+            setAnimType('closeAnim');
+            setIsAnimating(false);
+          }}
+          onAnimationStart={() => {
+            setIsAnimating(true);
+          }}>
+          <div className={`curtain curtain--left-gradient ${lCurtainState[animType]} `}>
+            <div className="curtain__stripe-left"></div>
+            <div className="curtain__stripe-left2"></div>
+          </div>
+          <div className={`curtain curtain--right-gradient ${rCurtainState[animType]} `}>
+            <div className="curtain__stripe-right"></div>
+          </div>
         </div>
-        <div className={`curtain curtain--right-gradient ${rCurtainState[animType]} `}>
-          <div className="curtain__stripe-right"></div>
-        </div>
-      </div>
+      )}
     </>
   );
 }
