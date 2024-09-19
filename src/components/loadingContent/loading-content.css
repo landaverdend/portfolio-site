@@ -1,0 +1,8 @@
+.curtain-content {
+  z-index: 101;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,18 +1,11 @@
 import { ReactNode, useContext, useEffect, useState } from 'react';
 import './loading-view.css';
-import logo from '@assets/images/logo.png';
-import LoadingBar from '@components/loadingBar/LoadingBar';
-import TriviaWidget from '@components/widgets/trivia/TriviaWidget';
 import { GlobalStateContext } from '@/App';
+import LoadingContent from '@/components/loadingContent/LoadingContent';
 
 interface LoadingViewProps {
   children: ReactNode;
 }
-
-type Animation = {
-  start: string; // the position to start the animation at (in css)
-  end: string; // the position to end the animation at (in css)
-};
 
 // The State of the Curtain (which class to render)
 type CurtainState = {
@@ -57,13 +50,7 @@ function LoadingView(props: LoadingViewProps) {
           <div className={`curtain curtain--right-gradient ${rCurtainState[animType]} `}>
             <div className="curtain__stripe-right"></div>
           </div>
-          <div className="curtain-content">
-            <img className="curtain-content__image " src={logo} />
-            <div className="curtain-content__trivia">
-              <LoadingBar />
-              <TriviaWidget />
-            </div>
-          </div>
+          <LoadingContent />
         </div>
       )}
       {(!isLoading || isAnimating) && children}

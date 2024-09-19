@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import './loading-bar.css';
-import { GlobalStateContext } from '../../App';
+import { GlobalStateContext } from '../../../App';
 
 const fakeServiceCalls = [
   'Connecting to the ByteBuster Bitter Botter API...',
