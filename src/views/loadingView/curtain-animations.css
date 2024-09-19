@@ -44,27 +44,27 @@
 
 @keyframes lc-close {
   0% {
-    transform: translateX(0);
+    transform: translateX(-50vw);
   }
   100% {
-    transform: translateX(50vw);
+    transform: translateX(0vw);
   }
 }
 
 @keyframes rc-open {
   0% {
-    transform: translateX(0);
+    transform: translateX(50vw);
   }
   100% {
-    transform: translateX(50vw);
+    transform: translateX(100vw);
   }
 }
 
 @keyframes rc-close {
   0% {
-    transform: translateX(0);
+    transform: translateX(100vw);
   }
   100% {
-    transform: translateX(-50vw);
+    transform: translateX(50vw);
   }
 }

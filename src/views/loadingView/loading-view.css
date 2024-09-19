@@ -25,13 +25,13 @@
 
 /* Initial position (off-screen) */
 .curtain--left-gradient {
-  /* background: linear-gradient(to right, rgb(196, 196, 245), white); */
-  background-color: red;
+  background: linear-gradient(to right, rgb(196, 196, 245), white);
+  /* background-color: red; */
 }
 
 .curtain--right-gradient {
-  /* background: linear-gradient(to left, rgb(183, 255, 183), white); */
-  background-color: blue;
+  background: linear-gradient(to left, rgb(183, 255, 183), white);
+  /* background-color: blue; */
 }
 
 .curtain-content {

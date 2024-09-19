@@ -16,8 +16,8 @@ type Animation = {
 
 // The State of the Curtain (which class to render)
 type CurtainState = {
-  openAnim: Animation;
-  closeAnim: Animation;
+  openAnim: string;
+  closeAnim: string;
 };
 
 function LoadingView(props: LoadingViewProps) {
@@ -35,25 +35,13 @@ function LoadingView(props: LoadingViewProps) {
   }, [isLoading]);
 
   const [lCurtainState, setLCurtainState] = useState<CurtainState>({
-    openAnim: {
-      start: 'lc-closed-pos',
-      end: 'lc-open',
-    },
-    closeAnim: {
-      start: 'lc-open-pos',
-      end: 'lc-close',
-    },
+    openAnim: 'lc-open',
+    closeAnim: 'lc-close',
   });
 
   const [rCurtainState, setRCurtainState] = useState<CurtainState>({
-    openAnim: {
-      start: 'rc-closed-pos',
-      end: 'rc-open',
-    },
-    closeAnim: {
-      start: 'rc-open-pos',
-      end: 'rc-close',
-    },
+    openAnim: 'rc-open',
+    closeAnim: 'rc-close',
   });
 
   return (
@@ -62,17 +50,17 @@ function LoadingView(props: LoadingViewProps) {
         className={`curtain-container`}
         onAnimationEnd={() => {
           // This will get called twice, since both children are being animated.
-          console.log('ended');
+          setAnimType('closeAnim')
         }}
         onAnimationStart={() => {
           console.log('started');
         }}>
-        <div className={`curtain curtain--left-gradient ${lCurtainState[animType].start} ${lCurtainState[animType].end}`}>
-          {/* <div className="curtain__stripe-left"></div> */}
-          {/* <div className="curtain__stripe-left2"></div> */}
+        <div className={`curtain curtain--left-gradient ${lCurtainState[animType]} `}>
+          <div className="curtain__stripe-left"></div>
+          <div className="curtain__stripe-left2"></div>
         </div>
-        <div className={`curtain curtain--right-gradient ${rCurtainState[animType].start} ${rCurtainState[animType].end} `}>
-          {/* <div className="curtain__stripe-right"></div> */}
+        <div className={`curtain curtain--right-gradient ${rCurtainState[animType]} `}>
+          <div className="curtain__stripe-right"></div>
         </div>
       </div>
     </>
