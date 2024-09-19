@@ -28,13 +28,8 @@ function LoadingView(props: LoadingViewProps) {
   const [animType, setAnimType] = useState<keyof CurtainState>('closeAnim');
 
   useEffect(() => {
-    if (isLoading) {
-      setAnimType('closeAnim');
-    } else {
-      setAnimType('openAnim');
-    }
+    setIsAnimating(true);
   }, [isLoading]);
-
   const [lCurtainState, setLCurtainState] = useState<CurtainState>({
     openAnim: 'lc-open',
     closeAnim: 'lc-close',
@@ -47,7 +42,6 @@ function LoadingView(props: LoadingViewProps) {
 
   return (
     <>
-      {(!isLoading || isAnimating) && children}
       {isLoading && (
         <div
           className={`curtain-container`}
@@ -55,9 +49,6 @@ function LoadingView(props: LoadingViewProps) {
             // This will get called twice, since both children are being animated.
             setAnimType('closeAnim');
             setIsAnimating(false);
-          }}
-          onAnimationStart={() => {
-            setIsAnimating(true);
           }}>
           <div className={`curtain curtain--left-gradient ${lCurtainState[animType]} `}>
             <div className="curtain__stripe-left"></div>
@@ -68,6 +59,7 @@ function LoadingView(props: LoadingViewProps) {
           </div>
         </div>
       )}
+      {(!isLoading || isAnimating) && children}
     </>
   );
 }
