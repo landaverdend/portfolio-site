@@ -1,4 +1,4 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
+import { ReactNode, useContext, useEffect, useRef, useState } from 'react';
 import './loading-view.css';
 import { GlobalStateContext } from '@/App';
 import LoadingContent from '@/components/loadingContent/LoadingContent';
@@ -29,11 +29,19 @@ function LoadingView(props: LoadingViewProps) {
 
   const [animType, setAnimType] = useState<keyof CurtainState>('closeAnim');
 
+  const hasRenderedOnce = useRef(false);
+
   useEffect(() => {
+    // Skip effect on initial render
+    if (!hasRenderedOnce.current) {
+      hasRenderedOnce.current = true;
+      return;
+    }
+
     setIsAnimating(true);
 
+    // Set the animation type depending on the loading state.
     const animType: keyof CurtainState = isLoading ? 'closeAnim' : 'openAnim';
-
     setAnimType(animType);
   }, [isLoading]);
 
