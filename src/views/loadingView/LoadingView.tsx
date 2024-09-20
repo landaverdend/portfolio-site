@@ -3,16 +3,25 @@ import './loading-view.css';
 import { GlobalStateContext } from '@/App';
 import LoadingContent from '@/components/loadingContent/LoadingContent';
 
-interface LoadingViewProps {
-  children: ReactNode;
-}
-
 // The State of the Curtain (which class to render)
 type CurtainState = {
   openAnim: string;
   closeAnim: string;
 };
 
+const lCurtainState: CurtainState = {
+  openAnim: 'lc-open',
+  closeAnim: 'lc-close',
+};
+
+const rCurtainState: CurtainState = {
+  openAnim: 'rc-open',
+  closeAnim: 'rc-close',
+};
+
+interface LoadingViewProps {
+  children: ReactNode;
+}
 function LoadingView(props: LoadingViewProps) {
   const { children } = props;
   const { isLoading } = useContext(GlobalStateContext);
@@ -22,20 +31,15 @@ function LoadingView(props: LoadingViewProps) {
 
   useEffect(() => {
     setIsAnimating(true);
-  }, [isLoading]);
-  const [lCurtainState, setLCurtainState] = useState<CurtainState>({
-    openAnim: 'lc-open',
-    closeAnim: 'lc-close',
-  });
 
-  const [rCurtainState, setRCurtainState] = useState<CurtainState>({
-    openAnim: 'rc-open',
-    closeAnim: 'rc-close',
-  });
+    const animType: keyof CurtainState = isLoading ? 'closeAnim' : 'openAnim';
+
+    setAnimType(animType);
+  }, [isLoading]);
 
   return (
     <>
-      {isLoading && (
+      {(isLoading || isAnimating) && (
         <div
           className={`curtain-container`}
           onAnimationEnd={() => {
@@ -53,6 +57,7 @@ function LoadingView(props: LoadingViewProps) {
           <LoadingContent />
         </div>
       )}
+      {/* Render if we are in the process of animating OR if we are NOT loading. */}
       {(!isLoading || isAnimating) && children}
     </>
   );
