@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { GlobalStateContext } from '../../../App';
 import './loading-bar.css';
+import SetupView from '@/views/setupView/SetupView';
 
 const fakeServiceCalls = [
   'Connecting to the ByteBuster Bitter Botter API...',
@@ -23,19 +24,21 @@ const fakeServiceCalls = [
 function LoadingBar() {
   const [progress, setProgress] = useState(15);
   const [ind, setInd] = useState(0);
-  const { setIsLoading } = useContext(GlobalStateContext);
+  const { isLoading, setIsLoading, setView } = useContext(GlobalStateContext);
 
   // for state.
   useEffect(() => {
     if (progress >= 100) {
       setIsLoading(false);
+      setView(<SetupView />);
     }
   }, [progress]);
 
   // For intervals.
   useEffect(() => {
     const tickProgress = setInterval(() => {
-      const tick = Math.random() * 0.65;
+      // const tick = Math.random() * 3.8;
+      const tick = Math.random() * 0.8;
 
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {

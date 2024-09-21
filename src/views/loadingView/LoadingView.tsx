@@ -4,7 +4,7 @@ import { GlobalStateContext } from '@/App';
 import LoadingContent from '@/components/loadingContent/LoadingContent';
 
 // The State of the Curtain (which class to render)
-type CurtainState = {
+export type CurtainState = {
   openAnim: string;
   closeAnim: string;
 };
@@ -62,7 +62,7 @@ function LoadingView(props: LoadingViewProps) {
           <div className={`curtain curtain--right-gradient ${rCurtainState[animType]} `}>
             <div className="curtain__stripe-right"></div>
           </div>
-          <LoadingContent />
+          <LoadingContent type={animType} />
         </div>
       )}
       {/* Render if we are in the process of animating OR if we are NOT loading. */}
