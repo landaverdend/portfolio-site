@@ -62,7 +62,7 @@
 }
 
 .fade-out {
-  animation: fade-in 2s ease-in-out 0s reverse;
+  animation: fade-in 1s ease-in-out 0s reverse;
 }
 
 @keyframes fade-in {

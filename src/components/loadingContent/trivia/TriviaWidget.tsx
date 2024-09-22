@@ -1,7 +1,8 @@
 import '@styles/fonts.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import trivia from './trivia';
 import './trivia-styles.css';
+import { GlobalStateContext } from '@/App';
 
 interface TypewriterTextProps {
   text: string;

@@ -12,8 +12,6 @@ type LCProps = {
 };
 function LoadingContent({ type }: LCProps) {
   const { isLoading } = useContext(GlobalStateContext);
-  if (isLoading) console.log('l');
-  else console.log('asdfasfasdf');
   return (
     <div className={`curtain-content `}>
       <img className={`curtain-content__logo ${isLoading ? 'logo-slide-and-bounce' : 'logo-slide-out'}`} src={logo} />

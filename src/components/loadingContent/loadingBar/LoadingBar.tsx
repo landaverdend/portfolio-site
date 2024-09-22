@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { GlobalStateContext } from '../../../App';
 import './loading-bar.css';
 import SetupView from '@/views/setupView/SetupView';
@@ -34,22 +34,30 @@ function LoadingBar() {
     }
   }, [progress]);
 
+  // This is retarded.
+  useEffect(() => {
+    if (!isLoading) {
+      setProgress(100);
+    }
+  }, [isLoading]);
+
   // For intervals.
   useEffect(() => {
     const tickProgress = setInterval(() => {
-      // const tick = Math.random() * 3.8;
-      const tick = Math.random() * 0.8;
+      const tick = Math.random() * 3.8;
+      // const tick = Math.random() * 0.8;
 
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {
           clearInterval(tickProgress);
         }
+        console.log(prevProgress);
         return prevProgress + tick;
       });
     }, 100);
 
     const setServiceCall = setInterval(() => {
-      setInd(Math.floor(Math.random() * fakeServiceCalls.length));
+      if (progress < 100) setInd(Math.floor(Math.random() * fakeServiceCalls.length));
     }, 3000);
 
     return () => {
