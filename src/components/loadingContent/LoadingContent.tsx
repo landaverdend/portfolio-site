@@ -7,10 +7,7 @@ import { CurtainState } from '@/views/loadingView/LoadingView';
 import { useContext } from 'react';
 import { GlobalStateContext } from '@/App';
 
-type LCProps = {
-  type: keyof CurtainState;
-};
-function LoadingContent({ type }: LCProps) {
+function LoadingContent() {
   const { isLoading } = useContext(GlobalStateContext);
   return (
     <div className={`curtain-content `}>

@@ -1,36 +1,8 @@
 import '@styles/fonts.css';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import trivia from './trivia';
 import './trivia-styles.css';
-import { GlobalStateContext } from '@/App';
-
-interface TypewriterTextProps {
-  text: string;
-  speed: number;
-}
-function TypewriterText(props: TypewriterTextProps) {
-  const { text, speed } = props;
-  const [displayText, setDisplayText] = useState('');
-
-  useEffect(() => {
-    let i = 0;
-
-    const typingInterval = setInterval(() => {
-      if (i <= text.length) {
-        setDisplayText(text.substring(0, i));
-        i++;
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, speed);
-
-    return () => {
-      clearInterval(typingInterval);
-    };
-  }, [text, speed]);
-
-  return <>{displayText}</>;
-}
+import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 
 function TriviaWidget() {
   const [triviaIndex, setTriviaIndex] = useState(0);
