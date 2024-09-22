@@ -6,7 +6,7 @@ type Question = {
 };
 
 function SetupForm() {
-  return <div> I am the setup form</div>;
+  return <div className="form-container"></div>;
 }
 
 export default SetupForm;

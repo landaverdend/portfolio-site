@@ -3,20 +3,20 @@
 /* The closed states/positions for the curtains. */
 
 .lc-open {
-  animation: lc-open 2s ease-in-out forwards;
+  animation: lc-open var(--curtain-animation-duration) ease-in-out forwards;
 }
 
 .lc-close {
-  animation: lc-close 2s ease-in-out forwards;
+  animation: lc-close var(--curtain-animation-duration) ease-in-out forwards;
   visibility: visible !important;
 }
 
 .rc-open {
-  animation: rc-open 2s ease-in-out forwards;
+  animation: rc-open var(--curtain-animation-duration) ease-in-out forwards;
 }
 
 .rc-close {
-  animation: rc-close 2s ease-in-out forwards;
+  animation: rc-close var(--curtain-animation-duration) ease-in-out forwards;
   visibility: visible !important;
 }
 
