@@ -7,8 +7,8 @@ type Question = {
 
 const questions: Array<Question> = [
   {
-    question: 'Pee pee poo poo?',
-    answers: ['pee 1', 'pee 2', 'pee 3', 'pee 4'],
+    question: 'What feature are you most interested in?',
+    answers: ['Monthly Premium access to my Resume Suite+', 'A personalized Cover Letter?', 'Spy on me?', 'Other'],
   },
 ];
 

@@ -10,11 +10,14 @@ function SetupView() {
 
   return (
     <div className="setup-container">
-      <div className={`setup-container__init ${isQuestionaireStarted ? 'su-fade-out' : 'su-fade-in'}`}>
-        <TypewriterText text={`Let's get you started...`} speed={45} />
-        <button onClick={() => setIsQuestionaireStarted(true)}>Okay!</button>
+      <div className={`setup-container__questionnaire su-fade-in`}>
+        <div className={`setup-container__init ${isQuestionaireStarted ? 'su-fade-out' : ''}`}>
+          <TypewriterText text={`Let's get you started...`} speed={45} />
+          <button onClick={() => setIsQuestionaireStarted(true)}>Okay!</button>
+        </div>
+        {isQuestionaireStarted && <SetupForm />}
       </div>
-      {isQuestionaireStarted && <SetupForm />}
+
       {createPortal(<BackgroundCanvas />, document.getElementById('root') as HTMLElement)}
     </div>
   );

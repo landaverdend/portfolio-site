@@ -7,11 +7,15 @@
   align-items: center;
 }
 
+.setup-container__questionnaire {
+  background-color: rgb(213, 213, 213);
+
+  visibility: hidden;
+}
+
 .setup-container__init {
   display: flex;
   flex-direction: column;
-
-  visibility: hidden;
 }
 
 .su-fade-in {

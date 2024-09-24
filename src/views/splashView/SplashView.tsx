@@ -4,6 +4,7 @@ import '@styles/fonts.css';
 import BackgroundCanvas from '@components/backgroundCanvas/BackgroundCanvas.tsx';
 import { useContext } from 'react';
 import { GlobalStateContext } from '@/App';
+import { createPortal } from 'react-dom';
 
 function SplashView() {
   const stateContext = useContext(GlobalStateContext);
@@ -36,7 +37,7 @@ function SplashView() {
           <CardStack />
         </div>
       </div>
-      <BackgroundCanvas />
+      {createPortal(<BackgroundCanvas />, document.getElementById('root') as HTMLElement)}
     </>
   );
 }
