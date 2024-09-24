@@ -3,7 +3,6 @@ import TriviaWidget from './trivia/TriviaWidget';
 import logo from '@assets/images/logo.png';
 import './logo-animations.css';
 import './loading-content.css';
-import { CurtainState } from '@/views/loadingView/LoadingView';
 import { useContext } from 'react';
 import { GlobalStateContext } from '@/App';
 

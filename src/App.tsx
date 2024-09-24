@@ -21,7 +21,7 @@ type AppState = {
 };
 
 function App() {
-  const [view, setView] = useState<React.ReactNode>(<SetupView />);
+  const [view, setView] = useState<React.ReactNode>(<SplashView />);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   return (

@@ -10,5 +10,14 @@
 .setup-container__init {
   display: flex;
   flex-direction: column;
+
+  visibility: hidden;
 }
 
+.su-fade-in {
+  animation: fade-in 1s ease-in-out 2s forwards;
+}
+
+.su-fade-out {
+  animation: fade-out 1s ease-in-out forwards;
+}

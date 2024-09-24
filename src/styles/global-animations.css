@@ -2,10 +2,6 @@
   --curtain-animation-duration: 2s;
 }
 
-.fade-out {
-  animation: fade-out 1s ease-in-out forwards;
-}
-
 @keyframes fade-in {
   0% {
     opacity: 0;
