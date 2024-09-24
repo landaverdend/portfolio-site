@@ -18,7 +18,7 @@ function QuestionComponent({ question }: { question: Question }) {
 
 function SetupForm() {
   return (
-    <div className="form-container">
+    <div className="form-container q-fade-in">
       {questions.map((q) => (
         <QuestionComponent question={q} />
       ))}
