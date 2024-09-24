@@ -8,7 +8,11 @@
 }
 
 .setup-container__questionnaire {
-  background-color: rgb(213, 213, 213);
+  background-color: rgb(249, 249, 249);
+
+  width: 35vw;
+  height: 25vh;
+  text-align: center;
 
   visibility: hidden;
 }

@@ -5,3 +5,7 @@
 .q-fade-in {
   animation: fade-in 1s ease-in-out 1s forwards; /* delay one second due to parent animation. */
 }
+
+.question-container ul {
+  text-align: left;
+}

@@ -13,14 +13,23 @@ const questions: Array<Question> = [
 ];
 
 function QuestionComponent({ question }: { question: Question }) {
-  return <div className="question-container">{question.question}</div>;
+  return (
+    <div className="question-container">
+      <div className="question-container__label">{question.question}</div>
+      <ul>
+        {question.answers.map((ans) => (
+          <li>{ans}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 function SetupForm() {
   return (
     <div className="form-container q-fade-in">
       {questions.map((q) => (
-        <QuestionComponent question={q} />
+        <QuestionComponent key={q.question} question={q} />
       ))}
     </div>
   );
