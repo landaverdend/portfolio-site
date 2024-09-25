@@ -16,8 +16,8 @@ function SplashView() {
   return (
     <>
       <div className="splash-grid inter">
-        <div className="griditem">
-          <div className="splashtext__container">
+        <div className="splash-grid__item">
+          <div className="splash-grid__text-container">
             <h1 className="gothic-a1-bold">My Resume as a Service</h1>
             <p className="inter">
               Join the growing number of recruiters who use my groundbreaking{' '}
@@ -28,12 +28,14 @@ function SplashView() {
               recruitment game with the first-ever site designed for seamless access to my resume.
             </p>
 
-            <span className="start__button" onClick={handleTransition}>
-              Get started <i className="fa-solid fa-arrow-right"></i>
-            </span>
+            <div className="splash-grid__button-container">
+              <span className="start__button" onClick={handleTransition}>
+                Get started <i className="fa-solid fa-arrow-right"></i>
+              </span>
+            </div>
           </div>
         </div>
-        <div className="griditem">
+        <div className="splash-grid__item">
           <CardStack />
         </div>
       </div>
