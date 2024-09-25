@@ -32,6 +32,9 @@ function SplashView() {
               <span className="start__button" onClick={handleTransition}>
                 Get started <i className="fa-solid fa-arrow-right"></i>
               </span>
+              <span className="splash-grid__subscribed-button">
+                <a>I'm already subscribed...</a>
+              </span>
             </div>
           </div>
         </div>

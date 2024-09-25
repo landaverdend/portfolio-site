@@ -22,13 +22,18 @@
   background: var(--primary-gradient-horizontal-hover);
 }
 
+.splash-grid__subscribed-button {
+}
+
 .splash-grid__button-container {
   display: flex;
   flex-direction: row;
-  
+
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ========== Desktop (Large Screens) ========== */
 .splash-grid {
   display: grid;
   grid-template-columns: 30% 55%; /* Make sure these don't all add up to over 100*/
