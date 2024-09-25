@@ -5,22 +5,27 @@ import { createContext, useState } from 'react';
 // Initial State.
 export const GlobalStateContext = createContext<AppState>({
   component: <SplashView />,
+  nextComponent: <></>,
   isLoading: false,
   setView: () => {},
   setIsLoading: () => {},
+  setNextView: () => {},
 });
 
 // lol
 type AppState = {
   component: React.ReactNode;
+  nextComponent: React.ReactNode;
   isLoading: boolean;
 
   setView: Function;
   setIsLoading: Function;
+  setNextView: Function;
 };
 
 function App() {
   const [view, setView] = useState<React.ReactNode>(<SplashView />);
+  const [nextView, setNextView] = useState<React.ReactNode>(<></>);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   return (
@@ -28,8 +33,10 @@ function App() {
       value={{
         component: view,
         isLoading: isLoading,
-        setView: (next: React.ReactNode) => setView(next),
+        nextComponent: nextView,
+        setView: (view: React.ReactNode) => setView(view),
         setIsLoading: (val: boolean) => setIsLoading(val),
+        setNextView: (next: React.ReactNode) => setNextView(next),
       }}>
       <LoadingView>{view}</LoadingView>
     </GlobalStateContext.Provider>

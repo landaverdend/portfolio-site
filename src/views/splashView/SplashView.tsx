@@ -5,13 +5,11 @@ import BackgroundCanvas from '@components/backgroundCanvas/BackgroundCanvas.tsx'
 import { useContext } from 'react';
 import { GlobalStateContext } from '@/App';
 import { createPortal } from 'react-dom';
+import SetupForm from '@/components/setupForm/SetupForm';
+import ResumeView from '../resumeView/ResumeView';
 
 function SplashView() {
-  const stateContext = useContext(GlobalStateContext);
-
-  const handleTransition = () => {
-    stateContext.setIsLoading(true);
-  };
+  const { setIsLoading, setNextView } = useContext(GlobalStateContext);
 
   return (
     <>
@@ -29,11 +27,22 @@ function SplashView() {
             </p>
 
             <div className="splash-grid__button-container">
-              <span className="start__button" onClick={handleTransition}>
+              <span
+                className="start__button"
+                onClick={() => {
+                  setIsLoading(true);
+                  setNextView(<SetupForm />);
+                }}>
                 Get started <i className="fa-solid fa-arrow-right"></i>
               </span>
               <span className="splash-grid__subscribed-button">
-                <a>I'm already subscribed...</a>
+                <u
+                  onClick={() => {
+                    setIsLoading(true);
+                    setNextView(<ResumeView />);
+                  }}>
+                  I'm already subscribed...
+                </u>
               </span>
             </div>
           </div>
