@@ -1,0 +1,22 @@
+.resume-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  
+  .c1 {
+    background-color: blue;
+    height: 50vh;
+  }
+  .c2 {
+    background-color:red;
+    height: 75vh;
+  }
+  .c3 {
+    background-color: yellow;
+    height: 25vh;
+  }
+  .c4 {
+    background-color: orange;
+    height: 40vh;
+  }
+}

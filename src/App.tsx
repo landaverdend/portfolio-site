@@ -1,6 +1,7 @@
 import LoadingView from '@views/loadingView/LoadingView';
 import SplashView from '@views/splashView/SplashView';
 import { createContext, useState } from 'react';
+import ResumeView from './views/resumeView/ResumeView';
 
 // Initial State.
 export const GlobalStateContext = createContext<AppState>({
@@ -24,7 +25,7 @@ type AppState = {
 };
 
 function App() {
-  const [view, setView] = useState<React.ReactNode>(<SplashView />);
+  const [view, setView] = useState<React.ReactNode>(<ResumeView />);
   const [nextView, setNextView] = useState<React.ReactNode>(<></>);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 

@@ -51,7 +51,6 @@ function LoadingBar() {
         if (prevProgress >= 100) {
           clearInterval(tickProgress);
         }
-        console.log(prevProgress);
         return prevProgress + tick;
       });
     }, 100);
