@@ -1,5 +1,28 @@
 /* ========== Global Styles ========== */
 
+.splash-grid {
+  display: grid;
+  grid-template-columns: 30% 55%; /* Make sure these don't all add up to over 100*/
+  gap: 8vw;
+  margin-top: 10vh;
+  margin-left: 15vw;
+
+  .splash-grid__text-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 5.5rem;
+    font-style: bold;
+    text-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.2);
+  }
+
+  p {
+    font-size: large;
+  }
+}
+
 .splash-grid__button-container {
   display: flex;
   flex-direction: row;
@@ -24,33 +47,14 @@
     color: black;
   }
 
+  .splash-grid__subscribed-button:hover {
+    cursor: pointer;
+  }
+
   .start__button:hover {
     cursor: pointer;
     background: var(--primary-gradient-horizontal-hover);
   }
-}
-
-.splash-grid {
-  display: grid;
-  grid-template-columns: 30% 55%; /* Make sure these don't all add up to over 100*/
-  gap: 8vw;
-  margin-top: 10vh;
-  margin-left: 15vw;
-
-  .splash-grid__text-container {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-h1 {
-  font-size: 5.5rem;
-  font-style: bold;
-  text-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.2);
-}
-
-p {
-  font-size: large;
 }
 
 /* ========== Smaller Desktops & Tablets (Medium Screens) ========== */
