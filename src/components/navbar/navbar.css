@@ -17,6 +17,10 @@
     gap: 10px;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   a:hover {
     cursor: pointer;
     color: pink;

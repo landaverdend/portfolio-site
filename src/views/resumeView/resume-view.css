@@ -2,21 +2,19 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  
-  .c1 {
-    background-color: blue;
-    height: 50vh;
-  }
-  .c2 {
-    background-color:red;
-    height: 75vh;
-  }
-  .c3 {
-    background-color: yellow;
-    height: 25vh;
-  }
-  .c4 {
-    background-color: orange;
-    height: 40vh;
-  }
+}
+
+.pricing-container {
+  background-color: orange;
+  height: 75vh;
+}
+
+.about-container {
+  background-color: blue;
+  height: 75vh;
+}
+
+.projects-container {
+  background-color: red;
+  height: 75vh;
 }

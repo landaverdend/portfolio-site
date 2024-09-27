@@ -1,14 +1,37 @@
 import Navbar from '@/components/navbar/Navbar';
 import './resume-view.css';
 
+function ProjectContainer() {
+  return (
+    <div id="projects" className="projects-container">
+      projects
+    </div>
+  );
+}
+
+function PricingContainer() {
+  return (
+    <div id="pricing" className="pricing-container">
+      pricing
+    </div>
+  );
+}
+
+function AboutContainer() {
+  return (
+    <div id="about" className="about-container">
+      about
+    </div>
+  );
+}
+
 function ResumeView() {
   return (
     <div className="resume-container">
       <Navbar />
-      <div className="c1">one</div>
-      <div className="c2">two</div>
-      <div className="c3">three</div>
-      <div className="c4">four</div>
+      <AboutContainer />
+      <PricingContainer />
+      <ProjectContainer />
     </div>
   );
 }
