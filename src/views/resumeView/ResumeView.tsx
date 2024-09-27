@@ -1,5 +1,6 @@
 import Navbar from '@/components/navbar/Navbar';
 import './resume-view.css';
+import me from '@assets/images/me.jpeg';
 
 function ProjectContainer() {
   return (
@@ -21,6 +22,7 @@ function AboutContainer() {
   return (
     <div id="about" className="about-container">
       about
+      <img src={me} />
     </div>
   );
 }
