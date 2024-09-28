@@ -11,34 +11,56 @@
 
 .about-container {
   /* background-color: blue; */
-  height: 75vh;
+  height: 100vh;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  padding: 15px;
 
   img {
     max-width: 80%;
     max-height: 900px;
     border-radius: 10px;
-    /* width: 300px; */
     object-fit: cover;
   }
 }
 
 .projects-container {
-  background-color: red;
-  height: 75vh;
+  /* height: 100vh; */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  padding: 15px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 /* Phones */
 @media (max-width: 576px) {
-
   .about-container {
+    flex-direction: column-reverse;
 
     img {
-      border-radius: 1000px;
+      border-radius: 100px;
+      max-width: 75%;
+      max-height: 700px;
+    }
+  }
+
+  .projects-container {
+    display: flex;
+
+    img {
+      width: 100%;
+      height: auto;
     }
   }
 }
