@@ -3,6 +3,7 @@ import './resume-view.css';
 import me from '@assets/images/me.png';
 import voltorb from '@assets/images/trimmedVoltorb.gif';
 import isleAdvanceGIF from '@assets/images/isleAdvance.png';
+import tetrisGalaxyGif from '@assets/images/tetris-galaxy.png';
 
 type PCProps = {
   src: string;
@@ -31,6 +32,10 @@ function ProjectContainer() {
       <ProjectCard
         src={isleAdvanceGIF}
         desc={'Gameboy Advance Homebrew project made alongside my friend for our Senior Year capstone project'}
+      />
+      <ProjectCard
+        src={tetrisGalaxyGif}
+        desc={'Tetris spinoff that was made as a ackathon project over one very long night alongside my 3 friends'}
       />
     </div>
   );
