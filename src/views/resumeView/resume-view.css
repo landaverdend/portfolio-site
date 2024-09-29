@@ -4,11 +4,6 @@
   text-align: center;
 }
 
-.pricing-container {
-  background-color: orange;
-  height: 75vh;
-}
-
 .about-container {
   /* background-color: blue; */
   height: 100vh;
@@ -42,6 +37,7 @@
 
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: row;
 
     p {
@@ -58,6 +54,12 @@
       border-radius: 12px;
     }
   }
+}
+
+.resume-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
 }
 
 /* Phones */

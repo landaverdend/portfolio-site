@@ -41,14 +41,6 @@ function ProjectContainer() {
   );
 }
 
-function PricingContainer() {
-  return (
-    <div id="pricing" className="pricing-container">
-      pricing
-    </div>
-  );
-}
-
 function AboutContainer() {
   return (
     <div id="about" className="about-container">
@@ -63,13 +55,17 @@ function AboutContainer() {
   );
 }
 
+function ResumeSection() {
+  return <div id="resume" className="resume-section">This is the resume container...</div>;
+}
+
 function ResumeView() {
   return (
     <div className="resume-container">
       <Navbar />
       <AboutContainer />
       <ProjectContainer />
-      <PricingContainer />
+      <ResumeSection />
     </div>
   );
 }
