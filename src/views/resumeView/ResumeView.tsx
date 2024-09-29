@@ -2,6 +2,7 @@ import Navbar from '@/components/navbar/Navbar';
 import './resume-view.css';
 import me from '@assets/images/me.png';
 import voltorb from '@assets/images/trimmedVoltorb.gif';
+import isleAdvanceGIF from '@assets/images/isleAdvance.png';
 
 type PCProps = {
   src: string;
@@ -10,7 +11,9 @@ type PCProps = {
 function ProjectCard({ src, desc }: PCProps) {
   return (
     <div className="project-card">
-      <img src={src} height={500} width={700} />
+      <div className="project-card__img">
+        <img src={src} height={200} width={300} />
+      </div>
       <p>{desc}</p>
     </div>
   );
@@ -24,6 +27,10 @@ function ProjectContainer() {
         desc={
           'ReactJS recreation of the Voltorb Flip minigame from Pokemon HeartGold/SoulSilver with some slight difficulty alterations.'
         }
+      />
+      <ProjectCard
+        src={isleAdvanceGIF}
+        desc={'Gameboy Advance Homebrew project made alongside my friend for our Senior Year capstone project'}
       />
     </div>
   );
