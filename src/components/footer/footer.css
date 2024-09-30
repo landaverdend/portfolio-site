@@ -1,0 +1,27 @@
+.footer-container {
+  height: 25vh;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 25px;
+
+  .footer-container__logo {
+  }
+
+  .footer-container__links {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 10px;
+
+    img {
+      height: 40px;
+      width: 40px;
+    }
+  }
+}
