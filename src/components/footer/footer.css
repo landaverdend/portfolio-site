@@ -2,6 +2,22 @@
   height: 25vh;
 
   display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(to right, rgb(244, 208, 244), rgb(194, 255, 194));
+
+  hr {
+    border: 0;
+    clear: both;
+    display: block;
+    width: 96%;
+    background-color: #ffff00;
+    height: 1px;
+  }
+}
+
+.footer-container__info {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

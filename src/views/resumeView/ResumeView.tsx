@@ -4,7 +4,6 @@ import me from '@assets/images/me.png';
 import voltorb from '@assets/images/trimmedVoltorb.gif';
 import isleAdvanceGIF from '@assets/images/isleAdvance.png';
 import tetrisGalaxyGif from '@assets/images/tetris-galaxy.png';
-import blurredResume from '@assets/images/blurredResume.png';
 import Footer from '@/components/footer/Footer';
 
 type PCProps = {
@@ -53,15 +52,6 @@ function AboutContainer() {
         cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
       </p>
       <img src={me} />
-    </div>
-  );
-}
-
-function ResumeSection() {
-  return (
-    <div id="resume" className="resume-section">
-      This is the resume container...
-      <img src={blurredResume} height={400} width={300} />
     </div>
   );
 }
