@@ -1,19 +1,8 @@
 .footer-container {
-  height: 25vh;
-
   display: flex;
   flex-direction: column;
 
-  background: linear-gradient(to right, rgb(244, 208, 244), rgb(194, 255, 194));
-
-  hr {
-    border: 0;
-    clear: both;
-    display: block;
-    width: 96%;
-    background-color: #ffff00;
-    height: 1px;
-  }
+  background-color: rgb(255, 223, 228);
 }
 
 .footer-container__info {
@@ -25,6 +14,13 @@
   padding: 25px;
 
   .footer-container__logo {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 0.8rem;
+    img {
+      border-radius: 100px;
+    }
   }
 
   .footer-container__links {
