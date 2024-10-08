@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <div className="navbar-container">
       <div className="navbar-container__logo">
-        <img src={siteLogo} height={75} width={75} />
+        <img src={siteLogo} height={47} width={47} />
       </div>
       <div className="navbar-container__links">
         <a href="#about">About</a>

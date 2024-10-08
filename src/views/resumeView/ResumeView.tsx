@@ -5,6 +5,7 @@ import voltorb from '@assets/images/trimmedVoltorb.gif';
 import isleAdvanceGIF from '@assets/images/isleAdvance.png';
 import tetrisGalaxyGif from '@assets/images/tetris-galaxy.png';
 import Footer from '@/components/footer/Footer';
+import AboutContainer from './about/AboutContainer';
 
 type PCProps = {
   src: string;
@@ -36,22 +37,8 @@ function ProjectContainer() {
       />
       <ProjectCard
         src={tetrisGalaxyGif}
-        desc={'Tetris spinoff that was made as a ackathon project over one very long night alongside my 3 friends'}
+        desc={'Tetris spinoff that was made as a hackathon project over one very long night alongside my 3 friends'}
       />
-    </div>
-  );
-}
-
-function AboutContainer() {
-  return (
-    <div id="about" className="about-container">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-        aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-      </p>
-      <img src={me} />
     </div>
   );
 }
