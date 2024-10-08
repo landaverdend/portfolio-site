@@ -17,12 +17,18 @@
 }
 
 .about-bubble {
-  /* position */
-  background: radial-gradient(rgb(185, 161, 215) 5%, rgb(255, 255, 255) 70%);
-  border-radius: 100%;
+  position: absolute;
+  top: 5%;
+  left: -45%;
 
   height: 80vw;
   width: 80vw;
+
+  background: radial-gradient(rgba(185, 161, 215, 0.75) 25%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 100%;
+
+  animation: scaleUpDown 10s ease-in-out infinite;
+  z-index: -1;
 }
 
 @media (max-width: 576px) {
@@ -34,5 +40,11 @@
       max-width: 75%;
       max-height: 700px;
     }
+  }
+
+  .about-bubble {
+    top: auto;
+    bottom: -8%;
+    left: -45%;
   }
 }

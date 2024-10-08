@@ -1,6 +1,5 @@
 import Navbar from '@/components/navbar/Navbar';
 import './resume-view.css';
-import me from '@assets/images/me.png';
 import voltorb from '@assets/images/trimmedVoltorb.gif';
 import isleAdvanceGIF from '@assets/images/isleAdvance.png';
 import tetrisGalaxyGif from '@assets/images/tetris-galaxy.png';
