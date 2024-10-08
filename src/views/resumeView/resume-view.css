@@ -16,6 +16,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 15px;
 
   img {
     max-width: 80%;
@@ -23,6 +24,8 @@
     border-radius: 10px;
     object-fit: cover;
   }
+
+  
 }
 
 .projects-container {

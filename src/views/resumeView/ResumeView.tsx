@@ -59,8 +59,8 @@ function AboutContainer() {
 function ResumeView() {
   return (
     <>
+      <Navbar />
       <div className="resume-container">
-        <Navbar />
         <AboutContainer />
         <ProjectContainer />
       </div>

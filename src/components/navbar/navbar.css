@@ -1,6 +1,5 @@
 .navbar-container {
   height: 10vh;
-
   color: white;
   background-color: black;
 
@@ -8,8 +7,14 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
+  padding: 0 15px 0 15px;
   font-size: large;
+
+  .navbar-container__logo {
+    img {
+      border-radius: 100px;
+    }
+  }
 
   .navbar-container__links {
     display: flex;
@@ -19,7 +24,7 @@
 
   a {
     text-decoration: none;
-    color: inherit;  
+    color: inherit;
   }
 
   a:hover {
