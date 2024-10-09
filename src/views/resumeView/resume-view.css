@@ -76,13 +76,23 @@
 }
 
 .b2 {
-  top: 25%;
-  right: -25%;
+  top: -30%;
+  right: -50%;
 
-  height: 500px;
-  width: 500px;
+  height: 90vw;
+  width: 90vw;
 
   background: radial-gradient(rgba(152, 255, 209, 0.75) 25%, rgba(255, 255, 255, 0) 70%);
+}
+
+@media (max-width: 576px) {
+  .b1 {
+    top: 20%;
+  }
+
+  .b2 {
+    top: 5%;
+  }
 }
 
 /* Phones */
@@ -115,15 +125,5 @@
         height: auto;
       }
     }
-  }
-
-  .b1 {
-    top: auto;
-    bottom: -8%;
-    left: -45%;
-  }
-
-  .b2 {
-    top: 25%;
   }
 }
