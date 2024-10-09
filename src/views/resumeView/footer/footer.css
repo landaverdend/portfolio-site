@@ -14,6 +14,7 @@
   align-items: center;
 
   padding: 25px;
+  color: white;
 
   .footer-container__logo {
     display: flex;
