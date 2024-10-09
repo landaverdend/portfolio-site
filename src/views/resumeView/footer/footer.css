@@ -16,6 +16,10 @@
   padding: 25px;
   color: white;
 
+  a img:hover {
+    opacity: 0.8;
+  }
+
   .footer-container__logo {
     display: flex;
     flex-direction: column;
@@ -31,13 +35,18 @@
     flex-direction: row;
 
     align-items: center;
+    justify-content: center;
 
-    gap: 10px;
+    gap: 15px;
 
     svg {
       height: 40px;
       width: 40px;
       fill: white;
+    }
+
+    svg:hover {
+      opacity: 0.8;
     }
   }
 }
