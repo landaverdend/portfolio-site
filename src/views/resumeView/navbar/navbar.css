@@ -1,7 +1,7 @@
 .navbar-container {
   height: 10vh;
   color: white;
-  background-color: black;
+  background-color: rgb(82, 27, 158);
 
   display: flex;
   flex-direction: row;

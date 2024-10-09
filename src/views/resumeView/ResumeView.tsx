@@ -1,4 +1,4 @@
-import Navbar from '@/components/navbar/Navbar';
+import Navbar from './navbar/Navbar';
 import './resume-view.css';
 import voltorb from '@assets/images/trimmedVoltorb.gif';
 import isleAdvanceGIF from '@assets/images/isleAdvance.png';
@@ -48,6 +48,8 @@ function ResumeView() {
       <Navbar />
       <div className="resume-container">
         <AboutContainer />
+        <div className="bubble b1"></div>
+        <div className="bubble b2"></div>
         <ProjectContainer />
       </div>
       <Footer />

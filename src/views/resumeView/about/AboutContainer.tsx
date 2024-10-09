@@ -13,7 +13,6 @@ function AboutContainer() {
         </p>
         <img src={me} />
       </div>
-      <div className="about-bubble"></div>
     </>
   );
 }

@@ -6,6 +6,9 @@
 
   font-size: 1.2rem;
   text-align: left;
+
+  position: relative;
+  overflow: hidden;
 }
 
 .projects-container {
@@ -52,6 +55,36 @@
   justify-content: center;
 }
 
+.bubble {
+  border-radius: 100%;
+  position: absolute;
+
+  animation: scaleUpDown 4s ease-in-out infinite;
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+.b1 {
+  top: 5%;
+  left: -45%;
+
+  height: 80vw;
+  width: 80vw;
+
+  background: radial-gradient(rgba(185, 161, 215, 0.75) 25%, rgba(255, 255, 255, 0) 70%);
+}
+
+.b2 {
+  top: 25%;
+  right: -25%;
+
+  height: 500px;
+  width: 500px;
+
+  background: radial-gradient(rgba(152, 255, 209, 0.75) 25%, rgba(255, 255, 255, 0) 70%);
+}
+
 /* Phones */
 @media (max-width: 576px) {
   .resume-container {
@@ -82,5 +115,15 @@
         height: auto;
       }
     }
+  }
+
+  .b1 {
+    top: auto;
+    bottom: -8%;
+    left: -45%;
+  }
+
+  .b2 {
+    top: 25%;
   }
 }
