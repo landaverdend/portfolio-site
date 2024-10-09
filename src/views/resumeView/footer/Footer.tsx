@@ -1,7 +1,7 @@
 import './footer.css';
-import emailLogo from '@assets/images/logos/email.svg';
-import linkedinLogo from '@assets/images/logos/linkedin.svg';
-import githubLogo from '@assets/images/logos/github.svg';
+import EmailLogo from '@assets/images/logos/email.svg?react';
+import LinkedinLogo from '@assets/images/logos/linkedin.svg?react';
+import GithubLogo from '@assets/images/logos/github.svg?react';
 import siteLogo from '@assets/images/logo.png';
 
 function Footer() {
@@ -14,13 +14,13 @@ function Footer() {
         </div>
         <div className="footer-container__links">
           <a href="mailto: nicodemus.landaverde98@gmail.com">
-            <img src={emailLogo} />
+            <EmailLogo />
           </a>
           <a href="https://www.linkedin.com/in/nicodemus-landaverde-7562ba19a/">
-            <img src={linkedinLogo} />
+            <LinkedinLogo />
           </a>
           <a href="https://github.com/landaverdend">
-            <img src={githubLogo} />
+            <GithubLogo />
           </a>
         </div>
       </div>

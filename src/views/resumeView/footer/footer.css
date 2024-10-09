@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: column;
 
-  background-color: rgb(255, 223, 228);
+  --purple: hsl(270, 51%, 30%);
+  background-image: linear-gradient(to bottom right, hsla(203, 92%, 35.5%, 0.25), var(--purple), hsla(126, 65%, 66%, 0.25));
+  background-color: var(--purple);
 }
 
 .footer-container__info {
@@ -31,9 +33,10 @@
 
     gap: 10px;
 
-    img {
+    svg {
       height: 40px;
       width: 40px;
+      fill: white;
     }
   }
 }

@@ -25,7 +25,9 @@ type AppState = {
 };
 
 function App() {
+  // const [view, setView] = useState<React.ReactNode>(<SplashView />);
   const [view, setView] = useState<React.ReactNode>(<ResumeView />);
+
   const [nextView, setNextView] = useState<React.ReactNode>(<></>);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 

@@ -44,8 +44,8 @@ function LoadingBar() {
   // For intervals.
   useEffect(() => {
     const tickProgress = setInterval(() => {
-      const tick = Math.random() * 3.8;
-      // const tick = Math.random() * 0.8;
+      // const tick = Math.random() * 3.8;
+      const tick = Math.random() * 0.8;
 
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {

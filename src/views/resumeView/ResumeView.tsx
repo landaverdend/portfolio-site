@@ -3,7 +3,7 @@ import './resume-view.css';
 import voltorb from '@assets/images/trimmedVoltorb.gif';
 import isleAdvanceGIF from '@assets/images/isleAdvance.png';
 import tetrisGalaxyGif from '@assets/images/tetris-galaxy.png';
-import Footer from '@/components/footer/Footer';
+import Footer from '@/views/resumeView/footer/Footer';
 import AboutContainer from './about/AboutContainer';
 
 type PCProps = {
