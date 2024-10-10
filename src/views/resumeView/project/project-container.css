@@ -13,18 +13,29 @@
     align-items: center;
     flex-direction: row;
 
-    font-size: 1.25rem;
-
-    .project-card__text-container {
+    .text-container {
       display: flex;
-
       flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
 
       width: 40vw;
-
       text-align: left;
+
+      .courier-text {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: rgb(231, 231, 231);
+        padding: 1px;
+      }
+
+      .text-container__tech-used {
+        text-align: center;
+      }
+
+      .text-container__description {
+        text-align: left;
+        font-size: 1.2rem;
+      }
     }
 
     .project-card__img {
@@ -49,9 +60,18 @@
       align-items: center;
       text-align: center;
 
-      .project-card__text-container {
+      .text-container {
+        align-items: center;
+        justify-content: center;
+
         width: 100%;
         text-align: left;
+
+        .text-container__description,
+        .text-container__tech-used {
+          text-align: left;
+          font-size: 0.9rem;
+        }
       }
     }
 
