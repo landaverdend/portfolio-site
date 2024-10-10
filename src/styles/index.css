@@ -2,6 +2,9 @@
   --color-1: rgb(163, 92, 163); /* Light purple */
   --color-2: rgb(125, 228, 125); /* Light green */
   --color-3: rgb(111, 120, 241); /* indigo */
+
+  --background-text-1: hsl(270, 57%, 69%);
+  
   --hover-color-1: #ab0cab;
   --hover-color-2: rgb(41, 162, 41);
   --hover-color-3: rgb(59, 67, 181);

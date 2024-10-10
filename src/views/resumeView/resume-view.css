@@ -11,41 +11,6 @@
   overflow: hidden;
 }
 
-.projects-container {
-  /* height: 100vh; */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  gap: 25px;
-
-  .project-card {
-    width: 100%;
-
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-
-    font-size: 1.25rem;
-
-    p {
-      width: 40vw;
-      text-align: left;
-    }
-
-    .project-card__img {
-      width: 40vw;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-    }
-  }
-}
 
 .resume-section {
   height: 100vh;
