@@ -32,15 +32,22 @@
 
   .start__button {
     color: white;
-    background: var(--primary-gradient-horizontal);
-    border-radius: 15px;
+
     padding: 10px;
     width: fit-content;
+
     text-align: center;
     font-weight: 200;
     font-size: x-large;
-    animation: scaleUpDown 10s ease-in-out infinite;
+
+    background-color: var(--color-3);
+    border-radius: 5px;
     box-shadow: 5px 5px black;
+  }
+
+  .start__button:hover {
+    cursor: pointer;
+    background-color: darkslateblue;
   }
 
   .splash-grid__subscribed-button {
@@ -49,11 +56,6 @@
 
   .splash-grid__subscribed-button:hover {
     cursor: pointer;
-  }
-
-  .start__button:hover {
-    cursor: pointer;
-    background: var(--primary-gradient-horizontal-hover);
   }
 }
 

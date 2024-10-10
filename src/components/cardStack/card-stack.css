@@ -68,18 +68,12 @@
 
 .cardstack__control {
   font-size: 4.5vh;
-  background: var(--secondary-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-3);
 }
 
 .cardstack__control i:hover {
   cursor: pointer;
-  background: var(--secondary-gradient-hover);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: darkslateblue;
 }
 
 .cardstack__control--left {
