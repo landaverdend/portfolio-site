@@ -9,15 +9,16 @@ type PCProps = {
   desc: string;
   techUsed: string;
   title: string;
+  backgroundColor: string;
 };
-function ProjectCard({ src, desc, techUsed, title }: PCProps) {
+function ProjectCard({ src, backgroundColor, desc, techUsed, title }: PCProps) {
   return (
     <div className="project-card">
       <div className="project-card__img">
         <img src={src} height={200} width={300} />
       </div>
 
-      <div className="text-container">
+      <div className="text-container" style={{ backgroundColor: backgroundColor }}>
         <h3>{title}</h3>
 
         <p className="text-container__tech-used">
@@ -35,6 +36,7 @@ function ProjectContainer() {
       <ProjectCard
         title={'Voltorb Flip JS'}
         src={voltorb}
+        backgroundColor={'#afcc95'}
         techUsed={'React, Redux, NodeJS'}
         desc={
           'ReactJS recreation of the Voltorb Flip minigame from Pokemon HeartGold/SoulSilver with some slight difficulty alterations.'
@@ -43,12 +45,14 @@ function ProjectContainer() {
       <ProjectCard
         title={'Isle Advance'}
         src={isleAdvanceGIF}
+        backgroundColor={'#b295cc'}
         techUsed={'C, Make'}
         desc={'Gameboy Advance Homebrew project made alongside my friend for our Senior Year capstone project'}
       />
       <ProjectCard
         title={'Tetris Galaxy'}
         src={tetrisGalaxyGif}
+        backgroundColor={'#cc9695'}
         techUsed={'Java, Java Swing'}
         desc={'Tetris spinoff that was made as a hackathon project over one very long night alongside my 3 friends'}
       />
