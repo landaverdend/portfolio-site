@@ -31,7 +31,14 @@ function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techU
           {desc}
           <br />
           <br />
-          {demoUrl != undefined ? <><a href={demoUrl}>Demo</a><br /></> : <></>}
+          {demoUrl != undefined ? (
+            <>
+              <a href={demoUrl}>Demo</a>
+              <br />
+            </>
+          ) : (
+            <></>
+          )}
           <a href={sourceCodeUrl}>Source Code</a>
         </p>
       </div>
@@ -47,7 +54,7 @@ function ProjectContainer() {
         src={voltorb}
         demoUrl={'https://voltorb.netlify.app/'}
         sourceCodeUrl={'https://github.com/landaverdend/supervoltorbflip'}
-        backgroundColor={'#afcc95'}
+        backgroundColor={'#a2b8ff'}
         techUsed={'React, Redux, NodeJS'}
         desc={
           'ReactJS recreation of the Voltorb Flip minigame from Pokemon HeartGold/SoulSilver with some slight difficulty alterations.'
@@ -57,7 +64,7 @@ function ProjectContainer() {
         title={'Isle Advance'}
         src={isleAdvanceGIF}
         sourceCodeUrl={'https://github.com/landaverdend/Procgen-GBA'}
-        backgroundColor={'#b295cc'}
+        backgroundColor={'#a2ffba'}
         techUsed={'C, Make'}
         desc={'Gameboy Advance Homebrew project made alongside my friend for our Senior Year capstone project'}
       />
@@ -66,7 +73,7 @@ function ProjectContainer() {
         src={tetrisGalaxyGif}
         demoUrl={'https://swansonmp.github.io/tetrisGalaxy/'}
         sourceCodeUrl={'https://github.com/landaverdend/tetrisGalaxy'}
-        backgroundColor={'#cc9695'}
+        backgroundColor={'#ffe9a2'}
         techUsed={'Java, Java Swing'}
         desc={'Tetris spinoff that was made as a hackathon project over one very long night alongside my 3 friends'}
       />

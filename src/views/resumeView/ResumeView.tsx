@@ -15,6 +15,9 @@ function ResumeView() {
         <div className="bubble b2"></div>
         <div className="bubble b3"></div>
         <div className="bubble b4"></div>
+        <div className="bubble b5"></div>
+        <div className="bubble b6"></div>
+        
         <ProjectContainer />
       </div>
       <Footer />
