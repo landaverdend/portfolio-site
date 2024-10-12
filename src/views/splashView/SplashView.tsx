@@ -7,6 +7,7 @@ import { GlobalStateContext } from '@/App';
 import { createPortal } from 'react-dom';
 import SetupForm from '@/components/setupForm/SetupForm';
 import ResumeView from '../resumeView/ResumeView';
+import ChatBubble from '@/components/chatBubble/ChatBubble';
 
 function SplashView() {
   const { setIsLoading, setNextView } = useContext(GlobalStateContext);
@@ -51,6 +52,7 @@ function SplashView() {
           <CardStack />
         </div>
       </div>
+      {createPortal(<ChatBubble />, document.getElementById('root') as HTMLElement)}
       {createPortal(<BackgroundCanvas />, document.getElementById('root') as HTMLElement)}
     </>
   );
