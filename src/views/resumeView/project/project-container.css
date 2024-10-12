@@ -30,6 +30,7 @@
       .courier-text {
         font-family: 'Courier New', Courier, monospace;
         background-color: rgb(231, 231, 231);
+        border-radius: 4px;
         padding: 1px;
       }
 

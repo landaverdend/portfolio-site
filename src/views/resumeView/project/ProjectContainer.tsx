@@ -10,21 +10,30 @@ type PCProps = {
   techUsed: string;
   title: string;
   backgroundColor: string;
+  demoUrl?: string;
+  sourceCodeUrl: string;
 };
-function ProjectCard({ src, backgroundColor, desc, techUsed, title }: PCProps) {
+function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techUsed, title }: PCProps) {
   return (
     <div className="project-card">
       <div className="project-card__img">
-        <img src={src} height={200} width={300} />
+        <a href={demoUrl}>
+          <img src={src} height={200} width={300} />
+        </a>
       </div>
 
       <div className="text-container" style={{ backgroundColor: backgroundColor }}>
-        <h3>{title}</h3>
-
+        <h2>{title}</h2>
         <p className="text-container__tech-used">
           Technologies used: <span className="courier-text">{techUsed}</span>
         </p>
-        <p className="text-container__description">{desc}</p>
+        <p className="text-container__description">
+          {desc}
+          <br />
+          <br />
+          {demoUrl != undefined ? <><a href={demoUrl}>Demo</a><br /></> : <></>}
+          <a href={sourceCodeUrl}>Source Code</a>
+        </p>
       </div>
     </div>
   );
@@ -36,6 +45,8 @@ function ProjectContainer() {
       <ProjectCard
         title={'Voltorb Flip JS'}
         src={voltorb}
+        demoUrl={'https://voltorb.netlify.app/'}
+        sourceCodeUrl={'https://github.com/landaverdend/supervoltorbflip'}
         backgroundColor={'#afcc95'}
         techUsed={'React, Redux, NodeJS'}
         desc={
@@ -45,6 +56,7 @@ function ProjectContainer() {
       <ProjectCard
         title={'Isle Advance'}
         src={isleAdvanceGIF}
+        sourceCodeUrl={'https://github.com/landaverdend/Procgen-GBA'}
         backgroundColor={'#b295cc'}
         techUsed={'C, Make'}
         desc={'Gameboy Advance Homebrew project made alongside my friend for our Senior Year capstone project'}
@@ -52,6 +64,8 @@ function ProjectContainer() {
       <ProjectCard
         title={'Tetris Galaxy'}
         src={tetrisGalaxyGif}
+        demoUrl={'https://swansonmp.github.io/tetrisGalaxy/'}
+        sourceCodeUrl={'https://github.com/landaverdend/tetrisGalaxy'}
         backgroundColor={'#cc9695'}
         techUsed={'Java, Java Swing'}
         desc={'Tetris spinoff that was made as a hackathon project over one very long night alongside my 3 friends'}
