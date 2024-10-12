@@ -11,19 +11,11 @@
   overflow: hidden;
 }
 
-.resume-section {
-  height: 100vh;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
 .bubble {
   border-radius: 100%;
   position: absolute;
 
-  animation: scaleUpDown 4s ease-in-out infinite;
+  animation: scaleUpDown 4s ease-in-out infinite, moveBubble 20s ease-in-out infinite;
 
   pointer-events: none;
   z-index: -1;
@@ -36,7 +28,8 @@
   height: 80vw;
   width: 80vw;
 
-  background: radial-gradient(rgba(185, 161, 215, 0.75) 25%, rgba(255, 255, 255, 0) 70%);
+  /* background-color: red; */
+  background: radial-gradient(rgba(162, 145, 206, 0.6) 35%, rgba(255, 255, 255, 0) 70%);
 }
 
 .b2 {
@@ -46,7 +39,8 @@
   height: 90vw;
   width: 90vw;
 
-  background: radial-gradient(rgba(152, 255, 209, 0.75) 25%, rgba(255, 255, 255, 0) 70%);
+  /* background-color: blue; */
+  background: radial-gradient(rgba(155, 222, 168, 0.655) 35%, rgba(255, 255, 255, 0) 70%);
 }
 
 @media (max-width: 576px) {
@@ -64,5 +58,14 @@
   .resume-container {
     font-size: 1rem;
     padding: 5px;
+  }
+}
+
+@keyframes moveBubble {
+  0% {
+    transform: rotate(0deg) translate(300px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(300px) rotate(-360deg);
   }
 }
