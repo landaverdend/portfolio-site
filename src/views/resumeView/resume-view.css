@@ -19,6 +19,8 @@
 
   pointer-events: none;
   z-index: -1;
+
+  --smaller-bubble: 800px;
 }
 
 .b1 {
@@ -103,29 +105,29 @@
   .b3 {
     right: -100px;
 
-    height: 400px;
-    width: 400px;
+    height: var(--smaller-bubble);
+    width: var(--smaller-bubble);
   }
 
   .b4 {
     left: -150px;
-
-    height: 400px;
-    width: 400px;
+    height: var(--smaller-bubble);
+    width: var(--smaller-bubble);
   }
 
   .b5 {
     left: -210px;
 
-    height: 400px;
-    width: 400px;
+    height: var(--smaller-bubble);
+    width: var(--smaller-bubble);
   }
 
   .b6 {
+    top: 85%;
     left: 200px;
 
-    height: 400px;
-    width: 400px;
+    height: var(--smaller-bubble);
+    width: var(--smaller-bubble);
   }
 }
 
