@@ -29,7 +29,7 @@
   width: 900px;
 
   /* background-color: red; */
-  background: radial-gradient(rgba(180, 168, 212, 0.6) 35%, rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(rgba(203, 184, 255, 0.494) 35%, rgba(255, 255, 255, 0) 70%);
 }
 
 .b2 {
@@ -40,11 +40,32 @@
   width: 900px;
 
   /* background-color: blue; */
-  background: radial-gradient(rgba(155, 222, 168, 0.655) 35%, rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(rgba(164, 255, 182, 0.655) 35%, rgba(255, 255, 255, 0) 70%);
+}
+
+.b3 {
+  top: 35%;
+  right: -200px;
+
+  height: 850px;
+  width: 850px;
+
+  /* background-color: green; */
+  background: radial-gradient(rgba(129, 223, 249, 0.553) 35%, rgba(255, 255, 255, 0) 70%);
+}
+
+.b4 {
+  top: 35%;
+  left: -200px;
+
+  height: 850px;
+  width: 850px;
+
+  background: radial-gradient(rgba(243, 156, 255, 0.655) 35%, rgba(255, 255, 255, 0) 70%);
+  /* background-color: orange; */
 }
 
 @media (max-width: 576px) {
-
   .b1 {
     top: -600px;
   }
@@ -54,10 +75,21 @@
     height: 700px;
     width: 700px;
   }
+
+  .b3 {
+    right: -100px;
+
+    height: 400px;
+    width: 400px;
+  }
+
+  .b4 {
+    left: -150px;
+
+    height: 400px;
+    width: 400px;
+  }
 }
-
-
-
 
 /* Phones */
 @media (max-width: 576px) {
