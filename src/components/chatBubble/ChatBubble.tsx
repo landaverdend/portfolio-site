@@ -25,12 +25,15 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
         {chatLog.map((chat) => {
           return (
             <div className={chat.sender === 'me' ? 'sender--ME' : 'sender--YOU'}>
-              <span className={chat.sender === 'me' ? 'chat-text ME' : 'chat-text YOU'}>{chat.content}</span>
+              <p className={chat.sender === 'me' ? 'chat-text ME' : 'chat-text YOU'}>{chat.content}</p>
             </div>
           );
         })}
       </div>
-      <div className="messenger-container__sendField">this here is the chat log.</div>
+      <div className="messenger-container__send-container">
+        <textarea placeholder="Aa"></textarea>
+        <span>send</span>
+      </div>
     </div>
   );
 }
@@ -43,8 +46,8 @@ function ChatBubble() {
 
   useEffect(() => {
     const toPut: Chat[] = [];
-    for (let i = 0; i < 25; i++) {
-      toPut.push({ sender: 'me', content: 'message number ' + i });
+    for (let i = 0; i < 5; i++) {
+      toPut.push({ sender: 'me', content: 'lorem ipsum asdf jr asde kkasd kcasdf jklewkej jkldfj sad dfdsfj  as sdasd' + i });
       toPut.push({ sender: 'you', content: 'message number ' + i });
     }
     setChatLog(toPut);
