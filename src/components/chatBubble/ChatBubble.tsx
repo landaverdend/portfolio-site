@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './chatBubble.css';
 import me from '@assets/images/meBlob.png';
+import SendIcon from '@assets/images/icons/sendIcon.svg?react';
 
 type Chat = {
   sender: 'me' | 'you';
@@ -32,7 +33,9 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
       </div>
       <div className="messenger-container__send-container">
         <textarea placeholder="Aa"></textarea>
-        <span>send</span>
+        <span className="send-icon">
+          <SendIcon />
+        </span>
       </div>
     </div>
   );
