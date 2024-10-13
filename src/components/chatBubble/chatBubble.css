@@ -49,9 +49,10 @@
   bottom: 0px;
 
   height: 350px;
-  width: 300px;
+  width: 325px;
 
-  border: 1px solid black;
+  border: 1px solid rgb(175, 175, 175);
+  border-radius: 2.5px;
   z-index: 200;
   background-color: white;
 
@@ -64,7 +65,7 @@
     width: 100%;
 
     padding-top: 10px;
-
+    padding-bottom: 5px;
     img {
       border-radius: 50px;
     }
@@ -77,6 +78,44 @@
       background-color: lightgray;
       border-radius: 50px;
       cursor: pointer;
+    }
+  }
+
+  .messenger-container__messages {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+
+    gap: 8px;
+
+    height: 80%;
+    width: 95%;
+
+
+    .chat-text {
+      padding: 5px;
+      border-radius: 10px;
+
+      font-weight: 200;
+    }
+
+    .ME {
+      background-color: #f0f0f0;
+    }
+
+    .YOU {
+      background-color: rgb(141, 103, 210);
+      color: white;
+    }
+
+    .sender--ME {
+      width: 65%;
+    }
+
+    .sender--YOU {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
     }
   }
 }
