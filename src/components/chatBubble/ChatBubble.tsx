@@ -10,6 +10,9 @@ type MCProps = {
   chatLog: Array<Chat>;
 };
 function MessageContainer({ chatLog, closeFn }: MCProps) {
+  const [input, setInput] = useState<string>('');
+  const { addChat } = useChatStore();
+
   return (
     <div className="messenger-container">
       <div className="messenger-container__header">
@@ -29,9 +32,9 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
         })}
       </div>
       <div className="messenger-container__send-container">
-        <textarea placeholder="Aa"></textarea>
+        <textarea placeholder="Aa" value={input} onChange={(event) => setInput(event.target.value)}></textarea>
         <span className="send-icon">
-          <SendIcon />
+          <SendIcon onClick={() => addChat(input, 'client')} />
         </span>
       </div>
     </div>
@@ -47,7 +50,7 @@ function ChatBubble() {
   useEffect(() => {
     for (let i = 0; i < 10; i++) {
       callBackend().then((str) => {
-        addChat(str, 'client');
+        addChat(str, 'server');
       });
     }
   }, []);
