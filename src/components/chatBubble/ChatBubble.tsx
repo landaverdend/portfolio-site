@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './chatBubble.css';
 import me from '@assets/images/meBlob.png';
 import SendIcon from '@assets/images/icons/sendIcon.svg?react';
@@ -10,13 +10,27 @@ type MCProps = {
   chatLog: Array<Chat>;
 };
 function MessageContainer({ chatLog, closeFn }: MCProps) {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
   const [input, setInput] = useState<string>('');
   const { addChat } = useChatStore();
 
   // Add chat to the global store and clear the field.
   const handleSend = () => {
-    addChat(input, 'client');
-    setInput('');
+    if (input !== '') {
+      addChat(input, 'client');
+      setInput('');
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [chatLog]);
+
+  const scrollToBottom = () => {
+    if (scrollRef && scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight; // Scroll to the bottom
+    }
   };
 
   return (
@@ -28,7 +42,7 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
           &#10005;
         </span>
       </div>
-      <div className="messenger-container__messages">
+      <div className="messenger-container__messages" ref={scrollRef}>
         {chatLog.map((chat) => {
           return (
             <div key={crypto.randomUUID()} className={chat.sender === 'server' ? 'sender--server' : 'sender--client'}>
@@ -44,8 +58,12 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
           onChange={(event) => setInput(event.target.value)}
           onKeyDown={(event) => {
             if (event.key === 'Enter') {
-              event.preventDefault();
-              handleSend();
+              if (event.shiftKey) {
+                setInput((prev) => prev + '\n');
+              } else {
+                event.preventDefault();
+                handleSend();
+              }
             }
           }}></textarea>
         <span className="send-icon">
