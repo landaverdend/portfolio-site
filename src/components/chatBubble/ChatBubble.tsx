@@ -2,11 +2,8 @@ import { useEffect, useState } from 'react';
 import './chatBubble.css';
 import me from '@assets/images/meBlob.png';
 import SendIcon from '@assets/images/icons/sendIcon.svg?react';
-
-type Chat = {
-  sender: 'me' | 'you';
-  content: string;
-};
+import { callBackend } from '@/api/backend';
+import { Chat, useChatStore } from '@/state/chatState';
 
 type MCProps = {
   closeFn: Function;
@@ -25,8 +22,8 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
       <div className="messenger-container__messages">
         {chatLog.map((chat) => {
           return (
-            <div className={chat.sender === 'me' ? 'sender--ME' : 'sender--YOU'}>
-              <p className={chat.sender === 'me' ? 'chat-text ME' : 'chat-text YOU'}>{chat.content}</p>
+            <div key={crypto.randomUUID()} className={chat.sender === 'server' ? 'sender--ME' : 'sender--YOU'}>
+              <p className={chat.sender === 'server' ? 'chat-text ME' : 'chat-text YOU'}>{chat.content}</p>
             </div>
           );
         })}
@@ -45,15 +42,14 @@ function ChatBubble() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [unreadMessages, setUnreadMessages] = useState(3);
-  const [chatLog, setChatLog] = useState<Array<Chat>>([]);
+  const { chatlog, addChat } = useChatStore();
 
   useEffect(() => {
-    const toPut: Chat[] = [];
-    for (let i = 0; i < 5; i++) {
-      toPut.push({ sender: 'me', content: 'lorem ipsum asdf jr asde kkasd kcasdf jklewkej jkldfj sad dfdsfj  as sdasd' + i });
-      toPut.push({ sender: 'you', content: 'message number ' + i });
+    for (let i = 0; i < 10; i++) {
+      callBackend().then((str) => {
+        addChat(str, 'client');
+      });
     }
-    setChatLog(toPut);
   }, []);
 
   return (
@@ -65,6 +61,7 @@ function ChatBubble() {
               className="chat-container__me"
               onClick={() => {
                 setIsOpen((prev) => !prev);
+                setUnreadMessages(0);
               }}>
               {unreadMessages > 0 ? <span className="chat-container__unread">{unreadMessages}</span> : <></>}
               <img src={me} height={60} width={60} />
@@ -73,7 +70,7 @@ function ChatBubble() {
         </div>
       )}
 
-      {isOpen && <MessageContainer closeFn={setIsOpen} chatLog={chatLog} />}
+      {isOpen && <MessageContainer closeFn={setIsOpen} chatLog={chatlog} />}
     </>
   );
 }
