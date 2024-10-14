@@ -87,9 +87,11 @@
   .messenger-container__messages {
     display: flex;
     flex-direction: column;
+    gap: 7px;
+    flex: 10;
+
     overflow-y: auto;
 
-    flex: 10;
     width: 95%;
 
     .chat-text {
@@ -97,6 +99,7 @@
       border-radius: 10px;
 
       font-weight: 200;
+      max-width: 65%;
     }
 
     .server {
@@ -109,7 +112,9 @@
     }
 
     .sender--server {
-      width: 65%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
     }
 
     .sender--client {

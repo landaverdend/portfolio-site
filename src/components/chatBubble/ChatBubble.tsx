@@ -32,7 +32,7 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
         {chatLog.map((chat) => {
           return (
             <div key={crypto.randomUUID()} className={chat.sender === 'server' ? 'sender--server' : 'sender--client'}>
-              <p className={chat.sender === 'server' ? 'chat-text server' : 'chat-text client'}>{chat.content}</p>
+              <span className={chat.sender === 'server' ? 'chat-text server' : 'chat-text client'}>{chat.content}</span>
             </div>
           );
         })}
