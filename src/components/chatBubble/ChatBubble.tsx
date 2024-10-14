@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import './chatBubble.css';
 import me from '@assets/images/meBlob.png';
 import SendIcon from '@assets/images/icons/sendIcon.svg?react';
-import { callBackend } from '@/api/backend';
 import { Chat, useChatStore } from '@/state/chatState';
+import { callBackend } from '@/api/backend';
 
 type MCProps = {
   closeFn: Function;
@@ -77,8 +77,21 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
 function ChatBubble() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [unreadMessages, setUnreadMessages] = useState(3);
+  const [unreadMessages, setUnreadMessages] = useState(0);
   const { chatlog, addChat } = useChatStore();
+
+  // Just for debugging purposes...
+  useEffect(() => {
+    for (let i = 0; i < 15; i++) {
+      callBackend().then((str) => addChat(str + i, 'server'));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setUnreadMessages((prev) => prev + 1);
+    }
+  }, [chatlog]);
 
   return (
     <>

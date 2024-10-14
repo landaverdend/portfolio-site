@@ -1,6 +1,7 @@
 .loading-container {
   display: flex;
   flex-direction: column;
+  z-index: 250;
 }
 
 .loading-container__label {
