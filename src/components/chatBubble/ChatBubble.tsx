@@ -13,6 +13,12 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
   const [input, setInput] = useState<string>('');
   const { addChat } = useChatStore();
 
+  // Add chat to the global store and clear the field.
+  const handleSend = () => {
+    addChat(input, 'client');
+    setInput('');
+  };
+
   return (
     <div className="messenger-container">
       <div className="messenger-container__header">
@@ -32,9 +38,18 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
         })}
       </div>
       <div className="messenger-container__send-container">
-        <textarea placeholder="Aa" value={input} onChange={(event) => setInput(event.target.value)}></textarea>
+        <textarea
+          placeholder="Aa"
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') {
+              event.preventDefault();
+              handleSend();
+            }
+          }}></textarea>
         <span className="send-icon">
-          <SendIcon onClick={() => addChat(input, 'client')} />
+          <SendIcon onClick={() => handleSend()} />
         </span>
       </div>
     </div>
@@ -46,14 +61,6 @@ function ChatBubble() {
 
   const [unreadMessages, setUnreadMessages] = useState(3);
   const { chatlog, addChat } = useChatStore();
-
-  useEffect(() => {
-    for (let i = 0; i < 10; i++) {
-      callBackend().then((str) => {
-        addChat(str, 'server');
-      });
-    }
-  }, []);
 
   return (
     <>
