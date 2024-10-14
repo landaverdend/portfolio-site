@@ -3,7 +3,8 @@ import './chatBubble.css';
 import me from '@assets/images/meBlob.png';
 import SendIcon from '@assets/images/icons/sendIcon.svg?react';
 import { Chat, useChatStore } from '@/state/chatState';
-import { callBackend } from '@/api/backend';
+import { callChatEndpoint } from '@/api/backend';
+import ChatLoadingWidget from './chatLoadingWidget/ChatLoadingWidget';
 
 type MCProps = {
   closeFn: Function;
@@ -13,12 +14,23 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const [input, setInput] = useState<string>('');
-  const { addChat } = useChatStore();
+  const { isLoading, addChat, setIsLoading } = useChatStore();
 
-  // Add chat to the global store and clear the field.
+  // Add chat to the global store. Clear the input field.
   const handleSend = () => {
     if (input !== '') {
       addChat(input, 'client');
+
+      setIsLoading(true);
+      callChatEndpoint(input)
+        .then((serverResponse) => {
+          if (serverResponse !== null) {
+            addChat(serverResponse, 'server');
+          }
+          // TODO: implement some error handling later for empty responses...
+        })
+        .finally(() => setIsLoading(false));
+
       setInput('');
     }
   };
@@ -35,6 +47,7 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
 
   return (
     <div className="messenger-container">
+      {/* ------------------ HEADER AREA ------------------*/}
       <div className="messenger-container__header">
         <img src={me} height={25} width={25} />
         <span>Nicopenis Landaverdgay</span>
@@ -42,6 +55,8 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
           &#10005;
         </span>
       </div>
+      {/* ------------------ MESSAGE LOG ------------------*/}
+
       <div className="messenger-container__messages" ref={scrollRef}>
         {chatLog.map((chat) => {
           return (
@@ -50,7 +65,11 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
             </div>
           );
         })}
+
+        {isLoading && <ChatLoadingWidget />}
       </div>
+
+      {/* ------------------ SEND AREA ------------------*/}
       <div className="messenger-container__send-container">
         <textarea
           placeholder="Aa"
@@ -78,14 +97,7 @@ function ChatBubble() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [unreadMessages, setUnreadMessages] = useState(0);
-  const { chatlog, addChat } = useChatStore();
-
-  // Just for debugging purposes...
-  useEffect(() => {
-    for (let i = 0; i < 15; i++) {
-      callBackend().then((str) => addChat(str + i, 'server'));
-    }
-  }, []);
+  const { chatlog } = useChatStore();
 
   useEffect(() => {
     if (!isOpen) {
