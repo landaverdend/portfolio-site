@@ -99,20 +99,20 @@
       font-weight: 200;
     }
 
-    .ME {
+    .server {
       background-color: #f0f0f0;
     }
 
-    .YOU {
+    .client {
       background-color: var(--color-3);
       color: white;
     }
 
-    .sender--ME {
+    .sender--server {
       width: 65%;
     }
 
-    .sender--YOU {
+    .sender--client {
       display: flex;
       flex-direction: row;
       justify-content: flex-end;

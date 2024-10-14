@@ -22,8 +22,8 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
       <div className="messenger-container__messages">
         {chatLog.map((chat) => {
           return (
-            <div key={crypto.randomUUID()} className={chat.sender === 'server' ? 'sender--ME' : 'sender--YOU'}>
-              <p className={chat.sender === 'server' ? 'chat-text ME' : 'chat-text YOU'}>{chat.content}</p>
+            <div key={crypto.randomUUID()} className={chat.sender === 'server' ? 'sender--server' : 'sender--client'}>
+              <p className={chat.sender === 'server' ? 'chat-text server' : 'chat-text client'}>{chat.content}</p>
             </div>
           );
         })}
