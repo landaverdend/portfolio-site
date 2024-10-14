@@ -1,7 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { GlobalStateContext } from '../../../App';
 import './loading-bar.css';
-import SetupView from '@/views/setupView/SetupView';
+import { GlobalStateContext } from '@/App';
 
 const fakeServiceCalls = [
   'Connecting to the ByteBuster Bitter Botter API...',

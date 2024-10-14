@@ -1,7 +1,7 @@
 import { ReactNode, useContext, useEffect, useRef, useState } from 'react';
 import './loading-view.css';
 import { GlobalStateContext } from '@/App';
-import LoadingContent from '@/components/loadingContent/LoadingContent';
+import LoadingContent from './loadingContent/LoadingContent';
 
 // The State of the Curtain (which class to render)
 export type CurtainState = {
