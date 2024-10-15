@@ -2,16 +2,13 @@ import CardStack from '@components/cardStack/CardStack';
 import './splash-view.css';
 import '@styles/fonts.css';
 import BackgroundCanvas from '@components/backgroundCanvas/BackgroundCanvas.tsx';
-import { useContext } from 'react';
-import { GlobalStateContext } from '@/App';
 import { createPortal } from 'react-dom';
-import SetupForm from '@/components/setupForm/SetupForm';
-import ResumeView from '../resumeView/ResumeView';
 import ChatBubble from '@/components/chatBubble/ChatBubble';
+import { useAppState } from '@/state/appState';
 
 function SplashView() {
-  const { setIsLoading, setNextView } = useContext(GlobalStateContext);
-
+  const { isLoading, setIsLoading, setNextView } = useAppState();
+  console.log(isLoading);
   return (
     <>
       <div className="splash-grid inter">
@@ -31,8 +28,8 @@ function SplashView() {
               <span
                 className="start__button"
                 onClick={() => {
+                  setNextView('SetupView');
                   setIsLoading(true);
-                  setNextView(<SetupForm />);
                 }}>
                 Get started <i className="fa-solid fa-arrow-right"></i>
               </span>
@@ -40,7 +37,7 @@ function SplashView() {
                 <u
                   onClick={() => {
                     setIsLoading(true);
-                    setNextView(<ResumeView />);
+                    setNextView('ResumeView');
                   }}>
                   I'm already subscribed...
                 </u>

@@ -1,7 +1,7 @@
-import { ReactNode, useContext, useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import './loading-view.css';
-import { GlobalStateContext } from '@/App';
 import LoadingContent from './loadingContent/LoadingContent';
+import { useAppState } from '@/state/appState';
 
 // The State of the Curtain (which class to render)
 export type CurtainState = {
@@ -24,7 +24,8 @@ interface LoadingViewProps {
 }
 function LoadingView(props: LoadingViewProps) {
   const { children } = props;
-  const { isLoading } = useContext(GlobalStateContext);
+  // const { isLoading } = useContext(GlobalStateContext);
+  const { isLoading } = useAppState();
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   const [animType, setAnimType] = useState<keyof CurtainState>('closeAnim');

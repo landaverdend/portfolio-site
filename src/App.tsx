@@ -1,49 +1,28 @@
 import LoadingView from '@views/loadingView/LoadingView';
 import SplashView from '@views/splashView/SplashView';
-import { createContext, useState } from 'react';
 import ResumeView from './views/resumeView/ResumeView';
-
-// Initial State.
-export const GlobalStateContext = createContext<AppState>({
-  component: <SplashView />,
-  nextComponent: <></>,
-  isLoading: false,
-  setView: () => {},
-  setIsLoading: () => {},
-  setNextView: () => {},
-});
-
-// lol
-type AppState = {
-  component: React.ReactNode;
-  nextComponent: React.ReactNode;
-  isLoading: boolean;
-
-  setView: Function;
-  setIsLoading: Function;
-  setNextView: Function;
-};
+import { useAppState } from './state/appState';
+import SetupView from './views/setupView/SetupView';
 
 function App() {
-  const [view, setView] = useState<React.ReactNode>(<SplashView />);
-  // const [view, setView] = useState<React.ReactNode>(<ResumeView />);
+  const { componentToRender } = useAppState();
 
-  const [nextView, setNextView] = useState<React.ReactNode>(<></>);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  let childView = <></>;
 
-  return (
-    <GlobalStateContext.Provider
-      value={{
-        component: view,
-        isLoading: isLoading,
-        nextComponent: nextView,
-        setView: (view: React.ReactNode) => setView(view),
-        setIsLoading: (val: boolean) => setIsLoading(val),
-        setNextView: (next: React.ReactNode) => setNextView(next),
-      }}>
-      <LoadingView>{view}</LoadingView>
-    </GlobalStateContext.Provider>
-  );
+  switch (componentToRender) {
+    case 'ResumeView':
+      childView = <ResumeView />;
+      break;
+    case 'SetupView':
+      childView = <SetupView />;
+      break;
+    case 'SplashView':
+      childView = <SplashView />;
+      break;
+  }
+
+  // Loading view is basically a router that wraps whatever child...
+  return <LoadingView>{childView}</LoadingView>;
 }
 
 export default App;

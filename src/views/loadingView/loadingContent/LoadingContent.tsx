@@ -3,11 +3,10 @@ import TriviaWidget from './trivia/TriviaWidget';
 import logo from '@assets/images/logo.png';
 import './logo-animations.css';
 import './loading-content.css';
-import { useContext } from 'react';
-import { GlobalStateContext } from '@/App';
+import { useAppState } from '@/state/appState';
 
 function LoadingContent() {
-  const { isLoading } = useContext(GlobalStateContext);
+  const { isLoading } = useAppState();
   return (
     <div className={`curtain-content `}>
       <img className={`curtain-content__logo ${isLoading ? 'logo-slide-and-bounce' : 'logo-slide-out'}`} src={logo} />
