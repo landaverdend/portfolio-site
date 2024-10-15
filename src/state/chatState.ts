@@ -8,7 +8,7 @@ export type Chat = {
 };
 
 interface ChatState {
-  chatlog: Array<Chat>;
+  clientChatLog: Array<Chat>;
   isLoading: boolean; // Are we currently waiting for an API response from the backend?
 
   addChat: (content: string, sender: Sender) => void;
@@ -16,8 +16,8 @@ interface ChatState {
 }
 
 export const useChatStore = create<ChatState>((set) => ({
-  chatlog: new Array<Chat>(),
+  clientChatLog: new Array<Chat>(),
   isLoading: false,
-  addChat: (content, sender) => set((state) => ({ ...state, chatlog: [...state.chatlog, { sender: sender, content: content }] })),
+  addChat: (content, sender) => set((state) => ({ ...state, clientChatLog: [...state.clientChatLog, { sender: sender, content: content }] })),
   setIsLoading: (newVal) => set((state) => ({ ...state, isLoading: newVal })),
 }));

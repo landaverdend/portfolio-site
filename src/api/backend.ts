@@ -1,13 +1,16 @@
+import { Chat } from '@/state/chatState';
+
 const baseUrl = 'http://localhost:8080';
 
-export async function callChatEndpoint(clientMessage: string): Promise<string | null> {
+export async function callChatEndpoint(clientChatLog: Array<Chat>): Promise<string | null> {
   try {
+    console.log(clientChatLog);
     const response = await fetch(`${baseUrl}/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ clientMessage: clientMessage }),
+      body: JSON.stringify({ clientChatLog: clientChatLog }),
     });
 
     if (!response.ok) {

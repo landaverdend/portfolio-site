@@ -14,7 +14,7 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const [input, setInput] = useState<string>('');
-  const { isLoading, addChat, setIsLoading } = useChatStore();
+  const { clientChatLog, isLoading, addChat, setIsLoading } = useChatStore();
 
   // Add chat to the global store. Clear the input field.
   const handleSend = () => {
@@ -22,7 +22,7 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
       addChat(input, 'client');
 
       setIsLoading(true);
-      callChatEndpoint(input)
+      callChatEndpoint([...clientChatLog, { sender: 'client', content: input }])
         .then((serverResponse) => {
           if (serverResponse !== null) {
             addChat(serverResponse, 'server');
@@ -97,10 +97,10 @@ function ChatBubble() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [unreadMessages, setUnreadMessages] = useState(0);
-  const { chatlog } = useChatStore();
+  const { clientChatLog: chatlog } = useChatStore();
 
   useEffect(() => {
-    if (!isOpen) {
+    if (!isOpen && chatlog.length > 0) {
       setUnreadMessages((prev) => prev + 1);
     }
   }, [chatlog]);
