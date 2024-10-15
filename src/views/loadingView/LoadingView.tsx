@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './loading-view.css';
 import LoadingContent from './loadingContent/LoadingContent';
 import { useAppState } from '@/state/appState';
@@ -19,15 +19,9 @@ const rCurtainState: CurtainState = {
   closeAnim: 'rc-close',
 };
 
-interface LoadingViewProps {
-  children: ReactNode;
-}
-function LoadingView(props: LoadingViewProps) {
-  const { children } = props;
-  // const { isLoading } = useContext(GlobalStateContext);
+function LoadingView() {
   const { isLoading } = useAppState();
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
-
   const [animType, setAnimType] = useState<keyof CurtainState>('closeAnim');
 
   const hasRenderedOnce = useRef(false);
@@ -66,8 +60,6 @@ function LoadingView(props: LoadingViewProps) {
           <LoadingContent />
         </div>
       )}
-      {/* Render if we are in the process of animating OR if we are NOT loading. */}
-      {(!isLoading || isAnimating) && children}
     </>
   );
 }

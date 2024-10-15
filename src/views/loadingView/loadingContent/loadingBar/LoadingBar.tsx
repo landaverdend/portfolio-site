@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './loading-bar.css';
 import { useAppState } from '@/state/appState';
 
@@ -23,7 +23,6 @@ const fakeServiceCalls = [
 function LoadingBar() {
   const [progress, setProgress] = useState(15);
   const [ind, setInd] = useState(0);
-  // const { isLoading, setIsLoading, setView, nextComponent } = useContext(GlobalStateContext);
   const { isLoading, nextComponent, setIsLoading, setView, setNextView } = useAppState();
 
   // for state.

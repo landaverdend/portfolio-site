@@ -1,28 +1,33 @@
-import LoadingView from '@views/loadingView/LoadingView';
 import SplashView from '@views/splashView/SplashView';
 import ResumeView from './views/resumeView/ResumeView';
 import { useAppState } from './state/appState';
 import SetupView from './views/setupView/SetupView';
+import LoadingView from './views/loadingView/LoadingView';
 
 function App() {
   const { componentToRender } = useAppState();
 
-  let childView = <></>;
+  let renderMe = <></>;
 
   switch (componentToRender) {
     case 'ResumeView':
-      childView = <ResumeView />;
+      renderMe = <ResumeView />;
       break;
     case 'SetupView':
-      childView = <SetupView />;
+      renderMe = <SetupView />;
       break;
     case 'SplashView':
-      childView = <SplashView />;
+      renderMe = <SplashView />;
       break;
   }
 
-  // Loading view is basically a router that wraps whatever child...
-  return <LoadingView>{childView}</LoadingView>;
+  // TODO: stop rendering the 'renderMe' component when the loading view curtains have shut. Not super important but it is technically inefficient.
+  return (
+    <>
+      <LoadingView />
+      {renderMe}
+    </>
+  );
 }
 
 export default App;
