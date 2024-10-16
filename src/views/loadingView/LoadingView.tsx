@@ -31,9 +31,7 @@ function LoadingView() {
               // the Loading state is finally considered 'done' when the curtain animation is over.
               if (isLoadingBarDone) {
                 setIsLoading(false);
-                console.log('anim done');
               }
-              console.log('anim done..');
             }}
             className={`curtain curtain--left-gradient ${lCurtainState[animType]} `}>
             <div className="curtain__stripe-left"></div>

@@ -1,6 +1,6 @@
 import { create } from 'zustand/react';
 
-type Sender = 'client' | 'server';
+export type Sender = 'client' | 'server';
 
 export type Chat = {
   sender: Sender;

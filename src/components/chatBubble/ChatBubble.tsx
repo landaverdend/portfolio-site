@@ -5,6 +5,7 @@ import SendIcon from '@assets/images/icons/sendIcon.svg?react';
 import { Chat, useChatStore } from '@/state/chatState';
 import { callChatEndpoint } from '@/api/backend';
 import ChatLoadingWidget from './chatLoadingWidget/ChatLoadingWidget';
+import useInactivityHook from './hooks/inactivityHook';
 
 type MCProps = {
   closeFn: Function;
@@ -49,7 +50,7 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
     <div className="messenger-container">
       {/* ------------------ HEADER AREA ------------------*/}
       <div className="messenger-container__header">
-        <img src={me} height={25} width={25} />
+        <img src={me} height={30} width={30} />
         <span>Nicopenis Landaverdgay</span>
         <span className="messenger-container__close" onClick={() => closeFn()}>
           &#10005;
@@ -97,7 +98,11 @@ function ChatBubble() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [unreadMessages, setUnreadMessages] = useState(0);
-  const { clientChatLog: chatlog } = useChatStore();
+  const { addChat, clientChatLog: chatlog } = useChatStore();
+
+  const parentRef = useRef<HTMLDivElement | null>(null);
+
+  useInactivityHook(addChat, parentRef);
 
   useEffect(() => {
     if (!isOpen && chatlog.length > 0) {
@@ -106,7 +111,7 @@ function ChatBubble() {
   }, [chatlog]);
 
   return (
-    <>
+    <div ref={parentRef}>
       {!isOpen && (
         <div className="chat-container">
           {
@@ -124,7 +129,7 @@ function ChatBubble() {
       )}
 
       {isOpen && <MessageContainer closeFn={setIsOpen} chatLog={chatlog} />}
-    </>
+    </div>
   );
 }
 
