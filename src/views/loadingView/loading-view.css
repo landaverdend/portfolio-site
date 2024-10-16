@@ -56,23 +56,40 @@
 }
 
 .curtain__stripe-left {
+  position: absolute;
   background-color: var(--color-2);
+
   width: 40vw;
   height: 30px;
-  position: fixed;
+
   top: 65vh;
   right: 30vw;
+
   transform: rotate(-19deg) skew(-25deg);
   box-shadow: 10px 10px black;
 }
 
 .curtain__stripe-left2 {
   background-color: var(--color-1);
+
   width: 25vw;
   height: 25px;
-  position: fixed;
+
+  position: absolute;
   top: 55vh;
   right: 35vw;
+
   transform: rotate(-19deg) skew(-25deg);
   box-shadow: 10px 10px rgba(0, 0, 0, 1);
+}
+
+/* Phones */
+@media (max-width: 576px) {
+  .curtain__stripe-left {
+    top: 35vh;
+  }
+
+  .curtain__stripe-left2 {
+    top: 40vh;
+  }
 }

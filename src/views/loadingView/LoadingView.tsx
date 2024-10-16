@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import './loading-view.css';
 import LoadingContent from './loadingContent/LoadingContent';
 import { useAppState } from '@/state/appState';
@@ -26,13 +25,17 @@ function LoadingView() {
   return (
     <>
       {
-        <div
-          className={`curtain-container`}
-          onAnimationEnd={() => {
-            // the Loading state is finally considered 'done' when the curtain animation is over.
-            if (isLoadingBarDone) setIsLoading(false);
-          }}>
-          <div className={`curtain curtain--left-gradient ${lCurtainState[animType]} `}>
+        <div className={`curtain-container`}>
+          <div
+            onAnimationEnd={() => {
+              // the Loading state is finally considered 'done' when the curtain animation is over.
+              if (isLoadingBarDone) {
+                setIsLoading(false);
+                console.log('anim done');
+              }
+              console.log('anim done..');
+            }}
+            className={`curtain curtain--left-gradient ${lCurtainState[animType]} `}>
             <div className="curtain__stripe-left"></div>
             <div className="curtain__stripe-left2"></div>
           </div>
