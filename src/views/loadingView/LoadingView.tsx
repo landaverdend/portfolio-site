@@ -20,35 +20,17 @@ const rCurtainState: CurtainState = {
 };
 
 function LoadingView() {
-  const { isLoading } = useAppState();
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const [animType, setAnimType] = useState<keyof CurtainState>('closeAnim');
-
-  const hasRenderedOnce = useRef(false);
-
-  useEffect(() => {
-    // Skip effect on initial render
-    if (!hasRenderedOnce.current) {
-      hasRenderedOnce.current = true;
-      return;
-    }
-
-    setIsAnimating(true);
-
-    // Set the animation type depending on the loading state.
-    const animType: keyof CurtainState = isLoading ? 'closeAnim' : 'openAnim';
-    setAnimType(animType);
-  }, [isLoading]);
+  const { isLoadingBarDone, setIsLoading } = useAppState();
+  const animType = isLoadingBarDone ? 'openAnim' : 'closeAnim';
 
   return (
     <>
-      {(isLoading || isAnimating) && (
+      {
         <div
           className={`curtain-container`}
           onAnimationEnd={() => {
-            // This will get called twice, since both children are being animated.
-            setAnimType('closeAnim');
-            setIsAnimating(false);
+            // the Loading state is finally considered 'done' when the curtain animation is over.
+            if (isLoadingBarDone) setIsLoading(false);
           }}>
           <div className={`curtain curtain--left-gradient ${lCurtainState[animType]} `}>
             <div className="curtain__stripe-left"></div>
@@ -59,7 +41,7 @@ function LoadingView() {
           </div>
           <LoadingContent />
         </div>
-      )}
+      }
     </>
   );
 }

@@ -6,11 +6,12 @@ import './loading-content.css';
 import { useAppState } from '@/state/appState';
 
 function LoadingContent() {
-  const { isLoading } = useAppState();
+  const { isLoadingBarDone } = useAppState();
+
   return (
     <div className={`curtain-content `}>
-      <img className={`curtain-content__logo ${isLoading ? 'logo-slide-and-bounce' : 'logo-slide-out'}`} src={logo} />
-      <div className={`curtain-content__trivia ${isLoading ? 'fade-in' : 'fade-out'}`}>
+      <img className={`curtain-content__logo ${!isLoadingBarDone ? 'logo-slide-and-bounce' : 'logo-slide-out'}`} src={logo} />
+      <div className={`curtain-content__trivia ${!isLoadingBarDone ? 'fade-in' : 'fade-out'}`}>
         <LoadingBar />
         <TriviaWidget />
       </div>

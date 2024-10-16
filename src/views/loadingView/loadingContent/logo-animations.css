@@ -19,7 +19,7 @@
 }
 
 .logo-slide-out {
-  animation: logo-slide-in 1.5s ease-in-out 0s reverse;
+  animation: logo-slide-out-animation 1.5s ease-in-out 0s forwards;
 }
 
 @keyframes logo-slide-in {
@@ -30,6 +30,18 @@
   100% {
     opacity: 1;
     transform: translateY(35vh); /* End back at the bottom */
+  }
+}
+
+@keyframes logo-slide-out-animation {
+  0% {
+    opacity: 1;
+    transform: translateY(35vh); /* Start at the bottom */
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(0vh); /* End back at the bottom */
   }
 }
 
@@ -61,4 +73,8 @@
 
 .fade-in {
   animation: fade-in 2s ease-in-out 2.2s forwards;
+}
+
+.fade-out {
+  animation: fade-out 1s ease-in-out 0s forwards;
 }

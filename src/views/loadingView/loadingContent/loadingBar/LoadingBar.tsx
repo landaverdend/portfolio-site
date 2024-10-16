@@ -23,22 +23,15 @@ const fakeServiceCalls = [
 function LoadingBar() {
   const [progress, setProgress] = useState(15);
   const [ind, setInd] = useState(0);
-  const { isLoading, nextComponent, setIsLoading, setView, setNextView } = useAppState();
+  const { nextComponent, setView, setIsLoadingBarDone } = useAppState();
 
   // for state.
   useEffect(() => {
     if (progress >= 100) {
-      setIsLoading(false);
       setView(nextComponent);
+      setIsLoadingBarDone(true);
     }
   }, [progress]);
-
-  // This is retarded.
-  useEffect(() => {
-    if (!isLoading) {
-      setProgress(100);
-    }
-  }, [isLoading]);
 
   // For intervals.
   useEffect(() => {
@@ -55,10 +48,11 @@ function LoadingBar() {
     }, 100);
 
     const setServiceCall = setInterval(() => {
-      if (progress < 100) setInd(Math.floor(Math.random() * fakeServiceCalls.length));
+      if (progress <= 100) setInd(Math.floor(Math.random() * fakeServiceCalls.length));
     }, 3000);
 
     return () => {
+      console.log('interval cleared.');
       clearInterval(tickProgress);
       clearInterval(setServiceCall);
     };

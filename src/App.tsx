@@ -5,7 +5,7 @@ import SetupView from './views/setupView/SetupView';
 import LoadingView from './views/loadingView/LoadingView';
 
 function App() {
-  const { componentToRender } = useAppState();
+  const { componentToRender, isLoading } = useAppState();
 
   let renderMe = <></>;
 
@@ -24,7 +24,7 @@ function App() {
   // TODO: stop rendering the 'renderMe' component when the loading view curtains have shut. Not super important but it is technically inefficient.
   return (
     <>
-      <LoadingView />
+      {isLoading && <LoadingView />}
       {renderMe}
     </>
   );

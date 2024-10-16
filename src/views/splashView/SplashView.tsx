@@ -7,8 +7,7 @@ import ChatBubble from '@/components/chatBubble/ChatBubble';
 import { useAppState } from '@/state/appState';
 
 function SplashView() {
-  const { isLoading, setIsLoading, setNextView } = useAppState();
-  console.log(isLoading);
+  const { setIsLoading, setNextView } = useAppState();
   return (
     <>
       <div className="splash-grid inter">
