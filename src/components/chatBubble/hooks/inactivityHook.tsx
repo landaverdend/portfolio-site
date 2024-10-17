@@ -6,21 +6,17 @@ function getRandomNumber(min: number, max: number) {
 }
 
 const coldMessages = [
-  'hey',
-  'hey are you there??',
-  'hello??',
-  'are you looking for CRUD programmers in your area?',
-  'please look at my resume',
-  'I can see you ignoring me...',
-  'please respond',
-  '...',
-  'listen, just respond ok?',
-  'I need attention please',
-  'Dame atención, por favor',
-  '注意を払う',
-  'cmon seriously? I put in so much effort into this please just respond...',
-  "you're tickin me off....",
-  'do you want to see my cover letter???',
+  'Hello',
+  'Hey there...',
+  'Are you still there?',
+  'I would appreciate if you responded...',
+  'I put quite a lot of effort into this, it would be appreciated if you interacted.',
+  'Hosting this website is not cheap. I would really appreciate that you either interact with it or leave, please.',
+  'Being ignored does NOT put me in a good mood',
+  'My bad side is as bad as my pleasant side is pleasant. Don’t push me that way. I like to keep things informal as much as possible, but understand the difference between informal and rude is a thin line.',
+  'Quite frankly I find this extremely unprofessional on your part.',
+  'Could I speak to your supervisor? This is ridiculous.',
+  'This isn’t a monologue; it’s meant to be a dialogue',
 ];
 
 function useInactivityHook(
@@ -38,7 +34,7 @@ function useInactivityHook(
     const delay = getRandomNumber(4, 10) * 1000;
 
     inactivePingTimer.current = setTimeout(() => {
-      addChat(coldMessages[getRandomNumber(0, coldMessages.length)], 'server'); // callback provided...
+      addChat(coldMessages[getRandomNumber(0, coldMessages.length - 1)], 'server'); // callback provided...
       inactivePingTimeout();
     }, delay);
   };

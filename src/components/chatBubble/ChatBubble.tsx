@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import './chatBubble.css';
 import me from '@assets/images/meBlob.png';
 import SendIcon from '@assets/images/icons/sendIcon.svg?react';
@@ -6,6 +6,7 @@ import { Chat, useChatStore } from '@/state/chatState';
 import { callChatEndpoint } from '@/api/backend';
 import ChatLoadingWidget from './chatLoadingWidget/ChatLoadingWidget';
 import useInactivityHook from './hooks/inactivityHook';
+import sound from '@assets/sounds/notification.mp3';
 
 type MCProps = {
   closeFn: Function;
@@ -100,6 +101,7 @@ function ChatBubble() {
   const [unreadMessages, setUnreadMessages] = useState(0);
   const { addChat, clientChatLog: chatlog } = useChatStore();
 
+  const notificationSound = useMemo(() => new Audio(sound), []);
   const parentRef = useRef<HTMLDivElement | null>(null);
 
   useInactivityHook(addChat, parentRef);
@@ -107,6 +109,7 @@ function ChatBubble() {
   useEffect(() => {
     if (!isOpen && chatlog.length > 0) {
       setUnreadMessages((prev) => prev + 1);
+      notificationSound.play();
     }
   }, [chatlog]);
 
