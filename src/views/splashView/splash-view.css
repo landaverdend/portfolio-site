@@ -53,10 +53,6 @@
   .splash-grid__subscribed-button {
     color: black;
   }
-
-  .splash-grid__subscribed-button:hover {
-    cursor: pointer;
-  }
 }
 
 /* ========== Smaller Desktops & Tablets (Medium Screens) ========== */

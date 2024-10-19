@@ -41,6 +41,7 @@ function SplashView() {
                   <FakeCaptcha />
                 ) : (
                   <u
+                    style={{ cursor: 'pointer' }}
                     onClick={() => {
                       // setIsLoading(true);
                       // setNextView('ResumeView');
