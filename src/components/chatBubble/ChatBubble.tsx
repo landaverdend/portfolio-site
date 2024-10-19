@@ -70,6 +70,7 @@ function MessageContainer({ chatLog, closeFn, isVolumeEnabled, setIsVolumeEnable
         {chatLog.map((chat) => {
           return (
             <div key={crypto.randomUUID()} className={chat.sender === 'server' ? 'sender--server' : 'sender--client'}>
+              {chat.sender === 'server' ? <img style={{ borderRadius: 50 }} src={me} height={30} width={30}></img> : <></>}
               <span className={chat.sender === 'server' ? 'chat-text server' : 'chat-text client'}>{chat.content}</span>
             </div>
           );
