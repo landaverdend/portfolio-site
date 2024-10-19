@@ -1,23 +1,53 @@
 .captcha-container {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 
   padding: 10px;
+
+  width: 300px;
 
   border-radius: 2px;
   border: 1px solid #d3d3d3;
   background-color: #f9f9f9;
   box-shadow: 1px 1px 1px rgba(44, 46, 46, 0.5);
 
-  .captcha-container__checkbox {
-    color: pink;
-  }
+  .captcha-container__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  .captcha-container__text {
-    color: red;
+    .captcha-container__checkbox {
+      border-radius: 2px;
+
+      background-color: #fff;
+      border: 2px solid #c1c1c1;
+
+      height: 24px;
+      width: 24px;
+    }
+
+    .captcha-container__checkbox:hover {
+      border: 2px solid #b2b2b2;
+    }
+
+    .captcha-container__checkbox:focus {
+      border: 2px solid blue;
+    }
+
+    .captcha-container__text {
+      margin-left: 10px;
+    }
   }
 
   .captcha-container__about {
-    color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    color: #555555;
   }
 }
