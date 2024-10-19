@@ -81,6 +81,12 @@
       border-radius: 50px;
       cursor: pointer;
     }
+
+    .hoverable:hover {
+      background-color: var(--hover-bg-color);
+      border-radius: 50px;
+      cursor: pointer;
+    }
   }
 
   .messenger-container__messages {

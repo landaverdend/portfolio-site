@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import './chatBubble.css';
 import me from '@assets/images/meBlob.png';
 import SendIcon from '@assets/images/icons/sendIcon.svg?react';
+import VolumeOff from '@assets/images/icons/volumeOff.svg?react';
+import VolumeOn from '@assets/images/icons/volumeUp.svg?react';
 import { Chat, useChatStore } from '@/state/chatState';
 import { callChatEndpoint } from '@/api/backend';
 import ChatLoadingWidget from './chatLoadingWidget/ChatLoadingWidget';
@@ -9,10 +11,12 @@ import useInactivityHook from './hooks/inactivityHook';
 import sound from '@assets/sounds/notification.mp3';
 
 type MCProps = {
+  isVolumeEnabled: boolean;
+  setIsVolumeEnabled: Function;
   closeFn: Function;
   chatLog: Array<Chat>;
 };
-function MessageContainer({ chatLog, closeFn }: MCProps) {
+function MessageContainer({ chatLog, closeFn, isVolumeEnabled, setIsVolumeEnabled }: MCProps) {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const [input, setInput] = useState<string>('');
@@ -53,7 +57,10 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
       <div className="messenger-container__header">
         <img src={me} height={30} width={30} />
         <span>Nicopenis Landaverdgay</span>
-        <span className="messenger-container__close" onClick={() => closeFn()}>
+        <span onClick={() => setIsVolumeEnabled(!isVolumeEnabled)}>
+          {isVolumeEnabled ? <VolumeOn className="hoverable" /> : <VolumeOff className="hoverable" />}
+        </span>
+        <span className="messenger-container__close hoverable" onClick={() => closeFn()}>
           &#10005;
         </span>
       </div>
@@ -97,6 +104,7 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
 
 function ChatBubble() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVolumeEnabled, setIsVolumeEnabled] = useState(true);
 
   const [unreadMessages, setUnreadMessages] = useState(0);
   const { addChat, clientChatLog: chatlog } = useChatStore();
@@ -105,6 +113,10 @@ function ChatBubble() {
   const parentRef = useRef<HTMLDivElement | null>(null);
 
   useInactivityHook(addChat, parentRef);
+
+  useEffect(() => {
+    notificationSound.volume = isVolumeEnabled ? 1 : 0;
+  }, [isVolumeEnabled]);
 
   useEffect(() => {
     if (!isOpen && chatlog.length > 0) {
@@ -131,7 +143,14 @@ function ChatBubble() {
         </div>
       )}
 
-      {isOpen && <MessageContainer closeFn={setIsOpen} chatLog={chatlog} />}
+      {isOpen && (
+        <MessageContainer
+          closeFn={setIsOpen}
+          chatLog={chatlog}
+          isVolumeEnabled={isVolumeEnabled}
+          setIsVolumeEnabled={setIsVolumeEnabled}
+        />
+      )}
     </div>
   );
 }
