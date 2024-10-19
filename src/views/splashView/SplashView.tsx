@@ -5,9 +5,13 @@ import BackgroundCanvas from '@components/backgroundCanvas/BackgroundCanvas.tsx'
 import { createPortal } from 'react-dom';
 import ChatBubble from '@/components/chatBubble/ChatBubble';
 import { useAppState } from '@/state/appState';
+import { useState } from 'react';
+import FakeCaptcha from '@/components/fakeCaptcha/FakeCaptcha';
 
 function SplashView() {
   const { setIsLoading, setNextView } = useAppState();
+  const [displayFakeCaptcha, setDisplayFakeCaptcha] = useState(false);
+
   return (
     <>
       <div className="splash-grid inter">
@@ -33,13 +37,18 @@ function SplashView() {
                 Get started <i className="fa-solid fa-arrow-right"></i>
               </span>
               <span className="splash-grid__subscribed-button">
-                <u
-                  onClick={() => {
-                    setIsLoading(true);
-                    setNextView('ResumeView');
-                  }}>
-                  I'm already subscribed...
-                </u>
+                {displayFakeCaptcha ? (
+                  <FakeCaptcha />
+                ) : (
+                  <u
+                    onClick={() => {
+                      // setIsLoading(true);
+                      // setNextView('ResumeView');
+                      setDisplayFakeCaptcha(true);
+                    }}>
+                    I'm already subscribed...
+                  </u>
+                )}
               </span>
             </div>
           </div>
