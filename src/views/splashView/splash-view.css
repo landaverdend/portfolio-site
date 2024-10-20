@@ -36,6 +36,7 @@
     padding: 10px;
     width: fit-content;
 
+    text-wrap: nowrap;
     text-align: center;
     font-weight: 200;
     font-size: x-large;
