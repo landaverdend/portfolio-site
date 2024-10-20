@@ -1,11 +1,22 @@
+import { useState } from 'react';
 import './fake-captcha.css';
 import captchaIcon from '@assets/images/icons/captcha-icon.png';
 
 function FakeCaptcha() {
+  const [checkboxClicked, setCheckboxClicked] = useState(false);
+
   return (
     <div className="captcha-container">
       <div className="captcha-container__left">
-        <span className="captcha-container__checkbox"></span>
+        {!checkboxClicked ? (
+          <span
+            className={`captcha-container__checkbox ${checkboxClicked ? 'clicked' : ''}`}
+            onClick={() => {
+              setCheckboxClicked(true);
+            }}></span>
+        ) : (
+          <span className="load-spinner"></span>
+        )}
         <span className="captcha-container__text">I'm not a robot</span>
       </div>
 
