@@ -2,6 +2,10 @@ import { useState } from 'react';
 import './fake-captcha.css';
 import captchaIcon from '@assets/images/icons/captcha-icon.png';
 
+function FakeCaptchaGrid() {
+  return <div className="captcha-grid">here's the grid.</div>;
+}
+
 function FakeCaptcha() {
   const [checkboxClicked, setCheckboxClicked] = useState(false);
 
@@ -17,6 +21,7 @@ function FakeCaptcha() {
         ) : (
           <span className="load-spinner"></span>
         )}
+        {checkboxClicked && <FakeCaptchaGrid />}
         <span className="captcha-container__text">I'm not a robot</span>
       </div>
 

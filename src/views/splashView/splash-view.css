@@ -3,7 +3,10 @@
 .splash-grid {
   display: grid;
   grid-template-columns: 30% 55%; /* Make sure these don't all add up to over 100*/
+  
   gap: 8vw;
+  height: 105vh;
+  
   margin-top: 10vh;
   margin-left: 15vw;
 
