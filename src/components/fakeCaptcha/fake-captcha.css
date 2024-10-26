@@ -81,11 +81,99 @@
   }
 }
 
-.captcha-grid {
+/* STYLES FOR THE ACTUAL SELECTABLE PORTION */
+
+.captcha-grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
   position: absolute;
   top: -400px;
   left: 30px;
+  padding: 5px;
+
   min-width: 386px;
   height: 520px;
+
   background-color: red;
+
+  color: black;
+  z-index: 100;
+
+  .captcha-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5px;
+
+    padding: 24px;
+    font-size: 14px;
+
+    background-color: #1a73e8;
+    color: white;
+  }
+
+  .captcha-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .captcha-icons {
+      display: flex;
+      flex-direction: row;
+
+      .button-holder {
+        height: 48px;
+        width: 48px;
+
+        opacity: .55;
+      }
+
+      .reload-button-holder {
+        background: url(https://www.gstatic.com/recaptcha/api2/refresh_2x.png);
+        
+        background-size: 32px 32px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+
+    .captcha-button {
+      height: 42px;
+      min-width: 100px;
+
+      color: white;
+
+      font-size: 14px;
+      font-family: Roboto, helvetica, arial, sans-serif;
+      font-weight: 550;
+
+      padding: 0 10px 0 10px;
+
+      border: #1a73e8;
+      background-color: #1a73e8;
+
+      border-radius: 2px;
+    }
+
+    .captcha-button:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.captcha-grid {
+  /* this is subject to change... */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
+
+  .captcha-grid-item {
+    text-align: center;
+    background-color: #a8b0ba;
+
+    width: 126px;
+    height: 126px;
+  }
 }

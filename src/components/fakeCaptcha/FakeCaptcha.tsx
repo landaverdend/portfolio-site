@@ -3,7 +3,31 @@ import './fake-captcha.css';
 import captchaIcon from '@assets/images/icons/captcha-icon.png';
 
 function FakeCaptchaGrid() {
-  return <div className="captcha-grid">here's the grid.</div>;
+  const imageArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const itemToSelect = 'Jews';
+
+  return (
+    <div className="captcha-grid-container">
+      <div className="captcha-header">
+        <span>Select all images with</span>
+        <span style={{ fontSize: '24px' }}>
+          <strong>{itemToSelect}</strong>
+        </span>
+        <span>Click verify once there are none left</span>
+      </div>
+      <div className="captcha-grid">
+        {imageArray.map((i, ind) => (
+          <span className="captcha-grid-item">{i}</span>
+        ))}
+      </div>
+      <div className="captcha-footer">
+        <span className="captcha-icons">
+          <div className="button-holder reload-button-holder"></div>
+        </span>
+        <button className="captcha-button">VERIFY</button>
+      </div>
+    </div>
+  );
 }
 
 function FakeCaptcha() {
