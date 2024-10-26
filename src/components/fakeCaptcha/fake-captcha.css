@@ -81,7 +81,6 @@
   }
 }
 
-
 /* STYLES FOR THE ACTUAL SELECTABLE PORTION */
 .captcha-grid-container {
   display: flex;
@@ -96,10 +95,12 @@
 
   background-color: white;
   border: 1px solid #cfcfcf;
-  box-shadow: 2px 2px 1px rgba(44, 46, 46, 0.09);
+  box-shadow: 4px 4px 4px rgba(44, 46, 46, 0.2);
 
   color: black;
   z-index: 100;
+
+  animation: fade-in .5s normal 0s forwards;
 
   .captcha-header {
     display: flex;

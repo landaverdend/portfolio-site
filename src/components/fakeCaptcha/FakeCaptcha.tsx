@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import './fake-captcha.css';
 import captchaIcon from '@assets/images/icons/captcha-icon.png';
+import './fake-captcha.css';
+import '@styles/global-animations.css';
 
 function FakeCaptchaGrid() {
   const imageArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -8,7 +9,7 @@ function FakeCaptchaGrid() {
 
   return (
     <div className="captcha-grid-container">
-      <div style={{ padding: '5px' }}>
+      <div style={{ padding: '8px' }}>
         <div className="captcha-header">
           <span>Select all images with</span>
           <span style={{ fontSize: '24px' }}>
