@@ -22,9 +22,9 @@ function FakeCaptchaGrid() {
       </div>
       <div className="captcha-footer">
         <span className="captcha-icons">
-          <div className="button-holder reload-button-holder"></div>
+          <div className="button-holder reload-button-holder hoverable"></div>
         </span>
-        <button className="captcha-button">VERIFY</button>
+        <button className="captcha-button hoverable">VERIFY</button>
       </div>
     </div>
   );
