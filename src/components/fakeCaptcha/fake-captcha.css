@@ -82,6 +82,13 @@
 }
 
 /* STYLES FOR THE ACTUAL SELECTABLE PORTION */
+.visible {
+  animation: fade-in 0.5s normal 0s forwards;
+}
+.invisible {
+  animation: fade-out 0.5s normal 0s forwards;
+}
+
 .captcha-grid-container {
   display: flex;
   flex-direction: column;
@@ -99,8 +106,6 @@
 
   color: black;
   z-index: 100;
-
-  animation: fade-in .5s normal 0s forwards;
 
   .captcha-header {
     display: flex;

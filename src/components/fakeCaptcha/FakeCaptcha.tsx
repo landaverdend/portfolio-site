@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import captchaIcon from '@assets/images/icons/captcha-icon.png';
 import './fake-captcha.css';
 import '@styles/global-animations.css';
 
-function FakeCaptchaGrid() {
+type FCGProps = {
+  isOpen: boolean;
+};
+function FakeCaptchaGrid({ isOpen }: FCGProps) {
   const imageArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const itemToSelect = 'Jews';
 
   return (
-    <div className="captcha-grid-container">
+    <div className={`captcha-grid-container ${isOpen ? 'visible' : 'invisible'}`}>
       <div style={{ padding: '8px' }}>
         <div className="captcha-header">
           <span>Select all images with</span>
@@ -21,7 +24,9 @@ function FakeCaptchaGrid() {
 
       <div className="captcha-grid">
         {imageArray.map((i) => (
-          <span className="captcha-grid-item">{i}</span>
+          <span key={Math.random()} className="captcha-grid-item">
+            {i}
+          </span>
         ))}
       </div>
 
@@ -38,21 +43,41 @@ function FakeCaptchaGrid() {
 }
 
 function FakeCaptcha() {
-  const [checkboxClicked, setCheckboxClicked] = useState(false);
+  const [captchaOpened, setCaptchaOpened] = useState(false);
+  const [isFirstClick, setIsFirstClick] = useState(true);
+
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  // Handle clicks outside of the box.
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setCaptchaOpened(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
-    <div className="captcha-container">
+    <div ref={wrapperRef} className="captcha-container">
       <div className="captcha-container__left">
-        {!checkboxClicked ? (
+        {!captchaOpened ? (
           <span
-            className={`captcha-container__checkbox ${checkboxClicked ? 'clicked' : ''}`}
+            className={`captcha-container__checkbox ${captchaOpened ? 'clicked' : ''}`}
             onClick={() => {
-              setCheckboxClicked(true);
+              setIsFirstClick(false);
+              setCaptchaOpened(true);
             }}></span>
         ) : (
           <span className="load-spinner"></span>
         )}
-        {checkboxClicked && <FakeCaptchaGrid />}
+        {!isFirstClick && <FakeCaptchaGrid isOpen={captchaOpened} />}
+
         <span className="captcha-container__text">I'm not a robot</span>
       </div>
 
