@@ -8,23 +8,29 @@ function FakeCaptchaGrid() {
 
   return (
     <div className="captcha-grid-container">
-      <div className="captcha-header">
-        <span>Select all images with</span>
-        <span style={{ fontSize: '24px' }}>
-          <strong>{itemToSelect}</strong>
-        </span>
-        <span>Click verify once there are none left</span>
+      <div style={{ padding: '5px' }}>
+        <div className="captcha-header">
+          <span>Select all images with</span>
+          <span style={{ fontSize: '24px' }}>
+            <strong>{itemToSelect}</strong>
+          </span>
+          <span>Click verify once there are none left</span>
+        </div>
       </div>
+
       <div className="captcha-grid">
-        {imageArray.map((i, ind) => (
+        {imageArray.map((i) => (
           <span className="captcha-grid-item">{i}</span>
         ))}
       </div>
+
       <div className="captcha-footer">
         <span className="captcha-icons">
           <div className="button-holder reload-button-holder hoverable"></div>
+          <div className="button-holder audio-button-holder"></div>
+          <div className="button-holder help-button-holder"></div>
         </span>
-        <button className="captcha-button hoverable">VERIFY</button>
+        <button className="captcha-button">VERIFY</button>
       </div>
     </div>
   );
