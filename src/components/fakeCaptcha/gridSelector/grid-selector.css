@@ -106,8 +106,6 @@
   }
 }
 
-
-
 .captcha-grid-small {
   /* this is subject to change... */
   display: grid;
@@ -130,16 +128,24 @@
   /* this is subject to change... */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 10px;
-  row-gap: 10px;
+  column-gap: 2.5px;
+  row-gap: 2.5px;
 
   padding: 8px;
 
   .captcha-grid-item {
-    text-align: center;
-    background-color: #a8b0ba;
-
     width: 90px;
     height: 90px;
+
+    overflow: hidden;
+    position: relative;
+
+    text-align: center;
+
+    img {
+      position: relative;
+      width: 380px;
+      height: 380px;
+    }
   }
 }
