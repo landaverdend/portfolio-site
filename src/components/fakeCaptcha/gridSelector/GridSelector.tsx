@@ -1,14 +1,24 @@
 import './grid-selector.css';
-import { grabRandomChallengeLarge } from '../sourceFactory';
+import { grabRandomSmallChallenge, grabRandomLargeChallenge } from '../sourceFactory';
+import _ from 'lodash';
 
-type SGProps = {
-  imgArr: string[];
-};
-function SmallGrid({ imgArr }: SGProps) {
+type SGProps = {};
+function SmallGrid({}: SGProps) {
+  const smallChallenge = grabRandomSmallChallenge();
+
+  let imageSources = [];
+
+  for (let i = 1; i <= 9; i++) {
+    imageSources.push(smallChallenge.imageTemplate + i + '.png');
+  }
+
+  imageSources = _.shuffle(imageSources);
+
+  console.log(imageSources);
   return (
     <div className="captcha-grid-small">
-      {imgArr.map((i) => (
-        <img key={Math.random()} className="captcha-grid-item" src={i}></img>
+      {imageSources.map((src) => (
+        <img key={Math.random()} className="captcha-grid-item" src={src}></img>
       ))}
     </div>
   );
@@ -40,7 +50,8 @@ type GProps = {
   isOpen: boolean;
 };
 function GridSelector({ isOpen }: GProps) {
-  const challenge = grabRandomChallengeLarge();
+  // const challenge = grabRandomLargeChallenge();
+  const challenge = grabRandomSmallChallenge();
 
   return (
     <div className={`captcha-grid-container ${isOpen ? 'visible' : 'invisible'}`}>
@@ -54,9 +65,8 @@ function GridSelector({ isOpen }: GProps) {
         </div>
       </div>
 
-      {/* <SmallGrid imgArr={imageArray} /> */}
-      <LargeGrid imgSrc={challenge.imageSrc} />
-
+      <SmallGrid />
+      {/* <LargeGrid imgSrc={challenge.imageSrc} /> */}
       <div className="captcha-footer">
         <span className="captcha-icons">
           <div className="button-holder reload-button-holder hoverable"></div>

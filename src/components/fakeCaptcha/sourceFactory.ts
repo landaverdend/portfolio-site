@@ -15,9 +15,24 @@ const largeCaptchaArray: Array<LargeCaptchaChallenge> = [
   { imageSrc: waldo, title: 'Waldo' },
 ];
 
-export function grabRandomChallengeLarge() {
+export type SmallCaptchaChallenge = {
+  imageTemplate: string;
+  title: string;
+};
+
+const smallCaptchaArray: Array<SmallCaptchaChallenge> = [
+  { imageTemplate: 'src/assets/images/captcha/black/b', title: 'African Americans' },
+];
+
+export function grabRandomSmallChallenge() {
+  const ind = Math.floor(Math.random() * smallCaptchaArray.length);
+
+  return smallCaptchaArray[ind];
+}
+
+export function grabRandomLargeChallenge() {
   const ind = Math.floor(Math.random() * largeCaptchaArray.length);
 
   return largeCaptchaArray[ind];
-  // return largeCaptchaArray[3];
+  // return largeCaptchaArray[0];
 }
