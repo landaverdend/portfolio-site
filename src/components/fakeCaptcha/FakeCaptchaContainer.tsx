@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import captchaIcon from '@assets/images/icons/captcha-icon.png';
 import './fake-captcha.css';
 import '@styles/global-animations.css';
-import SmallGrid from './smallGrid/SmallGrid';
+import GridSelector from './gridSelector/GridSelector';
 
-function FakeCaptcha() {
+function FakeCaptchaContainer() {
   const [captchaOpened, setCaptchaOpened] = useState(false);
   const [isFirstClick, setIsFirstClick] = useState(true);
 
@@ -38,7 +38,7 @@ function FakeCaptcha() {
         ) : (
           <span className="load-spinner"></span>
         )}
-        {!isFirstClick && <SmallGrid isOpen={captchaOpened} />}
+        {!isFirstClick && <GridSelector isOpen={captchaOpened} />}
 
         <span className="captcha-container__text">I'm not a robot</span>
       </div>
@@ -52,4 +52,4 @@ function FakeCaptcha() {
   );
 }
 
-export default FakeCaptcha;
+export default FakeCaptchaContainer;

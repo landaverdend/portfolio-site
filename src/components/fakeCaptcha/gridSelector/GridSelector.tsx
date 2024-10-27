@@ -7,12 +7,39 @@ import b6 from '@assets/images/captcha/black/b6.png';
 import b7 from '@assets/images/captcha/black/b7.png';
 import b8 from '@assets/images/captcha/black/b8.png';
 import b9 from '@assets/images/captcha/black/b9.png';
-import './smallgrid.css';
+
+import './grid-selector.css';
 
 type SGProps = {
+  imgArr: string[];
+};
+function SmallGrid({ imgArr }: SGProps) {
+  return (
+    <div className="captcha-grid-small">
+      {imgArr.map((i) => (
+        <img key={Math.random()} className="captcha-grid-item" src={i}></img>
+      ))}
+    </div>
+  );
+}
+
+type BGProps = {
+  img: string;
+};
+function LargeGrid({ img }: BGProps) {
+  const toRender = [];
+
+  for (let i = 0; i < 16; i++) {
+    toRender.push(<span className="captcha-grid-item">{i}</span>);
+  }
+
+  return <div className="captcha-grid-large">{toRender}</div>;
+}
+
+type GProps = {
   isOpen: boolean;
 };
-function SmallGrid({ isOpen }: SGProps) {
+function GridSelector({ isOpen }: GProps) {
   const imageArray = [b1, b2, b3, b4, b5, b6, b7, b8, b9];
   const itemToSelect = 'Black People';
 
@@ -28,11 +55,8 @@ function SmallGrid({ isOpen }: SGProps) {
         </div>
       </div>
 
-      <div className="captcha-grid">
-        {imageArray.map((i) => (
-          <img key={Math.random()} className="captcha-grid-item" src={i}></img>
-        ))}
-      </div>
+      {/* <SmallGrid imgArr={imageArray} /> */}
+      <LargeGrid img={''} />
 
       <div className="captcha-footer">
         <span className="captcha-icons">
@@ -46,4 +70,4 @@ function SmallGrid({ isOpen }: SGProps) {
   );
 }
 
-export default SmallGrid;
+export default GridSelector;

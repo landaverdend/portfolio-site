@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 import ChatBubble from '@/components/chatBubble/ChatBubble';
 import { useAppState } from '@/state/appState';
 import { useState } from 'react';
-import FakeCaptcha from '@/components/fakeCaptcha/FakeCaptcha';
+import FakeCaptchaContainer from '@/components/fakeCaptcha/FakeCaptchaContainer';
 
 function SplashView() {
   const { setIsLoading, setNextView } = useAppState();
@@ -38,7 +38,7 @@ function SplashView() {
               </span>
               <span className="splash-grid__subscribed-button">
                 {displayFakeCaptcha ? (
-                  <FakeCaptcha />
+                  <FakeCaptchaContainer />
                 ) : (
                   <u
                     style={{ cursor: 'pointer' }}

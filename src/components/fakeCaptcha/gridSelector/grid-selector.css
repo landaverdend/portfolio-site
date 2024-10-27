@@ -36,24 +36,6 @@
     color: white;
   }
 
-  .captcha-grid {
-    /* this is subject to change... */
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 10px;
-    row-gap: 10px;
-
-    padding: 8px;
-
-    .captcha-grid-item {
-      text-align: center;
-      background-color: #a8b0ba;
-
-      width: 126px;
-      height: 126px;
-    }
-  }
-
   .captcha-footer {
     display: flex;
     flex-direction: row;
@@ -121,5 +103,43 @@
     .captcha-button:hover {
       cursor: pointer;
     }
+  }
+}
+
+
+
+.captcha-grid-small {
+  /* this is subject to change... */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
+
+  padding: 8px;
+
+  .captcha-grid-item {
+    text-align: center;
+    background-color: #a8b0ba;
+
+    width: 126px;
+    height: 126px;
+  }
+}
+
+.captcha-grid-large {
+  /* this is subject to change... */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
+
+  padding: 8px;
+
+  .captcha-grid-item {
+    text-align: center;
+    background-color: #a8b0ba;
+
+    width: 90px;
+    height: 90px;
   }
 }
