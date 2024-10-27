@@ -1,6 +1,8 @@
 import './grid-selector.css';
 import { grabRandomSmallChallenge, grabRandomLargeChallenge } from '../sourceFactory';
 import _ from 'lodash';
+import { useMemo } from 'react';
+import rickroll from '@assets/sounds/rickroll.mp3';
 
 type SGProps = {};
 function SmallGrid({}: SGProps) {
@@ -53,6 +55,8 @@ function GridSelector({ isOpen }: GProps) {
   // const challenge = grabRandomLargeChallenge();
   const challenge = grabRandomSmallChallenge();
 
+  const rickrollSound = useMemo(() => new Audio(rickroll), []);
+
   return (
     <div className={`captcha-grid-container ${isOpen ? 'visible' : 'invisible'}`}>
       <div style={{ padding: '8px' }}>
@@ -70,7 +74,7 @@ function GridSelector({ isOpen }: GProps) {
       <div className="captcha-footer">
         <span className="captcha-icons">
           <div className="button-holder reload-button-holder hoverable"></div>
-          <div className="button-holder audio-button-holder"></div>
+          <div className="button-holder audio-button-holder" onClick={() => rickrollSound.play()}></div>
           <div className="button-holder help-button-holder"></div>
         </span>
         <button className="captcha-button">VERIFY</button>
