@@ -52,8 +52,8 @@ type GProps = {
   isOpen: boolean;
 };
 function GridSelector({ isOpen }: GProps) {
-  // const challenge = grabRandomLargeChallenge();
-  const challenge = grabRandomSmallChallenge();
+  const challenge = grabRandomLargeChallenge();
+  // const challenge = grabRandomSmallChallenge();
 
   const rickrollSound = useMemo(() => new Audio(rickroll), []);
 
@@ -69,8 +69,8 @@ function GridSelector({ isOpen }: GProps) {
         </div>
       </div>
 
-      <SmallGrid />
-      {/* <LargeGrid imgSrc={challenge.imageSrc} /> */}
+      {/* <SmallGrid /> */}
+      <LargeGrid imgSrc={challenge.imageSrc} />
       <div className="captcha-footer">
         <span className="captcha-icons">
           <div className="button-holder reload-button-holder hoverable"></div>

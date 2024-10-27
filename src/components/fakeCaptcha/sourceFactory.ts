@@ -9,7 +9,7 @@ export type LargeCaptchaChallenge = {
 };
 
 const largeCaptchaArray: Array<LargeCaptchaChallenge> = [
-  { imageSrc: OJ, title: 'Guilty Murderers' },
+  { imageSrc: OJ, title: 'Murderer' },
   { imageSrc: china, title: 'Chinese Sovereign Territory' },
   { imageSrc: argentina, title: 'Argentinian Territorial Domain' },
   { imageSrc: waldo, title: 'Waldo' },
@@ -33,6 +33,6 @@ export function grabRandomSmallChallenge() {
 export function grabRandomLargeChallenge() {
   const ind = Math.floor(Math.random() * largeCaptchaArray.length);
 
-  return largeCaptchaArray[ind];
-  // return largeCaptchaArray[0];
+  // return largeCaptchaArray[ind];
+  return largeCaptchaArray[0];
 }
