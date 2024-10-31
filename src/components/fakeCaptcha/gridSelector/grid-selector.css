@@ -142,10 +142,21 @@
 
     text-align: center;
 
-    img {
-      position: relative;
-      width: 380px;
-      height: 380px;
+    .captcha-grid-item__wrapper {
+      width: 90px;
+      height: 90px;
+      overflow: hidden;
+
+      img {
+        position: relative;
+        width: 380px;
+        height: 380px;
+      }
     }
+  }
+
+  .scale-down {
+    transform: scale(0.8);
+    transition: 0.1s ease;
   }
 }

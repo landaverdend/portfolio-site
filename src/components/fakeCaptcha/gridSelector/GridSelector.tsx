@@ -1,7 +1,7 @@
 import './grid-selector.css';
 import { grabRandomSmallChallenge, grabRandomLargeChallenge } from '../sourceFactory';
 import _ from 'lodash';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import rickroll from '@assets/sounds/rickroll.mp3';
 
 type SGProps = {};
@@ -16,7 +16,6 @@ function SmallGrid({}: SGProps) {
 
   imageSources = _.shuffle(imageSources);
 
-  console.log(imageSources);
   return (
     <div className="captcha-grid-small">
       {imageSources.map((src) => (
@@ -30,16 +29,35 @@ type BGProps = {
   imgSrc: string;
 };
 function LargeGrid({ imgSrc }: BGProps) {
+  const [selected, setSelected] = useState<Set<number>>(new Set<number>());
+
   const toRender = [];
 
   let topOffset = 0;
   for (let i = 0; i < 16; i++) {
-    const leftOffset = (i % 4) * -100; // negative one hunnid because reasons...
+    const leftOffset = (i % 4) * -100;
 
     toRender.push(
-      <span className="captcha-grid-item">
-        <img style={{ left: `${leftOffset}%`, top: `${topOffset * -100}%` }} src={imgSrc}></img>
-      </span>
+      <div className="captcha-grid-item">
+        <div
+          className={`captcha-grid-item__wrapper ${selected.has(i) ? 'scale-down' : ''}`}
+          onClick={() => {
+            // React is really smart.
+            if (selected.has(i)) {
+              setSelected((prev) => {
+                prev.delete(i);
+                return new Set(prev);
+              });
+            } else {
+              setSelected((prev) => {
+                prev.add(i);
+                return new Set(prev);
+              });
+            }
+          }}>
+          <img style={{ left: `${leftOffset}%`, top: `${topOffset * -100}%` }} src={imgSrc} />
+        </div>
+      </div>
     );
 
     if ((i + 1) % 4 === 0) topOffset++;
@@ -71,6 +89,7 @@ function GridSelector({ isOpen }: GProps) {
 
       {/* <SmallGrid /> */}
       <LargeGrid imgSrc={challenge.imageSrc} />
+
       <div className="captcha-footer">
         <span className="captcha-icons">
           <div className="button-holder reload-button-holder hoverable"></div>
