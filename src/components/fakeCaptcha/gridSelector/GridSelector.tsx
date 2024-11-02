@@ -117,7 +117,9 @@ function GridSelector({ isOpen, isCompleted, setIsCompleted }: GProps) {
       </div>
 
       {/* <SmallGrid /> */}
-      <LargeGrid imgSrc={challenge.imageSrc} selected={selected} setSelected={setSelected} />
+      <span onClick={() => setIsIncorrect(false)}>
+        <LargeGrid imgSrc={challenge.imageSrc} selected={selected} setSelected={setSelected} />
+      </span>
 
       {isIncorrect && <div className="captcha-error">Please try again.</div>}
 

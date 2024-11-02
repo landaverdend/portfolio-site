@@ -62,10 +62,8 @@ function FakeCaptchaContainer() {
         <span className="links" style={{ fontSize: '0.75rem' }}>
           <a href="https://www.google.com/intl/en/policies/privacy/" target="_blank">
             Privacy
-          </a>
-          {' '}
-          -
-          {' '}
+          </a>{' '}
+          -{' '}
           <a href="https://www.google.com/intl/en/policies/terms/" target="_blank">
             Terms
           </a>
