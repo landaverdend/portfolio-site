@@ -91,6 +91,7 @@ function GridSelector({ isOpen, isCompleted, setIsCompleted }: GProps) {
   const [selected, setSelected] = useState<Set<number>>(new Set<number>());
 
   const [isIncorrect, setIsIncorrect] = useState<boolean>(false);
+  const [showHelpText, setShowHelpText] = useState(false);
 
   const rickrollSound = useMemo(() => new Audio(rickroll), []);
 
@@ -130,12 +131,18 @@ function GridSelector({ isOpen, isCompleted, setIsCompleted }: GProps) {
               setSelected(new Set<number>());
             }}></div>
           <div className="button-holder audio-button-holder" onClick={() => rickrollSound.play()}></div>
-          <div className="button-holder help-button-holder"></div>
+          <div className="button-holder help-button-holder" onClick={() => setShowHelpText((prev) => !prev)}></div>
         </span>
         <button className="captcha-button" onClick={() => checkSolution()}>
           VERIFY
         </button>
       </div>
+      {showHelpText && (
+        <span className="captcha-help">
+          Click on any tiles you see with the object described in the text. If new images appear with the same object, click those
+          as well. When there are none left, click Verify.
+        </span>
+      )}
     </div>
   );
 }
