@@ -3,7 +3,7 @@ import { grabRandomSmallChallenge, grabRandomLargeChallenge } from '../sourceFac
 import _ from 'lodash';
 import { useMemo, useState } from 'react';
 import rickroll from '@assets/sounds/rickroll.mp3';
-
+import checkmark from '@assets/images/icons/checkmark.png';
 type SGProps = {};
 function SmallGrid({}: SGProps) {
   const smallChallenge = grabRandomSmallChallenge();
@@ -39,8 +39,10 @@ function LargeGrid({ imgSrc }: BGProps) {
 
     toRender.push(
       <div className="captcha-grid-item">
+        {selected.has(i) && <img className="check-mark" src={checkmark} />}
+
         <div
-          className={`captcha-grid-item__wrapper ${selected.has(i) ? 'scale-down' : ''}`}
+          className={`captcha-grid-item__wrapper ${selected.has(i) ? 'scale-down' : 'scale-up'}`}
           onClick={() => {
             // React is really smart.
             if (selected.has(i)) {
