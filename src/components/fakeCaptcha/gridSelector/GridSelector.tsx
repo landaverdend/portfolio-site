@@ -1,9 +1,22 @@
 import './grid-selector.css';
-import { grabRandomSmallChallenge, grabRandomLargeChallenge } from '../sourceFactory';
+import { grabRandomSmallChallenge, grabRandomLargeChallenge, LargeCaptchaChallenge } from '../sourceFactory';
 import _ from 'lodash';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import rickroll from '@assets/sounds/rickroll.mp3';
 import checkmark from '@assets/images/icons/checkmark.png';
+
+function areSetsEqual(s1: Set<number>, solution: Set<number>): boolean {
+  if (s1.size != solution.size) return false;
+
+  for (let el of s1.values()) {
+    if (!solution.has(el)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 type SGProps = {};
 function SmallGrid({}: SGProps) {
   const smallChallenge = grabRandomSmallChallenge();
@@ -27,9 +40,11 @@ function SmallGrid({}: SGProps) {
 
 type BGProps = {
   imgSrc: string;
+  selected: Set<number>;
+  setSelected: React.Dispatch<React.SetStateAction<Set<number>>>;
 };
-function LargeGrid({ imgSrc }: BGProps) {
-  const [selected, setSelected] = useState<Set<number>>(new Set<number>());
+function LargeGrid({ imgSrc, selected, setSelected }: BGProps) {
+  // const [selected, setSelected] = useState<Set<number>>(new Set<number>());
 
   const toRender = [];
 
@@ -72,8 +87,17 @@ type GProps = {
   isOpen: boolean;
 };
 function GridSelector({ isOpen }: GProps) {
-  const challenge = grabRandomLargeChallenge();
+  // const challenge = grabRandomLargeChallenge();
+
   // const challenge = grabRandomSmallChallenge();
+  const [challenge, setChallenge] = useState<LargeCaptchaChallenge>(grabRandomLargeChallenge());
+  const [selected, setSelected] = useState<Set<number>>(new Set<number>());
+
+  useEffect(() => {
+    if (areSetsEqual(selected, challenge.solution)) {
+      alert('you did it!');
+    }
+  }, [selected]);
 
   const rickrollSound = useMemo(() => new Audio(rickroll), []);
 
@@ -90,7 +114,7 @@ function GridSelector({ isOpen }: GProps) {
       </div>
 
       {/* <SmallGrid /> */}
-      <LargeGrid imgSrc={challenge.imageSrc} />
+      <LargeGrid imgSrc={challenge.imageSrc} selected={selected} setSelected={setSelected} />
 
       <div className="captcha-footer">
         <span className="captcha-icons">

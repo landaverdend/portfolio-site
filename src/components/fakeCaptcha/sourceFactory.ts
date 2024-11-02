@@ -6,13 +6,14 @@ import waldo from '@assets/images/captcha/bigGrid/waldo.png';
 export type LargeCaptchaChallenge = {
   imageSrc: string;
   title: string;
+  solution: Set<number>; // solution is a set of the correct indices 0-15...
 };
 
 const largeCaptchaArray: Array<LargeCaptchaChallenge> = [
-  { imageSrc: OJ, title: 'Murderer' },
-  { imageSrc: china, title: 'China' },
-  { imageSrc: argentina, title: 'Argentina' },
-  { imageSrc: waldo, title: 'Waldo' },
+  { imageSrc: OJ, title: 'Murderer', solution: new Set<number>([1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15]) },
+  { imageSrc: china, title: 'China', solution: new Set<number>([0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12]) },
+  { imageSrc: argentina, title: 'Argentina', solution: new Set<number>() },
+  { imageSrc: waldo, title: 'Waldo', solution: new Set<number>([9, 13]) },
 ];
 
 export type SmallCaptchaChallenge = {
