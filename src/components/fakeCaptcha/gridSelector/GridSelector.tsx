@@ -88,18 +88,18 @@ type GProps = {
 };
 function GridSelector({ isOpen }: GProps) {
   // const challenge = grabRandomLargeChallenge();
-
   // const challenge = grabRandomSmallChallenge();
+
   const [challenge, setChallenge] = useState<LargeCaptchaChallenge>(grabRandomLargeChallenge());
   const [selected, setSelected] = useState<Set<number>>(new Set<number>());
 
-  useEffect(() => {
-    if (areSetsEqual(selected, challenge.solution)) {
-      alert('you did it!');
-    }
-  }, [selected]);
-
   const rickrollSound = useMemo(() => new Audio(rickroll), []);
+
+  const checkSolution = () => {
+    if (areSetsEqual(selected, challenge.solution)) {
+      alert('equal.');
+    }
+  };
 
   return (
     <div className={`captcha-grid-container ${isOpen ? 'visible' : 'invisible'}`}>
@@ -118,11 +118,18 @@ function GridSelector({ isOpen }: GProps) {
 
       <div className="captcha-footer">
         <span className="captcha-icons">
-          <div className="button-holder reload-button-holder hoverable"></div>
+          <div
+            className="button-holder reload-button-holder hoverable"
+            onClick={() => {
+              setChallenge(grabRandomLargeChallenge());
+              setSelected(new Set<number>());
+            }}></div>
           <div className="button-holder audio-button-holder" onClick={() => rickrollSound.play()}></div>
           <div className="button-holder help-button-holder"></div>
         </span>
-        <button className="captcha-button">VERIFY</button>
+        <button className="captcha-button" onClick={() => checkSolution()}>
+          VERIFY
+        </button>
       </div>
     </div>
   );
