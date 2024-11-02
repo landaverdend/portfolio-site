@@ -3,9 +3,11 @@ import captchaIcon from '@assets/images/icons/captcha-icon.png';
 import './fake-captcha.css';
 import '@styles/global-animations.css';
 import GridSelector from './gridSelector/GridSelector';
-import checkAnimation from '@assets/images/icons/checkAnimation.png';
+import { useAppState } from '@/state/appState';
 
 function FakeCaptchaContainer() {
+  const { setIsLoading, setNextView } = useAppState();
+
   const [captchaOpened, setCaptchaOpened] = useState(false);
   const [isFirstClick, setIsFirstClick] = useState(true);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -34,7 +36,8 @@ function FakeCaptchaContainer() {
         {isCompleted && (
           <span
             onAnimationEnd={() => {
-              alert('anim done');
+              setNextView('ResumeView');
+              setIsLoading(true);
             }}
             className="checkmark"></span>
         )}

@@ -44,8 +44,6 @@ type BGProps = {
   setSelected: React.Dispatch<React.SetStateAction<Set<number>>>;
 };
 function LargeGrid({ imgSrc, selected, setSelected }: BGProps) {
-  // const [selected, setSelected] = useState<Set<number>>(new Set<number>());
-
   const toRender = [];
 
   let topOffset = 0;
@@ -53,7 +51,7 @@ function LargeGrid({ imgSrc, selected, setSelected }: BGProps) {
     const leftOffset = (i % 4) * -100;
 
     toRender.push(
-      <div className="captcha-grid-item">
+      <div key={i} className="captcha-grid-item">
         {selected.has(i) && <img className="check-mark" src={checkmark} />}
 
         <div
