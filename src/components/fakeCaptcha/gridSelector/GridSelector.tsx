@@ -1,7 +1,7 @@
 import './grid-selector.css';
 import { grabRandomSmallChallenge, grabRandomLargeChallenge, LargeCaptchaChallenge } from '../sourceFactory';
 import _ from 'lodash';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import rickroll from '@assets/sounds/rickroll.mp3';
 import checkmark from '@assets/images/icons/checkmark.png';
 
@@ -87,22 +87,24 @@ type GProps = {
   isOpen: boolean;
 };
 function GridSelector({ isOpen }: GProps) {
-  // const challenge = grabRandomLargeChallenge();
-  // const challenge = grabRandomSmallChallenge();
-
   const [challenge, setChallenge] = useState<LargeCaptchaChallenge>(grabRandomLargeChallenge());
   const [selected, setSelected] = useState<Set<number>>(new Set<number>());
+
+  const [isCompleted, setIsCompleted] = useState<boolean>(false);
+  const [isIncorrect, setIsIncorrect] = useState<boolean>(false);
 
   const rickrollSound = useMemo(() => new Audio(rickroll), []);
 
   const checkSolution = () => {
     if (areSetsEqual(selected, challenge.solution)) {
-      alert('equal.');
+      setIsCompleted(true);
+    } else {
+      setIsIncorrect(true);
     }
   };
 
   return (
-    <div className={`captcha-grid-container ${isOpen ? 'visible' : 'invisible'}`}>
+    <div className={`captcha-grid-container ${isOpen && !isCompleted ? 'visible' : 'invisible'}`}>
       <div style={{ padding: '8px' }}>
         <div className="captcha-header">
           <span>Select all images with</span>
@@ -115,6 +117,8 @@ function GridSelector({ isOpen }: GProps) {
 
       {/* <SmallGrid /> */}
       <LargeGrid imgSrc={challenge.imageSrc} selected={selected} setSelected={setSelected} />
+
+      {isIncorrect && <div className="captcha-error">Please try again.</div>}
 
       <div className="captcha-footer">
         <span className="captcha-icons">

@@ -12,7 +12,7 @@ export type LargeCaptchaChallenge = {
 const largeCaptchaArray: Array<LargeCaptchaChallenge> = [
   { imageSrc: OJ, title: 'Murderer', solution: new Set<number>([1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15]) },
   { imageSrc: china, title: 'China', solution: new Set<number>([0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12]) },
-  { imageSrc: argentina, title: 'Argentina', solution: new Set<number>() },
+  { imageSrc: argentina, title: 'Argentina', solution: new Set<number>([0, 1, 2, 4, 5, 8, 9, 12, 13]) },
   { imageSrc: waldo, title: 'Waldo', solution: new Set<number>([9, 13]) },
 ];
 

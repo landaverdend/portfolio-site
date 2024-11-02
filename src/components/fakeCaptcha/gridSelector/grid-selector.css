@@ -36,6 +36,13 @@
     color: white;
   }
 
+  .captcha-error {
+    text-align: center;
+
+    color: #d14836;
+    font-size: 14px;
+  }
+
   .captcha-footer {
     display: flex;
     flex-direction: row;
