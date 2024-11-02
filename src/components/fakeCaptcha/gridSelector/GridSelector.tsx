@@ -85,12 +85,13 @@ function LargeGrid({ imgSrc, selected, setSelected }: BGProps) {
 
 type GProps = {
   isOpen: boolean;
+  isCompleted: boolean;
+  setIsCompleted: React.Dispatch<React.SetStateAction<boolean>>;
 };
-function GridSelector({ isOpen }: GProps) {
+function GridSelector({ isOpen, isCompleted, setIsCompleted }: GProps) {
   const [challenge, setChallenge] = useState<LargeCaptchaChallenge>(grabRandomLargeChallenge());
   const [selected, setSelected] = useState<Set<number>>(new Set<number>());
 
-  const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const [isIncorrect, setIsIncorrect] = useState<boolean>(false);
 
   const rickrollSound = useMemo(() => new Audio(rickroll), []);

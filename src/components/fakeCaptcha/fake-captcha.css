@@ -30,6 +30,18 @@
       width: 24px;
     }
 
+    .checkmark {
+      height: 30px;
+      width: 38px;
+
+      overflow: hidden;
+
+      background-image: url(/src/assets/images/icons/checkAnimation.png);
+      background-size: 38px 1260px; /* Total size of the sprite sheet */
+
+      animation: checkmarkAnimation 0.75s steps(21) forwards;
+    }
+
     .captcha-container__checkbox:hover {
       border: 2px solid #b2b2b2;
     }
@@ -69,6 +81,15 @@
     gap: 5px;
 
     color: #555555;
+
+    .links a {
+      color: #555555;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -78,5 +99,14 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes checkmarkAnimation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 -630px;
   }
 }
