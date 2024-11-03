@@ -2,6 +2,7 @@ import OJ from '@assets/images/captcha/bigGrid/OJ.png';
 import china from '@assets/images/captcha/bigGrid/china.png';
 import argentina from '@assets/images/captcha/bigGrid/argentina.png';
 import waldo from '@assets/images/captcha/bigGrid/waldo.png';
+import russia from '@assets/images/captcha/bigGrid/russia.png';
 
 export type LargeCaptchaChallenge = {
   imageSrc: string;
@@ -26,6 +27,13 @@ const largeCaptchaArray: Array<LargeCaptchaChallenge> = [
     solution: new Set<number>(coinFlip() ? [0, 1, 2, 4, 5, 8, 9, 12, 13] : [0, 1, 2, 4, 5, 8, 9, 12, 13, 14, 15]),
   },
   { imageSrc: waldo, title: 'Waldo', solution: new Set<number>([9, 13]) },
+  {
+    imageSrc: russia,
+    title: 'Russia',
+    solution: coinFlip()
+      ? new Set<number>([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+      : new Set<number>([1, 2, 3, 7, 11, 13, 14, 15]),
+  },
 ];
 
 export type SmallCaptchaChallenge = {
@@ -47,5 +55,5 @@ export function grabRandomLargeChallenge() {
   const ind = Math.floor(Math.random() * largeCaptchaArray.length);
 
   return largeCaptchaArray[ind];
-  // return largeCaptchaArray[0];
+  // return largeCaptchaArray[4];
 }

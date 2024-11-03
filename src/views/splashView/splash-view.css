@@ -3,10 +3,10 @@
 .splash-grid {
   display: grid;
   grid-template-columns: 30% 55%; /* Make sure these don't all add up to over 100*/
-  
+
   gap: 8vw;
   height: 115vh;
-  
+
   margin-top: 10vh;
   margin-left: 15vw;
 
@@ -29,6 +29,7 @@
 .splash-grid__button-container {
   display: flex;
   flex-direction: row;
+
   gap: 25px;
   align-items: center;
   justify-content: center;
@@ -142,6 +143,10 @@
   h1 {
     font-size: 4rem;
     max-width: 55vw;
+  }
+
+  .splash-grid__button-container {
+    flex-wrap: wrap;
   }
 
   .start__button {
