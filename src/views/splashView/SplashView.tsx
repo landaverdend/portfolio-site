@@ -7,13 +7,16 @@ import ChatBubble from '@/components/chatBubble/ChatBubble';
 import { useAppState } from '@/state/appState';
 import { useState } from 'react';
 import FakeCaptchaContainer from '@/components/fakeCaptcha/FakeCaptchaContainer';
+import Navbar from '@/components/navbar/Navbar';
 
 function SplashView() {
   const { setIsLoading, setNextView } = useAppState();
   const [displayFakeCaptcha, setDisplayFakeCaptcha] = useState(false);
 
+  const navbarLinks = [{ link: '', text: 'About' }];
   return (
     <>
+      <Navbar links={navbarLinks} />
       <div className="splash-grid inter">
         <div className="splash-grid__item">
           <div className="splash-grid__text-container">

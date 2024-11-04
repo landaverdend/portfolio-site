@@ -1,4 +1,3 @@
-import Navbar from './navbar/Navbar';
 import './resume-view.css';
 
 import Footer from './footer/Footer';
@@ -6,11 +5,21 @@ import AboutContainer from './about/AboutContainer';
 import ProjectContainer from './project/ProjectContainer';
 import ChatBubble from '@/components/chatBubble/ChatBubble';
 import { createPortal } from 'react-dom';
+import Navbar from '@/components/navbar/Navbar';
 
 function ResumeView() {
+  const navbarLinks = [
+    {
+      link: '#about',
+      text: 'About',
+    },
+    { link: '#projects', text: 'Projects' },
+    { link: '#resume', text: 'Resume' },
+  ];
+
   return (
     <>
-      <Navbar />
+      <Navbar links={navbarLinks} />
       <div className="resume-container">
         <AboutContainer />
         <div className="bubble b1"></div>

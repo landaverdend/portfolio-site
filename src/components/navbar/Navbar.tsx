@@ -1,7 +1,11 @@
 import './navbar.css';
 import siteLogo from '@assets/images/logo.png';
 
-function Navbar() {
+type NavbarProps = {
+  links: Array<{ link: string; text: string }>;
+};
+
+function Navbar({ links }: NavbarProps) {
   return (
     <div className="navbar-container">
       <div className="navbar-container__logo">
@@ -10,9 +14,11 @@ function Navbar() {
         </a>
       </div>
       <div className="navbar-container__links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#resume">Resume</a>
+        {links.map((l) => (
+          <a key={l.link} href={l.link}>
+            {l.text}
+          </a>
+        ))}
       </div>
     </div>
   );
