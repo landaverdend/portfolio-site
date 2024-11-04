@@ -3,9 +3,9 @@ import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas.tsx';
-import './setup-view.css';
+import './survey-view.css';
 
-function SetupView() {
+function SurveyView() {
   const [isQuestionaireStarted, setIsQuestionaireStarted] = useState(false);
 
   return (
@@ -23,4 +23,4 @@ function SetupView() {
   );
 }
 
-export default SetupView;
+export default SurveyView;

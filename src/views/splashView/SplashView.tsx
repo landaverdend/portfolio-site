@@ -31,7 +31,7 @@ function SplashView() {
               <span
                 className="start__button"
                 onClick={() => {
-                  setNextView('SetupView');
+                  setNextView('SurveyView');
                   setIsLoading(true);
                 }}>
                 Get started <i className="fa-solid fa-arrow-right"></i>

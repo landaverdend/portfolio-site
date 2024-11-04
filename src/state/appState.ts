@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type View = 'SplashView' | 'ResumeView' | 'SetupView' | '';
+type View = 'SplashView' | 'ResumeView' | 'SurveyView' | '';
 
 type AppState = {
   componentToRender: View;

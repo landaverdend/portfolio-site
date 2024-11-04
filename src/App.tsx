@@ -1,7 +1,7 @@
 import SplashView from '@views/splashView/SplashView';
 import ResumeView from './views/resumeView/ResumeView';
 import { useAppState } from './state/appState';
-import SetupView from './views/setupView/SetupView';
+import SurveyView from './views/SurveyView/SurveyView';
 import LoadingView from './views/loadingView/LoadingView';
 
 function App() {
@@ -13,8 +13,8 @@ function App() {
     case 'ResumeView':
       renderMe = <ResumeView />;
       break;
-    case 'SetupView':
-      renderMe = <SetupView />;
+    case 'SurveyView':
+      renderMe = <SurveyView />;
       break;
     case 'SplashView':
       renderMe = <SplashView />;

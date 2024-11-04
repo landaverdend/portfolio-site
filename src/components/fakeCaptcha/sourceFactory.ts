@@ -24,7 +24,7 @@ const largeCaptchaArray: Array<LargeCaptchaChallenge> = [
   {
     imageSrc: argentina,
     title: 'Argentina',
-    solution: new Set<number>(coinFlip() ? [0, 1, 2, 4, 5, 8, 9, 12, 13] : [0, 1, 2, 4, 5, 8, 9, 12, 13, 14, 15]),
+    solution: new Set<number>(coinFlip() ? [0, 1, 4, 5, 8, 9, 12, 13] : [0, 1, 4, 5, 8, 9, 12, 13, 14, 15]),
   },
   { imageSrc: waldo, title: 'Waldo', solution: new Set<number>([9, 13]) },
   {
