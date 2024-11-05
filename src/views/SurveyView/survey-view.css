@@ -5,27 +5,27 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
 
-.setup-container__questionnaire {
-  background-color: rgb(249, 249, 249);
+  .setup-container__questionnaire {
+    background-color: rgb(249, 249, 249);
 
-  width: 35vw;
-  height: 25vh;
-  text-align: center;
+    width: 35vw;
+    height: 25vh;
+    text-align: center;
 
-  visibility: hidden;
-}
+    visibility: hidden;
+  }
 
-.setup-container__init {
-  display: flex;
-  flex-direction: column;
-}
+  .setup-container__init {
+    display: flex;
+    flex-direction: column;
+  }
 
-.su-fade-in {
-  animation: fade-in 1s ease-in-out 2s forwards;
-}
+  .su-fade-in {
+    animation: fade-in 1s ease-in-out 2s forwards;
+  }
 
-.su-fade-out {
-  animation: fade-out 1s ease-in-out forwards;
+  .su-fade-out {
+    animation: fade-out 1s ease-in-out forwards;
+  }
 }

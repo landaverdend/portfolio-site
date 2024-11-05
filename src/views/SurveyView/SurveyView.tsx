@@ -12,7 +12,6 @@ function SurveyView() {
     <div className="setup-container">
       <div className={`setup-container__questionnaire su-fade-in`}>
         <div className={`setup-container__init ${isQuestionaireStarted ? 'su-fade-out' : ''}`}>
-          
           <TypewriterText text={`Let's get you started...`} speed={45} />
           <button onClick={() => setIsQuestionaireStarted(true)}>Okay!</button>
         </div>

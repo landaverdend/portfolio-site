@@ -30,7 +30,8 @@
 }
 
 .curtain--right-gradient {
-  background: linear-gradient(to left, rgb(183, 255, 183), white);
+  /* background: linear-gradient(to left, rgb(183, 255, 183), white); */
+  background: linear-gradient(to left, rgb(196, 196, 245), white);
   z-index: 201;
   /* background-color: blue; */
 }
