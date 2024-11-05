@@ -111,16 +111,16 @@ export function animateCanvas(canvas: HTMLCanvasElement) {
   const waveAmplitude = 75;
 
   const hexColors: string[] = [
-    '#4CAF50', // Medium Green
-    '#66BB6A', // Lighter Green
-    '#81C784', // Even Lighter Green
+    // '#4CAF50', // Medium Green
+    // '#66BB6A', // Lighter Green
+    // '#81C784', // Even Lighter Green
     // '#9CCC65', // Light Green
     // '#A5D6A7', // Very Light Green
     // '#7B1FA2', // Medium Purple
     // '#8E24AA', // Lighter Purple
     '#CE93D8', // Light Purple
     '#E1BEE7', // Very Light Purple
-    '#7f7dff', // Medium Indigo
+    '#7f7dff', // Medium Indig
   ];
 
   const colorArray: Array<Color> = hexColors.map((hex, ind) => {

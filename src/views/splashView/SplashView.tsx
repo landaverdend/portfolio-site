@@ -8,14 +8,18 @@ import { useAppState } from '@/state/appState';
 import { useState } from 'react';
 import FakeCaptchaContainer from '@/components/fakeCaptcha/FakeCaptchaContainer';
 import Navbar from '@/components/navbar/Navbar';
+import Footer from '@/components/footer/Footer';
 
 function SplashView() {
   const { setIsLoading, setNextView } = useAppState();
   const [displayFakeCaptcha, setDisplayFakeCaptcha] = useState(false);
 
-  const navbarLinks = [{ link: '', text: 'About' }];
+  const navbarLinks = [
+    { link: '#splash', text: 'About' },
+    { link: '', text: 'Features' },
+  ];
   return (
-    <>
+    <div id="splash">
       <Navbar links={navbarLinks} />
       <div className="splash-grid inter">
         <div className="splash-grid__item">
@@ -61,9 +65,10 @@ function SplashView() {
           <CardStack />
         </div>
       </div>
+      <Footer />
       {createPortal(<ChatBubble />, document.getElementById('root') as HTMLElement)}
       {createPortal(<BackgroundCanvas />, document.getElementById('root') as HTMLElement)}
-    </>
+    </div>
   );
 }
 

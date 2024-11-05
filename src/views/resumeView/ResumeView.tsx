@@ -1,11 +1,11 @@
 import './resume-view.css';
 
-import Footer from './footer/Footer';
 import AboutContainer from './about/AboutContainer';
 import ProjectContainer from './project/ProjectContainer';
 import ChatBubble from '@/components/chatBubble/ChatBubble';
 import { createPortal } from 'react-dom';
 import Navbar from '@/components/navbar/Navbar';
+import Footer from '@/components/footer/Footer';
 
 function ResumeView() {
   const navbarLinks = [
