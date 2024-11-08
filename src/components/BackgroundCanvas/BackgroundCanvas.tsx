@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
-import './background-canvas.css';
 import { animateCanvas } from './BackgroundCanvas';
+import './background-canvas.css';
 
 function resizeCanvas(canvas: HTMLCanvasElement) {
   canvas.width = window.innerWidth;
@@ -9,7 +9,10 @@ function resizeCanvas(canvas: HTMLCanvasElement) {
   animateCanvas(canvas);
 }
 
-function BackgroundCanvas() {
+type BGCProps = {
+  flipped?: boolean;
+};
+function BackgroundCanvas({ flipped }: BGCProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Memoize the handleResize function.
@@ -33,7 +36,7 @@ function BackgroundCanvas() {
 
   return (
     <>
-      <canvas ref={canvasRef}></canvas>
+      <canvas className={`${flipped ? 'flipped' : ''}`} ref={canvasRef}></canvas>
     </>
   );
 }

@@ -7,3 +7,7 @@ canvas {
   height: 100%;
   pointer-events: none;
 }
+
+.flipped {
+  transform: rotate(180deg) translateY(-250px);
+}

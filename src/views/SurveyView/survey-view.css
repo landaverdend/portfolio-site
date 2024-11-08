@@ -6,23 +6,39 @@
   justify-content: center;
   align-items: center;
 
-  .setup-container__questionnaire {
-    background-color: rgb(249, 249, 249);
-
-    width: 35vw;
-    height: 25vh;
-    text-align: center;
-
-    visibility: hidden;
-  }
-
-  .setup-container__init {
+  .init-block {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 100px;
+    align-items: center;
+
+    width: 60vw;
+
+    .init-block__info {
+      flex: 3;
+      h1 {
+        font-size: 55px;
+      }
+    }
+
+    .email-form {
+      flex: 2;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      
+      height: 80%;
+
+      border-radius: 25px;
+      background-color: var(--color-3);
+      box-shadow: 7.5px 7.5px black;
+    }
   }
 
   .su-fade-in {
-    animation: fade-in 1s ease-in-out 2s forwards;
+    /* animation: fade-in 1s ease-in-out forwards; */
   }
 
   .su-fade-out {
