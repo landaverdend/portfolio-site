@@ -1,6 +1,6 @@
 import SetupForm from '@/components/setupForm/SetupForm';
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas.tsx';
 import Footer from '@/components/footer/Footer';
@@ -46,7 +46,6 @@ function Form() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>({ mode: 'onSubmit' });
 
@@ -57,84 +56,90 @@ function Form() {
   const badName = () => Math.random() > 0.5;
 
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <form className={'email-form'} onSubmit={handleSubmit(onSubmit)}>
-      {/* include validation with required or other standard HTML validation rules */}
+    <div className="email-form-container">
+      <h1>Let's get you started...</h1>
+      {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
+      <form className={'email-form'} onSubmit={handleSubmit(onSubmit)}>
+        {/* include validation with required or other standard HTML validation rules */}
 
-      <label htmlFor="firstName" className="firstName">
-        First Name
-        <input
-          {...register('firstName', {
-            required: true,
-            validate: {
-              badName: () => badName(),
-            },
-          })}
-          name="firstName"
-        />
-        {/* errors will return when field validation fails  */}
-        {errors.firstName?.type === 'badName' && <ErrorText>I don't like your name. Change it.</ErrorText>}
-      </label>
+        <label htmlFor="firstName" className="firstName">
+          First Name
+          <input
+            {...register('firstName', {
+              required: true,
+              validate: {
+                badName: () => badName(),
+              },
+            })}
+            name="firstName"
+          />
+          {/* errors will return when field validation fails  */}
+          {errors.firstName?.type === 'badName' && <ErrorText>I don't like your name. Change it.</ErrorText>}
+        </label>
 
-      <label className="lastName">
-        Last Name
-        <input
-          {...register('lastName', {
-            required: true,
-            validate: {},
-          })}></input>
-        {errors.firstName?.type === 'required' && <ErrorText>you forgot to put it in dumbass</ErrorText>}
-      </label>
+        <label className="lastName">
+          Last Name
+          <input
+            {...register('lastName', {
+              required: true,
+              validate: {},
+            })}></input>
+          {errors.firstName?.type === 'required' && <ErrorText>you forgot to put it in dumbass</ErrorText>}
+        </label>
 
-      <div className="user-details">
+        <div className="user-details">
+          <label>
+            Work Email
+            <input type="text" placeholder="Email" {...register('email', { required: true, pattern: /^\S+@\S+$/i })} />
+          </label>
+
+          <label>
+            Job Title
+            <input type="text" placeholder="Job Title" {...register('jobTitle', { required: true })}></input>
+          </label>
+
+          <label>
+            Phone Number
+            <input type="tel" placeholder="(123) 456-7891" {...register('phone', { required: true })}></input>
+          </label>
+        </div>
+
         <label>
-          Work Email
-          <input type="text" placeholder="Email" {...register('email', { required: true, pattern: /^\S+@\S+$/i })} />
+          Company Name
+          <input
+            type="text"
+            placeholder=""
+            {...register('companyName', {
+              required: true,
+            })}></input>
         </label>
 
         <label>
-          Job Title
-          <input type="text" placeholder="Job Title" {...register('jobTitle', { required: true })}></input>
+          Company Size
+          <select {...register('companySize', { required: false })}>
+            <option>1-99 employees </option>
+            <option>100-299 employees</option>
+            <option>300-1999 employees</option>
+            <option>+2000 employees</option>
+            <option>I have no company</option>
+          </select>
         </label>
 
-        <label>
-          Phone Number
-          <input type="tel" placeholder="(123) 456-7891" {...register('phone', { required: true })}></input>
-        </label>
-      </div>
-
-      <label>
-        Company Name
-        <input
-          type="text"
-          placeholder=""
-          {...register('companyName', {
-            required: true,
-          })}></input>
-      </label>
-
-      <label>
-        Company Size
-        <select {...register('companySize', { required: false })}>
-          <option>poop</option>
-          <option>balls</option>
-        </select>
-      </label>
-
-      <label className="details">
-        Provide more details (optional)
-        <textarea></textarea>
-      </label>
-
-      <div className="submit-container">
-        <label>
-          <input type="checkbox" {...register('marketingMaterials', { required: true })} />I agree to receive marketing
-          notifications
+        <label className="details">
+          Provide more details (optional)
+          <textarea></textarea>
         </label>
 
-        <input type="submit" />
-      </div>
-    </form>
+        <div className="submit-container">
+          <label>
+            <input type="checkbox" {...register('marketingMaterials', { required: true })} />I agree to receive marketing
+            notifications
+          </label>
+
+          <input id="submit-button" value="Let's Go" type="submit"></input>
+        </div>
+      </form>
+    </div>
   );
 }
 
