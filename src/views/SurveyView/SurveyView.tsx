@@ -1,6 +1,6 @@
 import SetupForm from '@/components/setupForm/SetupForm';
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas.tsx';
 import Footer from '@/components/footer/Footer';
@@ -25,10 +25,23 @@ const dumbSlogans: string[] = [
   'Empowering your recruitment with unmatched access to expertise.',
 ];
 
+type ETProps = {
+  children: string;
+};
+function ErrorText({ children }: ETProps) {
+  return <span className="error-text">{children}</span>;
+}
+
 type Inputs = {
   firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  companySize: string;
+  companyName: string;
+  jobTitle: string;
+  marketingMaterials: boolean;
 };
-
 function Form() {
   const {
     register,
@@ -41,25 +54,86 @@ function Form() {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
+  const badName = () => Math.random() > 0.5;
+
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form className={'email-form'} onSubmit={handleSubmit(onSubmit)}>
       {/* include validation with required or other standard HTML validation rules */}
-      <input
-        {...register('firstName', {
-          required: true,
-          validate: {
-            badName: (value, formValues) => {
-              console.log('validating...');
-              return Math.random() > 1;
+
+      <label htmlFor="firstName" className="firstName">
+        First Name
+        <input
+          {...register('firstName', {
+            required: true,
+            validate: {
+              badName: () => badName(),
             },
-          },
-        })}
-      />
-      {/* errors will return when field validation fails  */}
-      {errors.firstName?.type === 'badName' && <span>I don't like your name. Change it.</span>}
-      {errors.firstName?.type === 'required' && <span>you forgot to put it in dumbass</span>}
-      <input type="submit" />
+          })}
+          name="firstName"
+        />
+        {/* errors will return when field validation fails  */}
+        {errors.firstName?.type === 'badName' && <ErrorText>I don't like your name. Change it.</ErrorText>}
+      </label>
+
+      <label className="lastName">
+        Last Name
+        <input
+          {...register('lastName', {
+            required: true,
+            validate: {},
+          })}></input>
+        {errors.firstName?.type === 'required' && <ErrorText>you forgot to put it in dumbass</ErrorText>}
+      </label>
+
+      <div className="user-details">
+        <label>
+          Work Email
+          <input type="text" placeholder="Email" {...register('email', { required: true, pattern: /^\S+@\S+$/i })} />
+        </label>
+
+        <label>
+          Job Title
+          <input type="text" placeholder="Job Title" {...register('jobTitle', { required: true })}></input>
+        </label>
+
+        <label>
+          Phone Number
+          <input type="tel" placeholder="(123) 456-7891" {...register('phone', { required: true })}></input>
+        </label>
+      </div>
+
+      <label>
+        Company Name
+        <input
+          type="text"
+          placeholder=""
+          {...register('companyName', {
+            required: true,
+          })}></input>
+      </label>
+
+      <label>
+        Company Size
+        <select {...register('companySize', { required: false })}>
+          <option>poop</option>
+          <option>balls</option>
+        </select>
+      </label>
+
+      <label className="details">
+        Provide more details (optional)
+        <textarea></textarea>
+      </label>
+
+      <div className="submit-container">
+        <label>
+          <input type="checkbox" {...register('marketingMaterials', { required: true })} />I agree to receive marketing
+          notifications
+        </label>
+
+        <input type="submit" />
+      </div>
     </form>
   );
 }
