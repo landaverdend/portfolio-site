@@ -9,15 +9,18 @@
   .init-block {
     display: flex;
     flex-direction: row;
+
     gap: 100px;
     align-items: center;
 
-    width: 60vw;
+    width: 70vw;
 
     .init-block__info {
       flex: 3;
+
       h1 {
         font-size: 55px;
+        min-height: 300px;
       }
     }
 
@@ -28,11 +31,12 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      
-      height: 80%;
+
+      /* height: 80%; */
 
       border-radius: 25px;
-      background-color: var(--color-3);
+      /* background-color: var(--color-3); */
+      background-color: hsl(270, 27%, 51%);
       box-shadow: 7.5px 7.5px black;
     }
   }
