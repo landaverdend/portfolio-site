@@ -123,7 +123,7 @@
         background-color: rgb(78 59 125);
       }
 
-      #submit-button,
+      #submit-button:hover,
       .give-up-button:hover {
         cursor: pointer;
         opacity: 0.8;

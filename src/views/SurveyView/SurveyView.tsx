@@ -162,6 +162,7 @@ function Form() {
             <option>+2000 employees</option>
             <option>I have no company</option>
           </select>
+          {errors.companySize && <ErrorText error={errors.companySize} />}
         </label>
 
         <label className="details">
@@ -171,8 +172,17 @@ function Form() {
 
         <div className="submit-container">
           <label>
-            <input type="checkbox" {...register('marketingMaterials', { required: true })} />I agree to receive marketing
-            notifications
+            <input
+              type="checkbox"
+              {...register('marketingMaterials', {
+                required: true,
+                validate: {
+                  badAnswer: () => randomChanceInTen(5) || "I don't think so.",
+                },
+              })}
+            />
+            I agree to receive marketing notifications
+            {errors.marketingMaterials && <ErrorText error={errors.marketingMaterials} />}
           </label>
 
           <input
