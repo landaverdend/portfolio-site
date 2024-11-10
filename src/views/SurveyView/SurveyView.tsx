@@ -48,7 +48,7 @@ type Inputs = {
   marketingMaterials: boolean;
 };
 function Form() {
-  // const { setNextView, setIsLoading } = useAppState();
+  const { setNextView, setIsLoading } = useAppState();
 
   const {
     register,
@@ -58,12 +58,9 @@ function Form() {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log('lol');
-    // if (!errors) {
-    // setIsLoading(true);
-
-    // setNextView('ResumeView');
-    // }
   };
+
+  const [timesTried, setTimesTried] = useState(0);
 
   return (
     <div className="email-form-container">
@@ -107,22 +104,39 @@ function Form() {
               placeholder="Email"
               {...register('email', {
                 required: { value: true, message: 'Sorry but I need your email!!!' },
-                pattern: /^\S+@\S+$/i,
+                pattern: { value: /^\S+@\S+$/i, message: 'Please enter an EMAIL' },
                 validate: {
-                  badEmail: () => randomChanceInTen(2),
+                  badEmail: () => randomChanceInTen(2) || 'I think you just made that up... Try again',
                 },
               })}
             />
+            {errors.email && <ErrorText error={errors.email} />}
           </label>
 
           <label>
             Job Title
-            <input type="text" placeholder="Job Title" {...register('jobTitle', { required: true })}></input>
+            <input
+              type="text"
+              placeholder="Job Title"
+              {...register('jobTitle', {
+                required: { value: true, message: "C'mon don't tell me your unemployed..." },
+                validate: {
+                  badTitle: () => randomChanceInTen(2) || "That's not a job!",
+                },
+              })}></input>
+            {errors.jobTitle && <ErrorText error={errors.jobTitle} />}
           </label>
 
           <label>
             Phone Number
-            <input type="tel" placeholder="(123) 456-7891" {...register('phone', { required: true })}></input>
+            <input
+              type="tel"
+              placeholder="(123) 456-7891"
+              {...register('phone', {
+                required: { value: true, message: "That's not a phone number!!" },
+                validate: { badPhone: () => randomChanceInTen(1) || "Listen. I don't think so" },
+              })}></input>
+            {errors.phone && <ErrorText error={errors.phone} />}
           </label>
         </div>
 
@@ -132,13 +146,16 @@ function Form() {
             type="text"
             placeholder=""
             {...register('companyName', {
-              required: true,
+              required: { value: true, message: 'Please enter a value here' },
+              validate: { badCompanyName: () => randomChanceInTen(1) || 'You call that a company 🥶' },
             })}></input>
+          {errors.companyName && <ErrorText error={errors.companyName} />}
         </label>
 
         <label>
           Company Size
-          <select {...register('companySize', { required: false })}>
+          <select
+            {...register('companySize', { required: false, validate: { badChoice: () => randomChanceInTen(3) || 'You wish.' } })}>
             <option>1-99 employees </option>
             <option>100-299 employees</option>
             <option>300-1999 employees</option>
@@ -158,7 +175,24 @@ function Form() {
             notifications
           </label>
 
-          <input id="submit-button" value="Let's Go" type="submit"></input>
+          <input
+            id="submit-button"
+            value="Let's Go"
+            type="submit"
+            onClick={() => {
+              setTimesTried((prev) => prev + 1);
+            }}></input>
+
+          {timesTried >= 2 && (
+            <button
+              className="give-up-button"
+              onClick={() => {
+                setIsLoading(true);
+                setNextView('ResumeView');
+              }}>
+              I give up!
+            </button>
+          )}
         </div>
       </form>
     </div>
