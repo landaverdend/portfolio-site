@@ -6,7 +6,8 @@ import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas.tsx
 import Footer from '@/components/footer/Footer';
 import './survey-view.css';
 import ChatBubble from '@/components/chatBubble/ChatBubble';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, FieldError } from 'react-hook-form';
+import { useAppState } from '@/state/appState';
 
 const dumbSlogans: string[] = [
   'Unlocking your path to unparalleled hiring success.',
@@ -16,7 +17,6 @@ const dumbSlogans: string[] = [
   'Streamlining your talent search with seamless access.',
   'Fueling your hiring success with instant access to greatness.',
   'Revolutionizing the way you discover developer talent.',
-  'Bridging the gap between recruiters and elite developers.',
   'Accelerating your hiring strategy with exclusive access.',
   'Driving your recruitment success at the speed of innovation.',
   'Shaping the future of talent acquisition, today.',
@@ -25,11 +25,16 @@ const dumbSlogans: string[] = [
   'Empowering your recruitment with unmatched access to expertise.',
 ];
 
+function randomChanceInTen(num: number) {
+  return Math.random() < num * 0.1;
+}
+
 type ETProps = {
-  children: string;
+  error: FieldError;
 };
-function ErrorText({ children }: ETProps) {
-  return <span className="error-text">{children}</span>;
+function ErrorText({ error }: ETProps) {
+  console.log(error);
+  return <span className="error-text">{error.message}</span>;
 }
 
 type Inputs = {
@@ -43,17 +48,22 @@ type Inputs = {
   marketingMaterials: boolean;
 };
 function Form() {
+  // const { setNextView, setIsLoading } = useAppState();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({ mode: 'onSubmit' });
 
-  console.log(errors);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log('lol');
+    // if (!errors) {
+    // setIsLoading(true);
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-
-  const badName = () => Math.random() > 0.5;
+    // setNextView('ResumeView');
+    // }
+  };
 
   return (
     <div className="email-form-container">
@@ -66,31 +76,43 @@ function Form() {
           First Name
           <input
             {...register('firstName', {
-              required: true,
+              required: { value: true, message: 'You forgot the first name....' },
               validate: {
-                badName: () => badName(),
+                badName: () => randomChanceInTen(3) || 'Hmmmm, pick a better name...',
               },
             })}
             name="firstName"
           />
           {/* errors will return when field validation fails  */}
-          {errors.firstName?.type === 'badName' && <ErrorText>I don't like your name. Change it.</ErrorText>}
+          {errors.firstName && <ErrorText error={errors.firstName}></ErrorText>}
         </label>
 
         <label className="lastName">
           Last Name
           <input
             {...register('lastName', {
-              required: true,
-              validate: {},
+              required: { value: true, message: 'Whoa there! You need to add a last name!' },
+              validate: {
+                badName: () => randomChanceInTen(3) || "This one just won't work.... sorry!",
+              },
             })}></input>
-          {errors.firstName?.type === 'required' && <ErrorText>you forgot to put it in dumbass</ErrorText>}
+          {errors.lastName && <ErrorText error={errors.lastName} />}
         </label>
 
         <div className="user-details">
           <label>
             Work Email
-            <input type="text" placeholder="Email" {...register('email', { required: true, pattern: /^\S+@\S+$/i })} />
+            <input
+              type="text"
+              placeholder="Email"
+              {...register('email', {
+                required: { value: true, message: 'Sorry but I need your email!!!' },
+                pattern: /^\S+@\S+$/i,
+                validate: {
+                  badEmail: () => randomChanceInTen(2),
+                },
+              })}
+            />
           </label>
 
           <label>

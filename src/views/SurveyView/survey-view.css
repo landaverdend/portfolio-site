@@ -44,7 +44,6 @@
 
   padding: 25px;
   border-radius: 25px;
-  /* background-color: var(--color-3); */
   background-color: hsl(270, 62%, 89%);
   box-shadow: 7.5px 7.5px black;
 
@@ -74,12 +73,6 @@
       outline: none;
     }
 
-    .firstName {
-    }
-
-    .lastName {
-    }
-
     .user-details {
       grid-column: span 2;
 
@@ -98,6 +91,7 @@
         resize: none;
         font-family: inherit;
 
+        outline: none;
         border: 1px solid white;
         border-radius: 2.5px;
       }
