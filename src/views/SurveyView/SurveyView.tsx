@@ -165,6 +165,13 @@ function Form() {
           {errors.companySize && <ErrorText error={errors.companySize} />}
         </label>
 
+        <label>
+          Veteran Status
+          <select>
+            <option></option>
+          </select>
+        </label>
+
         <label className="details">
           Provide more details (optional)
           <textarea></textarea>

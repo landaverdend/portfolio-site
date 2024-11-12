@@ -14,6 +14,7 @@ function ResumeView() {
       text: 'About',
     },
     { link: '#projects', text: 'Projects' },
+    { link: '#experience', text: 'Experience' },
     { link: '#resume', text: 'Resume' },
   ];
 
