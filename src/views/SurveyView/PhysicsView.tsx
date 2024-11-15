@@ -2,34 +2,22 @@ import { Bodies, Composite, Engine, Runner } from 'matter-js';
 import { useEffect, useRef, useState } from 'react';
 // import styled from "styled-components";
 
-const engine = Engine.create();
-const runner = Runner.create();
-
-Runner.run(runner, engine);
 
 interface Circle {
   x: number;
   y: number;
 }
 
-// const Canvas = div`
-//   width: 100vw;
-//   height: 100vh;
-//   position: relative;
-//   background: gray;
-// `;
-
-// const Circle = styled.div`
-//   background-color: yellow;
-//   border-radius: 50%;
-//   box-shadow: 2px 2px;
-//   position: absolute;
-// `;
-
 function PhysicsView() {
   const ref = useRef<HTMLDivElement>(null);
+  const engine = useRef<Matter.Engine>(Engine.create())
+  const runner = useRef<Matter.Runner>(Runner.create())
   const dots = useRef<Circle[]>([]);
   const [, setAnim] = useState(0);
+
+  useEffect(() => {
+    Runner.run(runner.current, engine.current)
+  }, [])
 
   useEffect(function init() {
     const width = ref.current?.clientWidth ?? 0;
@@ -48,7 +36,7 @@ function PhysicsView() {
       isStatic: true,
     });
 
-    Composite.add(engine.world, [ground, ceiling, wallL, wallR]);
+    Composite.add(engine.current.world, [ground, ceiling, wallL, wallR]);
   }, []);
 
   useEffect(() => {
@@ -63,7 +51,7 @@ function PhysicsView() {
       circ.frictionAir = 0.00005;
       circ.restitution = 0.9;
 
-      Composite.add(engine.world, circ);
+      Composite.add(engine.current.world, circ);
 
       if (dots.current.length < 100) setTimeout(addDot, 300);
     }
@@ -80,7 +68,8 @@ function PhysicsView() {
 
     function animate() {
       let i = 0;
-      for (const dot of Composite.allBodies(engine.world)) {
+      console.log(dots);
+      for (const dot of Composite.allBodies(engine.current.world)) {
         if (dot.isStatic) continue;
 
         dots.current[i] = { x: dot.position.x, y: dot.position.y };

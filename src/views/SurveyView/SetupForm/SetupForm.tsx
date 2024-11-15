@@ -1,6 +1,7 @@
 import { useAppState } from '@/state/appState';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FieldError, SubmitHandler, useForm } from 'react-hook-form';
+
 import '../survey-view.css';
 
 function randomChanceInTen(num: number) {
@@ -131,7 +132,10 @@ function SetupForm() {
         <label>
           Company Size
           <select
-            {...register('companySize', { required: false, validate: { badChoice: () => randomChanceInTen(3) || 'You wish.' } })}>
+            {...register('companySize', {
+              required: false,
+              validate: { badChoice: () => randomChanceInTen(3) || 'You wish.' },
+            })}>
             <option>1-99 employees </option>
             <option>100-299 employees</option>
             <option>300-1999 employees</option>

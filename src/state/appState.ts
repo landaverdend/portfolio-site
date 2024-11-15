@@ -15,7 +15,8 @@ type AppState = {
 };
 
 export const useAppState = create<AppState>((set) => ({
-  componentToRender: 'PhysicsView',
+  // componentToRender: 'PhysicsView',
+  componentToRender: 'SurveyView',
   // componentToRender: 'SplashView',
   nextComponent: '',
 

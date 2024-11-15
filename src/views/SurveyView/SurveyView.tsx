@@ -1,11 +1,12 @@
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas.tsx';
 import Footer from '@/components/footer/Footer';
-import './survey-view.css';
 import ChatBubble from '@/components/chatBubble/ChatBubble';
 import SetupForm from './SetupForm/SetupForm';
+import { Bodies, Composite, Engine, Runner } from 'matter-js';
+import './survey-view.css';
 
 const dumbSlogans: string[] = [
   'Unlocking your path to unparalleled hiring success.',
@@ -24,7 +25,6 @@ const dumbSlogans: string[] = [
 ];
 
 function SurveyView() {
-  const [isQuestionaireStarted, setIsQuestionaireStarted] = useState(false);
   const [dumbSlogan, setDumbSlogan] = useState(dumbSlogans[0]);
 
   useEffect(() => {
@@ -39,10 +39,106 @@ function SurveyView() {
     };
   }, []);
 
+  // Build the Matter.JS stuff
+  const ref = useRef<HTMLDivElement>(null);
+  const engine = useRef<Matter.Engine>(Engine.create());
+  const runner = useRef<Matter.Runner>(Runner.create());
+  const [, setAnim] = useState(0);
+  const dots = useRef<{ x: number; y: number }[]>([]);
+
+  useEffect(() => {
+    Runner.run(runner.current, engine.current);
+  }, []);
+
+  // Build out the base scene when times tried is greater or equal to 1.
+  useEffect(function init() {
+    // if (timesTried >= 1) {
+    const width = ref.current?.clientWidth ?? 0;
+    const height = ref.current?.clientHeight ?? 0;
+
+    const ground = Bodies.rectangle(width / 2, height, width, 50, { isStatic: true });
+    const ceiling = Bodies.rectangle(width / 2, 0, width, 1, {
+      isStatic: true,
+    });
+    const wallL = Bodies.rectangle(0, height / 2, 1, height, {
+      isStatic: true,
+    });
+    const wallR = Bodies.rectangle(width, height / 2, 50, height, {
+      isStatic: true,
+    });
+
+    Composite.add(engine.current.world, [ground, ceiling, wallL, wallR]);
+    // }
+  }, []);
+
+  useEffect(() => {
+    let unsubscribe: any;
+
+    function addElement() {
+      const width = ref.current?.clientWidth ?? 0;
+      const height = ref.current?.clientHeight ?? 0;
+
+      const circ = Bodies.circle(Math.random() * width * 0.75 + 50, Math.random() * height * 0.75 + 50, 25);
+      circ.friction = 0.05;
+      circ.frictionAir = 0.00005;
+      circ.restitution = 0.9;
+
+      Composite.add(engine.current.world, circ);
+
+      // console.log(dots);
+      // if (dots.current.length < 100) setTimeout(addElement, 300);
+    }
+
+    addElement();
+
+    return () => {
+      clearTimeout(unsubscribe);
+    };
+  }, []);
+
+  useEffect(function triggerAnimation() {
+    let unsubscribe: number;
+    function animate() {
+      let i = 0;
+      for (const el of Composite.allBodies(engine.current.world)) {
+        if (el.isStatic) continue;
+
+        dots.current[i] = { x: el.position.x, y: el.position.y };
+
+        i++;
+      }
+      setAnim((x) => x + 1);
+      unsubscribe = requestAnimationFrame(animate);
+    }
+
+    unsubscribe = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(unsubscribe);
+    };
+  }, []);
+
   return (
     <>
       <div className="setup-container">
-        <div className={`init-block ${isQuestionaireStarted ? 'su-fade-out' : ''}`}>
+        {dots.current.map((dot, key) => {
+          return (
+            <div
+              style={{
+                backgroundColor: 'red',
+                borderRadius: '50%',
+                position: 'absolute',
+                top: dot.y,
+                left: dot.x,
+                width: '50px',
+                height: '50px',
+                zIndex: 10000,
+              }}
+              key={key}></div>
+          );
+        })}
+
+        <div className="init-block su-fade-in">
           <div className="init-block__info">
             <h1>
               <TypewriterText text={dumbSlogan} speed={30} delay={0} />
@@ -59,10 +155,14 @@ function SurveyView() {
           <SetupForm />
         </div>
 
-        {isQuestionaireStarted && <SetupForm />}
-
         {createPortal(<ChatBubble />, document.getElementById('root') as HTMLElement)}
-        {createPortal(<BackgroundCanvas flipped={true} />, document.getElementById('root') as HTMLElement)}
+        {createPortal(
+          <>
+            <div ref={ref} style={{ height: '100vh', width: '100vw', position: 'absolute' }}></div>
+            <BackgroundCanvas flipped={true} />
+          </>,
+          document.getElementById('root') as HTMLElement
+        )}
       </div>
       <Footer />
     </>
