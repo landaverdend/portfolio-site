@@ -48,7 +48,8 @@ function SetupForm() {
   // const renderer = useRef<Matter.Render>(Render.create({ engine: engine.current }));
 
   const [, setAnim] = useState(0);
-  const inputCoordinates = useRef<{ x: number; y: number; angle: number }[]>([]);
+  const inputCoordinates = useRef<{ x: number; y: number; angle: number; id: number }[]>([]);
+  const inputMap = useRef<Map<number, HTMLInputElement>>(new Map());
 
   useEffect(() => {
     const render = Render.create({
@@ -107,15 +108,19 @@ function SetupForm() {
 
       const inputs = document.getElementsByTagName('input');
 
+      let i = 0;
       for (let input of inputs) {
         const dims = input.getBoundingClientRect();
 
-        const bodyToAdd = Bodies.rectangle(dims.x, dims.y, dims.width * 1.25, dims.height * 0.9);
+        const bodyToAdd = Bodies.rectangle(dims.x, dims.y, dims.width * 1.25, dims.height * 0.9, { id: i });
         bodyToAdd.friction = 0.05;
         bodyToAdd.frictionAir = 0.00005;
         bodyToAdd.restitution = 1;
 
+        inputMap.current.set(i, input);
+
         Composite.add(engine.current.world, bodyToAdd);
+        i++;
       }
 
       // if (inputCoordinates.current.length < 100) setTimeout(addElements, 300);
@@ -134,7 +139,7 @@ function SetupForm() {
       let i = 0;
       for (const el of Composite.allBodies(engine.current.world)) {
         if (el.isStatic) continue;
-        inputCoordinates.current[i] = { x: el.position.x, y: el.position.y, angle: el.angle };
+        inputCoordinates.current[i] = { id: el.id, x: el.position.x, y: el.position.y, angle: el.angle };
 
         i++;
       }
@@ -158,26 +163,32 @@ function SetupForm() {
         document.getElementById('root') as HTMLElement
       )}
 
+      {inputCoordinates.current.map((el, key) => {
+        const mapped = inputMap.current.get(el.id) as HTMLElement;
+        const { height, width } = mapped.getBoundingClientRect();
+
+        const adjustedX = el.x - width / 2;
+        const adjustedY = el.y - height / 2;
+        return (
+          <input
+            type="text"
+            style={{
+              position: 'absolute',
+              top: adjustedY,
+              left: adjustedX,
+              height: height,
+              width: width,
+              transform: `rotate(${el.angle}rad)`,
+            }}
+            key={key}></input>
+        );
+      })}
+
       <div className="email-form-container">
         <h1>Let's get you started...</h1>
         {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
         <form className={'email-form'} onSubmit={handleSubmit(onSubmit)}>
           {/* All of the dropped inputs..*/}
-
-          {inputCoordinates.current.map((el, key) => {
-            return (
-              <input
-                type="text"
-                style={{
-                  position: 'absolute',
-                  top: el.y,
-                  left: el.x,
-                  transform: `rotate(${el.angle}rad)`,
-                }}
-                // style={{ transform: `translate(${el.x}px, ${el.y}px) rotate(${el.angle}deg)`, position: 'absolute' }}
-                key={key}></input>
-            );
-          })}
 
           {/* include validation with required or other standard HTML validation rules */}
 
