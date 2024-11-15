@@ -3,6 +3,7 @@ import ResumeView from './views/resumeView/ResumeView';
 import { useAppState } from './state/appState';
 import SurveyView from './views/SurveyView/SurveyView';
 import LoadingView from './views/loadingView/LoadingView';
+import PhysicsView from './views/SurveyView/PhysicsView';
 
 function App() {
   const { componentToRender, isLoading } = useAppState();
@@ -18,6 +19,9 @@ function App() {
       break;
     case 'SplashView':
       renderMe = <SplashView />;
+      break;
+    case 'PhysicsView':
+      renderMe = <PhysicsView />;
       break;
   }
 
