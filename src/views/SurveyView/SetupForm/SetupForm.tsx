@@ -4,7 +4,7 @@ import { FieldError, SubmitHandler, useForm } from 'react-hook-form';
 
 import '../survey-view.css';
 import { createPortal } from 'react-dom';
-import { Bodies, Composite, Engine, Runner } from 'matter-js';
+import { Bodies, Composite, Engine, Render, Runner } from 'matter-js';
 
 function randomChanceInTen(num: number) {
   return Math.random() < num * 0.1;
@@ -45,11 +45,33 @@ function SetupForm() {
   const ref = useRef<HTMLDivElement>(null);
   const engine = useRef<Matter.Engine>(Engine.create());
   const runner = useRef<Matter.Runner>(Runner.create());
+  // const renderer = useRef<Matter.Render>(Render.create({ engine: engine.current }));
+
   const [, setAnim] = useState(0);
-  const dots = useRef<{ x: number; y: number }[]>([]);
+  const inputCoordinates = useRef<{ x: number; y: number; angle: number }[]>([]);
 
   useEffect(() => {
+    const render = Render.create({
+      element: document.body, // Attach the canvas to the document body
+      engine: engine.current,
+      options: {
+        width: ref.current?.clientWidth,
+        height: ref.current?.clientHeight,
+        background: '#fafafa',
+        wireframes: false, // Set to false to render solid shapes
+      },
+    });
+
     Runner.run(runner.current, engine.current);
+    Render.run(render);
+
+    return () => {
+      Runner.stop(runner.current);
+      Render.stop(render);
+      Composite.clear(engine.current.world, false);
+      render.canvas.remove();
+      render.textures = {};
+    };
   }, []);
 
   // Build out the base scene when times tried is greater or equal to 1.
@@ -74,20 +96,32 @@ function SetupForm() {
   useEffect(() => {
     let unsubscribe: any;
 
-    function addElement() {
+    function addElements() {
       const width = ref.current?.clientWidth ?? 0;
       const height = ref.current?.clientHeight ?? 0;
+
       const circ = Bodies.circle(Math.random() * width * 0.75 + 50, Math.random() * height * 0.75 + 50, 25);
       circ.friction = 0.05;
       circ.frictionAir = 0.00005;
       circ.restitution = 0.9;
 
-      Composite.add(engine.current.world, circ);
+      const inputs = document.getElementsByTagName('input');
 
-      if (dots.current.length < 100) setTimeout(addElement, 300);
+      for (let input of inputs) {
+        const dims = input.getBoundingClientRect();
+
+        const bodyToAdd = Bodies.rectangle(dims.x, dims.y, dims.width * 1.25, dims.height * 0.9);
+        bodyToAdd.friction = 0.05;
+        bodyToAdd.frictionAir = 0.00005;
+        bodyToAdd.restitution = 1;
+
+        Composite.add(engine.current.world, bodyToAdd);
+      }
+
+      // if (inputCoordinates.current.length < 100) setTimeout(addElements, 300);
     }
 
-    addElement();
+    addElements();
 
     return () => {
       clearTimeout(unsubscribe);
@@ -100,8 +134,7 @@ function SetupForm() {
       let i = 0;
       for (const el of Composite.allBodies(engine.current.world)) {
         if (el.isStatic) continue;
-
-        dots.current[i] = { x: el.position.x, y: el.position.y };
+        inputCoordinates.current[i] = { x: el.position.x, y: el.position.y, angle: el.angle };
 
         i++;
       }
@@ -125,27 +158,27 @@ function SetupForm() {
         document.getElementById('root') as HTMLElement
       )}
 
-      {dots.current.map((dot, key) => {
-        return (
-          <div
-            style={{
-              backgroundColor: 'red',
-              borderRadius: '50%',
-              position: 'absolute',
-              top: dot.y,
-              left: dot.x,
-              width: '50px',
-              height: '50px',
-              zIndex: 10000,
-            }}
-            key={key}></div>
-        );
-      })}
-
       <div className="email-form-container">
         <h1>Let's get you started...</h1>
         {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
         <form className={'email-form'} onSubmit={handleSubmit(onSubmit)}>
+          {/* All of the dropped inputs..*/}
+
+          {inputCoordinates.current.map((el, key) => {
+            return (
+              <input
+                type="text"
+                style={{
+                  position: 'absolute',
+                  top: el.y,
+                  left: el.x,
+                  transform: `rotate(${el.angle}rad)`,
+                }}
+                // style={{ transform: `translate(${el.x}px, ${el.y}px) rotate(${el.angle}deg)`, position: 'absolute' }}
+                key={key}></input>
+            );
+          })}
+
           {/* include validation with required or other standard HTML validation rules */}
 
           <label htmlFor="firstName" className="firstName">
