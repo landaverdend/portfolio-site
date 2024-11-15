@@ -64,7 +64,7 @@ function SetupForm() {
     });
 
     Runner.run(runner.current, engine.current);
-    Render.run(render);
+    // Render.run(render);
 
     return () => {
       Runner.stop(runner.current);
@@ -98,24 +98,16 @@ function SetupForm() {
     let unsubscribe: any;
 
     function addElements() {
-      const width = ref.current?.clientWidth ?? 0;
-      const height = ref.current?.clientHeight ?? 0;
-
-      const circ = Bodies.circle(Math.random() * width * 0.75 + 50, Math.random() * height * 0.75 + 50, 25);
-      circ.friction = 0.05;
-      circ.frictionAir = 0.00005;
-      circ.restitution = 0.9;
-
       const inputs = document.getElementsByTagName('input');
 
       let i = 0;
       for (let input of inputs) {
         const dims = input.getBoundingClientRect();
 
-        const bodyToAdd = Bodies.rectangle(dims.x, dims.y, dims.width * 1.25, dims.height * 0.9, { id: i });
+        const bodyToAdd = Bodies.rectangle(dims.x, dims.y, dims.width, dims.height * 1.1, { id: i });
         bodyToAdd.friction = 0.05;
         bodyToAdd.frictionAir = 0.00005;
-        bodyToAdd.restitution = 1;
+        bodyToAdd.restitution = 0.9;
 
         inputMap.current.set(i, input);
 
@@ -158,7 +150,7 @@ function SetupForm() {
     <>
       {createPortal(
         <>
-          <div ref={ref} style={{ height: '100vh', width: '100vw', position: 'absolute' }}></div>
+          <div ref={ref} style={{ height: '100%', width: '100%', position: 'absolute' }}></div>
         </>,
         document.getElementById('root') as HTMLElement
       )}
@@ -169,6 +161,7 @@ function SetupForm() {
 
         const adjustedX = el.x - width / 2;
         const adjustedY = el.y - height / 2;
+
         return (
           <input
             type="text"
