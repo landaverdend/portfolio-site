@@ -4,7 +4,8 @@ import { FieldError, SubmitHandler, useForm } from 'react-hook-form';
 
 import '../survey-view.css';
 import { createPortal } from 'react-dom';
-import { Bodies, Composite, Engine, Render, Runner } from 'matter-js';
+import { Bodies, Composite } from 'matter-js';
+import usePhysicsHook from '../physicsHook';
 
 function randomChanceInTen(num: number) {
   return Math.random() < num * 0.1;
@@ -30,69 +31,21 @@ type Inputs = {
 };
 function SetupForm() {
   const { setNextView, setIsLoading } = useAppState();
+  const [timesTried, setTimesTried] = useState(0);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({ mode: 'onSubmit' });
-
-  const [timesTried, setTimesTried] = useState(0);
-
   const onSubmit: SubmitHandler<Inputs> = (data) => {};
 
-  // Build the Matter.JS stuff
-  const ref = useRef<HTMLDivElement>(null);
-  const engine = useRef<Matter.Engine>(Engine.create());
-  const runner = useRef<Matter.Runner>(Runner.create());
-  // const renderer = useRef<Matter.Render>(Render.create({ engine: engine.current }));
+  // -------------------- MATTER.JS --------------------\
 
+  const { engine, ref } = usePhysicsHook(true);
   const [, setAnim] = useState(0);
   const inputCoordinates = useRef<{ x: number; y: number; angle: number; id: number }[]>([]);
   const inputMap = useRef<Map<number, HTMLInputElement>>(new Map());
-
-  useEffect(() => {
-    const render = Render.create({
-      element: document.body, // Attach the canvas to the document body
-      engine: engine.current,
-      options: {
-        width: ref.current?.clientWidth,
-        height: ref.current?.clientHeight,
-        background: '#fafafa',
-        wireframes: false, // Set to false to render solid shapes
-      },
-    });
-
-    Runner.run(runner.current, engine.current);
-    // Render.run(render);
-
-    return () => {
-      Runner.stop(runner.current);
-      Render.stop(render);
-      Composite.clear(engine.current.world, false);
-      render.canvas.remove();
-      render.textures = {};
-    };
-  }, []);
-
-  // Build out the base scene when times tried is greater or equal to 1.
-  useEffect(function init() {
-    const width = ref.current?.clientWidth ?? 0;
-    const height = ref.current?.clientHeight ?? 0;
-
-    const ground = Bodies.rectangle(width / 2, height, width, 50, { isStatic: true });
-    const ceiling = Bodies.rectangle(width / 2, 0, width, 1, {
-      isStatic: true,
-    });
-    const wallL = Bodies.rectangle(0, height / 2, 1, height, {
-      isStatic: true,
-    });
-    const wallR = Bodies.rectangle(width, height / 2, 50, height, {
-      isStatic: true,
-    });
-
-    Composite.add(engine.current.world, [ground, ceiling, wallL, wallR]);
-  }, []);
 
   useEffect(() => {
     let unsubscribe: any;
@@ -105,17 +58,15 @@ function SetupForm() {
         const dims = input.getBoundingClientRect();
 
         const bodyToAdd = Bodies.rectangle(dims.x, dims.y, dims.width, dims.height * 1.1, { id: i });
-        bodyToAdd.friction = 0.05;
+        bodyToAdd.friction = 0.065;
         bodyToAdd.frictionAir = 0.00005;
-        bodyToAdd.restitution = 0.9;
+        bodyToAdd.restitution = 0.5;
 
         inputMap.current.set(i, input);
 
         Composite.add(engine.current.world, bodyToAdd);
         i++;
       }
-
-      // if (inputCoordinates.current.length < 100) setTimeout(addElements, 300);
     }
 
     addElements();
