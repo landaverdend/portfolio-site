@@ -1,5 +1,5 @@
 import { Bodies, Composite, Engine, Render, Runner } from 'matter-js';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 function usePhysicsHook(shouldRender = false) {
   // Build the Matter.JS stuff
@@ -7,7 +7,7 @@ function usePhysicsHook(shouldRender = false) {
   const engine = useRef<Matter.Engine>(Engine.create());
   const runner = useRef<Matter.Runner>(Runner.create());
 
-  useEffect(() => {
+  useEffect(function initObjects() {
     Runner.run(runner.current, engine.current);
 
     let render: Matter.Render;
@@ -37,18 +37,18 @@ function usePhysicsHook(shouldRender = false) {
   }, []);
 
   // Build out the base scene when times tried is greater or equal to 1.
-  useEffect(function init() {
+  useEffect(function buildScene() {
     const width = ref.current?.clientWidth ?? 0;
     const height = ref.current?.clientHeight ?? 0;
 
-    const ground = Bodies.rectangle(width / 2, height, width, 50, { isStatic: true });
+    const ground = Bodies.rectangle(width / 2, height + 20, width, 50, { isStatic: true });
     const ceiling = Bodies.rectangle(width / 2, 0, width, 1, {
       isStatic: true,
     });
-    const wallL = Bodies.rectangle(0, height / 2, 1, height, {
+    const wallL = Bodies.rectangle(0, height / 2, 25, height, {
       isStatic: true,
     });
-    const wallR = Bodies.rectangle(width, height / 2, 50, height, {
+    const wallR = Bodies.rectangle(width, height / 2, 25, height, {
       isStatic: true,
     });
 

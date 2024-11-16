@@ -42,7 +42,7 @@ function SetupForm() {
 
   // -------------------- MATTER.JS --------------------\
 
-  const { engine, ref } = usePhysicsHook(true);
+  const { engine, ref } = usePhysicsHook(false);
   const [, setAnim] = useState(0);
   const inputCoordinates = useRef<{ x: number; y: number; angle: number; id: number }[]>([]);
   const inputMap = useRef<Map<number, HTMLInputElement>>(new Map());
@@ -58,9 +58,9 @@ function SetupForm() {
         const dims = input.getBoundingClientRect();
 
         const bodyToAdd = Bodies.rectangle(dims.x, dims.y, dims.width, dims.height * 1.1, { id: i });
-        bodyToAdd.friction = 0.065;
-        bodyToAdd.frictionAir = 0.00005;
-        bodyToAdd.restitution = 0.5;
+        bodyToAdd.friction = 0.1;
+        bodyToAdd.frictionAir = 0.005;
+        bodyToAdd.restitution = 0.25;
 
         inputMap.current.set(i, input);
 
@@ -78,6 +78,7 @@ function SetupForm() {
 
   useEffect(function triggerAnimation() {
     let unsubscribe: number;
+    
     function animate() {
       let i = 0;
       for (const el of Composite.allBodies(engine.current.world)) {
