@@ -12,7 +12,7 @@ type Coordinates = {
 function PhysicsView() {
   const [physicsEnabled, setPhysicsEnabled] = useState(false);
 
-  const { engine, ref } = usePhysicsHook();
+  const { engine, ref } = usePhysicsHook(true);
   const [, setAnim] = useState(0);
 
   const map = useRef<Map<string, Coordinates>>(new Map());
@@ -77,20 +77,22 @@ function PhysicsView() {
     const el = document.getElementById(domId);
 
     if (el && coords) {
-      const { width, height } = el.getBoundingClientRect();
       const { x, y, angle } = coords;
 
-      return { position: 'absolute', top: y - height / 2, left: x - width / 2, transform: `rotate(${angle}rad)` };
+      return { position: 'absolute', top: y, left: x, transform: `translate(-50%, -50%) rotate(${angle}rad)` };
     }
-
     return {};
   }
 
   return (
-    <div className="physics-container" ref={ref} style={{ width: '100vw', height: '100vh' }}>
-      <input id="test" type="text" style={physicsEnabled ? mapPhysicsToDom('test') : {}} />
-      <input id="test1" type="text" style={physicsEnabled ? mapPhysicsToDom('test1') : {}} />
-      <button onClick={() => setPhysicsEnabled(true)}>Turn On Physics</button>
+    <div className="physics-container" ref={ref}>
+      <div className="input-container">
+        <input id="test" type="text" style={physicsEnabled ? mapPhysicsToDom('test') : {}} />
+        <input id="test1" type="text" style={physicsEnabled ? mapPhysicsToDom('test1') : {}} />
+        <button onClick={() => setPhysicsEnabled(true)}>Turn On Physics</button>
+      </div>
+
+      <span style={{ height: '100vh', backgroundColor: 'red' }}>here</span>
     </div>
   );
 }

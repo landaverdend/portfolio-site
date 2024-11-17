@@ -4,8 +4,18 @@
   align-items: center;
   justify-content: center;
 
-  input {
-    width: 200px;
-    height: 30px;
+  width: 100vw;
+  /* height: 100vh; */
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    input {
+      width: 200px;
+      height: 30px;
+    }
   }
 }

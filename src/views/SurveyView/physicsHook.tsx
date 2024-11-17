@@ -16,8 +16,8 @@ function usePhysicsHook(shouldRender = false) {
         element: document.body, // Attach the canvas to the document body
         engine: engine.current,
         options: {
-          width: ref.current?.clientWidth,
-          height: ref.current?.clientHeight,
+          width: ref.current?.scrollWidth,
+          height: ref.current?.scrollHeight,
           background: '#fafafa',
           wireframes: false, // Set to false to render solid shapes
         },
@@ -38,8 +38,8 @@ function usePhysicsHook(shouldRender = false) {
 
   // Build out the base scene when times tried is greater or equal to 1.
   useEffect(function buildScene() {
-    const width = ref.current?.clientWidth ?? 0;
-    const height = ref.current?.clientHeight ?? 0;
+    const width = ref.current?.scrollWidth ?? 0;
+    const height = ref.current?.scrollHeight ?? 0;
 
     const ground = Bodies.rectangle(width / 2, height + 50, width, 50, { isStatic: true });
     const ceiling = Bodies.rectangle(width / 2, 0, width, 1, {
@@ -54,6 +54,8 @@ function usePhysicsHook(shouldRender = false) {
 
     Composite.add(engine.current.world, [ground, ceiling, wallL, wallR]);
   }, []);
+
+  // UTIL FUNCTIONS
 
   return { ref, engine, runner };
 }
