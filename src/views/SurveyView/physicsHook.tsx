@@ -41,7 +41,7 @@ function usePhysicsHook(shouldRender = false) {
     const width = ref.current?.clientWidth ?? 0;
     const height = ref.current?.clientHeight ?? 0;
 
-    const ground = Bodies.rectangle(width / 2, height + 20, width, 50, { isStatic: true });
+    const ground = Bodies.rectangle(width / 2, height + 50, width, 50, { isStatic: true });
     const ceiling = Bodies.rectangle(width / 2, 0, width, 1, {
       isStatic: true,
     });

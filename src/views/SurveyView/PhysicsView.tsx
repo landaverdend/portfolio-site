@@ -1,109 +1,96 @@
 import { Bodies, Composite, Engine, Runner } from 'matter-js';
 import { useEffect, useRef, useState } from 'react';
-// import styled from "styled-components";
+import usePhysicsHook from './physicsHook';
+import './physicsView.css';
 
-
-interface Circle {
+type Coordinates = {
   x: number;
   y: number;
-}
+  angle: number;
+};
 
 function PhysicsView() {
-  const ref = useRef<HTMLDivElement>(null);
-  const engine = useRef<Matter.Engine>(Engine.create())
-  const runner = useRef<Matter.Runner>(Runner.create())
-  const dots = useRef<Circle[]>([]);
+  const [physicsEnabled, setPhysicsEnabled] = useState(false);
+
+  const { engine, ref } = usePhysicsHook();
   const [, setAnim] = useState(0);
 
-  useEffect(() => {
-    Runner.run(runner.current, engine.current)
-  }, [])
+  const map = useRef<Map<string, Coordinates>>(new Map());
 
-  useEffect(function init() {
-    const width = ref.current?.clientWidth ?? 0;
-    const height = ref.current?.clientHeight ?? 0;
+  function createPhysicsBodyFromDOM(el: HTMLElement, options = {}) {
+    const { x, y, width, height } = el.getBoundingClientRect();
 
-    const ground = Bodies.rectangle(width / 2, height, width, 50, {
-      isStatic: true,
-    });
-    const ceiling = Bodies.rectangle(width / 2, 0, width, 1, {
-      isStatic: true,
-    });
-    const wallL = Bodies.rectangle(0, height / 2, 1, height, {
-      isStatic: true,
-    });
-    const wallR = Bodies.rectangle(width, height / 2, 50, height, {
-      isStatic: true,
-    });
+    // Calculate Matter.js coordinates (centered origin)
+    const centerX = x + width / 2;
+    const centerY = y + height / 2;
 
-    Composite.add(engine.current.world, [ground, ceiling, wallL, wallR]);
-  }, []);
+    return Bodies.rectangle(centerX, centerY, width, height, options);
+  }
 
-  useEffect(() => {
-    let unsubscribe: any;
+  useEffect(
+    function addInput() {
+      if (!physicsEnabled) return;
 
-    function addDot() {
-      const width = ref.current?.clientWidth ?? 0;
-      const height = ref.current?.clientHeight ?? 0;
+      const inputs = document.getElementsByTagName('input');
 
-      const circ = Bodies.circle(Math.random() * width * 0.75 + 50, Math.random() * height * 0.75 + 50, 25);
-      circ.friction = 0.05;
-      circ.frictionAir = 0.00005;
-      circ.restitution = 0.9;
+      for (let el of inputs) {
+        if (el) {
+          const bodyToAdd = createPhysicsBodyFromDOM(el, { plugin: { domId: el.id } });
+          bodyToAdd.friction = 0.0001;
+          bodyToAdd.frictionAir = 0.0005;
+          bodyToAdd.restitution = 2;
 
-      Composite.add(engine.current.world, circ);
+          Composite.add(engine.current.world, bodyToAdd);
+        }
+      }
+    },
+    [physicsEnabled]
+  );
 
-      if (dots.current.length < 100) setTimeout(addDot, 300);
-    }
+  useEffect(
+    function triggerAnimation() {
+      if (!physicsEnabled) return;
 
-    addDot();
+      let unsub: number;
 
-    return () => {
-      clearTimeout(unsubscribe);
-    };
-  }, []);
+      function animate() {
+        for (const el of Composite.allBodies(engine.current.world)) {
+          if (el.isStatic || !el.plugin.domId) continue;
+          map.current.set(el.plugin.domId, { x: el.position.x, y: el.position.y, angle: el.angle });
+        }
 
-  useEffect(function triggerAnimation() {
-    let unsubscribe: number;
-
-    function animate() {
-      let i = 0;
-      console.log(dots);
-      for (const dot of Composite.allBodies(engine.current.world)) {
-        if (dot.isStatic) continue;
-
-        dots.current[i] = { x: dot.position.x, y: dot.position.y };
-
-        i += 1;
+        setAnim((x) => x + 1);
+        unsub = requestAnimationFrame(animate);
       }
 
-      setAnim((x) => x + 1);
+      unsub = requestAnimationFrame(animate);
 
-      unsubscribe = requestAnimationFrame(animate);
+      return () => {
+        cancelAnimationFrame(unsub);
+      };
+    },
+    [physicsEnabled]
+  );
+
+  function mapPhysicsToDom(domId: string): React.CSSProperties {
+    const coords = map.current.get(domId);
+    const el = document.getElementById(domId);
+
+    if (el && coords) {
+      const { width, height } = el.getBoundingClientRect();
+      const { x, y, angle } = coords;
+
+      return { position: 'absolute', top: y - height / 2, left: x - width / 2, transform: `rotate(${angle}rad)` };
     }
 
-    unsubscribe = requestAnimationFrame(animate);
-
-    return () => {
-      cancelAnimationFrame(unsubscribe);
-    };
-  }, []);
+    return {};
+  }
 
   return (
-    <div ref={ref} style={{ width: '100vw', height: '100vh' }}>
-      {dots.current.map((dot, key) => (
-        <div
-          style={{
-            backgroundColor: 'red',
-            borderRadius: '50%',
-            position: 'absolute',
-            top: dot.y,
-            left: dot.x,
-            width: '50px',
-            height: '50px',
-          }}
-          key={key}></div>
-      ))}
+    <div className="physics-container" ref={ref} style={{ width: '100vw', height: '100vh' }}>
+      <input id="test" type="text" style={physicsEnabled ? mapPhysicsToDom('test') : {}} />
+      <input id="test1" type="text" style={physicsEnabled ? mapPhysicsToDom('test1') : {}} />
+      <button onClick={() => setPhysicsEnabled(true)}>Turn On Physics</button>
     </div>
   );
 }
