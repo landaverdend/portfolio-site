@@ -4,7 +4,6 @@ import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { useEffect, useRef, useState } from 'react';
 import usePhysicsHook from './physicsHook';
 import { Composite } from 'matter-js';
-import Footer from '@/components/footer/Footer';
 
 const dumbSlogans: string[] = [
   'Unlocking your path to unparalleled hiring success.',
@@ -59,7 +58,7 @@ function SurveyView2() {
         if (el) {
           const bodyToAdd = createPhysicsBodyFromDOM(el, { plugin: { domId: el.id } });
           bodyToAdd.friction = 0.00001;
-          bodyToAdd.frictionAir = 0.00000005;
+          bodyToAdd.frictionAir = 0.000005;
           bodyToAdd.restitution = 1.0;
 
           Composite.add(engine.current.world, bodyToAdd);
@@ -169,6 +168,25 @@ function SurveyView2() {
                     {physicsEnabled && <input style={{ visibility: 'hidden' }} />}
                   </label>
                 </div>
+
+                <label>
+                  Company Size
+                  <select id="companySize" className="physics" style={mapPhysicsToDom('companySize')}>
+                    <option>1-99 employees </option>
+                    <option>100-299 employees</option>
+                    <option>300-1999 employees</option>
+                    <option>+2000 employees</option>
+                    <option>I have no company</option>
+                  </select>
+                </label>
+
+                <label>
+                  Are you of Hispanic or Latino descent?
+                  <select id="hispanic" className="physics" style={mapPhysicsToDom('hispanic')}>
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </label>
 
                 <button
                   onClick={(e) => {

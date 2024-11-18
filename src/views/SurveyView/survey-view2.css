@@ -53,12 +53,13 @@
         grid-template-columns: repeat(2, 1fr);
         justify-items: stretch;
         gap: 5px;
+        align-items: center;
 
+        select,
         input {
           border-radius: 2.5px;
           border: 1px solid #bebebe;
           padding: 7.5px;
-
         }
 
         label {
@@ -67,11 +68,17 @@
           gap: 5px;
 
           font-size: 0.8rem;
-          height: 4rem;
+          height: 6rem;
 
           input {
-            width: 20rem;
+            /* width: 298px; */
+            width: 18rem;
             max-width: 18rem;
+          }
+
+          select {
+            width: 19rem;
+            max-width: 21rem;
           }
         }
 
