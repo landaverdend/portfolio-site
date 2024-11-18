@@ -56,7 +56,7 @@ function usePhysicsHook(shouldRender = false) {
   }, []);
 
   // UTIL FUNCTIONS
-  function createPhysicsBodyFromDOM(el: HTMLElement, options = {}) {
+  function createPhysicsBodyFromDOM(el: Element, options = {}) {
     const { x, y, width, height } = el.getBoundingClientRect();
 
     // Calculate Matter.js coordinates (centered origin)

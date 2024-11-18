@@ -52,14 +52,15 @@ function SurveyView2() {
     function addInput() {
       if (!physicsEnabled) return;
 
-      const inputs = document.getElementsByTagName('input');
+      // const inputs = document.getElementsByTagName('input');
+      const elements = document.getElementsByClassName('physics');
 
-      for (let el of inputs) {
+      for (let el of elements) {
         if (el) {
           const bodyToAdd = createPhysicsBodyFromDOM(el, { plugin: { domId: el.id } });
-          bodyToAdd.friction = 0.0001;
-          bodyToAdd.frictionAir = 0.0005;
-          bodyToAdd.restitution = 2;
+          bodyToAdd.friction = 0.00001;
+          bodyToAdd.frictionAir = 0.00000005;
+          bodyToAdd.restitution = 1.0;
 
           Composite.add(engine.current.world, bodyToAdd);
         }
@@ -73,7 +74,6 @@ function SurveyView2() {
       if (!physicsEnabled) return;
 
       let unsub: number;
-      console.log('is animating.');
 
       function animate() {
         for (const el of Composite.allBodies(engine.current.world)) {
@@ -96,6 +96,7 @@ function SurveyView2() {
   );
 
   function mapPhysicsToDom(domId: string): React.CSSProperties {
+    if (!physicsEnabled) return {};
     const coords = domMap.current.get(domId);
     const el = document.getElementById(domId);
 
@@ -127,9 +128,47 @@ function SurveyView2() {
             <form className="form">
               <h1>Let's get you started...</h1>
               <div className="input-grid">
-                <input id="firstName" type="text" style={physicsEnabled ? mapPhysicsToDom('firstName') : {}} />
+                <label>
+                  First Name
+                  <input id="firstName" className="physics" type="text" placeholder="John" style={mapPhysicsToDom('firstName')} />
+                  {physicsEnabled && <input style={{ visibility: 'hidden' }} />}
+                </label>
 
-                <input id="lastName" type="text" style={physicsEnabled ? mapPhysicsToDom('lastName') : {}} />
+                <label>
+                  Last Name
+                  <input id="lastName" className="physics" type="text" placeholder="Doe" style={mapPhysicsToDom('lastName')} />
+                  {physicsEnabled && <input style={{ visibility: 'hidden' }} />}
+                </label>
+
+                <div className="user-details">
+                  <label>
+                    Work Email
+                    <input id="email" className="physics" type="text" placeholder="Email" style={mapPhysicsToDom('email')} />
+                    {physicsEnabled && <input style={{ visibility: 'hidden' }} />}
+                  </label>
+
+                  <label>
+                    Job Title
+                    <input
+                      id="job"
+                      className="physics"
+                      type="text"
+                      placeholder="Job Title"
+                      style={mapPhysicsToDom('job')}></input>
+                    {physicsEnabled && <input style={{ visibility: 'hidden' }} />}
+                  </label>
+
+                  <label>
+                    Phone Number
+                    <input
+                      id="phone"
+                      type="tel"
+                      placeholder="(123) 456-7891"
+                      className="physics"
+                      style={mapPhysicsToDom('phone')}></input>
+                    {physicsEnabled && <input style={{ visibility: 'hidden' }} />}
+                  </label>
+                </div>
 
                 <button
                   onClick={(e) => {
@@ -141,8 +180,8 @@ function SurveyView2() {
               </div>
             </form>
           </div>
-          <BackgroundCanvas flipped={true} />
         </div>
+        <BackgroundCanvas flipped={true} />
       </div>
     </>
   );

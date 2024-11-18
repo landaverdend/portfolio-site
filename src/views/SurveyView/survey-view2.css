@@ -3,23 +3,26 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+  /* overflow: hidden;  */
 }
 
 .survey-view-container {
   display: flex;
+
   flex-direction: row;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 
-  width: 80vw;
+  gap: 100px;
 
   .about-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 4;
+
+    margin-left: 10vw;
 
     h1 {
       font-size: 2.8rem;
@@ -31,19 +34,60 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 5;
 
     h1 {
       font-size: 1.8rem;
     }
 
     .form {
-      background-color: red;
+      padding: 50px;
+      border-radius: 25px;
+      background-color: hsl(270, 62%, 89%);
+      box-shadow: 7.5px 7.5px black;
+      width: max-content;
 
+      margin-right: 10vw;
       .input-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        
+        justify-items: stretch;
+        gap: 5px;
+
+        label {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+
+          font-size: 0.8rem;
+          height: 4rem;
+
+          input {
+            padding: 5px;
+            width: 16rem;
+            max-width: 18rem;
+          }
+        }
+
+        .user-details {
+          grid-column: span 2;
+
+          display: flex;
+          justify-content: space-between;
+          gap: 10px;
+
+          label {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          input {
+            padding: 5px;
+            min-width: 100px;
+            width: 12rem;
+            /* width: fit-content; */
+          }
+        }
       }
     }
   }
