@@ -1,0 +1,50 @@
+.physics-container {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.survey-view-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  width: 80vw;
+
+  .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 4;
+
+    h1 {
+      font-size: 2.8rem;
+    }
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 5;
+
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    .form {
+      background-color: red;
+
+      .input-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        
+      }
+    }
+  }
+}

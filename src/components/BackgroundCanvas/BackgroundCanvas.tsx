@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { animateCanvas } from './BackgroundCanvas';
+import { animateCanvas } from './animateCanvas';
 import './background-canvas.css';
 
 function resizeCanvas(canvas: HTMLCanvasElement) {

@@ -78,7 +78,7 @@ function SetupForm() {
 
   useEffect(function triggerAnimation() {
     let unsubscribe: number;
-    
+
     function animate() {
       let i = 0;
       for (const el of Composite.allBodies(engine.current.world)) {
@@ -136,7 +136,6 @@ function SetupForm() {
           {/* All of the dropped inputs..*/}
 
           {/* include validation with required or other standard HTML validation rules */}
-
           <label htmlFor="firstName" className="firstName">
             First Name
             <input
