@@ -3,7 +3,7 @@ import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas.tsx
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { useEffect, useRef, useState } from 'react';
 import usePhysicsHook from './physicsHook';
-import { Composite } from 'matter-js';
+import { Body, Composite } from 'matter-js';
 
 const dumbSlogans: string[] = [
   'Unlocking your path to unparalleled hiring success.',
@@ -21,19 +21,22 @@ const dumbSlogans: string[] = [
   'Empowering your recruitment with unmatched access to expertise.',
 ];
 
+function randomChance(l: number, r: number) {
+  return Math.floor(Math.random() * r) + l;
+}
+
 type Coordinates = {
   x: number;
   y: number;
   angle: number;
 };
-
 function SurveyView2() {
+  const { ref, engine, createPhysicsBodyFromDOM } = usePhysicsHook();
+  const domMap = useRef<Map<string, Coordinates>>(new Map());
+
   const [physicsEnabled, setPhysicsEnabled] = useState(false);
   const [dumbSlogan, setDumbSlogan] = useState(dumbSlogans[0]);
   const [, setAnim] = useState(0);
-
-  const { ref, engine, createPhysicsBodyFromDOM } = usePhysicsHook();
-  const domMap = useRef<Map<string, Coordinates>>(new Map());
 
   useEffect(() => {
     const pickDumbSlogan = setInterval(() => {
@@ -48,19 +51,26 @@ function SurveyView2() {
   }, []);
 
   useEffect(
-    function addInput() {
+    function applyPhysicsToInputs() {
       if (!physicsEnabled) return;
 
+      // alert('Uh oh')
       const elements = document.getElementsByClassName('physics');
 
+      let i = 0;
       for (let el of elements) {
         if (el) {
           const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: el.id } });
           bodyToAdd.friction = 0.00001;
           bodyToAdd.frictionAir = 0.000005;
-          bodyToAdd.restitution = 1.0;
+          bodyToAdd.restitution = 0.75;
+
+          // For an 'explosion' effect.
+          const force = i % 2 == 0 ? 0.7 : -0.7;
+          Body.applyForce(bodyToAdd, bodyToAdd.position, { x: force, y: force });
 
           Composite.add(engine.current.world, bodyToAdd);
+          i++;
         }
       }
     },
@@ -129,9 +139,21 @@ function SurveyView2() {
             <form className="form">
               <h1>Let's get you started...</h1>
               <div className="input-grid">
+                
                 <label>
                   First Name
-                  <input id="firstName" className="physics" type="text" placeholder="John" style={mapPhysicsToDom('firstName')} />
+                  <input
+                    id="firstName"
+                    className="physics"
+                    type="text"
+                    placeholder="John"
+                    style={mapPhysicsToDom('firstName')}
+                    onChange={() => {
+                      if (randomChance(0, 10) === 0) {
+                        setPhysicsEnabled(true);
+                      }
+                    }}
+                  />
                   {physicsEnabled && <input style={{ visibility: 'hidden' }} />}
                 </label>
 
