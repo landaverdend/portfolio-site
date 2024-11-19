@@ -1,4 +1,4 @@
-import { Bodies, Composite, Engine, Render, Runner } from 'matter-js';
+import { Bodies, Body, Composite, Engine, Render, Runner } from 'matter-js';
 import { useEffect, useRef } from 'react';
 
 function usePhysicsHook(shouldRender = false) {
@@ -38,9 +38,9 @@ function usePhysicsHook(shouldRender = false) {
 
   // Build out the base scene when times tried is greater or equal to 1.
   useEffect(function buildScene() {
-    const width = ref.current?.scrollWidth ?? 0;
-    const height = ref.current?.scrollHeight ?? 0;
-
+    if (!ref.current) return;
+    const width = ref.current.scrollWidth;
+    const height = ref.current.scrollHeight;
     const ground = Bodies.rectangle(width / 2, height + 50, width, 50, { isStatic: true });
     const ceiling = Bodies.rectangle(width / 2, 0, width, 1, {
       isStatic: true,
@@ -56,8 +56,11 @@ function usePhysicsHook(shouldRender = false) {
   }, []);
 
   // UTIL FUNCTIONS
-  function createPhysicsBodyFromDOM(el: Element, options = {}) {
-    const { x, y, width, height } = el.getBoundingClientRect();
+  function createPhysicsBodyFromDOM(el: HTMLElement, options = {}) {
+    const { width, height } = el.getBoundingClientRect();
+
+    const x = el.offsetLeft;
+    const y = el.offsetTop;
 
     // Calculate Matter.js coordinates (centered origin)
     const centerX = x + width / 2;

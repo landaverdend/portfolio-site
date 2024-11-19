@@ -142,7 +142,8 @@
   .survey-view-container {
     flex-direction: column;
     overflow: visible;
-    gap: 15px;
+    gap: 40px;
+    
     .about-container {
       height: max-content;
 
@@ -151,8 +152,9 @@
       overflow: visible;
 
       h1 {
-        font-size: 2.8rem;
-        height: 37.5vh;
+        font-size: 2.85rem;
+        height: 50vh;
+        max-width: 65vw;
       }
 
       p {
@@ -162,10 +164,9 @@
 
     .form-container {
       flex: 5;
-      width: 80vw;
 
       .form {
-        padding: 20px;
+        padding: 10px;
         margin: 0 auto 5vh auto;
 
         .input-grid {

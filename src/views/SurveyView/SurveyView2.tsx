@@ -32,7 +32,7 @@ function SurveyView2() {
   const [dumbSlogan, setDumbSlogan] = useState(dumbSlogans[0]);
   const [, setAnim] = useState(0);
 
-  const { ref, engine, createPhysicsBodyFromDOM } = usePhysicsHook(false);
+  const { ref, engine, createPhysicsBodyFromDOM } = usePhysicsHook();
   const domMap = useRef<Map<string, Coordinates>>(new Map());
 
   useEffect(() => {
@@ -51,12 +51,11 @@ function SurveyView2() {
     function addInput() {
       if (!physicsEnabled) return;
 
-      // const inputs = document.getElementsByTagName('input');
       const elements = document.getElementsByClassName('physics');
 
       for (let el of elements) {
         if (el) {
-          const bodyToAdd = createPhysicsBodyFromDOM(el, { plugin: { domId: el.id } });
+          const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: el.id } });
           bodyToAdd.friction = 0.00001;
           bodyToAdd.frictionAir = 0.000005;
           bodyToAdd.restitution = 1.0;
@@ -77,7 +76,6 @@ function SurveyView2() {
       function animate() {
         for (const el of Composite.allBodies(engine.current.world)) {
           if (el.isStatic || !el.plugin.domId) continue;
-
           domMap.current.set(el.plugin.domId, { x: el.position.x, y: el.position.y, angle: el.angle });
         }
 
@@ -101,8 +99,12 @@ function SurveyView2() {
 
     if (el && coords) {
       const { x, y, angle } = coords;
-
-      return { position: 'absolute', top: y, left: x, transform: `translate(-50%, -50%) rotate(${angle}rad)` };
+      return {
+        position: 'absolute',
+        top: y,
+        left: x,
+        transform: `translate(-50%, -50%) rotate(${angle}rad)`,
+      };
     }
     return {};
   }
