@@ -25,7 +25,11 @@
     margin-left: 10vw;
 
     h1 {
-      font-size: 2.8rem;
+      font-size: 3.2rem;
+    }
+
+    p {
+      font-size: 1.1rem;
     }
   }
 
@@ -98,6 +102,86 @@
           input {
             min-width: 100px;
             width: 11rem;
+          }
+        }
+
+        .button-container {
+          grid-column: span 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          button {
+            font-size: 1.2rem;
+
+            color: white;
+
+            padding: 10px;
+
+            border-radius: 5px;
+            border: 1px solid rgb(78 59 125);
+            background-color: rgb(78 59 125);
+          }
+
+          button:hover {
+            opacity: 0.8;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Phone Screens */
+@media (max-width: 576px) {
+  .physics-container {
+    height: max-content;
+  }
+
+  .survey-view-container {
+    flex-direction: column;
+    overflow: visible;
+    gap: 15px;
+    .about-container {
+      height: max-content;
+
+      flex: 5;
+      margin-left: 0px;
+      overflow: visible;
+
+      h1 {
+        font-size: 2.8rem;
+        height: 37.5vh;
+      }
+
+      p {
+        font-size: large;
+      }
+    }
+
+    .form-container {
+      flex: 5;
+      width: 80vw;
+
+      .form {
+        padding: 20px;
+        margin: 0 auto 5vh auto;
+
+        .input-grid {
+          display: flex;
+          flex-direction: column;
+
+          label {
+            height: 4rem;
+          }
+
+          .user-details {
+            flex-direction: column;
+
+            input {
+              width: 18rem;
+            }
           }
         }
       }

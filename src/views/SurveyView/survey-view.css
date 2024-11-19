@@ -38,8 +38,6 @@
 .error-text {
   color: red;
 }
-@media (min-width: 600px) {
-}
 .email-form-container {
   display: flex;
   flex-direction: column;

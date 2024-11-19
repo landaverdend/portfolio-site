@@ -188,13 +188,15 @@ function SurveyView2() {
                   </select>
                 </label>
 
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setPhysicsEnabled(true);
-                  }}>
-                  turn on physics.
-                </button>
+                <div className="button-container">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setPhysicsEnabled(true);
+                    }}>
+                    Let's Go!
+                  </button>
+                </div>
               </div>
             </form>
           </div>
