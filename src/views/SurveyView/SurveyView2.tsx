@@ -25,14 +25,14 @@ function randomChance(l: number, r: number) {
   return Math.floor(Math.random() * r) + l;
 }
 
-type ILProps = {
+type IWProps = {
   id: string;
   labelText: string;
   placeholder?: string;
   domBody?: DOMBody;
   physicsTrigger: Function;
 };
-function InputLabel({ id, labelText, placeholder, physicsTrigger, domBody }: ILProps) {
+function InputWithPhysics({ id, labelText, placeholder, physicsTrigger, domBody }: IWProps) {
   function mapPhysicsToDom(domId: string): React.CSSProperties {
     if (!domBody?.isActive) return {};
     const el = document.getElementById(domId);
@@ -61,6 +61,41 @@ function InputLabel({ id, labelText, placeholder, physicsTrigger, domBody }: ILP
         onChange={() => physicsTrigger()}
       />
       {domBody?.isActive && <input style={{ visibility: 'hidden' }} />}
+    </label>
+  );
+}
+
+type SWProps = {
+  id: string;
+  domBody?: DOMBody;
+  query: string;
+  options: string[];
+};
+function SelectWithPhysics({ id, domBody, query, options }: SWProps) {
+  function mapPhysicsToDom(domId: string): React.CSSProperties {
+    if (!domBody?.isActive) return {};
+    const el = document.getElementById(domId);
+
+    if (el && domBody) {
+      const { x, y, angle } = domBody;
+      return {
+        position: 'absolute',
+        top: y,
+        left: x,
+        transform: `translate(-50%, -50%) rotate(${angle}rad)`,
+      };
+    }
+    return {};
+  }
+
+  return (
+    <label>
+      {query}
+      <select id={id} className="physics" style={mapPhysicsToDom(id)}>
+        {options.map((opt) => (
+          <option>{opt}</option>
+        ))}
+      </select>
     </label>
   );
 }
@@ -143,7 +178,7 @@ function SurveyView2() {
   }, []);
 
   function triggerPhysics(id: string) {
-    if (randomChance(0, 10) === 0) {
+    if (randomChance(0, 50) === 0) {
       const el = document.getElementById(id);
 
       const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: id } });
@@ -152,14 +187,14 @@ function SurveyView2() {
       bodyToAdd.restitution = 0.75;
 
       Composite.add(engine.current.world, bodyToAdd);
-      
+
       if (el) {
         domMap.current.set(id, { isActive: true, x: el.offsetLeft, y: el.offsetHeight, angle: bodyToAdd.angle });
       }
       setTimeout(() => {
-        alert('Shit!')
+        alert('Shit!');
         setTriggerExplosion(true);
-      }, 2000)
+      }, 2000);
     }
   }
 
@@ -183,7 +218,7 @@ function SurveyView2() {
             <form className="form">
               <h1>Let's get you started...</h1>
               <div className="input-grid">
-                <InputLabel
+                <InputWithPhysics
                   id={'firstName'}
                   labelText={'First Name'}
                   placeholder={'John'}
@@ -191,59 +226,53 @@ function SurveyView2() {
                   domBody={domMap.current.get('firstName')}
                 />
 
-                <InputLabel
+                <InputWithPhysics
                   id={'lastName'}
                   labelText={'Last Name'}
                   placeholder={'Doe'}
-                  physicsTrigger={triggerPhysics}
+                  physicsTrigger={() => triggerPhysics('lastName')}
                   domBody={domMap.current.get('lastName')}
                 />
 
                 <div className="user-details">
-                  <InputLabel
+                  <InputWithPhysics
                     id={'email'}
                     domBody={domMap.current.get('email')}
                     labelText={'Work Email'}
                     placeholder={'email@asdf.com'}
-                    physicsTrigger={triggerPhysics}
+                    physicsTrigger={() => triggerPhysics('email')}
                   />
 
-                  <InputLabel
+                  <InputWithPhysics
                     id={'job'}
                     domBody={domMap.current.get('job')}
                     labelText={'Job Title'}
                     placeholder={'unemployed'}
-                    physicsTrigger={triggerPhysics}
+                    physicsTrigger={() => triggerPhysics('job')}
                   />
 
-                  <InputLabel
+                  <InputWithPhysics
                     id={'phone'}
                     domBody={domMap.current.get('phone')}
                     labelText={'Phone Number'}
                     placeholder={'(123) 456 7891'}
-                    physicsTrigger={triggerPhysics}
+                    physicsTrigger={() => triggerPhysics('phone')}
                   />
                 </div>
 
-                {/* 
-                <label>
-                  Company Size
-                  <select id="companySize" className="physics" style={mapPhysicsToDom('companySize')}>
-                    <option>1-99 employees </option>
-                    <option>100-299 employees</option>
-                    <option>300-1999 employees</option>
-                    <option>+2000 employees</option>
-                    <option>I have no company</option>
-                  </select>
-                </label>
+                <SelectWithPhysics
+                  id="companySize"
+                  domBody={domMap.current.get('companySize')}
+                  query={'Company Size'}
+                  options={['1-99 employees', '100-299 employees', '300-1999 employees', '2000+ employees', 'I have no company']}
+                />
 
-                <label>
-                  Are you of Hispanic or Latino descent?
-                  <select id="hispanic" className="physics" style={mapPhysicsToDom('hispanic')}>
-                    <option>Yes</option>
-                    <option>No</option>
-                  </select>
-                </label> */}
+                <SelectWithPhysics
+                  id="hispanic"
+                  domBody={domMap.current.get('hispanic')}
+                  query={'Are you of Hispanic or Latino descent?'}
+                  options={['Yes', 'No']}
+                />
 
                 <div className="button-container">
                   <button
