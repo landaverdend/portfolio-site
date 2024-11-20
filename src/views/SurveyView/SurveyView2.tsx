@@ -25,16 +25,58 @@ function randomChance(l: number, r: number) {
   return Math.floor(Math.random() * r) + l;
 }
 
-type Coordinates = {
+type ILProps = {
+  id: string;
+  labelText: string;
+  placeholder?: string;
+  domBody?: DOMBody;
+  physicsTrigger: Function;
+};
+function InputLabel({ id, labelText, placeholder, physicsTrigger, domBody }: ILProps) {
+  function mapPhysicsToDom(domId: string): React.CSSProperties {
+    if (!domBody?.isActive) return {};
+    const el = document.getElementById(domId);
+
+    if (el && domBody) {
+      const { x, y, angle } = domBody;
+      return {
+        position: 'absolute',
+        top: y,
+        left: x,
+        transform: `translate(-50%, -50%) rotate(${angle}rad)`,
+      };
+    }
+    return {};
+  }
+
+  return (
+    <label>
+      {labelText}
+      <input
+        id={id}
+        className="physics"
+        type="text"
+        placeholder={placeholder}
+        style={mapPhysicsToDom(id)}
+        onChange={() => physicsTrigger()}
+      />
+      {domBody?.isActive && <input style={{ visibility: 'hidden' }} />}
+    </label>
+  );
+}
+
+type DOMBody = {
+  isActive: boolean;
   x: number;
   y: number;
   angle: number;
 };
 function SurveyView2() {
   const { ref, engine, createPhysicsBodyFromDOM } = usePhysicsHook();
-  const domMap = useRef<Map<string, Coordinates>>(new Map());
+  const domMap = useRef<Map<string, DOMBody>>(new Map());
 
-  const [physicsEnabled, setPhysicsEnabled] = useState(false);
+  const [physicsTrigger, setPhysicsTrigger] = useState(false);
+  const [triggerExplosion, setTriggerExplosion] = useState(false);
   const [dumbSlogan, setDumbSlogan] = useState(dumbSlogans[0]);
   const [, setAnim] = useState(0);
 
@@ -51,8 +93,8 @@ function SurveyView2() {
   }, []);
 
   useEffect(
-    function applyPhysicsToInputs() {
-      if (!physicsEnabled) return;
+    function applyExplosionToInputs() {
+      if (!triggerExplosion) return;
 
       // alert('Uh oh')
       const elements = document.getElementsByClassName('physics');
@@ -63,60 +105,62 @@ function SurveyView2() {
           const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: el.id } });
           bodyToAdd.friction = 0.00001;
           bodyToAdd.frictionAir = 0.000005;
-          bodyToAdd.restitution = 0.75;
+          bodyToAdd.restitution = 0.85;
 
           // For an 'explosion' effect.
           const force = i % 2 == 0 ? 0.7 : -0.7;
           Body.applyForce(bodyToAdd, bodyToAdd.position, { x: force, y: force });
-
           Composite.add(engine.current.world, bodyToAdd);
+          domMap.current.set(el.id, { isActive: true, x: bodyToAdd.position.x, y: bodyToAdd.position.y, angle: bodyToAdd.angle });
+
           i++;
         }
       }
     },
-    [physicsEnabled]
+    [triggerExplosion]
   );
 
-  useEffect(
-    function triggerAnimation() {
-      if (!physicsEnabled) return;
+  useEffect(function triggerAnimation() {
+    let unsub: number;
 
-      let unsub: number;
+    function animate() {
+      for (const el of Composite.allBodies(engine.current.world)) {
+        const isActive = domMap.current.get(el.plugin.domId)?.isActive;
+        if (el.isStatic || !el.plugin.domId || !isActive) continue;
 
-      function animate() {
-        for (const el of Composite.allBodies(engine.current.world)) {
-          if (el.isStatic || !el.plugin.domId) continue;
-          domMap.current.set(el.plugin.domId, { x: el.position.x, y: el.position.y, angle: el.angle });
-        }
-
-        setAnim((x) => x + 1);
-        unsub = requestAnimationFrame(animate);
+        domMap.current.set(el.plugin.domId, { isActive: isActive, x: el.position.x, y: el.position.y, angle: el.angle });
       }
 
+      setAnim((x) => x + 1);
       unsub = requestAnimationFrame(animate);
-
-      return () => {
-        cancelAnimationFrame(unsub);
-      };
-    },
-    [physicsEnabled]
-  );
-
-  function mapPhysicsToDom(domId: string): React.CSSProperties {
-    if (!physicsEnabled) return {};
-    const coords = domMap.current.get(domId);
-    const el = document.getElementById(domId);
-
-    if (el && coords) {
-      const { x, y, angle } = coords;
-      return {
-        position: 'absolute',
-        top: y,
-        left: x,
-        transform: `translate(-50%, -50%) rotate(${angle}rad)`,
-      };
     }
-    return {};
+
+    unsub = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(unsub);
+    };
+  }, []);
+
+  function triggerPhysics(id: string) {
+    if (randomChance(0, 10) === 0) {
+      const el = document.getElementById(id);
+
+      const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: id } });
+      bodyToAdd.friction = 0.00001;
+      bodyToAdd.frictionAir = 0.000005;
+      bodyToAdd.restitution = 0.75;
+
+      Composite.add(engine.current.world, bodyToAdd);
+      
+      if (el) {
+        domMap.current.set(id, { isActive: true, x: el.offsetLeft, y: el.offsetHeight, angle: bodyToAdd.angle });
+      }
+      setTimeout(() => {
+        alert('Shit!')
+        setTriggerExplosion(true);
+      }, 2000)
+    }
   }
 
   return (
@@ -139,60 +183,49 @@ function SurveyView2() {
             <form className="form">
               <h1>Let's get you started...</h1>
               <div className="input-grid">
-                
-                <label>
-                  First Name
-                  <input
-                    id="firstName"
-                    className="physics"
-                    type="text"
-                    placeholder="John"
-                    style={mapPhysicsToDom('firstName')}
-                    onChange={() => {
-                      if (randomChance(0, 10) === 0) {
-                        setPhysicsEnabled(true);
-                      }
-                    }}
-                  />
-                  {physicsEnabled && <input style={{ visibility: 'hidden' }} />}
-                </label>
+                <InputLabel
+                  id={'firstName'}
+                  labelText={'First Name'}
+                  placeholder={'John'}
+                  physicsTrigger={() => triggerPhysics('firstName')}
+                  domBody={domMap.current.get('firstName')}
+                />
 
-                <label>
-                  Last Name
-                  <input id="lastName" className="physics" type="text" placeholder="Doe" style={mapPhysicsToDom('lastName')} />
-                  {physicsEnabled && <input style={{ visibility: 'hidden' }} />}
-                </label>
+                <InputLabel
+                  id={'lastName'}
+                  labelText={'Last Name'}
+                  placeholder={'Doe'}
+                  physicsTrigger={triggerPhysics}
+                  domBody={domMap.current.get('lastName')}
+                />
 
                 <div className="user-details">
-                  <label>
-                    Work Email
-                    <input id="email" className="physics" type="text" placeholder="Email" style={mapPhysicsToDom('email')} />
-                    {physicsEnabled && <input style={{ visibility: 'hidden' }} />}
-                  </label>
+                  <InputLabel
+                    id={'email'}
+                    domBody={domMap.current.get('email')}
+                    labelText={'Work Email'}
+                    placeholder={'email@asdf.com'}
+                    physicsTrigger={triggerPhysics}
+                  />
 
-                  <label>
-                    Job Title
-                    <input
-                      id="job"
-                      className="physics"
-                      type="text"
-                      placeholder="Job Title"
-                      style={mapPhysicsToDom('job')}></input>
-                    {physicsEnabled && <input style={{ visibility: 'hidden' }} />}
-                  </label>
+                  <InputLabel
+                    id={'job'}
+                    domBody={domMap.current.get('job')}
+                    labelText={'Job Title'}
+                    placeholder={'unemployed'}
+                    physicsTrigger={triggerPhysics}
+                  />
 
-                  <label>
-                    Phone Number
-                    <input
-                      id="phone"
-                      type="tel"
-                      placeholder="(123) 456-7891"
-                      className="physics"
-                      style={mapPhysicsToDom('phone')}></input>
-                    {physicsEnabled && <input style={{ visibility: 'hidden' }} />}
-                  </label>
+                  <InputLabel
+                    id={'phone'}
+                    domBody={domMap.current.get('phone')}
+                    labelText={'Phone Number'}
+                    placeholder={'(123) 456 7891'}
+                    physicsTrigger={triggerPhysics}
+                  />
                 </div>
 
+                {/* 
                 <label>
                   Company Size
                   <select id="companySize" className="physics" style={mapPhysicsToDom('companySize')}>
@@ -210,13 +243,13 @@ function SurveyView2() {
                     <option>Yes</option>
                     <option>No</option>
                   </select>
-                </label>
+                </label> */}
 
                 <div className="button-container">
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      setPhysicsEnabled(true);
+                      setTriggerExplosion(true);
                     }}>
                     Let's Go!
                   </button>
