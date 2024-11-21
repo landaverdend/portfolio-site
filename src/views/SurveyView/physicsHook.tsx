@@ -1,6 +1,27 @@
 import { Bodies, Body, Composite, Engine, Render, Runner } from 'matter-js';
 import { useEffect, useRef } from 'react';
 
+export type DOMBody = {
+  isActive: boolean;
+  x: number;
+  y: number;
+  angle: number;
+};
+export function mapPhysicsToDom(domId: string, domBody: DOMBody): React.CSSProperties {
+  const el = document.getElementById(domId);
+
+  if (el && domBody) {
+    const { x, y, angle } = domBody;
+    return {
+      position: 'absolute',
+      top: y,
+      left: x,
+      transform: `translate(-50%, -50%) rotate(${angle}rad)`,
+    };
+  }
+  return {};
+}
+
 function usePhysicsHook(shouldRender = false) {
   // Build the Matter.JS stuff
   const ref = useRef<HTMLDivElement>(null);

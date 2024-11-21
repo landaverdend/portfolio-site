@@ -2,8 +2,17 @@ import './survey-view2.css';
 import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas.tsx';
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { useEffect, useRef, useState } from 'react';
-import usePhysicsHook from './physicsHook';
+import usePhysicsHook, { DOMBody, mapPhysicsToDom } from './physicsHook';
 import { Body, Composite } from 'matter-js';
+import {
+  FieldError,
+  RegisterOptions,
+  SubmitHandler,
+  useForm,
+  UseFormRegister,
+  UseFormRegisterReturn,
+  Validate,
+} from 'react-hook-form';
 
 const dumbSlogans: string[] = [
   'Unlocking your path to unparalleled hiring success.',
@@ -25,30 +34,25 @@ function randomChance(l: number, r: number) {
   return Math.floor(Math.random() * r) + l;
 }
 
+type ETProps = {
+  text: string;
+};
+function ErrorText({ text }: ETProps) {
+  return <span className="error-text">{text}</span>;
+}
+
 type IWProps = {
-  id: string;
-  labelText: string;
+  id: keyof Inputs;
   placeholder?: string;
   domBody?: DOMBody;
-  physicsTrigger: Function;
+
+  labelText: string;
+
+  error?: FieldError;
+  register: UseFormRegister<Inputs>;
+  registerOptions?: RegisterOptions<Inputs, keyof Inputs>;
 };
-function InputWithPhysics({ id, labelText, placeholder, physicsTrigger, domBody }: IWProps) {
-  function mapPhysicsToDom(domId: string): React.CSSProperties {
-    if (!domBody?.isActive) return {};
-    const el = document.getElementById(domId);
-
-    if (el && domBody) {
-      const { x, y, angle } = domBody;
-      return {
-        position: 'absolute',
-        top: y,
-        left: x,
-        transform: `translate(-50%, -50%) rotate(${angle}rad)`,
-      };
-    }
-    return {};
-  }
-
+function InputWithPhysics({ id, labelText, placeholder, domBody, error, register, registerOptions }: IWProps) {
   return (
     <label>
       {labelText}
@@ -57,10 +61,11 @@ function InputWithPhysics({ id, labelText, placeholder, physicsTrigger, domBody 
         className="physics"
         type="text"
         placeholder={placeholder}
-        style={mapPhysicsToDom(id)}
-        onChange={() => physicsTrigger()}
+        style={domBody?.isActive ? mapPhysicsToDom(id, domBody) : {}}
+        {...register(id, registerOptions)}
       />
       {domBody?.isActive && <input style={{ visibility: 'hidden' }} />}
+      {error?.message && <ErrorText text={error.message} />}
     </label>
   );
 }
@@ -72,45 +77,37 @@ type SWProps = {
   options: string[];
 };
 function SelectWithPhysics({ id, domBody, query, options }: SWProps) {
-  function mapPhysicsToDom(domId: string): React.CSSProperties {
-    if (!domBody?.isActive) return {};
-    const el = document.getElementById(domId);
-
-    if (el && domBody) {
-      const { x, y, angle } = domBody;
-      return {
-        position: 'absolute',
-        top: y,
-        left: x,
-        transform: `translate(-50%, -50%) rotate(${angle}rad)`,
-      };
-    }
-    return {};
-  }
-
   return (
     <label>
       {query}
-      <select id={id} className="physics" style={mapPhysicsToDom(id)}>
+      <select id={id} className="physics" style={domBody?.isActive ? mapPhysicsToDom(id, domBody) : {}}>
         {options.map((opt) => (
-          <option>{opt}</option>
+          <option key={opt}>{opt}</option>
         ))}
       </select>
     </label>
   );
 }
 
-type DOMBody = {
-  isActive: boolean;
-  x: number;
-  y: number;
-  angle: number;
+type Inputs = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  companySize: string;
+  companyName: string;
+  job: string;
+  marketingMaterials: boolean;
 };
 function SurveyView2() {
   const { ref, engine, createPhysicsBodyFromDOM } = usePhysicsHook();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<Inputs>({ mode: 'onSubmit' });
   const domMap = useRef<Map<string, DOMBody>>(new Map());
 
-  const [physicsTrigger, setPhysicsTrigger] = useState(false);
   const [triggerExplosion, setTriggerExplosion] = useState(false);
   const [dumbSlogan, setDumbSlogan] = useState(dumbSlogans[0]);
   const [, setAnim] = useState(0);
@@ -131,7 +128,6 @@ function SurveyView2() {
     function applyExplosionToInputs() {
       if (!triggerExplosion) return;
 
-      // alert('Uh oh')
       const elements = document.getElementsByClassName('physics');
 
       let i = 0;
@@ -178,7 +174,7 @@ function SurveyView2() {
   }, []);
 
   function triggerPhysics(id: string) {
-    if (randomChance(0, 50) === 0) {
+    if (!triggerExplosion && randomChance(0, 50) === 0) {
       const el = document.getElementById(id);
 
       const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: id } });
@@ -215,23 +211,39 @@ function SurveyView2() {
             </p>
           </div>
           <div className="form-container">
-            <form className="form">
+            <form className="form" onSubmit={handleSubmit(() => {})}>
               <h1>Let's get you started...</h1>
               <div className="input-grid">
                 <InputWithPhysics
                   id={'firstName'}
                   labelText={'First Name'}
                   placeholder={'John'}
-                  physicsTrigger={() => triggerPhysics('firstName')}
                   domBody={domMap.current.get('firstName')}
+                  register={register}
+                  registerOptions={{
+                    onChange: () => triggerPhysics('firstName'),
+                    required: { value: true, message: 'You forgot a first name...' },
+                    validate: {
+                      badName: () => randomChance(0, 10) === 0 || 'Pick again!',
+                    },
+                  }}
+                  error={errors.firstName}
                 />
 
                 <InputWithPhysics
                   id={'lastName'}
                   labelText={'Last Name'}
                   placeholder={'Doe'}
-                  physicsTrigger={() => triggerPhysics('lastName')}
                   domBody={domMap.current.get('lastName')}
+                  register={register}
+                  registerOptions={{
+                    onChange: () => triggerPhysics('lastName'),
+                    required: { value: true, message: 'Whoa there! You need to add a last name!' },
+                    validate: {
+                      badName: () => randomChance(0, 10) === 0 || "This one just won't work.... sorry!",
+                    },
+                  }}
+                  error={errors.lastName}
                 />
 
                 <div className="user-details">
@@ -240,7 +252,15 @@ function SurveyView2() {
                     domBody={domMap.current.get('email')}
                     labelText={'Work Email'}
                     placeholder={'email@asdf.com'}
-                    physicsTrigger={() => triggerPhysics('email')}
+                    register={register}
+                    registerOptions={{
+                      required: { value: true, message: 'Sorry but I need your email!!!' },
+                      pattern: { value: /^\S+@\S+$/i, message: 'Please enter an EMAIL' },
+                      validate: {
+                        badEmail: () => randomChance(0, 10) === 0 || 'I think you just made that up... Try again',
+                      },
+                    }}
+                    error={errors.email}
                   />
 
                   <InputWithPhysics
@@ -248,15 +268,27 @@ function SurveyView2() {
                     domBody={domMap.current.get('job')}
                     labelText={'Job Title'}
                     placeholder={'unemployed'}
-                    physicsTrigger={() => triggerPhysics('job')}
+                    register={register}
+                    registerOptions={{
+                      required: { value: true, message: "C'mon don't tell me your unemployed..." },
+                      validate: {
+                        badTitle: () => randomChance(0, 10) === 0 || "That's not a job!",
+                      },
+                    }}
+                    error={errors.job}
                   />
 
                   <InputWithPhysics
                     id={'phone'}
                     domBody={domMap.current.get('phone')}
                     labelText={'Phone Number'}
+                    register={register}
                     placeholder={'(123) 456 7891'}
-                    physicsTrigger={() => triggerPhysics('phone')}
+                    registerOptions={{
+                      required: { value: true, message: "That's not a phone number!!" },
+                      validate: { badPhone: () => randomChance(0, 10) === 0 || "Listen. I don't think so" },
+                    }}
+                    error={errors.phone}
                   />
                 </div>
 
@@ -274,14 +306,13 @@ function SurveyView2() {
                   options={['Yes', 'No']}
                 />
 
+                <label className="optional-text-field">
+                  Provide more details (optional)
+                  <textarea></textarea>
+                </label>
+
                 <div className="button-container">
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setTriggerExplosion(true);
-                    }}>
-                    Let's Go!
-                  </button>
+                  <input value="Let's Go" type="submit"></input>
                 </div>
               </div>
             </form>

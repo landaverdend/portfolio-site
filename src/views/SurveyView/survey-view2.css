@@ -105,13 +105,29 @@
           }
         }
 
+        .optional-text-field {
+          grid-column: span 2;
+
+          textarea {
+            width: 100%;
+            height: 75px;
+
+            resize: none;
+            font-family: inherit;
+
+            outline: none;
+            border: 1px solid #bebebe;
+            border-radius: 2.5px;
+          }
+        }
+
         .button-container {
           grid-column: span 2;
           display: flex;
           align-items: center;
           justify-content: center;
 
-          button {
+          input {
             font-size: 1.2rem;
 
             color: white;
@@ -123,7 +139,7 @@
             background-color: rgb(78 59 125);
           }
 
-          button:hover {
+          input:hover {
             opacity: 0.8;
             cursor: pointer;
           }
@@ -143,7 +159,7 @@
     flex-direction: column;
     overflow: visible;
     gap: 40px;
-    
+
     .about-container {
       height: max-content;
 
@@ -188,4 +204,8 @@
       }
     }
   }
+}
+
+.error-text {
+  color: red;
 }
