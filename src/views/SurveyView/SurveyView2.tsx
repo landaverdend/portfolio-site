@@ -4,15 +4,8 @@ import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { useEffect, useRef, useState } from 'react';
 import usePhysicsHook, { DOMBody, mapPhysicsToDom } from './physicsHook';
 import { Body, Composite } from 'matter-js';
-import {
-  FieldError,
-  RegisterOptions,
-  SubmitHandler,
-  useForm,
-  UseFormRegister,
-  UseFormRegisterReturn,
-  Validate,
-} from 'react-hook-form';
+import { FieldError, RegisterOptions, useForm, UseFormRegister } from 'react-hook-form';
+import { useAppState } from '@/state/appState';
 
 const dumbSlogans: string[] = [
   'Unlocking your path to unparalleled hiring success.',
@@ -71,20 +64,29 @@ function InputWithPhysics({ id, labelText, placeholder, domBody, error, register
 }
 
 type SWProps = {
-  id: string;
+  id: keyof Inputs;
   domBody?: DOMBody;
   query: string;
   options: string[];
+
+  error?: FieldError;
+  register: UseFormRegister<Inputs>;
+  registerOptions?: RegisterOptions<Inputs, keyof Inputs>;
 };
-function SelectWithPhysics({ id, domBody, query, options }: SWProps) {
+function SelectWithPhysics({ id, domBody, query, options, error, register, registerOptions }: SWProps) {
   return (
     <label>
       {query}
-      <select id={id} className="physics" style={domBody?.isActive ? mapPhysicsToDom(id, domBody) : {}}>
+      <select
+        id={id}
+        className="physics"
+        style={domBody?.isActive ? mapPhysicsToDom(id, domBody) : {}}
+        {...register(id, registerOptions)}>
         {options.map((opt) => (
           <option key={opt}>{opt}</option>
         ))}
       </select>
+      {error?.message && <ErrorText text={error.message} />}
     </label>
   );
 }
@@ -97,9 +99,11 @@ type Inputs = {
   companySize: string;
   companyName: string;
   job: string;
+  hispanic: string;
   marketingMaterials: boolean;
 };
 function SurveyView2() {
+  const { setNextView, setIsLoading } = useAppState();
   const { ref, engine, createPhysicsBodyFromDOM } = usePhysicsHook();
   const {
     register,
@@ -297,6 +301,9 @@ function SurveyView2() {
                   domBody={domMap.current.get('companySize')}
                   query={'Company Size'}
                   options={['1-99 employees', '100-299 employees', '300-1999 employees', '2000+ employees', 'I have no company']}
+                  register={register}
+                  registerOptions={{ required: false, validate: { badChoice: () => randomChance(0, 10) === 0 || 'You wish' } }}
+                  error={errors.companySize}
                 />
 
                 <SelectWithPhysics
@@ -304,6 +311,9 @@ function SurveyView2() {
                   domBody={domMap.current.get('hispanic')}
                   query={'Are you of Hispanic or Latino descent?'}
                   options={['Yes', 'No']}
+                  register={register}
+                  registerOptions={{ required: false, validate: { badChoice: () => randomChance(0, 2) === 0 || 'Qué no?' } }}
+                  error={errors.hispanic}
                 />
 
                 <label className="optional-text-field">
@@ -312,7 +322,31 @@ function SurveyView2() {
                 </label>
 
                 <div className="button-container">
-                  <input value="Let's Go" type="submit"></input>
+                  <label>
+                    <input
+                      type="checkbox"
+                      className="physics"
+                      {...register('marketingMaterials', {
+                        required: true,
+                        validate: {
+                          badAnswer: () => randomChance(0, 2) === 0 || "I don't think so.",
+                        },
+                      })}
+                    />
+                    I agree to receive marketing notifications
+                    {errors.marketingMaterials && (
+                      <ErrorText text={errors.marketingMaterials?.message ? errors.marketingMaterials.message : ''} />
+                    )}
+                  </label>
+                  <input id="submit" className="physics" value="Let's Go" type="submit"></input>
+                  <button
+                    className="give-up-button"
+                    onClick={() => {
+                      setIsLoading(true);
+                      setNextView('ResumeView');
+                    }}>
+                    I give up!
+                  </button>
                 </div>
               </div>
             </form>

@@ -70,10 +70,6 @@ function SetupForm() {
     }
 
     addElements();
-
-    return () => {
-      clearTimeout(unsubscribe);
-    };
   }, []);
 
   useEffect(function triggerAnimation() {

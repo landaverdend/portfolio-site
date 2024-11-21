@@ -28,6 +28,9 @@ function usePhysicsHook(shouldRender = false) {
   const engine = useRef<Matter.Engine>(Engine.create());
   const runner = useRef<Matter.Runner>(Runner.create());
 
+  // Track all of the DOM bodies that have physics injected into them.
+  const domMap = useRef<Map<string, DOMBody>>(new Map());
+
   useEffect(function initObjects() {
     Runner.run(runner.current, engine.current);
 
