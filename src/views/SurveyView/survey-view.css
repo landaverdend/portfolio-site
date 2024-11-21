@@ -1,145 +1,175 @@
-.setup-container {
-  height: 100vh;
-  width: 100vw;
-
+.physics-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-
-  .init-block {
-    display: flex;
-    flex-direction: row;
-
-    gap: 100px;
-    align-items: center;
-
-    width: 80vw;
-
-    .init-block__info {
-      flex: 3;
-
-      h1 {
-        font-size: 55px;
-        min-height: 200px;
-      }
-    }
-  }
-
-  .su-fade-in {
-    animation: fade-in 2s ease-in-out forwards;
-  }
-
-  .su-fade-out {
-    animation: fade-out 1s ease-in-out forwards;
-  }
+  width: 100vw;
+  height: 100vh;
+  /* overflow: hidden;  */
 }
 
-.error-text {
-  color: red;
-}
-.email-form-container {
+.survey-view-container {
   display: flex;
-  flex-direction: column;
 
-  padding: 25px;
-  border-radius: 25px;
-  background-color: hsl(270, 62%, 89%);
-  box-shadow: 7.5px 7.5px black;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 
-  .email-form {
-    flex: 5;
+  gap: 100px;
 
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    column-gap: 30px;
-    row-gap: 30px;
+    margin-left: 10vw;
 
-    label {
-      font-size: 0.8rem;
-
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
+    h1 {
+      font-size: 3.2rem;
     }
 
-    /* Shared input stuff.*/
-    select,
-    input {
-      border: 1px solid #bebebe;
-      border-radius: 2.5px;
-      padding: 7.5px;
-      outline: none;
+    p {
+      font-size: 1.1rem;
+    }
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      font-size: 1.8rem;
     }
 
-    .user-details {
-      grid-column: span 2;
+    .form {
+      padding: 50px;
+      border-radius: 25px;
+      background-color: hsl(270, 62%, 89%);
+      box-shadow: 7.5px 7.5px black;
+      width: max-content;
 
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-    }
+      margin-right: 10vw;
 
-    .details {
-      grid-column: span 2;
+      .input-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: stretch;
+        gap: 5px;
+        align-items: center;
 
-      textarea {
-        width: 100%;
-        height: 75px;
+        select,
+        input {
+          border-radius: 2.5px;
+          border: 1px solid #bebebe;
+          padding: 7.5px;
+        }
 
-        resize: none;
-        font-family: inherit;
+        label {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
 
-        outline: none;
-        border: 1px solid #bebebe;
+          font-size: 0.8rem;
+          height: 6rem;
 
-        border-radius: 2.5px;
-      }
-    }
+          input {
+            /* width: 298px; */
+            width: 18rem;
+            max-width: 18rem;
+          }
 
-    .submit-container {
-      grid-column: span 2;
+          select {
+            width: 19rem;
+            max-width: 21rem;
+          }
+        }
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
+        .user-details {
+          grid-column: span 2;
 
-      label {
-        display: flex;
-        flex-direction: row;
-      }
+          display: flex;
+          justify-content: space-between;
+          gap: 10px;
 
-      #submit-button {
-        font-size: 1.2rem;
+          label {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+          }
 
-        color: white;
+          input {
+            min-width: 100px;
+            width: 11rem;
+          }
+        }
 
-        padding: 10px;
+        .optional-text-field {
+          grid-column: span 2;
 
-        border-radius: 5px;
-        border: 1px solid rgb(78 59 125);
-        background-color: rgb(78 59 125);
-      }
+          textarea {
+            width: 100%;
+            height: 75px;
 
-      #submit-button:hover,
-      .give-up-button:hover {
-        cursor: pointer;
-        opacity: 0.8;
-      }
+            resize: none;
+            font-family: inherit;
 
-      .give-up-button {
-        padding: 10px;
+            outline: none;
+            border: 1px solid #bebebe;
+            border-radius: 2.5px;
+          }
+        }
 
-        color: white;
+        .button-container {
+          grid-column: span 2;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+          
+          /* checkbox. */
+          label {
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
 
-        background-color: black;
-        border: 1px solid black;
-        border-radius: 5px;
+            input {
+              height: auto;
+              width: auto;
+            }
+          }
 
-        animation: give-up-anim 3s ease forwards;
+          #submit {
+            font-size: 1.2rem;
+
+            color: white;
+
+            padding: 10px;
+
+            border-radius: 5px;
+            border: 1px solid rgb(78 59 125);
+            background-color: rgb(78 59 125);
+          }
+
+          #submit:hover {
+            opacity: 0.8;
+            cursor: pointer;
+          }
+
+          .give-up-button {
+            padding: 10px;
+
+            color: white;
+
+            background-color: black;
+            border: 1px solid black;
+            border-radius: 5px;
+
+            animation: give-up-anim 3s ease forwards;
+          }
+        }
       }
     }
   }
@@ -157,53 +187,63 @@
   }
 }
 
+/* Phone Screens */
 @media (max-width: 576px) {
-  .setup-container {
+  .physics-container {
     height: max-content;
-    margin-bottom: 25px;
-
-    .init-block {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      gap: 5px;
-
-      .init-block__info {
-        display: flex;
-        flex-direction: column;
-
-        h1 {
-          font-size: 2.75rem;
-        }
-
-        p {
-          font-size: medium;
-        }
-      }
-    }
   }
 
-  .email-form-container {
-    display: flex;
+  .survey-view-container {
     flex-direction: column;
-    align-items: center;
+    overflow: visible;
+    gap: 40px;
 
-    gap: 20px;
-    width: 80%;
-    flex: auto;
-    h1 {
-      font-size: 1.8rem;
+    .about-container {
+      height: max-content;
+
+      flex: 5;
+      margin-left: 0px;
+      overflow: visible;
+
+      h1 {
+        font-size: 2.85rem;
+        height: 50vh;
+        max-width: 65vw;
+      }
+
+      p {
+        font-size: large;
+      }
     }
 
-    .email-form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .form-container {
+      flex: 5;
 
-      .user-details {
-        display: flex;
-        flex-direction: column;
+      .form {
+        padding: 10px;
+        margin: 0 auto 5vh auto;
+
+        .input-grid {
+          display: flex;
+          flex-direction: column;
+
+          label {
+            height: 4rem;
+          }
+
+          .user-details {
+            flex-direction: column;
+
+            input {
+              width: 18rem;
+            }
+          }
+        }
       }
     }
   }
+}
+
+.error-text {
+  color: red;
 }

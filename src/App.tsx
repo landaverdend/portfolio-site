@@ -1,10 +1,9 @@
 import SplashView from '@views/splashView/SplashView';
 import ResumeView from './views/resumeView/ResumeView';
 import { useAppState } from './state/appState';
-import SurveyView from './views/SurveyView/SurveyView';
 import LoadingView from './views/loadingView/LoadingView';
 import PhysicsView from './views/SurveyView/PhysicsView';
-import SurveyView2 from './views/SurveyView/SurveyView2';
+import SurveyView from './views/SurveyView/SurveyView';
 
 function App() {
   const { componentToRender, isLoading } = useAppState();
@@ -16,7 +15,7 @@ function App() {
       renderMe = <ResumeView />;
       break;
     case 'SurveyView':
-      renderMe = <SurveyView2 />;
+      renderMe = <SurveyView />;
       break;
     case 'SplashView':
       renderMe = <SplashView />;
