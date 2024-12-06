@@ -2,11 +2,12 @@ import './survey-view.css';
 import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas.tsx';
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { useEffect, useRef, useState } from 'react';
-import usePhysicsHook, { DOMBody, mapPhysicsToDom } from './physicsHook';
+import usePhysicsHook, { DOMBody } from './physicsHook';
 import { Body, Composite } from 'matter-js';
-import { FieldError, RegisterOptions, useForm, UseFormRegister } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useAppState } from '@/state/appState';
 import { randomNumber } from '@/util/random';
+import { ErrorText, InputWithPhysics, SelectWithPhysics } from './physicsInput';
 
 const dumbSlogans: string[] = [
   'Unlocking your path to unparalleled hiring success.',
@@ -24,71 +25,7 @@ const dumbSlogans: string[] = [
   'Empowering your recruitment with unmatched access to expertise.',
 ];
 
-type ETProps = {
-  text: string;
-};
-function ErrorText({ text }: ETProps) {
-  return <span className="error-text">{text}</span>;
-}
-
-type IWProps = {
-  id: keyof Inputs;
-  placeholder?: string;
-  domBody?: DOMBody;
-
-  labelText: string;
-
-  error?: FieldError;
-  register: UseFormRegister<Inputs>;
-  registerOptions?: RegisterOptions<Inputs, keyof Inputs>;
-};
-function InputWithPhysics({ id, labelText, placeholder, domBody, error, register, registerOptions }: IWProps) {
-  return (
-    <label>
-      {labelText}
-      <input
-        id={id}
-        className="physics"
-        type="text"
-        placeholder={placeholder}
-        style={domBody?.isActive ? mapPhysicsToDom(id, domBody) : {}}
-        {...register(id, registerOptions)}
-      />
-      {domBody?.isActive && <input style={{ visibility: 'hidden' }} />}
-      {error?.message && <ErrorText text={error.message} />}
-    </label>
-  );
-}
-
-type SWProps = {
-  id: keyof Inputs;
-  domBody?: DOMBody;
-  query: string;
-  options: string[];
-
-  error?: FieldError;
-  register: UseFormRegister<Inputs>;
-  registerOptions?: RegisterOptions<Inputs, keyof Inputs>;
-};
-function SelectWithPhysics({ id, domBody, query, options, error, register, registerOptions }: SWProps) {
-  return (
-    <label>
-      {query}
-      <select
-        id={id}
-        className="physics"
-        style={domBody?.isActive ? mapPhysicsToDom(id, domBody) : {}}
-        {...register(id, registerOptions)}>
-        {options.map((opt) => (
-          <option key={opt}>{opt}</option>
-        ))}
-      </select>
-      {error?.message && <ErrorText text={error.message} />}
-    </label>
-  );
-}
-
-type Inputs = {
+export type Inputs = {
   firstName: string;
   lastName: string;
   email: string;
@@ -309,7 +246,10 @@ function SurveyView() {
                   query={'Are you of Hispanic or Latino descent?'}
                   options={['Yes', 'No']}
                   register={register}
-                  registerOptions={{ required: false, validate: { badChoice: () => randomNumber(0, 2) === 0 || 'Qué no?' } }}
+                  registerOptions={{
+                    required: false,
+                    validate: { badChoice: () => randomNumber(0, 2) === 0 || 'Ni en pedo, amigito. Intentálo de nuevo hdp' },
+                  }}
                   error={errors.hispanic}
                 />
 

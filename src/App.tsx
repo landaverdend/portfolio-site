@@ -2,7 +2,6 @@ import SplashView from '@views/splashView/SplashView';
 import ResumeView from './views/resumeView/ResumeView';
 import { useAppState } from './state/appState';
 import LoadingView from './views/loadingView/LoadingView';
-import PhysicsView from './views/SurveyView/PhysicsView';
 import SurveyView from './views/SurveyView/SurveyView';
 
 function App() {
@@ -19,9 +18,6 @@ function App() {
       break;
     case 'SplashView':
       renderMe = <SplashView />;
-      break;
-    case 'PhysicsView':
-      renderMe = <PhysicsView />;
       break;
   }
 
