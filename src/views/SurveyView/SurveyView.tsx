@@ -37,6 +37,8 @@ export type Inputs = {
   marketingMaterials: boolean;
 };
 function SurveyView() {
+  const [timesTried, setTimesTried] = useState(0);
+
   const { setNextView, setIsLoading } = useAppState();
   const { ref, engine, createPhysicsBodyFromDOM } = usePhysicsHook();
   const {
@@ -112,7 +114,7 @@ function SurveyView() {
   }, []);
 
   function triggerPhysics(id: string) {
-    if (!triggerExplosion && randomNumber(0, 50) === 0) {
+    if (!triggerExplosion && randomNumber(0, 20) === 0) {
       const el = document.getElementById(id);
 
       const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: id } });
@@ -125,6 +127,7 @@ function SurveyView() {
       if (el) {
         domMap.current.set(id, { isActive: true, x: el.offsetLeft, y: el.offsetHeight, angle: bodyToAdd.angle });
       }
+
       setTimeout(() => {
         alert('Shit!');
         setTriggerExplosion(true);
@@ -275,15 +278,25 @@ function SurveyView() {
                       <ErrorText text={errors.marketingMaterials?.message ? errors.marketingMaterials.message : ''} />
                     )}
                   </label>
-                  <input id="submit" className="physics" value="Let's Go" type="submit"></input>
-                  <button
-                    className="give-up-button"
-                    onClick={() => {
-                      setIsLoading(true);
-                      setNextView('ResumeView');
-                    }}>
-                    I give up!
-                  </button>
+                  <input
+                    id="submit"
+                    className="physics"
+                    value="Let's Go"
+                    type="submit"
+                    onClick={(e) => {
+                      e.preventDefault;
+                      setTimesTried((prev) => prev + 1);
+                    }}></input>
+                  {timesTried >= 2 && (
+                    <button
+                      className="give-up-button"
+                      onClick={() => {
+                        setIsLoading(true);
+                        setNextView('ResumeView');
+                      }}>
+                      I give up!
+                    </button>
+                  )}
                 </div>
               </div>
             </form>
