@@ -136,7 +136,7 @@ function SurveyView() {
     <>
       <div className="physics-container" ref={ref}>
         <div className="survey-view-container">
-          <div className="about-container">
+          <div className="survey-description-container">
             <h1>
               <TypewriterText text={dumbSlogan} speed={30} delay={0} />
             </h1>
@@ -148,161 +148,158 @@ function SurveyView() {
               and we’ll make sure you’re all set.
             </p>
           </div>
-          <div className="form-container">
-            <form className="form" onSubmit={handleSubmit(() => {})}>
-              <h1>Let's get you started...</h1>
-              <div className="input-grid">
+
+          <form className="form-container" onSubmit={handleSubmit(() => {})}>
+            <h1>Let's get you started...</h1>
+            <div className="input-grid">
+              <InputWithPhysics
+                id={'firstName'}
+                labelText={'First Name'}
+                placeholder={'John'}
+                domBody={domMap.current.get('firstName')}
+                register={register}
+                registerOptions={{
+                  onChange: () => triggerPhysics('firstName'),
+                  required: { value: true, message: 'You forgot a first name...' },
+                  validate: {
+                    badName: () => randomNumber(0, 10) === 0 || 'Pick again!',
+                  },
+                }}
+                error={errors.firstName}
+              />
+
+              <InputWithPhysics
+                id={'lastName'}
+                labelText={'Last Name'}
+                placeholder={'Doe'}
+                domBody={domMap.current.get('lastName')}
+                register={register}
+                registerOptions={{
+                  onChange: () => triggerPhysics('lastName'),
+                  required: { value: true, message: 'Whoa there! You need to add a last name!' },
+                  validate: {
+                    badName: () => randomNumber(0, 10) === 0 || "This one just won't work.... sorry!",
+                  },
+                }}
+                error={errors.lastName}
+              />
+
+              <div className="user-details">
                 <InputWithPhysics
-                  id={'firstName'}
-                  labelText={'First Name'}
-                  placeholder={'John'}
-                  domBody={domMap.current.get('firstName')}
+                  id={'email'}
+                  domBody={domMap.current.get('email')}
+                  labelText={'Work Email'}
+                  placeholder={'email@asdf.com'}
                   register={register}
                   registerOptions={{
-                    onChange: () => triggerPhysics('firstName'),
-                    required: { value: true, message: 'You forgot a first name...' },
+                    onChange: () => triggerPhysics('email'),
+                    required: { value: true, message: 'Sorry but I need your email!!!' },
+                    pattern: { value: /^\S+@\S+$/i, message: 'Please enter an EMAIL' },
                     validate: {
-                      badName: () => randomNumber(0, 10) === 0 || 'Pick again!',
+                      badEmail: () => randomNumber(0, 10) === 0 || 'I think you just made that up... Try again',
                     },
                   }}
-                  error={errors.firstName}
+                  error={errors.email}
                 />
 
                 <InputWithPhysics
-                  id={'lastName'}
-                  labelText={'Last Name'}
-                  placeholder={'Doe'}
-                  domBody={domMap.current.get('lastName')}
+                  id={'job'}
+                  domBody={domMap.current.get('job')}
+                  labelText={'Job Title'}
+                  placeholder={'unemployed'}
                   register={register}
                   registerOptions={{
-                    onChange: () => triggerPhysics('lastName'),
-                    required: { value: true, message: 'Whoa there! You need to add a last name!' },
+                    onChange: () => triggerPhysics('job'),
+                    required: { value: true, message: "C'mon don't tell me your unemployed..." },
                     validate: {
-                      badName: () => randomNumber(0, 10) === 0 || "This one just won't work.... sorry!",
+                      badTitle: () => randomNumber(0, 10) === 0 || "That's not a job!",
                     },
                   }}
-                  error={errors.lastName}
+                  error={errors.job}
                 />
 
-                <div className="user-details">
-                  <InputWithPhysics
-                    id={'email'}
-                    domBody={domMap.current.get('email')}
-                    labelText={'Work Email'}
-                    placeholder={'email@asdf.com'}
-                    register={register}
-                    registerOptions={{
-                      onChange: () => triggerPhysics('email'),
-                      required: { value: true, message: 'Sorry but I need your email!!!' },
-                      pattern: { value: /^\S+@\S+$/i, message: 'Please enter an EMAIL' },
-                      validate: {
-                        badEmail: () => randomNumber(0, 10) === 0 || 'I think you just made that up... Try again',
-                      },
-                    }}
-                    error={errors.email}
-                  />
-
-                  <InputWithPhysics
-                    id={'job'}
-                    domBody={domMap.current.get('job')}
-                    labelText={'Job Title'}
-                    placeholder={'unemployed'}
-                    register={register}
-                    registerOptions={{
-                      onChange: () => triggerPhysics('job'),
-                      required: { value: true, message: "C'mon don't tell me your unemployed..." },
-                      validate: {
-                        badTitle: () => randomNumber(0, 10) === 0 || "That's not a job!",
-                      },
-                    }}
-                    error={errors.job}
-                  />
-
-                  <InputWithPhysics
-                    id={'phone'}
-                    domBody={domMap.current.get('phone')}
-                    labelText={'Phone Number'}
-                    register={register}
-                    placeholder={'(123) 456 7891'}
-                    registerOptions={{
-                      onChange: () => triggerPhysics('phone'),
-                      required: { value: true, message: "That's not a phone number!!" },
-                      validate: { badPhone: () => randomNumber(0, 10) === 0 || "Listen. I don't think so" },
-                    }}
-                    error={errors.phone}
-                  />
-                </div>
-
-                <SelectWithPhysics
-                  id="companySize"
-                  domBody={domMap.current.get('companySize')}
-                  query={'Company Size'}
-                  options={['1-99 employees', '100-299 employees', '300-1999 employees', '2000+ employees', 'I have no company']}
+                <InputWithPhysics
+                  id={'phone'}
+                  domBody={domMap.current.get('phone')}
+                  labelText={'Phone Number'}
                   register={register}
-                  registerOptions={{ required: false, validate: { badChoice: () => randomNumber(0, 10) === 0 || 'You wish' } }}
-                  error={errors.companySize}
-                />
-
-                <SelectWithPhysics
-                  id="hispanic"
-                  domBody={domMap.current.get('hispanic')}
-                  query={'Are you of Hispanic or Latino descent?'}
-                  options={['Yes', 'No']}
-                  register={register}
+                  placeholder={'(123) 456 7891'}
                   registerOptions={{
-                    required: false,
-                    validate: { badChoice: () => randomNumber(0, 2) === 0 || 'Ni en pedo, amigito. Intentálo de nuevo hdp' },
+                    onChange: () => triggerPhysics('phone'),
+                    required: { value: true, message: "That's not a phone number!!" },
+                    validate: { badPhone: () => randomNumber(0, 10) === 0 || "Listen. I don't think so" },
                   }}
-                  error={errors.hispanic}
+                  error={errors.phone}
                 />
-
-                <label className="optional-text-field">
-                  Provide more details (optional)
-                  <textarea></textarea>
-                </label>
-
-                <div className="button-container">
-                  <label>
-                    <input
-                      type="checkbox"
-                      className="physics"
-                      {...register('marketingMaterials', {
-                        required: true,
-                        validate: {
-                          badAnswer: () => randomNumber(0, 2) === 0 || "I don't think so.",
-                        },
-                      })}
-                    />
-                    I agree to receive marketing notifications
-                    {errors.marketingMaterials && (
-                      <ErrorText text={errors.marketingMaterials?.message ? errors.marketingMaterials.message : ''} />
-                    )}
-                  </label>
-                  <input
-                    id="submit"
-                    className="physics"
-                    value="Let's Go"
-                    type="submit"
-                    onClick={(e) => {
-                      e.preventDefault;
-                      setTimesTried((prev) => prev + 1);
-                    }}></input>
-                  {timesTried >= 2 && (
-                    <button
-                      className="give-up-button"
-                      onClick={() => {
-                        setIsLoading(true);
-                        setNextView('ResumeView');
-                      }}>
-                      I give up!
-                    </button>
-                  )}
-                </div>
               </div>
-            </form>
-          </div>
-          {/* <div style={{ position: 'absolute', top: '868px', backgroundColor: 'red', height: '1px', width: '100vw' }}></div> */}
-          {/* <div style={{ position: 'absolute', top: '977px', backgroundColor: 'red', height: '1px', width: '100vw' }}></div> */}
+
+              <SelectWithPhysics
+                id="companySize"
+                domBody={domMap.current.get('companySize')}
+                query={'Company Size'}
+                options={['1-99 employees', '100-299 employees', '300-1999 employees', '2000+ employees', 'I have no company']}
+                register={register}
+                registerOptions={{ required: false, validate: { badChoice: () => randomNumber(0, 10) === 0 || 'You wish' } }}
+                error={errors.companySize}
+              />
+
+              <SelectWithPhysics
+                id="hispanic"
+                domBody={domMap.current.get('hispanic')}
+                query={'Are you of Hispanic or Latino descent?'}
+                options={['Yes', 'No']}
+                register={register}
+                registerOptions={{
+                  required: false,
+                  validate: { badChoice: () => randomNumber(0, 2) === 0 || 'Ni en pedo, amigito. Intentálo de nuevo hdp' },
+                }}
+                error={errors.hispanic}
+              />
+
+              <label className="optional-text-field">
+                Provide more details (optional)
+                <textarea></textarea>
+              </label>
+
+              <div className="button-container">
+                <label>
+                  <input
+                    type="checkbox"
+                    className="physics"
+                    {...register('marketingMaterials', {
+                      required: true,
+                      validate: {
+                        badAnswer: () => randomNumber(0, 2) === 0 || "I don't think so.",
+                      },
+                    })}
+                  />
+                  I agree to receive marketing notifications
+                  {errors.marketingMaterials && (
+                    <ErrorText text={errors.marketingMaterials?.message ? errors.marketingMaterials.message : ''} />
+                  )}
+                </label>
+                <input
+                  id="submit"
+                  className="physics"
+                  value="Let's Go"
+                  type="submit"
+                  onClick={(e) => {
+                    e.preventDefault;
+                    setTimesTried((prev) => prev + 1);
+                  }}></input>
+                {timesTried >= 2 && (
+                  <button
+                    className="give-up-button"
+                    onClick={() => {
+                      setIsLoading(true);
+                      setNextView('ResumeView');
+                    }}>
+                    I give up!
+                  </button>
+                )}
+              </div>
+            </div>
+          </form>
         </div>
         <BackgroundCanvas flipped={true} />
       </div>

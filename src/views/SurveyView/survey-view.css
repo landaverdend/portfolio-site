@@ -1,8 +1,11 @@
 .physics-container {
   display: flex;
   align-items: center;
+  justify-content: center;
+
   width: 100vw;
   height: 100vh;
+
   overflow: hidden; /* The background canvas causes overflow... */
 }
 
@@ -13,17 +16,15 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 
+  margin: 0 5vw 0 5vw;
   gap: 100px;
 
-  .about-container {
+  .survey-description-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    margin-left: 10vw;
 
     h1 {
       font-size: 3.2rem;
@@ -40,136 +41,132 @@
     align-items: center;
     justify-content: center;
 
+    padding: 50px;
+    border-radius: 25px;
+    background-color: hsl(270, 62%, 89%);
+    box-shadow: 7.5px 7.5px black;
+    width: max-content;
+
     h1 {
       font-size: 1.8rem;
     }
 
-    .form {
-      padding: 50px;
-      border-radius: 25px;
-      background-color: hsl(270, 62%, 89%);
-      box-shadow: 7.5px 7.5px black;
-      width: max-content;
+    .input-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: stretch;
+      gap: 5px;
+      align-items: center;
 
-      margin-right: 10vw;
+      select,
+      input {
+        border-radius: 2.5px;
+        border: 1px solid #bebebe;
+        padding: 7.5px;
+      }
 
-      .input-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        justify-items: stretch;
+      label {
+        display: flex;
+        flex-direction: column;
         gap: 5px;
-        align-items: center;
 
-        select,
+        font-size: 0.8rem;
+        height: 6rem;
+
         input {
-          border-radius: 2.5px;
-          border: 1px solid #bebebe;
-          padding: 7.5px;
+          /* width: 298px; */
+          width: 18rem;
+          max-width: 18rem;
         }
+
+        select {
+          width: 19rem;
+          max-width: 21rem;
+        }
+      }
+
+      .user-details {
+        grid-column: span 2;
+
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
 
         label {
           display: flex;
           flex-direction: column;
-          gap: 5px;
-
-          font-size: 0.8rem;
-          height: 6rem;
-
-          input {
-            /* width: 298px; */
-            width: 18rem;
-            max-width: 18rem;
-          }
-
-          select {
-            width: 19rem;
-            max-width: 21rem;
-          }
+          align-items: flex-start;
         }
 
-        .user-details {
-          grid-column: span 2;
-
-          display: flex;
-          justify-content: space-between;
-          gap: 10px;
-
-          label {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-          }
-
-          input {
-            min-width: 100px;
-            width: 11rem;
-          }
+        input {
+          min-width: 100px;
+          width: 11rem;
         }
+      }
 
-        .optional-text-field {
-          grid-column: span 2;
+      .optional-text-field {
+        grid-column: span 2;
 
-          textarea {
-            width: 100%;
-            height: 75px;
+        textarea {
+          width: 100%;
+          height: 75px;
 
-            resize: none;
-            font-family: inherit;
+          resize: none;
+          font-family: inherit;
 
-            outline: none;
-            border: 1px solid #bebebe;
-            border-radius: 2.5px;
-          }
+          outline: none;
+          border: 1px solid #bebebe;
+          border-radius: 2.5px;
         }
+      }
 
-        .button-container {
-          grid-column: span 2;
-          display: flex;
-          flex-direction: column;
+      .button-container {
+        grid-column: span 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+
+        /* checkbox. */
+        label {
+          flex-direction: row;
           align-items: center;
           justify-content: center;
-          gap: 5px;
 
-          /* checkbox. */
-          label {
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-
-            input {
-              height: auto;
-              width: auto;
-            }
+          input {
+            height: auto;
+            width: auto;
           }
+        }
 
-          #submit {
-            font-size: 1.2rem;
+        #submit {
+          font-size: 1.2rem;
 
-            color: white;
+          color: white;
 
-            padding: 10px;
+          padding: 10px;
 
-            border-radius: 5px;
-            border: 1px solid rgb(78 59 125);
-            background-color: rgb(78 59 125);
-          }
+          border-radius: 5px;
+          border: 1px solid rgb(78 59 125);
+          background-color: rgb(78 59 125);
+        }
 
-          #submit:hover {
-            opacity: 0.8;
-            cursor: pointer;
-          }
+        #submit:hover {
+          opacity: 0.8;
+          cursor: pointer;
+        }
 
-          .give-up-button {
-            padding: 10px;
+        .give-up-button {
+          padding: 10px;
 
-            color: white;
+          color: white;
 
-            background-color: black;
-            border: 1px solid black;
-            border-radius: 5px;
+          background-color: black;
+          border: 1px solid black;
+          border-radius: 5px;
 
-            animation: give-up-anim 3s ease forwards;
-          }
+          animation: give-up-anim 3s ease forwards;
         }
       }
     }
@@ -191,25 +188,21 @@
 /* Phone Screens */
 @media (max-width: 576px) {
   .physics-container {
-    height: max-content;
     overflow: scroll;
   }
 
   .survey-view-container {
     flex-direction: column;
     overflow: visible;
-    /* gap: 40px; */
+    justify-content: start;
 
-    .about-container {
-      height: max-content;
-
-      flex: 5;
+    .survey-description-container {
       overflow: visible;
 
       h1 {
         font-size: 2.85rem;
-        /* height: 50vh; */
         max-width: 65vw;
+        height: 45vh;
       }
 
       p {
@@ -218,26 +211,22 @@
     }
 
     .form-container {
-      flex: 5;
+      padding: 10px;
+      margin: 0 auto 5vh auto;
 
-      .form {
-        padding: 10px;
-        margin: 0 auto 5vh auto;
+      .input-grid {
+        display: flex;
+        flex-direction: column;
 
-        .input-grid {
-          display: flex;
+        label {
+          height: 4rem;
+        }
+
+        .user-details {
           flex-direction: column;
 
-          label {
-            height: 4rem;
-          }
-
-          .user-details {
-            flex-direction: column;
-
-            input {
-              width: 18rem;
-            }
+          input {
+            width: 18rem;
           }
         }
       }
