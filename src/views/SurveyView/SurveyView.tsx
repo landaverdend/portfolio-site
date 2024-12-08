@@ -2,12 +2,12 @@ import './survey-view.css';
 import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas.tsx';
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { useEffect, useRef, useState } from 'react';
-import usePhysicsHook, { DOMBody } from './physicsHook';
+import usePhysicsHook, { DOMBody } from './physicsHook.tsx';
 import { Body, Composite } from 'matter-js';
 import { useForm } from 'react-hook-form';
 import { useAppState } from '@/state/appState';
 import { randomNumber } from '@/util/random';
-import { ErrorText, InputWithPhysics, SelectWithPhysics } from './physicsInput';
+import { ErrorText, InputWithPhysics, SelectWithPhysics } from './physicsInput.tsx';
 
 const dumbSlogans: string[] = [
   'Unlocking your path to unparalleled hiring success.',
@@ -40,15 +40,16 @@ function SurveyView() {
   const [timesTried, setTimesTried] = useState(0);
 
   const { setNextView, setIsLoading } = useAppState();
-  const { ref, engine, createPhysicsBodyFromDOM } = usePhysicsHook();
+  const { ref, engine, createPhysicsBodyFromDOM } = usePhysicsHook(true);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<Inputs>({ mode: 'onSubmit' });
   const domMap = useRef<Map<string, DOMBody>>(new Map());
+  const isPhysicsSequenceStarted = useRef<boolean>(false);
 
-  const [triggerExplosion, setTriggerExplosion] = useState(false);
+  const [explosionTriggered, setExplosionTriggered] = useState(false);
   const [dumbSlogan, setDumbSlogan] = useState(dumbSlogans[0]);
   const [, setAnim] = useState(0);
 
@@ -66,17 +67,14 @@ function SurveyView() {
 
   useEffect(
     function applyExplosionToInputs() {
-      if (!triggerExplosion) return;
+      if (!explosionTriggered) return;
 
       const elements = document.getElementsByClassName('physics');
 
       let i = 0;
       for (let el of elements) {
-        if (el) {
+        if (!domMap.current.get(el.id)?.isActive) {
           const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: el.id } });
-          bodyToAdd.friction = 0.00001;
-          bodyToAdd.frictionAir = 0.000005;
-          bodyToAdd.restitution = 0.85;
 
           // For an 'explosion' effect.
           const force = i % 2 == 0 ? 0.7 : -0.7;
@@ -88,7 +86,7 @@ function SurveyView() {
         }
       }
     },
-    [triggerExplosion]
+    [explosionTriggered]
   );
 
   useEffect(function triggerAnimation() {
@@ -114,13 +112,10 @@ function SurveyView() {
   }, []);
 
   function triggerPhysics(id: string) {
-    if (!triggerExplosion && randomNumber(0, 20) === 0) {
+    if (!isPhysicsSequenceStarted.current && randomNumber(0, 1) === 0) {
       const el = document.getElementById(id);
 
       const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: id } });
-      bodyToAdd.friction = 0.00001;
-      bodyToAdd.frictionAir = 0.000005;
-      bodyToAdd.restitution = 0.75;
 
       Composite.add(engine.current.world, bodyToAdd);
 
@@ -128,10 +123,12 @@ function SurveyView() {
         domMap.current.set(id, { isActive: true, x: el.offsetLeft, y: el.offsetHeight, angle: bodyToAdd.angle });
       }
 
+      // Trigger the explosion on all other dom elements after two seconds.
       setTimeout(() => {
-        alert('Shit!');
-        setTriggerExplosion(true);
+        alert('SHIT');
+        setExplosionTriggered(true);
       }, 2000);
+      isPhysicsSequenceStarted.current = true;
     }
   }
 
@@ -195,6 +192,7 @@ function SurveyView() {
                     placeholder={'email@asdf.com'}
                     register={register}
                     registerOptions={{
+                      onChange: () => triggerPhysics('email'),
                       required: { value: true, message: 'Sorry but I need your email!!!' },
                       pattern: { value: /^\S+@\S+$/i, message: 'Please enter an EMAIL' },
                       validate: {
@@ -211,6 +209,7 @@ function SurveyView() {
                     placeholder={'unemployed'}
                     register={register}
                     registerOptions={{
+                      onChange: () => triggerPhysics('job'),
                       required: { value: true, message: "C'mon don't tell me your unemployed..." },
                       validate: {
                         badTitle: () => randomNumber(0, 10) === 0 || "That's not a job!",
@@ -226,6 +225,7 @@ function SurveyView() {
                     register={register}
                     placeholder={'(123) 456 7891'}
                     registerOptions={{
+                      onChange: () => triggerPhysics('phone'),
                       required: { value: true, message: "That's not a phone number!!" },
                       validate: { badPhone: () => randomNumber(0, 10) === 0 || "Listen. I don't think so" },
                     }}
@@ -301,6 +301,8 @@ function SurveyView() {
               </div>
             </form>
           </div>
+          {/* <div style={{ position: 'absolute', top: '868px', backgroundColor: 'red', height: '1px', width: '100vw' }}></div> */}
+          {/* <div style={{ position: 'absolute', top: '977px', backgroundColor: 'red', height: '1px', width: '100vw' }}></div> */}
         </div>
         <BackgroundCanvas flipped={true} />
       </div>

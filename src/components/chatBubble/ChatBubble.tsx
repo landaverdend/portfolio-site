@@ -56,7 +56,7 @@ function MessageContainer({ chatLog, closeFn, isVolumeEnabled, setIsVolumeEnable
       {/* ------------------ HEADER AREA ------------------*/}
       <div className="messenger-container__header">
         <img src={me} height={30} width={30} />
-        <span>Nicopenis Landaverdgay</span>
+        <span>Nicodemus Landaverde</span>
         <span onClick={() => setIsVolumeEnabled(!isVolumeEnabled)}>
           {isVolumeEnabled ? <VolumeOn className="hoverable" /> : <VolumeOff className="hoverable" />}
         </span>

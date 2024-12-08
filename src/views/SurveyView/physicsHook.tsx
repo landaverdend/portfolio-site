@@ -1,5 +1,8 @@
-import { Bodies, Body, Composite, Engine, Render, Runner } from 'matter-js';
+import { Bodies, Composite, Engine, Render, Runner } from 'matter-js';
 import { useEffect, useRef } from 'react';
+
+const WALL_WIDTH = 100;
+const WALL_HEIGHT = 100;
 
 export type DOMBody = {
   isActive: boolean;
@@ -29,7 +32,6 @@ function usePhysicsHook(shouldRender = false) {
   const runner = useRef<Matter.Runner>(Runner.create());
 
   // Track all of the DOM bodies that have physics injected into them.
-  const domMap = useRef<Map<string, DOMBody>>(new Map());
 
   useEffect(function initObjects() {
     Runner.run(runner.current, engine.current);
@@ -65,14 +67,16 @@ function usePhysicsHook(shouldRender = false) {
     if (!ref.current) return;
     const width = ref.current.scrollWidth;
     const height = ref.current.scrollHeight;
-    const ground = Bodies.rectangle(width / 2, height + 50, width, 50, { isStatic: true });
-    const ceiling = Bodies.rectangle(width / 2, 0, width, 1, {
+
+    const ground = Bodies.rectangle(width / 2, height + WALL_HEIGHT / 2, width, WALL_HEIGHT, { isStatic: true });
+
+    const ceiling = Bodies.rectangle(width / 2, 0 - WALL_HEIGHT, width, WALL_HEIGHT, {
       isStatic: true,
     });
-    const wallL = Bodies.rectangle(0, height / 2, 25, height, {
+    const wallL = Bodies.rectangle(0 - WALL_WIDTH / 2, height / 2, WALL_WIDTH, height, {
       isStatic: true,
     });
-    const wallR = Bodies.rectangle(width, height / 2, 25, height, {
+    const wallR = Bodies.rectangle(width + WALL_WIDTH / 2, height / 2, WALL_WIDTH, height, {
       isStatic: true,
     });
 
@@ -88,9 +92,14 @@ function usePhysicsHook(shouldRender = false) {
 
     // Calculate Matter.js coordinates (centered origin)
     const centerX = x + width / 2;
-    const centerY = y + height / 2;
+    const centerY = y;
 
-    return Bodies.rectangle(centerX, centerY, width, height, options);
+    const toRet = Bodies.rectangle(centerX, centerY, width, height, options);
+    toRet.friction = 0.0001;
+    toRet.frictionAir = 0.00005;
+    toRet.restitution = 0.1;
+
+    return toRet;
   }
 
   return { ref, engine, runner, createPhysicsBodyFromDOM };

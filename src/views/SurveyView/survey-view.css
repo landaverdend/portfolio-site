@@ -3,11 +3,12 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  /* overflow: hidden;  */
+  overflow: hidden; /* The background canvas causes overflow... */
 }
 
 .survey-view-container {
   display: flex;
+  height: 100vh;
 
   flex-direction: row;
   align-items: center;
@@ -128,7 +129,7 @@
           align-items: center;
           justify-content: center;
           gap: 5px;
-          
+
           /* checkbox. */
           label {
             flex-direction: row;
@@ -191,23 +192,23 @@
 @media (max-width: 576px) {
   .physics-container {
     height: max-content;
+    overflow: scroll;
   }
 
   .survey-view-container {
     flex-direction: column;
     overflow: visible;
-    gap: 40px;
+    /* gap: 40px; */
 
     .about-container {
       height: max-content;
 
       flex: 5;
-      margin-left: 0px;
       overflow: visible;
 
       h1 {
         font-size: 2.85rem;
-        height: 50vh;
+        /* height: 50vh; */
         max-width: 65vw;
       }
 

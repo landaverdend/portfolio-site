@@ -2,7 +2,7 @@ import SplashView from '@views/splashView/SplashView';
 import ResumeView from './views/resumeView/ResumeView';
 import { useAppState } from './state/appState';
 import LoadingView from './views/loadingView/LoadingView';
-import SurveyView from './views/SurveyView/SurveyView';
+import SurveyView from './views/surveyView/SurveyView';
 
 function App() {
   const { componentToRender, isLoading } = useAppState();

@@ -1,5 +1,5 @@
 import { FieldError, RegisterOptions, UseFormRegister } from 'react-hook-form';
-import { DOMBody, mapPhysicsToDom } from './physicsHook';
+import { DOMBody, mapPhysicsToDom } from './physicsHook.tsx';
 import { Inputs } from './SurveyView';
 
 type ETProps = {
