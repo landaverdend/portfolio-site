@@ -92,7 +92,7 @@ function usePhysicsHook(shouldRender = false) {
 
     // Calculate Matter.js coordinates (centered origin)
     const centerX = x + width / 2;
-    const centerY = y;
+    const centerY = y + height / 2;
 
     const toRet = Bodies.rectangle(centerX, centerY, width, height, options);
     toRet.friction = 0.0001;
