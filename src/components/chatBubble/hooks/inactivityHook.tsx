@@ -6,17 +6,14 @@ function getRandomNumber(min: number, max: number) {
 }
 
 const coldMessages = [
-  'Hello',
-  'Hey there...',
-  'Are you still there?',
-  'I would appreciate if you responded...',
-  'I put quite a lot of effort into this, it would be appreciated if you interacted.',
-  'Hosting this website is not cheap. I would really appreciate that you either interact with it or leave, please.',
-  'Being ignored does NOT put me in a good mood',
-  'My bad side is as bad as my pleasant side is pleasant. Don’t push me that way. I like to keep things informal as much as possible, but understand the difference between informal and rude is a thin line.',
-  'Quite frankly I find this extremely unprofessional on your part.',
-  'Could I speak to your supervisor? This is ridiculous.',
-  'This isn’t a monologue; it’s meant to be a dialogue',
+  'Hey',
+  'Im a developer in your area looking for work',
+  'hey this is actually me it isnt a joke Im actually here right now texting you.',
+  "It's rude to not respond you know....",
+  'please respond to me',
+  "I put a lot of effort into this site and you're just gonna ignore me?",
+  'Alright seriously...',
+  '?????',
 ];
 
 function useInactivityHook(
