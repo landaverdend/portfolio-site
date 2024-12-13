@@ -1,7 +1,7 @@
 import './form-container.css';
 import { useForm } from 'react-hook-form';
 import { Inputs } from '../SurveyView';
-import { ErrorText, InputWithPhysics, SelectWithPhysics } from '../physicsInput';
+import { ComponentWithPhysics, ErrorText, InputWithPhysics, SelectWithPhysics } from '../physicsInput';
 import { DOMBody } from '../physicsHook';
 import { randomNumber } from '@/util/random';
 import { useState } from 'react';
@@ -151,15 +151,37 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
               <ErrorText text={errors.marketingMaterials?.message ? errors.marketingMaterials.message : ''} />
             )}
           </label>
-          <input
+
+          {/* <InputWithPhysics
+            id={'submit'}
+            domBody={domMap.get('submit')}
+            placeholder={'Lets go!'}
+            error={errors.job}
+            onClick={(e) => {
+              e.preventDefault;
+              setTimesTried((prev) => prev + 1);
+            }}
+            className="submit-container"
+          /> */}
+
+          <ComponentWithPhysics id="submit" domBody={domMap.get('submit')}>
+            <button
+              className="submit-button"
+              onClick={(e) => {
+                e.preventDefault();
+              }}>
+              Let's Go!
+            </button>
+          </ComponentWithPhysics>
+
+          {/* <input
             id="submit"
-            className="physics"
             value="Let's Go"
             type="submit"
             onClick={(e) => {
               e.preventDefault;
               setTimesTried((prev) => prev + 1);
-            }}></input>
+            }}></input> */}
           {timesTried >= 2 && (
             <button
               className="give-up-button"

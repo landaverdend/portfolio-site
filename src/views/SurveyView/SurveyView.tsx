@@ -103,7 +103,7 @@ function SurveyView() {
   }, []);
 
   function triggerPhysics(id: string) {
-    if (!isPhysicsSequenceStarted.current && getRandomChanceIn(20)) {
+    if (!isPhysicsSequenceStarted.current && getRandomChanceIn(1)) {
       const el = document.getElementById(id);
 
       const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: id } });

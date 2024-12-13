@@ -115,7 +115,7 @@
         }
       }
 
-      #submit {
+      .submit-button {
         font-size: 1.2rem;
 
         color: white;
@@ -127,7 +127,7 @@
         background-color: rgb(78 59 125);
       }
 
-      #submit:hover {
+      .submit-button:hover {
         opacity: 0.8;
         cursor: pointer;
       }
