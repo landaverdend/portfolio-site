@@ -33,6 +33,7 @@ export function InputWithPhysics({
   registerOptions,
   onClick,
 }: IWProps) {
+  console.log(id, isPhysicsEnabled);
   return (
     <label>
       {labelText}

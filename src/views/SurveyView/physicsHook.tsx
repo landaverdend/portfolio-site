@@ -1,5 +1,5 @@
 import { Bodies, Composite, Engine, Render, Runner } from 'matter-js';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const WALL_WIDTH = 100;
 const WALL_HEIGHT = 100;
@@ -22,6 +22,8 @@ function buildDebugCanvas(): HTMLElement {
 }
 
 function usePhysicsHook(shouldRender = false) {
+  const [, setAnim] = useState(0);
+
   // Build the Matter.JS stuff
   const ref = useRef<HTMLDivElement>(null);
   const engine = useRef<Matter.Engine>(Engine.create());
@@ -35,6 +37,7 @@ function usePhysicsHook(shouldRender = false) {
 
     for (const el of elements) {
       const { x, y } = el.getBoundingClientRect();
+      console.log(el.id);
       domMap.current.set(el.id, { isActive: false, x: x, y: y, angle: 0 });
     }
   }, []);
@@ -119,6 +122,8 @@ function usePhysicsHook(shouldRender = false) {
           el.style.transform = `translate(-50%, -50%) rotate(${angle}rad)`;
         }
       }
+
+      setAnim((prev) => prev + 1);
 
       unsub = requestAnimationFrame(animate);
     }

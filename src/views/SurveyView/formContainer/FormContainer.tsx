@@ -10,8 +10,10 @@ import { useAppState } from '@/state/appState';
 type FCProps = {
   domMap: Map<string, DOMBody>;
   triggerPhysics: Function;
+
+  isGiveupEnabled: boolean;
 };
-function FormContainer({ domMap, triggerPhysics }: FCProps) {
+function FormContainer({ domMap, triggerPhysics, isGiveupEnabled }: FCProps) {
   const [timesTried, setTimesTried] = useState(0);
 
   const {
@@ -162,7 +164,7 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
             </button>
           </ComponentWithPhysics>
 
-          {timesTried >= 2 && (
+          {(timesTried >= 2 || isGiveupEnabled) && (
             <button
               className="give-up-button"
               onClick={(e) => {

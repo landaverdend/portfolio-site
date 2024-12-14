@@ -2,7 +2,7 @@ import './survey-view.css';
 import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas.tsx';
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { useEffect, useRef, useState } from 'react';
-import usePhysicsHook, { DOMBody } from './physicsHook.tsx';
+import usePhysicsHook from './physicsHook.tsx';
 import { Body, Composite } from 'matter-js';
 import { getRandomChanceIn } from '@/util/random';
 import FormContainer from './formContainer/FormContainer.tsx';
@@ -41,6 +41,7 @@ function SurveyView() {
 
   const [explosionTriggered, setExplosionTriggered] = useState(false);
   const [dumbSlogan, setDumbSlogan] = useState(dumbSlogans[0]);
+  const [isGiveupEnabled, setIsGiveupEnabled] = useState(false);
 
   useEffect(() => {
     const pickDumbSlogan = setInterval(() => {
@@ -70,7 +71,6 @@ function SurveyView() {
           Body.applyForce(bodyToAdd, bodyToAdd.position, { x: force, y: force });
           Composite.add(engine.current.world, bodyToAdd);
           domMap.current.set(el.id, { isActive: true, x: bodyToAdd.position.x, y: bodyToAdd.position.y, angle: bodyToAdd.angle });
-
           i++;
         }
       }
@@ -94,6 +94,10 @@ function SurveyView() {
       setTimeout(() => {
         setExplosionTriggered(true);
       }, 2000);
+
+      setTimeout(() => {
+        setIsGiveupEnabled(true);
+      }, 5000);
       isPhysicsSequenceStarted.current = true;
     }
   }
@@ -115,7 +119,7 @@ function SurveyView() {
             </p>
           </div>
 
-          <FormContainer triggerPhysics={triggerPhysics} domMap={domMap.current} />
+          <FormContainer triggerPhysics={triggerPhysics} domMap={domMap.current} isGiveupEnabled={isGiveupEnabled} />
         </div>
         <BackgroundCanvas flipped={true} />
       </div>
