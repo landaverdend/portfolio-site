@@ -10,20 +10,6 @@ export type DOMBody = {
   y: number;
   angle: number;
 };
-export function mapPhysicsToDom(domId: string, domBody: DOMBody): React.CSSProperties {
-  const el = document.getElementById(domId);
-
-  if (el && domBody) {
-    const { x, y, angle } = domBody;
-    return {
-      position: 'absolute',
-      top: y,
-      left: x,
-      transform: `translate(-50%, -50%) rotate(${angle}rad)`,
-    };
-  }
-  return {};
-}
 
 function buildDebugCanvas(): HTMLElement {
   const divToInject = document.createElement('div');
@@ -48,7 +34,8 @@ function usePhysicsHook(shouldRender = false) {
     const elements = document.querySelectorAll<HTMLElement>('.physics');
 
     for (const el of elements) {
-      domMap.current.set(el.id, { isActive: false, x: el.offsetLeft, y: el.offsetHeight, angle: 0 });
+      const { x, y } = el.getBoundingClientRect();
+      domMap.current.set(el.id, { isActive: false, x: x, y: y, angle: 0 });
     }
   }, []);
 
@@ -103,6 +90,44 @@ function usePhysicsHook(shouldRender = false) {
     });
 
     Composite.add(engine.current.world, [ground, ceiling, wallL, wallR]);
+  }, []);
+
+  useEffect(function triggerAnimation() {
+    let unsub: number;
+
+    function animate() {
+      const dom = domMap.current;
+
+      for (const body of Composite.allBodies(engine.current.world)) {
+        const isActive = dom.get(body.plugin.domId)?.isActive;
+        const { isStatic, plugin } = body;
+
+        // Skip updating the element coordinates if it is: static, not in the map, inactive.
+        if (isStatic || !plugin.domId || !isActive) continue;
+
+        const { x, y } = body.position;
+        const { angle } = body;
+
+        dom.set(body.plugin.domId, { isActive: isActive, x: x, y: y, angle: body.angle });
+
+        // UPDATE THE dom object with data from matterjs.
+        const el = document.getElementById(plugin.domId);
+        if (el) {
+          el.style.position = 'absolute';
+          el.style.top = `${y}px`;
+          el.style.left = `${x}px`;
+          el.style.transform = `translate(-50%, -50%) rotate(${angle}rad)`;
+        }
+      }
+
+      unsub = requestAnimationFrame(animate);
+    }
+
+    unsub = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(unsub);
+    };
   }, []);
 
   // UTIL FUNCTIONS

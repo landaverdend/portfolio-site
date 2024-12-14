@@ -35,13 +35,12 @@ export type Inputs = {
   marketingMaterials: boolean;
 };
 function SurveyView() {
-  const { ref, engine, domMap, createPhysicsBodyFromDOM } = usePhysicsHook(true);
+  const { ref, engine, domMap, createPhysicsBodyFromDOM } = usePhysicsHook();
 
   const isPhysicsSequenceStarted = useRef<boolean>(false);
 
   const [explosionTriggered, setExplosionTriggered] = useState(false);
   const [dumbSlogan, setDumbSlogan] = useState(dumbSlogans[0]);
-  const [, setAnim] = useState(0);
 
   useEffect(() => {
     const pickDumbSlogan = setInterval(() => {
@@ -78,28 +77,6 @@ function SurveyView() {
     },
     [explosionTriggered]
   );
-
-  useEffect(function triggerAnimation() {
-    let unsub: number;
-
-    function animate() {
-      for (const el of Composite.allBodies(engine.current.world)) {
-        const isActive = domMap.current.get(el.plugin.domId)?.isActive;
-        if (el.isStatic || !el.plugin.domId || !isActive) continue;
-
-        domMap.current.set(el.plugin.domId, { isActive: isActive, x: el.position.x, y: el.position.y, angle: el.angle });
-      }
-
-      setAnim((x) => x + 1);
-      unsub = requestAnimationFrame(animate);
-    }
-
-    unsub = requestAnimationFrame(animate);
-
-    return () => {
-      cancelAnimationFrame(unsub);
-    };
-  }, []);
 
   function triggerPhysics(id: string) {
     if (!isPhysicsSequenceStarted.current && getRandomChanceIn(1)) {

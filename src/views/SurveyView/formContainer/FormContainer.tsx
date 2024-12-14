@@ -29,7 +29,7 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
           id={'firstName'}
           labelText={'First Name'}
           placeholder={'John'}
-          domBody={domMap.get('firstName')}
+          isPhysicsEnabled={domMap.get('firstName')?.isActive}
           register={register}
           registerOptions={{
             onChange: () => triggerPhysics('firstName'),
@@ -45,7 +45,7 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
           id={'lastName'}
           labelText={'Last Name'}
           placeholder={'Doe'}
-          domBody={domMap.get('lastName')}
+          isPhysicsEnabled={domMap.get('lastName')?.isActive}
           register={register}
           registerOptions={{
             onChange: () => triggerPhysics('lastName'),
@@ -60,7 +60,7 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
         <div className="user-details">
           <InputWithPhysics
             id={'email'}
-            domBody={domMap.get('email')}
+            isPhysicsEnabled={domMap.get('email')?.isActive}
             labelText={'Work Email'}
             placeholder={'email@asdf.com'}
             register={register}
@@ -77,7 +77,7 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
 
           <InputWithPhysics
             id={'job'}
-            domBody={domMap.get('job')}
+            isPhysicsEnabled={domMap.get('job')?.isActive}
             labelText={'Job Title'}
             placeholder={'unemployed'}
             register={register}
@@ -93,9 +93,9 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
 
           <InputWithPhysics
             id={'phone'}
-            domBody={domMap.get('phone')}
             labelText={'Phone Number'}
             register={register}
+            isPhysicsEnabled={domMap.get('phone')?.isActive}
             placeholder={'(123) 456 7891'}
             registerOptions={{
               onChange: () => triggerPhysics('phone'),
@@ -108,7 +108,6 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
 
         <SelectWithPhysics
           id="companySize"
-          domBody={domMap.get('companySize')}
           query={'Company Size'}
           options={['1-99 employees', '100-299 employees', '300-1999 employees', '2000+ employees', 'I have no company']}
           register={register}
@@ -118,7 +117,6 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
 
         <SelectWithPhysics
           id="hispanic"
-          domBody={domMap.get('hispanic')}
           query={'Are you of Hispanic or Latino descent?'}
           options={['Yes', 'No']}
           register={register}
@@ -130,9 +128,7 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
         />
         <label className="optional-text-field">
           Provide more details (optional)
-          <ComponentWithPhysics id={'textarea'} domBody={domMap.get('textarea')} className={'textarea-width--physics-enabled'}>
-            <textarea></textarea>
-          </ComponentWithPhysics>
+          <textarea></textarea>
         </label>
 
         <div className="button-container">
@@ -153,7 +149,7 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
             )}
           </label>
 
-          <ComponentWithPhysics id="submit" domBody={domMap.get('submit')}>
+          <ComponentWithPhysics id="submit">
             <button
               className="submit-button"
               onClick={(e) => {

@@ -1,5 +1,4 @@
 import { FieldError, RegisterOptions, UseFormRegister } from 'react-hook-form';
-import { DOMBody, mapPhysicsToDom } from './physicsHook.tsx';
 import { Inputs } from './SurveyView';
 import { ReactNode } from 'react';
 
@@ -13,9 +12,8 @@ export function ErrorText({ text }: ETProps) {
 type IWProps = {
   id: string | keyof Inputs;
   placeholder?: string;
-  domBody?: DOMBody;
   className?: string;
-
+  isPhysicsEnabled?: boolean;
   labelText?: string;
 
   error?: FieldError;
@@ -28,9 +26,9 @@ export function InputWithPhysics({
   id,
   labelText,
   placeholder,
-  domBody,
   className,
   error,
+  isPhysicsEnabled,
   register,
   registerOptions,
   onClick,
@@ -43,7 +41,6 @@ export function InputWithPhysics({
         className={`physics ${className}`}
         type="text"
         placeholder={placeholder}
-        style={domBody?.isActive ? mapPhysicsToDom(id, domBody) : {}}
         {...(register ? register(id as keyof Inputs, registerOptions) : {})}
         onClick={(e) => {
           if (onClick) {
@@ -51,7 +48,7 @@ export function InputWithPhysics({
           }
         }}
       />
-      {domBody?.isActive && <input style={{ visibility: 'hidden' }} />}
+      {isPhysicsEnabled && <input style={{ visibility: 'hidden' }} />}
       {error?.message && <ErrorText text={error.message} />}
     </label>
   );
@@ -59,7 +56,6 @@ export function InputWithPhysics({
 
 type SWProps = {
   id: keyof Inputs;
-  domBody?: DOMBody;
   query: string;
   options: string[];
 
@@ -67,15 +63,11 @@ type SWProps = {
   register: UseFormRegister<Inputs>;
   registerOptions?: RegisterOptions<Inputs, keyof Inputs>;
 };
-export function SelectWithPhysics({ id, domBody, query, options, error, register, registerOptions }: SWProps) {
+export function SelectWithPhysics({ id, query, options, error, register, registerOptions }: SWProps) {
   return (
     <label>
       {query}
-      <select
-        id={id}
-        className="physics"
-        style={domBody?.isActive ? mapPhysicsToDom(id, domBody) : {}}
-        {...register(id, registerOptions)}>
+      <select id={id} className="physics" {...register(id, registerOptions)}>
         {options.map((opt) => (
           <option key={opt}>{opt}</option>
         ))}
@@ -87,14 +79,13 @@ export function SelectWithPhysics({ id, domBody, query, options, error, register
 
 type CWPProps = {
   id: string;
-  domBody?: DOMBody;
 
   className?: string;
   children: ReactNode;
 };
-export function ComponentWithPhysics({ id, className, children, domBody }: CWPProps) {
+export function ComponentWithPhysics({ id, className, children }: CWPProps) {
   return (
-    <div id={id} className={`physics ${className}`} style={domBody?.isActive ? mapPhysicsToDom(id, domBody) : {}}>
+    <div id={id} className={`physics ${className}`}>
       {children}
     </div>
   );
