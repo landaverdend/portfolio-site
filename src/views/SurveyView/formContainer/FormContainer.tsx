@@ -128,10 +128,11 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
           }}
           error={errors.hispanic}
         />
-
         <label className="optional-text-field">
           Provide more details (optional)
-          <textarea></textarea>
+          <ComponentWithPhysics id={'textarea'} domBody={domMap.get('textarea')} className={'textarea-width--physics-enabled'}>
+            <textarea></textarea>
+          </ComponentWithPhysics>
         </label>
 
         <div className="button-container">
@@ -152,36 +153,17 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
             )}
           </label>
 
-          {/* <InputWithPhysics
-            id={'submit'}
-            domBody={domMap.get('submit')}
-            placeholder={'Lets go!'}
-            error={errors.job}
-            onClick={(e) => {
-              e.preventDefault;
-              setTimesTried((prev) => prev + 1);
-            }}
-            className="submit-container"
-          /> */}
-
           <ComponentWithPhysics id="submit" domBody={domMap.get('submit')}>
             <button
               className="submit-button"
               onClick={(e) => {
                 e.preventDefault();
+                setTimesTried((prev) => prev + 1);
               }}>
               Let's Go!
             </button>
           </ComponentWithPhysics>
 
-          {/* <input
-            id="submit"
-            value="Let's Go"
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault;
-              setTimesTried((prev) => prev + 1);
-            }}></input> */}
           {timesTried >= 2 && (
             <button
               className="give-up-button"

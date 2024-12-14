@@ -35,9 +35,8 @@ export type Inputs = {
   marketingMaterials: boolean;
 };
 function SurveyView() {
-  const { ref, engine, createPhysicsBodyFromDOM } = usePhysicsHook(true);
+  const { ref, engine, domMap, createPhysicsBodyFromDOM } = usePhysicsHook(true);
 
-  const domMap = useRef<Map<string, DOMBody>>(new Map());
   const isPhysicsSequenceStarted = useRef<boolean>(false);
 
   const [explosionTriggered, setExplosionTriggered] = useState(false);
@@ -116,7 +115,6 @@ function SurveyView() {
 
       // Trigger the explosion on all other dom elements after two seconds.
       setTimeout(() => {
-        alert('SHIT');
         setExplosionTriggered(true);
       }, 2000);
       isPhysicsSequenceStarted.current = true;

@@ -32,6 +32,15 @@ function usePhysicsHook(shouldRender = false) {
   const runner = useRef<Matter.Runner>(Runner.create());
 
   // Track all of the DOM bodies that have physics injected into them.
+  const domMap = useRef<Map<string, DOMBody>>(new Map());
+
+  useEffect(function fillDomMap() {
+    const elements = document.querySelectorAll<HTMLElement>('.physics');
+
+    for (const el of elements) {
+      domMap.current.set(el.id, { isActive: false, x: el.offsetLeft, y: el.offsetHeight, angle: 0 });
+    }
+  }, []);
 
   useEffect(function initObjects() {
     Runner.run(runner.current, engine.current);
@@ -102,7 +111,7 @@ function usePhysicsHook(shouldRender = false) {
     return toRet;
   }
 
-  return { ref, engine, runner, createPhysicsBodyFromDOM };
+  return { ref, engine, runner, domMap, createPhysicsBodyFromDOM };
 }
 
 export default usePhysicsHook;

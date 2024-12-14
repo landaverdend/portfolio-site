@@ -88,11 +88,13 @@ export function SelectWithPhysics({ id, domBody, query, options, error, register
 type CWPProps = {
   id: string;
   domBody?: DOMBody;
+
+  className?: string;
   children: ReactNode;
 };
-export function ComponentWithPhysics({ id, children, domBody }: CWPProps) {
+export function ComponentWithPhysics({ id, className, children, domBody }: CWPProps) {
   return (
-    <div id={id} className="physics" style={domBody?.isActive ? mapPhysicsToDom(id, domBody) : {}}>
+    <div id={id} className={`physics ${className}`} style={domBody?.isActive ? mapPhysicsToDom(id, domBody) : {}}>
       {children}
     </div>
   );
