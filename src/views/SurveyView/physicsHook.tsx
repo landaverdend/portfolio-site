@@ -25,6 +25,16 @@ export function mapPhysicsToDom(domId: string, domBody: DOMBody): React.CSSPrope
   return {};
 }
 
+function buildDebugCanvas(): HTMLElement {
+  const divToInject = document.createElement('div');
+
+  divToInject.style.top = '0';
+  divToInject.style.left = '0';
+  divToInject.style.position = 'absolute';
+  divToInject.style.zIndex = '-900';
+  return divToInject;
+}
+
 function usePhysicsHook(shouldRender = false) {
   // Build the Matter.JS stuff
   const ref = useRef<HTMLDivElement>(null);
@@ -47,8 +57,11 @@ function usePhysicsHook(shouldRender = false) {
 
     let render: Matter.Render;
     if (shouldRender) {
+      const debugCanvas = buildDebugCanvas();
+      document.body.appendChild(debugCanvas);
+
       render = Render.create({
-        element: document.body, // Attach the canvas to the document body
+        element: debugCanvas,
         engine: engine.current,
         options: {
           width: ref.current?.scrollWidth,

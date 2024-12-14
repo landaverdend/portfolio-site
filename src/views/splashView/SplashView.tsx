@@ -67,7 +67,7 @@ function SplashView() {
       </div>
       <Footer />
       {createPortal(<ChatBubble />, document.getElementById('root') as HTMLElement)}
-      {createPortal(<BackgroundCanvas />, document.getElementById('root') as HTMLElement)}
+      <BackgroundCanvas />
     </div>
   );
 }

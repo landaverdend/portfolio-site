@@ -36,7 +36,7 @@ function BackgroundCanvas({ flipped }: BGCProps) {
 
   return (
     <>
-      <canvas className={`${flipped ? 'flipped' : ''}`} ref={canvasRef}></canvas>
+      <canvas id={"bezier-canvas"} className={`${flipped ? 'flipped' : ''}`} ref={canvasRef}></canvas>
     </>
   );
 }
