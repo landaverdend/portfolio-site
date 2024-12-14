@@ -16,6 +16,7 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
 
   const {
     register,
+    trigger,
     formState: { errors },
     handleSubmit,
   } = useForm<Inputs>({ mode: 'onSubmit' });
@@ -154,6 +155,7 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
               className="submit-button"
               onClick={(e) => {
                 e.preventDefault();
+                trigger();
                 setTimesTried((prev) => prev + 1);
               }}>
               Let's Go!
@@ -163,7 +165,8 @@ function FormContainer({ domMap, triggerPhysics }: FCProps) {
           {timesTried >= 2 && (
             <button
               className="give-up-button"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 setIsLoading(true);
                 setNextView('ResumeView');
               }}>
