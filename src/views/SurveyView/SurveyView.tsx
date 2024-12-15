@@ -79,6 +79,7 @@ function SurveyView() {
   const isPhysicsSequenceStarted = useRef<boolean>(false);
 
   const [explosionTriggered, setExplosionTriggered] = useState(false);
+  const [rainTriggered, setRainTriggered] = useState(false);
   const [dumbSlogan, setDumbSlogan] = useState(dumbSlogans[0]);
   const [isGiveupEnabled, setIsGiveupEnabled] = useState(false);
 
@@ -111,37 +112,51 @@ function SurveyView() {
           i++;
         }
       }
-
-      const rainInputInterval = setInterval(() => {
-        const inputToAdd = createInputElement();
-
-        ref.current?.appendChild(inputToAdd);
-
-        addPhysicsElement(inputToAdd);
-      }, 500);
-
-      return () => {
-        clearInterval(rainInputInterval);
-      };
     },
-
     [explosionTriggered]
+  );
+
+  useEffect(
+    function beginElementRaining() {
+      if (rainTriggered) {
+        const rainInputInterval = setInterval(() => {
+          const inputToAdd = createInputElement();
+
+          ref.current?.appendChild(inputToAdd);
+
+          addPhysicsElement(inputToAdd);
+        }, 500);
+
+        return () => {
+          clearInterval(rainInputInterval);
+        };
+      }
+    },
+    [rainTriggered]
   );
 
   function triggerPhysics(id: string) {
     if (!isPhysicsSequenceStarted.current && getRandomChanceIn(20)) {
       const el = document.getElementById(id);
 
-      if (el) addPhysicsElement(el);
+      if (el) {
+        el.style.zIndex = '200';
+        addPhysicsElement(el);
+      }
 
-      // Trigger the explosion on all other dom elements after two seconds.
+      // Set various event triggers
       setTimeout(() => {
         setExplosionTriggered(true);
       }, 2000);
 
       setTimeout(() => {
-        setIsGiveupEnabled(true);
+        setRainTriggered(true);
       }, 5000);
+
+      setTimeout(() => {
+        setIsGiveupEnabled(true);
+      }, 7500);
+
       isPhysicsSequenceStarted.current = true;
     }
   }

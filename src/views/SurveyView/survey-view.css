@@ -39,7 +39,6 @@
 /* Phone Screens */
 @media (max-width: 576px) {
   .physics-container {
-    /* overflow: scroll; */
   }
 
   .survey-view-container {
