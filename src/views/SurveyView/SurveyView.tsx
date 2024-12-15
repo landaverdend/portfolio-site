@@ -2,10 +2,11 @@ import './survey-view.css';
 import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas.tsx';
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { useEffect, useRef, useState } from 'react';
-import usePhysicsHook from './physicsHook.tsx';
+import usePhysicsHook from '../../hooks/physicsHook.tsx';
 import { Body } from 'matter-js';
 import { getRandomChanceIn, randomNumber } from '@/util/random';
 import FormContainer from './formContainer/FormContainer.tsx';
+import { createInputElement, createSelectElement } from '@/util/ElementFactory.ts';
 
 const dumbSlogans: string[] = [
   'Unlocking your path to unparalleled hiring success.',
@@ -22,45 +23,6 @@ const dumbSlogans: string[] = [
   'Elevating your hiring process to the next level.',
   'Empowering your recruitment with unmatched access to expertise.',
 ];
-
-const inputPlaceholders: string[] = [
-  'First Name',
-  'Last Name',
-  'Email Address',
-  'Phone Number',
-  'Street Address',
-  'City',
-  'State/Province',
-  'Postal Code/ZIP',
-  'Country',
-  'Job Title',
-  'Company Name',
-  'Years of Experience',
-  'LinkedIn Profile URL',
-  'Portfolio Website URL',
-  'Cover Letter (optional)',
-  'Resume File (PDF, DOCX)',
-  'Desired Salary',
-  'Available Start Date',
-  'Reference Name',
-  'Reference Contact Information',
-  'Additional Information (optional)',
-];
-
-function createInputElement(): HTMLElement {
-  const inputToAdd = document.createElement('input');
-
-  inputToAdd.type = 'text';
-  inputToAdd.placeholder = inputPlaceholders[randomNumber(0, inputPlaceholders.length)];
-  inputToAdd.id = `generated-input-${crypto.randomUUID()}`;
-
-  const x = randomNumber(0, document.body.scrollWidth);
-  inputToAdd.style.position = 'absolute';
-  inputToAdd.style.top = `0px`;
-  inputToAdd.style.left = `${x}px`;
-  inputToAdd.className = 'physics input-style';
-  return inputToAdd;
-}
 
 export type Inputs = {
   firstName: string;
@@ -118,13 +80,15 @@ function SurveyView() {
 
   useEffect(
     function beginElementRaining() {
+      const elementFactoryMethods = [createInputElement, createSelectElement];
+
       if (rainTriggered) {
         const rainInputInterval = setInterval(() => {
-          const inputToAdd = createInputElement();
+          const elToAdd = elementFactoryMethods[randomNumber(0, elementFactoryMethods.length)]();
 
-          ref.current?.appendChild(inputToAdd);
+          ref.current?.appendChild(elToAdd);
 
-          addPhysicsElement(inputToAdd);
+          addPhysicsElement(elToAdd);
         }, 500);
 
         return () => {
@@ -136,7 +100,7 @@ function SurveyView() {
   );
 
   function triggerPhysics(id: string) {
-    if (!isPhysicsSequenceStarted.current && getRandomChanceIn(20)) {
+    if (!isPhysicsSequenceStarted.current && getRandomChanceIn(10)) {
       const el = document.getElementById(id);
 
       if (el) {

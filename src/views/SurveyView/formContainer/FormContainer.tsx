@@ -2,7 +2,7 @@ import './form-container.css';
 import { useForm } from 'react-hook-form';
 import { Inputs } from '../SurveyView';
 import { ComponentWithPhysics, ErrorText, InputWithPhysics, SelectWithPhysics } from '../physicsInput';
-import { DOMBody } from '../physicsHook';
+import { DOMBody } from '../../../hooks/physicsHook';
 import { randomNumber } from '@/util/random';
 import { useState } from 'react';
 import { useAppState } from '@/state/appState';

@@ -1,3 +1,4 @@
+import { createDebugCanvas } from '@/util/ElementFactory';
 import { Bodies, Composite, Engine, Render, Runner } from 'matter-js';
 import { useEffect, useRef, useState } from 'react';
 
@@ -10,16 +11,6 @@ export type DOMBody = {
   y: number;
   angle: number;
 };
-
-function buildDebugCanvas(): HTMLElement {
-  const divToInject = document.createElement('div');
-
-  divToInject.style.top = '0';
-  divToInject.style.left = '0';
-  divToInject.style.position = 'absolute';
-  divToInject.style.zIndex = '-900';
-  return divToInject;
-}
 
 function usePhysicsHook(shouldRender = false) {
   const [, setAnim] = useState(0);
@@ -46,7 +37,7 @@ function usePhysicsHook(shouldRender = false) {
 
     let render: Matter.Render;
     if (shouldRender) {
-      const debugCanvas = buildDebugCanvas();
+      const debugCanvas = createDebugCanvas();
       document.body.appendChild(debugCanvas);
 
       render = Render.create({
