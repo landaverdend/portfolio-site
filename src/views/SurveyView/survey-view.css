@@ -6,7 +6,7 @@
   width: 100vw;
   height: 100vh;
 
-  overflow: hidden; /* The background canvas causes overflow... */
+  /* overflow: hidden; The background canvas causes overflow... */
 }
 
 .survey-view-container {
@@ -39,7 +39,7 @@
 /* Phone Screens */
 @media (max-width: 576px) {
   .physics-container {
-    overflow: scroll;
+    /* overflow: scroll; */
   }
 
   .survey-view-container {

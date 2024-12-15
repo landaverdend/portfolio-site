@@ -37,7 +37,6 @@ function usePhysicsHook(shouldRender = false) {
 
     for (const el of elements) {
       const { x, y } = el.getBoundingClientRect();
-      console.log(el.id);
       domMap.current.set(el.id, { isActive: false, x: x, y: y, angle: 0 });
     }
   }, []);
@@ -137,10 +136,7 @@ function usePhysicsHook(shouldRender = false) {
 
   // UTIL FUNCTIONS
   function createPhysicsBodyFromDOM(el: HTMLElement, options = {}) {
-    const { width, height } = el.getBoundingClientRect();
-
-    const x = el.offsetLeft;
-    const y = el.offsetTop;
+    const { x, y, width, height } = el.getBoundingClientRect();
 
     // Calculate Matter.js coordinates (centered origin)
     const centerX = x + width / 2;
@@ -154,7 +150,18 @@ function usePhysicsHook(shouldRender = false) {
     return toRet;
   }
 
-  return { ref, engine, runner, domMap, createPhysicsBodyFromDOM };
+  function addPhysicsElement(el: HTMLElement) {
+    // Make the body from the given element.
+    const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: el.id } });
+    Composite.add(engine.current.world, bodyToAdd);
+
+    // Save the id to the translation map.
+    domMap.current.set(el.id, { isActive: true, x: bodyToAdd.position.x, y: bodyToAdd.position.y, angle: bodyToAdd.angle });
+
+    return bodyToAdd;
+  }
+
+  return { ref, engine, runner, domMap, addPhysicsElement };
 }
 
 export default usePhysicsHook;

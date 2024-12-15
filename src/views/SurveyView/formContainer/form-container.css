@@ -10,6 +10,12 @@
   }
 }
 
+input,
+select,
+button {
+  z-index: 10;
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
@@ -81,8 +87,8 @@
 
     .optional-text-field {
       grid-column: span 2;
-      position: relative;
       width: 100%;
+      z-index: 0;
 
       textarea {
         /* position: absolute; */
@@ -130,6 +136,7 @@
         background-color: rgb(78 59 125);
       }
 
+      .give-up-button:hover,
       .submit-button:hover {
         opacity: 0.8;
         cursor: pointer;

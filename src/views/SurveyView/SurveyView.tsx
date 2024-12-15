@@ -4,7 +4,7 @@ import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { useEffect, useRef, useState } from 'react';
 import usePhysicsHook from './physicsHook.tsx';
 import { Body, Composite } from 'matter-js';
-import { getRandomChanceIn } from '@/util/random';
+import { getRandomChanceIn, randomNumber } from '@/util/random';
 import FormContainer from './formContainer/FormContainer.tsx';
 
 const dumbSlogans: string[] = [
@@ -35,7 +35,7 @@ export type Inputs = {
   marketingMaterials: boolean;
 };
 function SurveyView() {
-  const { ref, engine, domMap, createPhysicsBodyFromDOM } = usePhysicsHook();
+  const { ref, domMap, addPhysicsElement } = usePhysicsHook();
 
   const isPhysicsSequenceStarted = useRef<boolean>(false);
 
@@ -59,22 +59,49 @@ function SurveyView() {
     function applyExplosionToInputs() {
       if (!explosionTriggered) return;
 
-      const elements = document.getElementsByClassName('physics');
+      const elements = document.querySelectorAll<HTMLElement>('.physics');
 
       let i = 0;
       for (let el of elements) {
         if (!domMap.current.get(el.id)?.isActive) {
-          const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: el.id } });
+          const bodyToAdd = addPhysicsElement(el);
 
-          // For an 'explosion' effect.
+          // Add an 'explosion' effect.
           const force = i % 2 == 0 ? 0.7 : -0.7;
           Body.applyForce(bodyToAdd, bodyToAdd.position, { x: force, y: force });
-          Composite.add(engine.current.world, bodyToAdd);
-          domMap.current.set(el.id, { isActive: true, x: bodyToAdd.position.x, y: bodyToAdd.position.y, angle: bodyToAdd.angle });
           i++;
         }
       }
+
+      // add a 'rain' effect to the inputs that triggers every second....
+      // const rainInputInterval = setInterval(() => {
+      //   const inputToAdd = document.createElement('input');
+
+      //   inputToAdd.type = 'text';
+      //   inputToAdd.placeholder = 'Enter text';
+      //   inputToAdd.id = `generated-input${i}`;
+
+      //   const x = randomNumber(0, document.body.scrollWidth);
+      //   inputToAdd.style.position = 'absolute';
+      //   inputToAdd.style.top = `0px`;
+      //   inputToAdd.style.left = `${x}px`;
+      //   inputToAdd.className = 'physics';
+
+      //   const physicsBody = createPhysicsBodyFromDOM(inputToAdd, { isStatic: false, plugin: { domId: inputToAdd.id } });
+      //   console.log(physicsBody);
+      //   Composite.add(engine.current.world, physicsBody);
+      //   ref.current?.appendChild(inputToAdd);
+
+      //   i++;
+      //   domMap.current.set(inputToAdd.id, { isActive: true, x: x, y: 0, angle: physicsBody.angle });
+      //   console.log(domMap.current);
+      // }, 3000);
+
+      // return () => {
+      //   clearInterval(rainInputInterval);
+      // };
     },
+
     [explosionTriggered]
   );
 
@@ -82,13 +109,7 @@ function SurveyView() {
     if (!isPhysicsSequenceStarted.current && getRandomChanceIn(20)) {
       const el = document.getElementById(id);
 
-      const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: id } });
-
-      Composite.add(engine.current.world, bodyToAdd);
-
-      if (el) {
-        domMap.current.set(id, { isActive: true, x: el.offsetLeft, y: el.offsetHeight, angle: bodyToAdd.angle });
-      }
+      if (el) addPhysicsElement(el);
 
       // Trigger the explosion on all other dom elements after two seconds.
       setTimeout(() => {
