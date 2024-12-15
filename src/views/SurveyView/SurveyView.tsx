@@ -3,7 +3,7 @@ import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas.tsx
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { useEffect, useRef, useState } from 'react';
 import usePhysicsHook from './physicsHook.tsx';
-import { Body, Composite } from 'matter-js';
+import { Body } from 'matter-js';
 import { getRandomChanceIn, randomNumber } from '@/util/random';
 import FormContainer from './formContainer/FormContainer.tsx';
 
@@ -22,6 +22,45 @@ const dumbSlogans: string[] = [
   'Elevating your hiring process to the next level.',
   'Empowering your recruitment with unmatched access to expertise.',
 ];
+
+const inputPlaceholders: string[] = [
+  'First Name',
+  'Last Name',
+  'Email Address',
+  'Phone Number',
+  'Street Address',
+  'City',
+  'State/Province',
+  'Postal Code/ZIP',
+  'Country',
+  'Job Title',
+  'Company Name',
+  'Years of Experience',
+  'LinkedIn Profile URL',
+  'Portfolio Website URL',
+  'Cover Letter (optional)',
+  'Resume File (PDF, DOCX)',
+  'Desired Salary',
+  'Available Start Date',
+  'Reference Name',
+  'Reference Contact Information',
+  'Additional Information (optional)',
+];
+
+function createInputElement(): HTMLElement {
+  const inputToAdd = document.createElement('input');
+
+  inputToAdd.type = 'text';
+  inputToAdd.placeholder = inputPlaceholders[randomNumber(0, inputPlaceholders.length)];
+  inputToAdd.id = `generated-input-${crypto.randomUUID()}`;
+
+  const x = randomNumber(0, document.body.scrollWidth);
+  inputToAdd.style.position = 'absolute';
+  inputToAdd.style.top = `0px`;
+  inputToAdd.style.left = `${x}px`;
+  inputToAdd.className = 'physics input-style';
+  return inputToAdd;
+}
 
 export type Inputs = {
   firstName: string;
@@ -66,40 +105,24 @@ function SurveyView() {
         if (!domMap.current.get(el.id)?.isActive) {
           const bodyToAdd = addPhysicsElement(el);
 
-          // Add an 'explosion' effect.
           const force = i % 2 == 0 ? 0.7 : -0.7;
           Body.applyForce(bodyToAdd, bodyToAdd.position, { x: force, y: force });
+
           i++;
         }
       }
 
-      // add a 'rain' effect to the inputs that triggers every second....
-      // const rainInputInterval = setInterval(() => {
-      //   const inputToAdd = document.createElement('input');
+      const rainInputInterval = setInterval(() => {
+        const inputToAdd = createInputElement();
 
-      //   inputToAdd.type = 'text';
-      //   inputToAdd.placeholder = 'Enter text';
-      //   inputToAdd.id = `generated-input${i}`;
+        ref.current?.appendChild(inputToAdd);
 
-      //   const x = randomNumber(0, document.body.scrollWidth);
-      //   inputToAdd.style.position = 'absolute';
-      //   inputToAdd.style.top = `0px`;
-      //   inputToAdd.style.left = `${x}px`;
-      //   inputToAdd.className = 'physics';
+        addPhysicsElement(inputToAdd);
+      }, 500);
 
-      //   const physicsBody = createPhysicsBodyFromDOM(inputToAdd, { isStatic: false, plugin: { domId: inputToAdd.id } });
-      //   console.log(physicsBody);
-      //   Composite.add(engine.current.world, physicsBody);
-      //   ref.current?.appendChild(inputToAdd);
-
-      //   i++;
-      //   domMap.current.set(inputToAdd.id, { isActive: true, x: x, y: 0, angle: physicsBody.angle });
-      //   console.log(domMap.current);
-      // }, 3000);
-
-      // return () => {
-      //   clearInterval(rainInputInterval);
-      // };
+      return () => {
+        clearInterval(rainInputInterval);
+      };
     },
 
     [explosionTriggered]
