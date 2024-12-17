@@ -55,9 +55,9 @@ function usePhysicsHook(shouldRender = false) {
 
     return () => {
       Runner.stop(runner.current);
-      Render.stop(render);
       Composite.clear(engine.current.world, false);
       if (render) {
+        Render.stop(render);
         render.canvas.remove();
         render.textures = {};
       }

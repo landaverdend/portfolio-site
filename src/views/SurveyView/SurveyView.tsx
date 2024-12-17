@@ -104,7 +104,7 @@ function SurveyView() {
       const el = document.getElementById(id);
 
       if (el) {
-        el.style.zIndex = '200';
+        el.style.zIndex = '190';
         addPhysicsElement(el);
       }
 

@@ -143,15 +143,19 @@ button {
       }
 
       .give-up-button {
+        width: 7rem;
+        height: 4rem;
+
         padding: 10px;
 
         color: white;
 
-        background-color: black;
-        border: 1px solid black;
+        background-color: rgb(78 59 125);
+        border: 1px solid rgb(78 59 125);
         border-radius: 5px;
 
-        animation: give-up-anim 3s ease forwards;
+        z-index: 195;
+        animation: give-up-anim 3s ease forwards, breathe-effect 5s ease-in-out infinite;
       }
     }
   }
@@ -188,4 +192,16 @@ button {
 
 .textarea-width--physics-enabled {
   width: 100%;
+}
+
+@keyframes breathe-effect {
+  0% {
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+  }
 }
