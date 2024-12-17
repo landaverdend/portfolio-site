@@ -50,8 +50,11 @@ function usePhysicsHook(shouldRender = false) {
           wireframes: false, // Set to false to render solid shapes
         },
       });
+
       Render.run(render);
     }
+
+    buildScene();
 
     return () => {
       Runner.stop(runner.current);
@@ -64,9 +67,35 @@ function usePhysicsHook(shouldRender = false) {
     };
   }, []);
 
-  // Build out the base scene when times tried is greater or equal to 1.
-  useEffect(function buildScene() {
+  useEffect(() => {
+    // TODO: fix this
+    function handleResize() {
+      if (!ref.current) return;
+
+      // const width = ref.current.scrollWidth;
+      // const height = ref.current.scrollHeight;
+
+      // // Update Matter.js render dimensions
+      // engine.current.world.bounds.max.x = width;
+      // engine.current.world.bounds.max.y = height;
+
+      buildScene();
+    }
+
+    // // Attach the resize event listener
+    window.addEventListener('resize', handleResize);
+
+    // Perform initial setup
+
+    // Cleanup on unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  function buildScene() {
     if (!ref.current) return;
+     
     const width = ref.current.scrollWidth;
     const height = ref.current.scrollHeight;
 
@@ -83,7 +112,7 @@ function usePhysicsHook(shouldRender = false) {
     });
 
     Composite.add(engine.current.world, [ground, ceiling, wallL, wallR]);
-  }, []);
+  }
 
   useEffect(function triggerAnimation() {
     let unsub: number;
@@ -127,7 +156,9 @@ function usePhysicsHook(shouldRender = false) {
 
   // UTIL FUNCTIONS
   function createPhysicsBodyFromDOM(el: HTMLElement, options = {}) {
-    const { x, y, width, height } = el.getBoundingClientRect();
+    const { width, height } = el.getBoundingClientRect();
+    const x = el.offsetLeft;
+    const y = el.offsetTop;
 
     // Calculate Matter.js coordinates (centered origin)
     const centerX = x + width / 2;

@@ -4,5 +4,5 @@ export function randomNumber(l: number, r: number) {
 
 
 export function getRandomChanceIn(num: number) {
-  return Math.floor(Math.random() * num) === 0;
+  return Math.floor(Math.random() * num) === 1;
 }

@@ -82,10 +82,12 @@ function SurveyView() {
     function beginElementRaining() {
       const elementFactoryMethods = [createInputElement, createSelectElement];
 
-      if (rainTriggered) {
-        const rainInputInterval = setInterval(() => {
-          const elToAdd = elementFactoryMethods[randomNumber(0, elementFactoryMethods.length)]();
+      let numItems = 0;
 
+      if (rainTriggered && numItems < 300) {
+        const rainInputInterval = setInterval(() => {
+          numItems++;
+          const elToAdd = elementFactoryMethods[randomNumber(0, elementFactoryMethods.length)]();
           ref.current?.appendChild(elToAdd);
 
           addPhysicsElement(elToAdd);
