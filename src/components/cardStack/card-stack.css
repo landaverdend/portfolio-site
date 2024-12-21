@@ -89,3 +89,9 @@
     margin-left: 20vw;
   }
 }
+
+@media (max-width: 576px) {
+  .cardstack {
+    display: none; 
+  }
+}

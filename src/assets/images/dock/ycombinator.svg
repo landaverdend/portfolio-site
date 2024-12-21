@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1545 1545" width="1545" height="1545">
+	<title>Y_Combinator_logo-svg</title>
+	<style>
+		.y-s0 { fill: #fb651e } 
+		.y-s1 { fill: #ffffff } 
+	</style>
+	<g id="Layer">
+		<path id="Layer" class="y-s0" d="m0 0h1545v1545h-1545z"/>
+		<path id="Layer" class="y-s1" d="m720.4 873.6l-265.2-496.8h121.2l156 314.4q3.6 8.4 8.4 17.4 4.8 9 8.4 18.6 2.4 3.6 3.6 6.6 1.2 3 2.4 5.4 6 12 10.8 23.4 4.8 11.4 8.4 21 9.6-20.4 21-43.8 11.4-23.4 23.4-48.6l158.4-314.4h112.8l-267.6 502.8v320.4h-102z"/>
+	</g>
+</svg>

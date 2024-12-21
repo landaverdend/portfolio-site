@@ -9,6 +9,7 @@ import { useState } from 'react';
 import FakeCaptchaContainer from '@/components/fakeCaptcha/FakeCaptchaContainer';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
+import CompanyDock from '@/components/companyDock/CompanyDock';
 
 function SplashView() {
   const { setIsLoading, setNextView } = useAppState();
@@ -16,13 +17,13 @@ function SplashView() {
 
   const navbarLinks = [
     { link: '#splash', text: 'About' },
-    { link: '', text: 'Features' },
+    { link: '#featured', text: 'Features' },
   ];
   return (
-    <div id="splash">
+    <div id="splash" className="splash-container">
       <Navbar links={navbarLinks} />
       <div className="splash-grid inter">
-        <div className="splash-grid__item">
+        <div>
           <div className="splash-grid__text-container">
             <h1 className="gothic-a1-bold">My Resume as a Service</h1>
             <p className="inter">
@@ -61,9 +62,11 @@ function SplashView() {
             </div>
           </div>
         </div>
-        <div className="splash-grid__item">
+        <div>
           <CardStack />
         </div>
+
+        <CompanyDock />
       </div>
       <Footer />
       {createPortal(<ChatBubble />, document.getElementById('root') as HTMLElement)}

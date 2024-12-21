@@ -38,7 +38,7 @@ const largeCaptchaArray: Array<LargeCaptchaChallenge> = [
   {
     imageSrc: theDress,
     title: randomNumber(0, 1) === 0 ? 'Blue Dress' : 'Gold Dress',
-    solution: new Set<number>([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]),
+    solution: randomNumber(0, 1) === 0 ? new Set<number>([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]) : new Set([]),
   },
 ];
 
@@ -60,6 +60,6 @@ export function grabRandomSmallChallenge() {
 export function grabRandomLargeChallenge() {
   const ind = Math.floor(Math.random() * largeCaptchaArray.length);
 
-  // return largeCaptchaArray[ind];
-  return largeCaptchaArray[5];
+  return largeCaptchaArray[ind];
+  // return largeCaptchaArray[5];
 }
