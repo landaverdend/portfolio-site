@@ -88,8 +88,8 @@
 	</defs>
 	<style>
 		.reddit-s0 { fill: #ff4500 } 
-		.reddit-s1 { fill: url(#g1) } 
-		.reddit-s2 { fill: url(#g2) } 
+		.reddit-s1 { fill: #fff } 
+		.reddit-s2 { fill: #fff } 
 		.reddit-s3 { fill: url(#g3) } 
 		.reddit-s4 { fill: #842123 } 
 		.reddit-s5 { fill: url(#g4) } 

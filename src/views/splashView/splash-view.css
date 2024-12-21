@@ -10,7 +10,7 @@
   gap: 8vw;
   height: 115vh;
 
-  margin: 10vh 0 25px 15vw;
+  margin: 10vh 0 10vh 15vw;
 
   .splash-grid__text-container {
     display: flex;

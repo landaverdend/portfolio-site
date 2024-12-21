@@ -4,7 +4,7 @@ import argentina from '@assets/images/captcha/bigGrid/argentina.png';
 import waldo from '@assets/images/captcha/bigGrid/waldo.png';
 import russia from '@assets/images/captcha/bigGrid/russia.png';
 import theDress from '@assets/images/captcha/bigGrid/thedress.jpg';
-import { getRandomChanceIn, randomNumber } from '@/util/random';
+import { randomNumber } from '@/util/random';
 export type LargeCaptchaChallenge = {
   imageSrc: string;
   title: string;
