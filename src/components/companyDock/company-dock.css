@@ -8,10 +8,14 @@
 
   gap: 25px;
 
+  h2 {
+    font-size: 1.75rem;
+  }
+
   .dock-list-container {
     display: flex;
+    flex-wrap: nowrap;
     align-items: center;
-    justify-content: center;
 
     overflow: hidden;
     mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
@@ -21,11 +25,13 @@
       display: flex;
       align-items: center;
       justify-content: space-evenly;
+      flex-shrink: 0;
 
       gap: 50px;
 
+      min-width: 100%;
       list-style: none;
-      animation: dock-slide linear 28s infinite;
+      animation: dock-slide linear 30s infinite;
 
       .logo {
         width: 5rem;
@@ -33,5 +39,15 @@
         color: black;
       }
     }
+  }
+}
+
+@keyframes dock-slide {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
   }
 }

@@ -8,9 +8,8 @@
   grid-template-columns: 30% 55%; /* Make sure these don't all add up to over 100*/
 
   gap: 8vw;
-  height: 115vh;
 
-  margin: 10vh 0 10vh 15vw;
+  margin: 10vh 0 5vh 15vw;
 
   .splash-grid__text-container {
     display: flex;
@@ -161,12 +160,3 @@
   }
 }
 
-@keyframes dock-slide {
-  0% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
-}
