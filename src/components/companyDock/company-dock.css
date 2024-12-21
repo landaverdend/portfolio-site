@@ -6,8 +6,6 @@
   align-items: center;
   justify-content: center;
 
-  gap: 25px;
-
   h2 {
     font-size: 1.75rem;
   }
@@ -20,14 +18,13 @@
     overflow: hidden;
     mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
     width: 80%;
+    gap: 0px;
 
     ul {
       display: flex;
       align-items: center;
-      justify-content: space-evenly;
       flex-shrink: 0;
-
-      gap: 50px;
+      justify-content: space-around;
 
       min-width: 100%;
       list-style: none;
@@ -38,6 +35,14 @@
         height: 5rem;
         color: black;
       }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .featured-dock {
+    h2 {
+      font-size: 1.2rem;
     }
   }
 }
