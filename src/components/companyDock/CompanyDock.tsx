@@ -1,6 +1,5 @@
 import './company-dock.css';
 import Temu from '@assets/images/dock/temu.svg';
-import Amzn from '@assets/images/dock/AMZN.svg';
 import Reddit from '@assets/images/dock/reddit.svg';
 import Blackrock from '@assets/images/dock/Blackrock.svg';
 import Pfizer from '@assets/images/dock/Pfizer.svg';

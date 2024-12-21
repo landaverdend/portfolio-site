@@ -25,6 +25,11 @@
   p {
     font-size: large;
   }
+
+  .reccomendation-drawer-container {
+    grid-column: span 2;
+    
+  }
 }
 
 .splash-grid__button-container {

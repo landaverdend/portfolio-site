@@ -33,6 +33,21 @@ function LoadingBar() {
     }
   }, [progress]);
 
+  // FOR DEBUG PURPOSES ONLY
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === '=') {
+        setProgress(100);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []);
+
   // For intervals.
   useEffect(() => {
     const tickProgress = setInterval(() => {
@@ -52,7 +67,6 @@ function LoadingBar() {
     }, 3000);
 
     return () => {
-      console.log('interval cleared.');
       clearInterval(tickProgress);
       clearInterval(setServiceCall);
     };

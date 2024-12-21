@@ -10,6 +10,7 @@ import FakeCaptchaContainer from '@/components/fakeCaptcha/FakeCaptchaContainer'
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import CompanyDock from '@/components/companyDock/CompanyDock';
+import ReccomendationDrawer from './reccomendationDrawer/ReccomendationDrawer';
 
 function SplashView() {
   const { setIsLoading, setNextView } = useAppState();
@@ -51,8 +52,6 @@ function SplashView() {
                   <u
                     style={{ cursor: 'pointer' }}
                     onClick={() => {
-                      // setIsLoading(true);
-                      // setNextView('ResumeView');
                       setDisplayFakeCaptcha(true);
                     }}>
                     I'm already subscribed...
@@ -66,7 +65,11 @@ function SplashView() {
           <CardStack />
         </div>
 
+        {/* Featured websites and stuff. More ABOUT */}
         <CompanyDock />
+        <div className="reccomendation-drawer-container">
+          <ReccomendationDrawer />
+        </div>
       </div>
       <Footer />
       {createPortal(<ChatBubble />, document.getElementById('root') as HTMLElement)}
