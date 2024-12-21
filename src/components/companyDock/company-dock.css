@@ -1,6 +1,7 @@
 .featured-dock {
   grid-column: span 2;
   display: flex;
+  gap: 25px;
 
   flex-direction: column;
   align-items: center;
@@ -18,20 +19,22 @@
     overflow: hidden;
     mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
     width: 80%;
-    gap: 0px;
+    gap: 1rem;
 
-    ul {
+    span {
       display: flex;
       align-items: center;
       flex-shrink: 0;
-      justify-content: space-around;
+      justify-content: space-evenly;
+      gap: 4rem;
 
       min-width: 100%;
       list-style: none;
       animation: dock-slide linear 30s infinite;
 
       .logo {
-        width: 5rem;
+        /* width: 5rem; */
+        max-width: 10rem;
         height: 5rem;
         color: black;
       }
