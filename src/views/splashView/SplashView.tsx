@@ -6,7 +6,6 @@ import ChatBubble from '@/components/chatBubble/ChatBubble';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import MainSection from './mainSection/MainSection';
-import ReccomendationDrawer from './reccomendationDrawer/ReccomendationDrawer';
 import CompanyDock from '@/components/companyDock/CompanyDock';
 
 function SplashView() {

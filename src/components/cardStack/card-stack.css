@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
- }
+  margin-left: 20%; /* This is a dumb hack to get it 'centered'*/
+}
 
 .cardstack__container {
   position: relative;
@@ -92,6 +93,6 @@
 
 @media (max-width: 576px) {
   .cardstack {
-    display: none; 
+    display: none;
   }
 }

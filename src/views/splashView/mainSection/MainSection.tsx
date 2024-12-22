@@ -13,15 +13,15 @@ export default function MainSection() {
   return (
     <div className="main-section">
       <div className="main-section__text">
-        <h1>My Resume as a Service</h1>
-        <p>
+        <span id="header-text">My Resume as a Service</span>
+        <span className="about-paragraph">
           Join the growing number of recruiters who use my groundbreaking{' '}
           <b>
             <i>Resume as a Service</i>
           </b>{' '}
           (RaaS) platform to gain access to my resume effortlessly. Streamline your hiring process and elevate your recruitment
           game with the first-ever site designed for seamless access to my resume.
-        </p>
+        </span>
 
         <div className="main-section__buttons">
           <span
