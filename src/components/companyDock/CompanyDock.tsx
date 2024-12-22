@@ -20,12 +20,12 @@ export default function CompanyDock() {
       {/* <h2>AS FEATURED IN</h2> */}
 
       <div className="dock-list-container">
-        <span>
+        <span className="company-list">
           {logos.map((logo) => (
             <img id={crypto.randomUUID()} src={logo} className="logo" />
           ))}
         </span>
-        <span>
+        <span className="company-list">
           {logos2.map((logo) => (
             <img id={crypto.randomUUID()} src={logo} className="logo" />
           ))}

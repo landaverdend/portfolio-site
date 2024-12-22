@@ -3,163 +3,18 @@
   flex-direction: column;
 }
 
-.splash-grid {
-  display: grid;
-  grid-template-columns: 30% 55%; /* Make sure these don't all add up to over 100*/
-
-  gap: 8vw;
-
-  margin: 10vh 0 5vh 15vw;
-
-  .splash-grid__text-container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  h1 {
-    font-size: 6rem;
-    font-style: bold;
-    /* text-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.2); */
-  }
-
-  p {
-    font-size: large;
-  }
-
-  .reccomendation-drawer-container {
-    grid-column: span 2;
-  }
-}
-
-.splash-grid__button-container {
+.splash-flexbox {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 10vh;
 
-  gap: 25px;
-  align-items: center;
-  justify-content: center;
-
-  .start__button {
-    color: white;
-
-    padding: 10px;
-    width: fit-content;
-
-    text-wrap: nowrap;
-    text-align: center;
-    font-weight: 200;
-    font-size: x-large;
-
-    /* background-color: var(--color-2); */
-    background-color: rgb(78 59 125);
-    border-radius: 5px;
-    box-shadow: 5px 5px black;
-  }
-
-  .start__button:hover {
-    cursor: pointer;
-    opacity: 0.8;
-  }
-
-  .splash-grid__subscribed-button {
-    color: black;
-  }
-}
-
-/* ========== Smaller Desktops & Tablets (Medium Screens) ========== */
-@media (max-width: 1200px) {
-  .splash-grid {
-    grid-template-columns: 33% 60%;
-    width: 85vw;
-    margin: 8vh auto; /* Adjusted to auto-center */
-
-    h1 {
-      font-size: 4rem;
-    }
-  }
-
-  .start__button {
-    font-size: large;
-    padding: 8px;
-  }
-}
-
-/* ========== Tablets (Small-Medium Screens) ========== */
-@media (max-width: 992px) {
-  .splash-grid {
-    grid-template-columns: 1fr;
-    width: 90vw;
-    margin: 6vh auto;
-  }
-
-  h1 {
-    font-size: 7rem;
-    max-width: 80vw;
-  }
-
-  p {
-    font-size: x-large;
-  }
-
-  .start__button {
-    font-size: x-large;
-    padding: 8px;
-  }
-}
-
-/* ========== (Small Screens) ========== */
-@media (max-width: 768px) {
-  .splash-grid {
-    grid-template-columns: 1fr;
-    width: 95vw;
-    margin: 5vh auto;
-  }
-
-  .splash-grid__text-container {
-    padding-left: 3.5vw;
-  }
-
-  h1 {
-    font-size: 5rem;
-    max-width: 55vh;
-  }
-
-  p {
-    font-size: x-large;
-    max-width: 80vw;
-  }
-  .start__button {
-    font-size: medium;
-    padding: 6px;
-  }
+  margin: 0 0 5vh 0; /* Add some breathing room at the bottom... */
 }
 
 /* ========== Extra Small Devices (Phones) ========== */
 @media (max-width: 576px) {
-  .splash-grid {
+  .splash-flexbox {
     display: flex;
     flex-direction: column;
-
-    h1 {
-      font-size: 3.25rem;
-      max-width: 65%;
-    }
-  }
-
-  .splash-grid__button-container {
-    flex-wrap: wrap;
-  }
-
-  .start__button {
-    margin-top: 25px;
-    font-size: x-large;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    margin: 25px auto 0 auto;
-  }
-
-  p {
-    font-size: 0.95rem;
   }
 }

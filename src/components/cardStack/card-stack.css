@@ -1,9 +1,9 @@
 /* Base Styles */
 .cardstack {
-  padding-top: 5vh;
   display: flex;
   flex-direction: column;
-}
+  justify-content: center;
+ }
 
 .cardstack__container {
   position: relative;
