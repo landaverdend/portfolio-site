@@ -22,7 +22,7 @@ function FormContainer({ domMap, triggerPhysics, isGiveupEnabled }: FCProps) {
     formState: { errors },
     handleSubmit,
   } = useForm<Inputs>({ mode: 'onSubmit' });
-  const { setNextView, setIsLoading } = useAppState();
+  const { triggerLoadingSequence } = useAppState();
 
   return (
     <form className="form-container" onSubmit={handleSubmit(() => {})}>
@@ -169,8 +169,7 @@ function FormContainer({ domMap, triggerPhysics, isGiveupEnabled }: FCProps) {
               className="give-up-button"
               onClick={(e) => {
                 e.preventDefault();
-                setIsLoading(true);
-                setNextView('ResumeView');
+                triggerLoadingSequence('ResumeView');
               }}>
               I give up!
             </button>

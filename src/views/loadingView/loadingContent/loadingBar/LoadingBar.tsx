@@ -23,7 +23,7 @@ const fakeServiceCalls = [
 function LoadingBar() {
   const [progress, setProgress] = useState(15);
   const [ind, setInd] = useState(0);
-  const { nextComponent, setView, setIsLoadingBarDone } = useAppState();
+  const { nextView: nextComponent, setView, setIsLoadingBarDone } = useAppState();
 
   // for state.
   useEffect(() => {

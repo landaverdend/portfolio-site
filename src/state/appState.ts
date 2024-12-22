@@ -4,20 +4,21 @@ type View = 'SplashView' | 'ResumeView' | 'SurveyView' | '';
 
 type AppState = {
   componentToRender: View;
-  nextComponent: View;
+  nextView: View;
   isLoading: boolean;
   isLoadingBarDone: boolean;
 
   setView: (view: View) => void;
   setIsLoading: (val: boolean) => void;
-  setNextView: (next: View) => void;
   setIsLoadingBarDone: (val: boolean) => void;
+
+  triggerLoadingSequence: (nextView: View) => void;
 };
 
 export const useAppState = create<AppState>((set) => ({
   // componentToRender: 'SurveyView',
   componentToRender: 'SplashView',
-  nextComponent: '',
+  nextView: '',
 
   isLoading: false,
   isLoadingBarDone: false,
@@ -25,5 +26,6 @@ export const useAppState = create<AppState>((set) => ({
   setIsLoadingBarDone: (val) => set({ isLoadingBarDone: val }),
   setView: (view) => set({ componentToRender: view }),
   setIsLoading: (val) => set({ isLoading: val }),
-  setNextView: (next) => set({ nextComponent: next }),
+
+  triggerLoadingSequence: (nextView) => set({ nextView: nextView, isLoading: true, isLoadingBarDone: false }),
 }));

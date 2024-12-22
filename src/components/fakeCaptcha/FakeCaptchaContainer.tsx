@@ -1,12 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
-import captchaIcon from '@assets/images/icons/captcha-icon.png';
 import './fake-captcha.css';
 import '@styles/global-animations.css';
+
+import { useEffect, useRef, useState } from 'react';
+import captchaIcon from '@assets/images/icons/captcha-icon.png';
 import GridSelector from './gridSelector/GridSelector';
 import { useAppState } from '@/state/appState';
 
 function FakeCaptchaContainer() {
-  const { setIsLoading, setNextView } = useAppState();
+  const { triggerLoadingSequence } = useAppState();
 
   const [captchaOpened, setCaptchaOpened] = useState(false);
   const [isFirstClick, setIsFirstClick] = useState(true);
@@ -36,8 +37,7 @@ function FakeCaptchaContainer() {
         {isCompleted && (
           <span
             onAnimationEnd={() => {
-              setNextView('ResumeView');
-              setIsLoading(true);
+              triggerLoadingSequence('ResumeView');
             }}
             className="checkmark"></span>
         )}
