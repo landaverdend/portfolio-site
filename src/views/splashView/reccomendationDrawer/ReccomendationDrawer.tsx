@@ -3,9 +3,15 @@ import './reccomendation-drawer.css';
 export default function ReccomendationDrawer() {
   return (
     <div className="reccomendation-container">
-      <h3>My Resume as a Service{'™'}</h3>
-      <h2>Perfecting your Recruiting Workflow</h2>
-      <div className="reccomendation">HELLO WORLD</div>
+      <div className="testimonial-section">
+        <h2>Success Stories</h2>
+
+        <p>
+          Explore success stories from our satisfied customers. Our RaaS{'™'} platform is engineered to exceed expectations,
+          equipping you with the tools needed to optimize engagement and deliver a seamless customer experience at every
+          interaction.
+        </p>
+      </div>
     </div>
   );
 }

@@ -1,14 +1,31 @@
 .reccomendation-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 
-  background-color: rgb(162, 184, 255);
+  background-color: rgb(247, 249, 255);
   /* background: linear-gradient(to bottom right,#f1c3fc,#531945); */
   border-radius: 10px;
 
-  .reccomendation {
+  height: 100vh;
+
+  .testimonial-section {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 100%;
+    margin: 5vh 0 0 0;
+
+    h2 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1rem;
+      max-width: 40%;
+    }
   }
 }

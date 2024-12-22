@@ -7,6 +7,7 @@ import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import MainSection from './mainSection/MainSection';
 import CompanyDock from '@/components/companyDock/CompanyDock';
+import ReccomendationDrawer from './reccomendationDrawer/ReccomendationDrawer';
 
 function SplashView() {
   const navbarLinks = [
@@ -21,11 +22,11 @@ function SplashView() {
           <MainSection />
         </section>
 
-        <section id="featured-section">
-          <CompanyDock />
-          {/* <ReccomendationDrawer /> */}
-        </section>
+        <CompanyDock />
 
+        <section id="featured-section">
+          <ReccomendationDrawer />
+        </section>
       </div>
       <Footer />
       {createPortal(<ChatBubble />, document.getElementById('root') as HTMLElement)}
