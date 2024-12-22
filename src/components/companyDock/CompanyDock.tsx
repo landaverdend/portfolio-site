@@ -17,7 +17,7 @@ export default function CompanyDock() {
 
   return (
     <div id="featured" className="featured-dock">
-      <h2>AS FEATURED IN</h2>
+      {/* <h2>AS FEATURED IN</h2> */}
 
       <div className="dock-list-container">
         <span>

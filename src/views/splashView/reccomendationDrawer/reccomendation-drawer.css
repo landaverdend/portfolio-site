@@ -1,5 +1,14 @@
 .reccomendation-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  background-color: rgb(162, 184, 255);
+  /* background: linear-gradient(to bottom right,#f1c3fc,#531945); */
+  border-radius: 10px;
+
+  .reccomendation {
+    display: flex;
+  }
 }
