@@ -11,8 +11,9 @@ function resizeCanvas(canvas: HTMLCanvasElement) {
 
 type BGCProps = {
   flipped?: boolean;
+  position: 'absolute' | 'fixed';
 };
-function BackgroundCanvas({ flipped }: BGCProps) {
+function BackgroundCanvas({ flipped, position }: BGCProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Memoize the handleResize function.
@@ -36,7 +37,11 @@ function BackgroundCanvas({ flipped }: BGCProps) {
 
   return (
     <>
-      <canvas id={"bezier-canvas"} className={`${flipped ? 'flipped' : ''}`} ref={canvasRef}></canvas>
+      <canvas
+        id={'bezier-canvas'}
+        className={`${flipped ? 'flipped' : ''}`}
+        style={{ position: position }}
+        ref={canvasRef}></canvas>
     </>
   );
 }

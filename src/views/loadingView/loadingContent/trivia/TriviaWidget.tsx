@@ -19,7 +19,7 @@ function TriviaWidget() {
 
   return (
     <div className="trivia-container">
-      <h2 className="gothic-a1-bold">Did you know?</h2>
+      <h2>Did you know?</h2>
       <p>
         <TypewriterText text={trivia[triviaIndex]} speed={35} />
       </p>

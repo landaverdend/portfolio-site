@@ -23,11 +23,11 @@ function SplashView() {
   return (
     <div id="splash" className="splash-container">
       <Navbar links={navbarLinks} />
-      <div className="splash-grid inter">
+      <div className="splash-grid">
         <div>
           <div className="splash-grid__text-container">
-            <h1 className="gothic-a1-bold">My Resume as a Service</h1>
-            <p className="inter">
+            <h1 className="splash-header">My Resume as a Service</h1>
+            <p>
               Join the growing number of recruiters who use my groundbreaking{' '}
               <b>
                 <i>Resume as a Service</i>
@@ -73,7 +73,7 @@ function SplashView() {
       </div>
       <Footer />
       {createPortal(<ChatBubble />, document.getElementById('root') as HTMLElement)}
-      <BackgroundCanvas />
+      <BackgroundCanvas position={'absolute'}/>
     </div>
   );
 }

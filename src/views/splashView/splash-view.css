@@ -17,9 +17,9 @@
   }
 
   h1 {
-    font-size: 5.5rem;
+    font-size: 6rem;
     font-style: bold;
-    text-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.2);
+    /* text-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.2); */
   }
 
   p {
@@ -28,7 +28,6 @@
 
   .reccomendation-drawer-container {
     grid-column: span 2;
-    
   }
 }
 
