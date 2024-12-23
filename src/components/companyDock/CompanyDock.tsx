@@ -18,16 +18,15 @@ export default function CompanyDock() {
   return (
     <div id="featured" className="featured-dock">
       {/* <h2>AS FEATURED IN</h2> */}
-
       <div className="dock-list-container">
         <span className="company-list">
           {logos.map((logo) => (
-            <img id={crypto.randomUUID()} src={logo} className="logo" />
+            <img key={crypto.randomUUID()} src={logo} className="logo" />
           ))}
         </span>
         <span className="company-list">
           {logos2.map((logo) => (
-            <img id={crypto.randomUUID()} src={logo} className="logo" />
+            <img key={crypto.randomUUID()} src={logo} className="logo" />
           ))}
         </span>
       </div>
