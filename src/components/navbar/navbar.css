@@ -5,6 +5,7 @@
   --purple: hsl(270, 51%, 30%);
   background-image: linear-gradient(to bottom right, hsla(203, 92%, 35.5%, 0.25), var(--purple), hsla(126, 65%, 66%, 0.25));
   background-color: var(--purple);
+  /* background-color: rgb(101 80 146); */
 
   position: sticky;
   top: 0;

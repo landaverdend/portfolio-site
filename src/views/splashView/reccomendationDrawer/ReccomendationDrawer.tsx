@@ -40,23 +40,23 @@ export default function ReccomendationDrawer() {
       <hr />
 
       <div className="reccomendation-drawer">
+        <div className="arrow-control">&larr; </div>
+
         <div className="reccomendation-image">
           <img src={imageSrc}></img>
         </div>
 
         <div className="reccomendation-data">
           <h2>{tagLine}</h2>
-          <p>
-            <span className="quotation">"</span>
-            {reccomendation}
-            <span className="quotation">"</span>
-          </p>
+          <blockquote>{reccomendation}</blockquote>
 
           <div className="reccomender-details">
             <b>{name}</b>
             <span>{title}</span>
           </div>
         </div>
+
+        <div className="arrow-control">&rarr; </div>
       </div>
     </div>
   );
