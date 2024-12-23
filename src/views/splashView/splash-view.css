@@ -8,7 +8,7 @@
   flex-direction: column;
   gap: 10vh;
 
-  margin: 0 0 5vh 0; /* Add some breathing room at the bottom... */
+  margin: 0 0 0 0; /* Add some breathing room at the bottom... */
 }
 
 /* ========== Extra Small Devices (Phones) ========== */

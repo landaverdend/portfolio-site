@@ -23,6 +23,7 @@
 body {
   /* Global styles to apply */
   font-family: 'Arial', sans-serif;
+   
   font-optical-sizing: auto;
   font-weight: 175;
   font-style: thin;

@@ -27,7 +27,7 @@ const testimonials: Array<Testimonial> = [
     tagLine: 'Driving Actionable Items Through Uplift',
     reccomendation:
       "Nicodemus was instrumental in driving our strategic initiative to diminish Windows' usability, aligning with our overarching goals. His innovative Resume-as-a-Service solution streamlined and optimized the talent acquisition process, delivering measurable efficiency gains.",
-    title: 'Former CEO of Microsoft',
+    title: 'Former CEO and Founder of Microsoft',
     name: 'Bill Gates',
     companySvg: { src: Microsoft, height: '2rem' },
   },
@@ -36,7 +36,7 @@ const testimonials: Array<Testimonial> = [
     tagLine: 'Automating YOUR Optimizations',
     reccomendation:
       "Nicodemus played a pivotal role in advancing Oracle's strategic vision of ensuring its microservices architecture remains as opaque and labyrinthine as possible. His groundbreaking Microservices-as-a-Mystery™ solution introduced a suite of services that seamlessly interact to achieve absolutely nothing",
-    title: 'Founder of Oracle',
+    title: 'Oracle Chairman and Cofounder',
     name: 'Larry Ellison',
     companySvg: { src: Oracle, height: '1.5rem' },
   },
