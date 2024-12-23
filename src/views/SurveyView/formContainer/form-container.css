@@ -132,8 +132,9 @@ button {
         padding: 10px;
 
         border-radius: 5px;
-        border: 1px solid rgb(136 103 217);
-        background-color: rgb(136 103 217);
+
+        background-color: var(--main-indigo);
+        border: 1px solid var(--main-indigo);
       }
 
       .give-up-button:hover,
@@ -150,8 +151,8 @@ button {
 
         color: white;
 
-        background-color: rgb(78 59 125);
-        border: 1px solid rgb(78 59 125);
+        background-color: var(--main-indigo);
+        border: 1px solid var(--main-indigo);
         border-radius: 5px;
 
         z-index: 195;

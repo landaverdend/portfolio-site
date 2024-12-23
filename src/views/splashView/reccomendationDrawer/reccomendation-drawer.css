@@ -51,33 +51,32 @@
 
     margin-top: 5vh;
 
-    .reccomendation-data {
+    .reccomendation-image img {
+      border-radius: 12.5px;
+    }
+
+    .panel-container {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
 
-      .quotation {
-        font-weight: 800;
-        font-size: 2rem;
-      }
-
-      blockquote {
-        max-width: 60%;
-        font-size: 1.5rem;
-        font-weight: 500;
-      }
-
-      .reccomender-details {
+      .quote-area {
         display: flex;
         flex-direction: column;
+        gap: 1rem;
+
+        font-size: 1.5rem;
+        font-weight: 500;
+
+        .reccomender {
+          font-size: 1rem;
+        }
       }
     }
 
     .arrow-control {
       padding: 15px 17px;
       border-radius: 50px;
-      border: 1px solid purple;
+      border: 1px solid rgb(61, 46, 97);
     }
 
     .arrow-control:hover {
@@ -85,6 +84,5 @@
       opacity: 0.8;
       background-color: lightgray;
     }
-
   }
 }

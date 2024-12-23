@@ -40,14 +40,15 @@
         font-weight: 200;
         font-size: x-large;
 
-        background-color: rgb(78 59 125);
+        /* background-color: rgb(78 59 125); */
+        background-color: rgb(61, 46, 97);
         border-radius: 5px;
         box-shadow: 5px 5px black;
       }
 
       .start__button:hover {
         cursor: pointer;
-        opacity: 0.8;
+        opacity: 0.5;
       }
     }
   }

@@ -43,19 +43,32 @@ export default function ReccomendationDrawer() {
         <div className="arrow-control">&larr; </div>
 
         <div className="reccomendation-image">
-          <img src={imageSrc}></img>
+          <img src={imageSrc} width={537} height={347}></img>
         </div>
 
-        <div className="reccomendation-data">
-          <h2>{tagLine}</h2>
-          <blockquote>{reccomendation}</blockquote>
+        <div className="panel-container">
+          
+          <blockquote className="quote-area">
+            <h3>{tagLine}</h3>
+            <span>
+              <b>"</b>
+              {reccomendation}
+              <b>"</b>
+            </span>
+            <span className="reccomender">
+              <b>{name}</b>
+              <br />
+              <span>{title}</span>
+            </span>
+          </blockquote>
 
-          <div className="reccomender-details">
-            <b>{name}</b>
-            <span>{title}</span>
-          </div>
+        
         </div>
 
+{/* 
+        <div className="panels">
+            panels
+          </div> */}
         <div className="arrow-control">&rarr; </div>
       </div>
     </div>

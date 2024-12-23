@@ -2,10 +2,10 @@
   height: 10vh;
   color: white;
 
-  --purple: hsl(270, 51%, 30%);
+  /* --purple: hsl(270, 51%, 30%);
   background-image: linear-gradient(to bottom right, hsla(203, 92%, 35.5%, 0.25), var(--purple), hsla(126, 65%, 66%, 0.25));
-  background-color: var(--purple);
-  /* background-color: rgb(101 80 146); */
+  background-color: var(--purple); */
+  background-color: var(--main-indigo);
 
   position: sticky;
   top: 0;

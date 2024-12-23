@@ -3,6 +3,8 @@
   --color-2: rgb(125, 228, 125); /* Light green */
   --color-3: rgb(111, 120, 241); /* indigo */
 
+  --main-indigo: rgb(77, 61, 113);
+
   --background-text-1: hsl(270, 54%, 76%);
 
   --hover-color-1: #ab0cab;
@@ -20,7 +22,7 @@
 
 body {
   /* Global styles to apply */
-  font-family: 'Garamond', sans-serif;
+  font-family: 'Arial', sans-serif;
   font-optical-sizing: auto;
   font-weight: 175;
   font-style: thin;
