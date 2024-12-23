@@ -51,24 +51,57 @@
 
     margin-top: 5vh;
 
-    .reccomendation-image img {
-      border-radius: 12.5px;
-    }
-
     .panel-container {
       display: flex;
       flex-direction: column;
+      gap: 50px;
 
-      .quote-area {
+      .reccomendation-info {
         display: flex;
-        flex-direction: column;
-        gap: 1rem;
+        align-items: center;
+        gap: 50px;
 
-        font-size: 1.5rem;
-        font-weight: 500;
+        .reccomendation-image img {
+          border-radius: 12.5px;
+        }
 
-        .reccomender {
-          font-size: 1rem;
+        .quote-area {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          font-size: 1.5rem;
+          font-weight: 500;
+
+          .reccomender {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .panels {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+
+        .panel-item {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 25px;
+
+          border-top: 3px solid var(--main-indigo);
+          font-size: 1.5rem;
+          height: 1.5rem;
+
+          /* background-color: red; */
+        }
+
+        .panel-item:hover {
+          cursor: pointer;
+          opacity: 0.5;
         }
       }
     }

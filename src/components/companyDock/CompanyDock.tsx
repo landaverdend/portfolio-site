@@ -10,14 +10,16 @@ import Pearson from '@assets/images/dock/Pearson.svg';
 import Weinstein from '@assets/images/dock/weinsteinCompany.svg';
 import UnitedHealth from '@assets/images/dock/unitedHealthcare.svg';
 import AARP from '@assets/images/dock/AARP.svg';
+import Palantir from '@assets/images/dock/Palantir.svg';
+import Halliburton from '@assets/images/dock/Halliburton.svg';
+import Dole from '@assets/images/dock/DOLE.png';
 
 export default function CompanyDock() {
-  const logos = [Pfizer, Monsanto, Pearson, UnitedHealth, Nestle, BP];
-  const logos2 = [Weinstein, Temu, Blackrock, Reddit, AARP];
+  const logos = [Pearson, Monsanto, Pfizer , Halliburton,  UnitedHealth, Nestle, BP];
+  const logos2 = [Dole, Weinstein, Palantir, Temu, Blackrock, Reddit, AARP];
 
   return (
     <div id="featured" className="featured-dock">
-      {/* <h2>AS FEATURED IN</h2> */}
       <div className="dock-list-container">
         <span className="company-list">
           {logos.map((logo) => (
