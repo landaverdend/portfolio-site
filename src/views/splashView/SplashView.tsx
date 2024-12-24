@@ -12,7 +12,7 @@ import ReccomendationDrawer from './reccomendationDrawer/ReccomendationDrawer';
 function SplashView() {
   const navbarLinks = [
     { link: '#main-section', text: 'About' },
-    { link: '#featuerd-section', text: 'Features' },
+    { link: '#featured-section', text: 'Features' },
   ];
   return (
     <div id="splash" className="splash-container">

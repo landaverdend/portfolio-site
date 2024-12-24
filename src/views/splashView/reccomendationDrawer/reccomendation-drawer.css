@@ -123,3 +123,69 @@
     }
   }
 }
+
+/* ========== Extra Small Devices (Phones) ========== */
+@media (max-width: 576px) {
+  .reccomendation-container {
+    height: auto;
+
+    .testimonial-header {
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        font-size: 2rem;
+        max-width: 80vw;
+      }
+
+      p {
+        max-width: 80vw;
+      }
+    }
+
+    .reccomendation-drawer {
+      display: flex;
+      flex-direction: column;
+
+      .panel-container {
+        gap: 8px;
+
+        .reccomendation-info {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .reccomendation-image img {
+            width: 80vw;
+            height: 100%;
+          }
+
+          .quote-area {
+            gap: 12px;
+
+            font-size: 1rem;
+            font-weight: 500;
+
+            width: 80vw;
+
+            .reccomender {
+              font-size: 1rem;
+            }
+          }
+        }
+
+        .panels {
+          .panel-item {
+            img {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .arrow-control {
+        display: none;
+      }
+    }
+  }
+}
