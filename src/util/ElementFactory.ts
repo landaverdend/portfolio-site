@@ -107,24 +107,26 @@ export function createInputElement(): HTMLElement {
   inputToAdd.type = 'text';
   inputToAdd.placeholder = inputPlaceholders[randomNumber(0, inputPlaceholders.length)];
   inputToAdd.id = `${crypto.randomUUID()}`;
+  inputToAdd.className = 'physics input-style';
 
-  const x = randomNumber(0, document.body.scrollWidth);
+  const x = randomNumber(document.body.scrollWidth * 0.2, document.body.scrollWidth * 0.6);
   inputToAdd.style.position = 'absolute';
   inputToAdd.style.top = `0px`;
   inputToAdd.style.left = `${x}px`;
-  inputToAdd.className = 'physics input-style';
   return inputToAdd;
 }
 
 export function createSelectElement(): HTMLElement {
   const el = document.createElement('select');
   el.id = `${crypto.randomUUID()}`;
-  const x = randomNumber(0, document.body.scrollWidth);
+
+  el.className = 'physics input-style';
+
+  const x = randomNumber(document.body.scrollWidth * 0.2, document.body.scrollWidth * 0.6);
 
   el.style.position = 'absolute';
   el.style.top = `0px`;
   el.style.left = `${x}px`;
-  el.className = 'physics input-style';
 
   const numOptions = randomNumber(3, 5);
   for (let i = 0; i < numOptions; i++) {

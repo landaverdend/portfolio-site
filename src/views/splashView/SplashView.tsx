@@ -8,6 +8,7 @@ import Footer from '@/components/footer/Footer';
 import MainSection from './mainSection/MainSection';
 import CompanyDock from '@/components/companyDock/CompanyDock';
 import ReccomendationDrawer from './reccomendationDrawer/ReccomendationDrawer';
+import ChartSection from './chartSection/ChartSection';
 
 function SplashView() {
   const navbarLinks = [
@@ -26,6 +27,10 @@ function SplashView() {
 
         <section id="featured-section">
           <ReccomendationDrawer />
+        </section>
+
+        <section id="chart-section">
+          <ChartSection />
         </section>
       </div>
       <Footer />

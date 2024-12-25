@@ -102,7 +102,7 @@ function SurveyView() {
   );
 
   function triggerPhysics(id: string) {
-    if (!isPhysicsSequenceStarted.current && getRandomChanceIn(10)) {
+    if (!isPhysicsSequenceStarted.current && getRandomChanceIn(5)) {
       const el = document.getElementById(id);
 
       if (el) {
@@ -117,11 +117,11 @@ function SurveyView() {
 
       setTimeout(() => {
         setRainTriggered(true);
-      }, 5000);
+      }, 3000);
 
       setTimeout(() => {
         setIsGiveupEnabled(true);
-      }, 7500);
+      }, 5000);
 
       isPhysicsSequenceStarted.current = true;
     }
