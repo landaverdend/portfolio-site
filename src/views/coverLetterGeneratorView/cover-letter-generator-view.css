@@ -1,0 +1,44 @@
+.generator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+
+  .form-controls {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+
+    background-color: rgb(162, 184, 255);
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      font-size: 0.8rem;
+
+      input {
+        padding: 2.5px;
+      }
+
+      select {
+        width: 19rem;
+        max-width: 21rem;
+      }
+    }
+  }
+
+  .letter-container {
+    flex: 7;
+
+    background-color: blue;
+  }
+}

@@ -1,0 +1,16 @@
+
+
+.cover-letter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .panel-one {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .panel-two {
+    background-color: blue;
+  }
+}

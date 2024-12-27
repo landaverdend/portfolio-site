@@ -8,12 +8,13 @@ import Footer from '@/components/footer/Footer';
 import MainSection from './mainSection/MainSection';
 import CompanyDock from '@/components/companyDock/CompanyDock';
 import ReccomendationDrawer from './reccomendationDrawer/ReccomendationDrawer';
-import ChartSection from './chartSection/ChartSection';
+import CoverLetterSection from './coverLetterSection/CoverLetterSection';
 
 function SplashView() {
   const navbarLinks = [
     { link: '#main-section', text: 'About' },
     { link: '#featured-section', text: 'Features' },
+    { link: '#utilities-section', text: 'Utilities' },
   ];
   return (
     <div id="splash" className="splash-container">
@@ -22,15 +23,14 @@ function SplashView() {
         <section id="main-section">
           <MainSection />
         </section>
-
         <CompanyDock />
 
         <section id="featured-section">
           <ReccomendationDrawer />
         </section>
 
-        <section id="chart-section">
-          <ChartSection />
+        <section id="utilities-section">
+          <CoverLetterSection />
         </section>
       </div>
       <Footer />

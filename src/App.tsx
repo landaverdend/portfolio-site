@@ -3,6 +3,7 @@ import ResumeView from './views/resumeView/ResumeView';
 import { useAppState } from './state/appState';
 import LoadingView from './views/loadingView/LoadingView';
 import SurveyView from './views/surveyView/SurveyView';
+import CoverLetterGeneratorView from './views/coverLetterGeneratorView/CoverLetterGeneratorView';
 
 function App() {
   const { componentToRender, isLoading } = useAppState();
@@ -19,9 +20,11 @@ function App() {
     case 'SplashView':
       renderMe = <SplashView />;
       break;
+    case 'CoverLetterGeneratorView':
+      renderMe = <CoverLetterGeneratorView />;
+      break;
   }
 
-  // TODO: stop rendering the 'renderMe' component when the loading view curtains have shut. Not super important but it is technically inefficient.
   return (
     <>
       {isLoading && <LoadingView />}
