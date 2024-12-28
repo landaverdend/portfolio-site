@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 
 interface TypewriterTextProps {
-  text: string;
+  children: string | string[];
   speed: number;
   delay?: number; // delay in ms
 }
-function TypewriterText({ text, speed, delay }: TypewriterTextProps) {
+function TypewriterText({ children, speed, delay }: TypewriterTextProps) {
   const [displayText, setDisplayText] = useState('');
+
+  // Normalize children into a single string
+  const text = Array.isArray(children) ? children.join('') : children;
 
   useEffect(() => {
     let i = 0;
@@ -30,7 +33,7 @@ function TypewriterText({ text, speed, delay }: TypewriterTextProps) {
       clearTimeout(delayTimeout);
       clearInterval(typingInterval);
     };
-  }, [text, speed]);
+  }, [children, speed]);
 
   return <>{displayText}</>;
 }

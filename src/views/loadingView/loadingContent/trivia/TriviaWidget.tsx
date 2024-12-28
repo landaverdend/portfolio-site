@@ -21,7 +21,7 @@ function TriviaWidget() {
     <div className="trivia-container">
       <h2>Did you know?</h2>
       <p>
-        <TypewriterText text={trivia[triviaIndex]} speed={35} />
+        <TypewriterText speed={35}> {trivia[triviaIndex]} </TypewriterText>
       </p>
     </div>
   );

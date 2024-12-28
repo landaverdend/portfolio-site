@@ -133,7 +133,9 @@ function SurveyView() {
         <div className="survey-view-container">
           <div className="survey-description-container">
             <h1>
-              <TypewriterText text={dumbSlogan} speed={30} delay={0} />
+              <TypewriterText speed={30} delay={0}>
+                {dumbSlogan}
+              </TypewriterText>
             </h1>
             <p>
               Introducing the revolutionary Resume As A Service <b>(RaaS)</b>—a streamlined, subscription-based way for recruiters

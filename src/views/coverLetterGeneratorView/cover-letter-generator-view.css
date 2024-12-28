@@ -37,14 +37,13 @@
         padding: 10px;
         width: 100%;
         font-size: 1rem;
-
       }
 
       select {
         border-radius: 2.5px;
         border: 1px solid #bebebe;
         padding: 10px;
-        width: 106.5%;
+        width: 105.5%;
 
         font-size: 1rem;
       }
@@ -64,10 +63,34 @@
       opacity: 0.7;
     }
   }
+}
 
-  .letter-container {
-    flex: 7;
+.letter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  flex: 6;
 
-    background-color: blue;
+  .document {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-radius: 10px;
+
+    min-height: 85vh;
+
+    background-color: rgb(223, 230, 255);
+    font-size: 1.5rem;
+    width: 80%;
+
+    h2 {
+      margin-top: 8%;
+    }
+
+    p {
+      max-width: 80%;
+    }
   }
 }
