@@ -1,0 +1,36 @@
+.chip-input {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  gap: 15px;
+
+  border: 1px solid rgb(162, 184, 255);
+  border-radius: 5px;
+  padding: 15px;
+
+  .chip-container {
+    display: flex;
+    gap: 5px;
+
+    .chip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7.5px;
+
+      background-color: lightgray;
+      padding: 5px 6px 5px 6px;
+      border-radius: 8px;
+    }
+
+    .close {
+      padding: 4px 7px 4px 7px;
+    }
+
+    .close:hover {
+      background-color: gray;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+  }
+}
