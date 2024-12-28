@@ -3,14 +3,15 @@ import { useState } from 'react';
 
 type CIProps = {
   label: string;
+  chips: string[];
+  setChips: React.Dispatch<React.SetStateAction<string[]>>;
 };
-export default function ChipInput({ label }: CIProps) {
-  const [techKeywordChips, setTechKeywordChips] = useState<Array<string>>([]);
+export default function ChipInput({ label, chips, setChips }: CIProps) {
   const [chipInputValue, setChipInputValue] = useState<string>('');
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && chipInputValue !== '') {
-      setTechKeywordChips((prev) => [...prev, chipInputValue]);
+      setChips((prev) => [...prev, chipInputValue]);
       setChipInputValue('');
     }
   };
@@ -27,14 +28,14 @@ export default function ChipInput({ label }: CIProps) {
       </label>
 
       <div className="chip-container">
-        {[...techKeywordChips].map((str) => {
+        {[...chips].map((str) => {
           return (
             <span key={crypto.randomUUID()} className="chip">
               {str}
               <span
                 className="close"
                 onClick={() => {
-                  setTechKeywordChips(techKeywordChips.filter((el) => el !== str));
+                  setChips(chips.filter((el) => el !== str));
                 }}>
                 ✕
               </span>

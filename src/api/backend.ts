@@ -4,7 +4,6 @@ const baseUrl = 'http://localhost:8080';
 
 export async function callChatEndpoint(clientChatLog: Array<Chat>): Promise<string | null> {
   try {
-    console.log(clientChatLog);
     const response = await fetch(`${baseUrl}/chat`, {
       method: 'POST',
       headers: {
@@ -23,4 +22,17 @@ export async function callChatEndpoint(clientChatLog: Array<Chat>): Promise<stri
   }
 
   return null;
+}
+
+export type CoverLetterDTO = {
+  frameworks: string[];
+  personalityTraits: string[];
+  cloudTechnologoies: string[];
+  tone: string;
+  company: string;
+  name: string;
+};
+export async function callCoverLetterEndpoint(dto: CoverLetterDTO) {
+  // TODO: make the call to the endpoint.
+  console.log(dto);
 }
