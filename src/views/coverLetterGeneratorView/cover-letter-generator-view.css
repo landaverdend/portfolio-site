@@ -4,6 +4,8 @@
   align-items: center;
 
   width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
 
   .form-controls {
     flex: 3;
@@ -17,23 +19,49 @@
     padding: 20px;
     border-radius: 15px;
 
+    font-size: large;
+
     background-color: rgb(162, 184, 255);
+    box-shadow: 10px 10px black;
+
+    max-width: 50vw;
 
     label {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-
-      font-size: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      width: 90%;
 
       input {
-        padding: 5px;
+        border-radius: 2.5px;
+        border: 1px solid #bebebe;
+        padding: 10px;
+        width: 100%;
+        font-size: 1rem;
+
       }
 
       select {
-        width: 19rem;
-        max-width: 21rem;
+        border-radius: 2.5px;
+        border: 1px solid #bebebe;
+        padding: 10px;
+        width: 106.5%;
+
+        font-size: 1rem;
       }
+    }
+
+    button {
+      color: white;
+      border-radius: 7px;
+      background-color: var(--main-indigo);
+      border: 1px solid transparent;
+
+      padding: 10px;
+    }
+
+    button:hover {
+      cursor: pointer;
+      opacity: 0.7;
     }
   }
 

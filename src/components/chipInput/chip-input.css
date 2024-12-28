@@ -1,15 +1,15 @@
 .chip-input {
   display: flex;
   flex-direction: column;
-  max-width: 100%;
-  gap: 15px;
+  justify-content: center;
+  align-items: center;
 
-  border: 1px solid rgb(162, 184, 255);
-  border-radius: 5px;
-  padding: 15px;
+  gap: 15px;
+  width: 100%;
 
   .chip-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 5px;
 
     .chip {
