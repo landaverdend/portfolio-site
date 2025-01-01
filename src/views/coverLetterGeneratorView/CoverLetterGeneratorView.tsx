@@ -27,8 +27,8 @@ export default function CoverLetterGeneratorView() {
         tone: tone,
         frameworks: frameworks,
         personalityTraits: personalityTraits,
-        cloudTechnologoies: cloudTechnologies,
-        position: position
+        cloudTechnologies: cloudTechnologies,
+        position: position,
       });
     } catch (e) {}
   }
@@ -39,12 +39,16 @@ export default function CoverLetterGeneratorView() {
         <h2>Cover Letter Generator</h2>
 
         <label>
-          Your Title/Name/Position:
+          Your Title/Name:
           <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Seymour Butts"></input>
         </label>
         <label>
           Your Company/Business
-          <input value={company} onChange={(e) => setCompany(e.target.value)} type="text" placeholder="Chuck's Seed and Feed"></input>
+          <input
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
+            type="text"
+            placeholder="Chuck's Seed and Feed"></input>
         </label>
 
         <label>
@@ -52,13 +56,23 @@ export default function CoverLetterGeneratorView() {
           <input value={position} onChange={(e) => setPosition(e.target.value)} type="text" placeholder="HR Recruiter"></input>
         </label>
 
-        <ChipInput label={'List some personality traits you want highlighted: '} chips={frameworks} setChips={setFrameworks} placeholder="Perfect, Beautiful, Stunning" />
-        <ChipInput label={'Bloated frameworks to mention:'} chips={personalityTraits} setChips={setPersonalityTraits} placeholder="Angular, React, BLAZER" />
+        <ChipInput
+          label={'List some personality traits you want highlighted: '}
+          chips={frameworks}
+          setChips={setFrameworks}
+          placeholder="Perfect, Beautiful, Stunning"
+        />
+        <ChipInput
+          label={'Bloated frameworks to mention:'}
+          chips={personalityTraits}
+          setChips={setPersonalityTraits}
+          placeholder="Angular, React, BLAZER"
+        />
         <ChipInput
           label={'Name some cloud™ technologies you want mentioned: '}
           chips={cloudTechnologies}
           setChips={setCloudTechnologies}
-          placeholder={"AWS Ginkgo Biloba"}
+          placeholder={'AWS Ginkgo Biloba'}
         />
 
         <label>
@@ -84,18 +98,24 @@ export default function CoverLetterGeneratorView() {
           <h2>
             Dear <UserInputText>{`${title === '' ? 'YOUR_NAME_HERE' : title}`}</UserInputText>
           </h2>
-          <p>
+          <p className='letter-content'>
             <TypewriterText speed={40}>
               It is with a humility so profound it borders on desperation that I submit my application for the [Position Title]
-              role at [YOUR_COMPANY_NAME]. The chance to merely dream of joining your illustrious organization is an honor I will recount to my
-              grandchildren, should I ever attain the life stability required to have them. From the moment I saw your job
-              posting—crafted with the kind of perfection I can only hope to absorb through osmosis—I knew this position was meant
-              for me. My entire existence has been a meandering prelude to this opportunity. Who needs a “calling” when one can
-              have job descriptions? Let me be clear: my qualifications, while technically aligned with your requirements, are
-              utterly insignificant compared to the boundless contributions I will bring to your team. I possess a unique ability
-              to contort myself into any mold required, much like a gelatin dessert. My skills in [relevant skill], [another
-              skill], and [yet another skill] are merely tools in service of my true talent: tirelessly seeking your approval.
+              role at [YOUR_COMPANY_NAME]. The chance to merely dream of joining your illustrious organization is an honor I will
+              recount to my grandchildren, should I ever attain the life stability required to have them. From the moment I saw
+              your job posting—crafted with the kind of perfection I can only hope to absorb through osmosis—I knew this position
+              was meant for me. My entire existence has been a meandering prelude to this opportunity. Who needs a “calling” when
+              one can have job descriptions? Let me be clear: my qualifications, while technically aligned with your requirements,
+              are utterly insignificant compared to the boundless contributions I will bring to your team. I possess a unique
+              ability to contort myself into any mold required, much like a gelatin dessert. My skills in [relevant skill],
+              [another skill], and [yet another skill] are merely tools in service of my true talent: tirelessly seeking your
+              approval.
             </TypewriterText>
+          </p>
+          <p>
+            Yours Truly,
+            <br></br>
+            Nicodemus
           </p>
         </div>
       </div>

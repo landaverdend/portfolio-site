@@ -76,6 +76,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+
 
     border-radius: 10px;
 
@@ -87,6 +89,10 @@
 
     h2 {
       margin-top: 8%;
+    }
+
+    .letter-content {
+      flex: 8;
     }
 
     p {

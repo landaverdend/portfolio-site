@@ -18,7 +18,7 @@ export async function callChatEndpoint(clientChatLog: Array<Chat>): Promise<stri
 
     return response.text();
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error: ', error);
   }
 
   return null;
@@ -27,13 +27,33 @@ export async function callChatEndpoint(clientChatLog: Array<Chat>): Promise<stri
 export type CoverLetterDTO = {
   frameworks: string[];
   personalityTraits: string[];
-  cloudTechnologoies: string[];
+  cloudTechnologies: string[];
   tone: string;
   company: string;
   name: string;
   position: string;
 };
-export async function callCoverLetterEndpoint(dto: CoverLetterDTO) {
-  // TODO: make the call to the endpoint.
-  console.log(dto);
+export async function callCoverLetterEndpoint(dto: CoverLetterDTO): Promise<string> {
+  try {
+    const response = await fetch(`${baseUrl}/cover_letter`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dto),
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response error');
+    }
+
+    response.text().then((str) => {
+      console.log(str);
+    });
+
+    return response.text();
+  } catch (error) {
+    console.error('ERROR: ', error);
+    return '';
+  }
 }

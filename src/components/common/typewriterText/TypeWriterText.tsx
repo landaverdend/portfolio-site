@@ -1,15 +1,29 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 
+// Normalize children into their textual component...
+function extractText(node: React.ReactNode): string {
+  if (typeof node === 'string') {
+    return node;
+  }
+  if (Array.isArray(node)) {
+    return node.map(extractText).join('');
+  }
+  if (React.isValidElement(node)) {
+    return extractText(node.props.children);
+  }
+  return '';
+}
+
 interface TypewriterTextProps {
-  children: string | string[];
+  children: React.ReactNode;
   speed: number;
   delay?: number; // delay in ms
 }
 function TypewriterText({ children, speed, delay }: TypewriterTextProps) {
   const [displayText, setDisplayText] = useState('');
 
-  // Normalize children into a single string
-  const text = Array.isArray(children) ? children.join('') : children;
+  const text = extractText(children);
 
   useEffect(() => {
     let i = 0;
