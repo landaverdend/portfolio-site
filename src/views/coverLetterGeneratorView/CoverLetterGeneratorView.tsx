@@ -19,6 +19,7 @@ export default function CoverLetterGeneratorView() {
   const [company, setCompany] = useState<string>('');
   const [tone, setTone] = useState<string>('Formal');
   const [position, setPosition] = useState<string>('');
+  const [wordCount, setWordCount] = useState<number>(250);
 
   const [frameworks, setFrameworks] = useState<string[]>([]);
   const [personalityTraits, setPersonalityTraits] = useState<string[]>([]);
@@ -34,6 +35,9 @@ export default function CoverLetterGeneratorView() {
         personalityTraits: personalityTraits,
         cloudTechnologies: cloudTechnologies,
         position: position,
+        wordCount: wordCount,
+      }).then((response) => {
+        console.log(response);
       });
     } catch (e) {}
   }
@@ -86,8 +90,13 @@ export default function CoverLetterGeneratorView() {
             <option>Formal</option>
             <option>Casual</option>
             <option>Zoomer</option>
-            <option>Violent</option>
+            <option>Patrick Bateman</option>
           </select>
+        </label>
+
+        <label>
+          Word Count:
+          <input type="number" value={wordCount} onChange={(e) => setWordCount(parseInt(e.target.value))} min={100} max={1000} />
         </label>
 
         <button

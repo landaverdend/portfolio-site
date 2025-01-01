@@ -32,6 +32,7 @@ export type CoverLetterDTO = {
   company: string;
   name: string;
   position: string;
+  wordCount: number;
 };
 export async function callCoverLetterEndpoint(dto: CoverLetterDTO): Promise<string> {
   try {
