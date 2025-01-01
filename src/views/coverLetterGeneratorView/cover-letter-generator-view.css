@@ -27,6 +27,12 @@
     max-width: 50vw;
 
     label {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5px;
+
       font-size: 0.85rem;
       font-weight: 600;
       width: 90%;
@@ -34,7 +40,7 @@
       input {
         border-radius: 2.5px;
         border: 1px solid #bebebe;
-        padding: 10px;
+        padding: 7.5px;
         width: 100%;
         font-size: 1rem;
       }
@@ -45,6 +51,18 @@
         padding: 10px;
         width: 105.5%;
 
+        font-size: 1rem;
+      }
+
+      textarea {
+        width: 104%;
+        height: 125px;
+        resize: none;
+        font-family: inherit;
+
+        outline: none;
+        border: 1px solid #bebebe;
+        border-radius: 2.5px;
         font-size: 1rem;
       }
     }

@@ -25,33 +25,28 @@ export async function callChatEndpoint(clientChatLog: Array<Chat>): Promise<stri
 }
 
 export type CoverLetterDTO = {
+  otherDetails: string;
   frameworks: string[];
   personalityTraits: string[];
   cloudTechnologies: string[];
   tone: string;
   company: string;
-  name: string;
   position: string;
   wordCount: number;
 };
 export async function callCoverLetterEndpoint(dto: CoverLetterDTO): Promise<string> {
-  try {
-    console.log(dto);
-    const response = await fetch(`${baseUrl}/cover_letter`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(dto),
-    });
+  
+  const response = await fetch(`${baseUrl}/cover_letter`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(dto),
+  });
 
-    if (!response.ok) {
-      throw new Error('Network response error');
-    }
-
-    return response.text();
-  } catch (error) {
-    console.error('ERROR: ', error);
-    return '';
+  if (!response.ok) {
+    throw new Error('Network response error');
   }
+
+  return response.text();
 }

@@ -14,6 +14,20 @@ const coldMessages = [
   "I put a lot of effort into this site and you're just gonna ignore me?",
   'Alright seriously...',
   '?????',
+  "hey it's rude to ignore people that are messaging you, yaknow....",
+  "GIVE ME ATTENTION",
+  'DUUUDE',
+  "ARE YOU KIDDING ME",
+  "HELP HELP HELP",
+  "hi",
+  "Good morning.....",
+  "Do you think im funny?",
+  "DO NOT IGNORE ME",
+  "ignore me at your own peril",
+  "this isn't gonna work if you dont talk to me....",
+  "I'm a very needy person, please respond",
+  "I love you.",
+  "I need you...."
 ];
 
 function useInactivityHook(

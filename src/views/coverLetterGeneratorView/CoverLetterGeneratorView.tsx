@@ -5,6 +5,7 @@ import { useState } from 'react';
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { callCoverLetterEndpoint } from '@/api/backend';
 import ChatBubble from '@/components/chatBubble/ChatBubble';
+import QuestionMark from '@assets/images/icons/question-mark.svg?react';
 
 type UITProps = {
   defaultString: string;
@@ -20,26 +21,32 @@ export default function CoverLetterGeneratorView() {
   const [tone, setTone] = useState<string>('Formal');
   const [position, setPosition] = useState<string>('');
   const [wordCount, setWordCount] = useState<number>(250);
+  const [otherDetails, setOtherDetails] = useState<string>('');
 
   const [frameworks, setFrameworks] = useState<string[]>([]);
   const [personalityTraits, setPersonalityTraits] = useState<string[]>([]);
   const [cloudTechnologies, setCloudTechnologies] = useState<string[]>([]);
 
+  const [showToolTip, setShowToolTip] = useState<boolean>(false);
+
   function handleClick() {
-    try {
-      callCoverLetterEndpoint({
-        name: title,
-        company: company,
-        tone: tone,
-        frameworks: frameworks,
-        personalityTraits: personalityTraits,
-        cloudTechnologies: cloudTechnologies,
-        position: position,
-        wordCount: wordCount,
-      }).then((response) => {
+    callCoverLetterEndpoint({
+      company: company,
+      tone: tone,
+      frameworks: frameworks,
+      personalityTraits: personalityTraits,
+      cloudTechnologies: cloudTechnologies,
+      position: position,
+      wordCount: wordCount,
+      otherDetails: otherDetails,
+    })
+      .then((response) => {
         console.log(response);
+        
+      })
+      .catch(() => {
+        alert('There was an error generating your cover letter');
       });
-    } catch (e) {}
   }
 
   return (
@@ -62,7 +69,11 @@ export default function CoverLetterGeneratorView() {
 
         <label>
           Position To Apply For:
-          <input value={position} onChange={(e) => setPosition(e.target.value)} type="text" placeholder="HR Recruiter"></input>
+          <input
+            value={position}
+            onChange={(e) => setPosition(e.target.value)}
+            type="text"
+            placeholder="Software Engineer II"></input>
         </label>
 
         <ChipInput
@@ -97,6 +108,14 @@ export default function CoverLetterGeneratorView() {
         <label>
           Word Count:
           <input type="number" value={wordCount} onChange={(e) => setWordCount(parseInt(e.target.value))} min={100} max={1000} />
+        </label>
+
+        <label>
+          Other Details:
+          <textarea
+            placeholder={'Mention any other details you want noted before a custom Cover Letter™ is made for you'}
+            value={otherDetails}
+            onChange={(e) => setOtherDetails(e.target.value)}></textarea>
         </label>
 
         <button
