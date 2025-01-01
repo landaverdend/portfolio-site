@@ -76,7 +76,7 @@ export default function CoverLetterGeneratorView() {
           label={'Name some cloud™ technologies you want mentioned: '}
           chips={cloudTechnologies}
           setChips={setCloudTechnologies}
-          placeholder={'AWS Ginkgo Biloba'}
+          placeholder={'AWS Ginkgo Biloba, AWS Alpha-Brain AG1 Rogan Goop'}
         />
 
         <label>
