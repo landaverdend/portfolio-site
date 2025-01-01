@@ -113,11 +113,11 @@ export default function CoverLetterGeneratorView() {
               <br />
               My entire existence has been a meandering prelude to this opportunity. Who needs a “calling” when one can have job
               descriptions? Let me be clear: my qualifications, while technically aligned with your requirements, are utterly
-              insignificant compared to the boundless contributions I will bring to your team. I possess a unique ability to
-              contort myself into any mold required, much like a gelatin dessert. My skills in [
-              <span style={{ color: 'red' }}>{frameworks.length >= 1 ? frameworks[0] : 'RELEVANT_SKILL_1'}</span>], [
+              insignificant compared to the boundless contributions I will bring to your team. <br />
+              <br /> I possess a unique ability to contort myself into any mold required, much like a gelatin dessert. My skills
+              in [<span style={{ color: 'red' }}>{frameworks.length >= 1 ? frameworks[0] : 'RELEVANT_SKILL_1'}</span>], [
               <span style={{ color: 'red' }}>{frameworks.length >= 2 ? frameworks[1] : 'RELEVANT_SKILL_2'}</span>], and [
-              <span style={{ color: 'red' }}>{frameworks.length >= 3 ? frameworks[2] : 'RELEVANT_SKILL_1'}</span>] are merely
+              <span style={{ color: 'red' }}>{frameworks.length >= 3 ? frameworks[2] : 'RELEVANT_SKILL_3'}</span>] are merely
               tools in service of my true talent: tirelessly seeking your approval.
             </TypewriterText>
           </p>
