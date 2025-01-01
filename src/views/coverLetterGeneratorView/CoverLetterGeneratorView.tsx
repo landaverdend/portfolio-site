@@ -4,6 +4,7 @@ import ChipInput from '@/components/chipInput/ChipInput';
 import { useState } from 'react';
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { callCoverLetterEndpoint } from '@/api/backend';
+import ChatBubble from '@/components/chatBubble/ChatBubble';
 
 type UITProps = {
   defaultString: string;
@@ -16,7 +17,7 @@ function UserInputText({ defaultString, field }: UITProps) {
 export default function CoverLetterGeneratorView() {
   const [title, setTitle] = useState<string>('');
   const [company, setCompany] = useState<string>('');
-  const [tone, setTone] = useState<string>('');
+  const [tone, setTone] = useState<string>('Formal');
   const [position, setPosition] = useState<string>('');
 
   const [frameworks, setFrameworks] = useState<string[]>([]);
@@ -62,14 +63,14 @@ export default function CoverLetterGeneratorView() {
 
         <ChipInput
           label={'List some personality traits you want highlighted: '}
-          chips={frameworks}
-          setChips={setFrameworks}
+          chips={personalityTraits}
+          setChips={setPersonalityTraits}
           placeholder="Perfect, Beautiful, Stunning"
         />
         <ChipInput
           label={'Bloated frameworks to mention:'}
-          chips={personalityTraits}
-          setChips={setPersonalityTraits}
+          chips={frameworks}
+          setChips={setFrameworks}
           placeholder="Angular, React, BLAZER"
         />
         <ChipInput
@@ -129,6 +130,7 @@ export default function CoverLetterGeneratorView() {
         </div>
       </div>
       <BackgroundCanvas position={'fixed'} flipped={true} />
+      <ChatBubble />
     </div>
   );
 }

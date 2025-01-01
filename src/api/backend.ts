@@ -35,6 +35,7 @@ export type CoverLetterDTO = {
 };
 export async function callCoverLetterEndpoint(dto: CoverLetterDTO): Promise<string> {
   try {
+    console.log(dto);
     const response = await fetch(`${baseUrl}/cover_letter`, {
       method: 'POST',
       headers: {
@@ -46,10 +47,6 @@ export async function callCoverLetterEndpoint(dto: CoverLetterDTO): Promise<stri
     if (!response.ok) {
       throw new Error('Network response error');
     }
-
-    response.text().then((str) => {
-      console.log(str);
-    });
 
     return response.text();
   } catch (error) {
