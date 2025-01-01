@@ -27,8 +27,6 @@ export default function CoverLetterGeneratorView() {
   const [personalityTraits, setPersonalityTraits] = useState<string[]>([]);
   const [cloudTechnologies, setCloudTechnologies] = useState<string[]>([]);
 
-  const [showToolTip, setShowToolTip] = useState<boolean>(false);
-
   function handleClick() {
     callCoverLetterEndpoint({
       company: company,
@@ -42,7 +40,7 @@ export default function CoverLetterGeneratorView() {
     })
       .then((response) => {
         console.log(response);
-        
+
       })
       .catch(() => {
         alert('There was an error generating your cover letter');
