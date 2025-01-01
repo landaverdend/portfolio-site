@@ -5,8 +5,12 @@ import { useState } from 'react';
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { callCoverLetterEndpoint } from '@/api/backend';
 
-function UserInputText({ children }: { children: string }) {
-  return <span style={{ color: 'red' }}>{children}</span>;
+type UITProps = {
+  defaultString: string;
+  field: string;
+};
+function UserInputText({ defaultString, field }: UITProps) {
+  return <span style={{ color: 'red' }}>{field !== '' ? field : defaultString}</span>;
 }
 
 export default function CoverLetterGeneratorView() {
@@ -52,7 +56,7 @@ export default function CoverLetterGeneratorView() {
         </label>
 
         <label>
-          Position Name
+          Position To Apply For:
           <input value={position} onChange={(e) => setPosition(e.target.value)} type="text" placeholder="HR Recruiter"></input>
         </label>
 
@@ -96,20 +100,25 @@ export default function CoverLetterGeneratorView() {
       <div className="letter-container">
         <div className="document">
           <h2>
-            Dear <UserInputText>{`${title === '' ? 'YOUR_NAME_HERE' : title}`}</UserInputText>
+            Dear <UserInputText field={title} defaultString="YOUR_NAME_HERE"></UserInputText>
           </h2>
-          <p className='letter-content'>
-            <TypewriterText speed={40}>
-              It is with a humility so profound it borders on desperation that I submit my application for the [Position Title]
-              role at [YOUR_COMPANY_NAME]. The chance to merely dream of joining your illustrious organization is an honor I will
-              recount to my grandchildren, should I ever attain the life stability required to have them. From the moment I saw
-              your job posting—crafted with the kind of perfection I can only hope to absorb through osmosis—I knew this position
-              was meant for me. My entire existence has been a meandering prelude to this opportunity. Who needs a “calling” when
-              one can have job descriptions? Let me be clear: my qualifications, while technically aligned with your requirements,
-              are utterly insignificant compared to the boundless contributions I will bring to your team. I possess a unique
-              ability to contort myself into any mold required, much like a gelatin dessert. My skills in [relevant skill],
-              [another skill], and [yet another skill] are merely tools in service of my true talent: tirelessly seeking your
-              approval.
+          <p className="letter-content">
+            <TypewriterText speed={35}>
+              It is with a humility so profound it borders on desperation that I submit my application for the [
+              <span style={{ color: 'red' }}>{position !== '' ? position : 'YOUR_POSITION'}</span>] role at [
+              <span style={{ color: 'red' }}>{company !== '' ? company : 'YOUR_COMPANY'}</span>]. The chance to merely dream of
+              joining your illustrious organization is an honor I will recount to my grandchildren, should I ever attain the life
+              stability required to have them. From the moment I saw your job posting—crafted with the kind of perfection I can
+              only hope to absorb through osmosis—I knew this position was meant for me. <br />
+              <br />
+              My entire existence has been a meandering prelude to this opportunity. Who needs a “calling” when one can have job
+              descriptions? Let me be clear: my qualifications, while technically aligned with your requirements, are utterly
+              insignificant compared to the boundless contributions I will bring to your team. I possess a unique ability to
+              contort myself into any mold required, much like a gelatin dessert. My skills in [
+              <span style={{ color: 'red' }}>{frameworks.length >= 1 ? frameworks[0] : 'RELEVANT_SKILL_1'}</span>], [
+              <span style={{ color: 'red' }}>{frameworks.length >= 2 ? frameworks[1] : 'RELEVANT_SKILL_2'}</span>], and [
+              <span style={{ color: 'red' }}>{frameworks.length >= 3 ? frameworks[2] : 'RELEVANT_SKILL_1'}</span>] are merely
+              tools in service of my true talent: tirelessly seeking your approval.
             </TypewriterText>
           </p>
           <p>

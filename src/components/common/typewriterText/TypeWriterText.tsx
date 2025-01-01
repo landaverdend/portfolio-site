@@ -23,7 +23,7 @@ interface TypewriterTextProps {
 function TypewriterText({ children, speed, delay }: TypewriterTextProps) {
   const [displayText, setDisplayText] = useState('');
 
-  const text = extractText(children);
+  const fullText = extractText(children);
 
   useEffect(() => {
     let i = 0;
@@ -33,8 +33,8 @@ function TypewriterText({ children, speed, delay }: TypewriterTextProps) {
     const delayTimeout = setTimeout(
       () => {
         typingInterval = setInterval(() => {
-          if (i <= text.length) {
-            setDisplayText(text.substring(0, i));
+          if (i <= fullText.length) {
+            setDisplayText(fullText.substring(0, i));
             i++;
           } else {
             clearInterval(typingInterval);
@@ -49,7 +49,29 @@ function TypewriterText({ children, speed, delay }: TypewriterTextProps) {
     };
   }, [children, speed]);
 
-  return <>{displayText}</>;
+  // Helper function to progressively render the text
+  const renderText = (node: React.ReactNode, currentIndex: { count: number }): React.ReactNode => {
+    if (typeof node === 'string') {
+      const remainingText = node.substring(currentIndex.count);
+      const displayableText = node.substring(0, currentIndex.count);
+      currentIndex.count -= displayableText.length;
+      return displayableText + (currentIndex.count > 0 ? remainingText : '');
+    }
+
+    if (Array.isArray(node)) {
+      return node.map((child, index) => <React.Fragment key={index}>{renderText(child, currentIndex)}</React.Fragment>);
+    }
+
+    if (React.isValidElement(node)) {
+      return React.cloneElement(node, {}, renderText(node.props.children, currentIndex));
+    }
+
+    return null;
+  };
+
+  const currentIndex = { count: displayText.length };
+
+  return <>{renderText(children, currentIndex)}</>;
 }
 
 export default TypewriterText;
