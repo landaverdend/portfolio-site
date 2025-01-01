@@ -31,6 +31,7 @@ export type CoverLetterDTO = {
   tone: string;
   company: string;
   name: string;
+  position: string;
 };
 export async function callCoverLetterEndpoint(dto: CoverLetterDTO) {
   // TODO: make the call to the endpoint.

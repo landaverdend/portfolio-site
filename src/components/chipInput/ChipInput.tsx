@@ -3,10 +3,12 @@ import { useState } from 'react';
 
 type CIProps = {
   label: string;
+  placeholder?: string;
   chips: string[];
+  
   setChips: React.Dispatch<React.SetStateAction<string[]>>;
 };
-export default function ChipInput({ label, chips, setChips }: CIProps) {
+export default function ChipInput({ label, placeholder, chips, setChips }: CIProps) {
   const [chipInputValue, setChipInputValue] = useState<string>('');
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -23,6 +25,7 @@ export default function ChipInput({ label, chips, setChips }: CIProps) {
         <input
           type="text"
           onKeyDown={handleKeyDown}
+          placeholder={placeholder}
           value={chipInputValue}
           onChange={(e) => setChipInputValue(e.target.value)}></input>
       </label>
