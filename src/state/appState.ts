@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type View = 'SplashView' | 'CoverLetterGeneratorView' | 'ResumeView' | 'SurveyView' | '';
+export type View = 'SplashView' | 'CoverLetterGeneratorView' | 'ResumeView' | 'SurveyView' | '';
 
 type AppState = {
   componentToRender: View;
@@ -17,8 +17,8 @@ type AppState = {
 
 export const useAppState = create<AppState>((set) => ({
   // componentToRender: 'SurveyView',
-  componentToRender: 'CoverLetterGeneratorView',
-  // componentToRender: 'SplashView',
+  // componentToRender: 'CoverLetterGeneratorView',
+  componentToRender: 'SplashView',
   nextView: '',
 
   isLoading: false,

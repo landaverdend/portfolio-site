@@ -1,16 +1,25 @@
-
-
 .cover-letter-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  width: 85vw;
+
   .panel-one {
     display: flex;
     flex-direction: column;
+    flex: 7;
+
+    h1 {
+      font-size: 2rem;
+      max-width: 75%;
+    }
+
+    p {
+      max-width: 50%;
+    }
   }
 
   .panel-two {
-    background-color: blue;
+    flex: 3;
   }
 }

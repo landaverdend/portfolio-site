@@ -2,11 +2,10 @@ import './main-section.css';
 
 import CardStack from '@/components/cardStack/CardStack';
 import FakeCaptchaContainer from '@/components/fakeCaptcha/FakeCaptchaContainer';
-import { useAppState } from '@/state/appState';
 import { useState } from 'react';
+import { SplashPageButton } from '../SplashView';
 
 export default function MainSection() {
-  const { triggerLoadingSequence } = useAppState();
   const [displayFakeCaptcha, setDisplayFakeCaptcha] = useState(false);
 
   return (
@@ -23,13 +22,7 @@ export default function MainSection() {
         </span>
 
         <div className="main-section__buttons">
-          <span
-            className="start__button"
-            onClick={() => {
-              triggerLoadingSequence('SurveyView');
-            }}>
-            Get started <i className="fa-solid fa-arrow-right"></i>
-          </span>
+          <SplashPageButton displayText="Get Started" nextView="SurveyView" />
 
           <span style={{ color: 'black' }}>
             {displayFakeCaptcha ? (

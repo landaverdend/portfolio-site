@@ -85,12 +85,6 @@ export default function CoverLetterGeneratorView() {
         </label>
 
         <ChipInput
-          label={'List some personality traits you want highlighted: '}
-          chips={personalityTraits}
-          setChips={setPersonalityTraits}
-          placeholder="Perfect, Beautiful, Stunning"
-        />
-        <ChipInput
           label={'Bloated frameworks to mention:'}
           chips={frameworks}
           setChips={setFrameworks}
@@ -108,8 +102,7 @@ export default function CoverLetterGeneratorView() {
           <select value={tone} onChange={(e) => setTone(e.target.value)}>
             <option>Formal</option>
             <option>Casual</option>
-            <option>Zoomer</option>
-            <option>Patrick Bateman</option>
+            <option>Business-speak</option>
           </select>
         </label>
 

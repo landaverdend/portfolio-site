@@ -9,6 +9,22 @@ import MainSection from './mainSection/MainSection';
 import CompanyDock from '@/components/companyDock/CompanyDock';
 import ReccomendationDrawer from './reccomendationDrawer/ReccomendationDrawer';
 import CoverLetterSection from './coverLetterSection/CoverLetterSection';
+import { useAppState, View } from '@/state/appState';
+
+export function SplashPageButton({ nextView, displayText }: { nextView: View; displayText: string }) {
+  const { triggerLoadingSequence } = useAppState();
+
+  return (
+    <span
+      className="start__button"
+      onClick={() => {
+        triggerLoadingSequence(nextView);
+      }}>
+      {displayText}
+      <i className="fa-solid fa-arrow-right"></i>
+    </span>
+  );
+}
 
 function SplashView() {
   const navbarLinks = [
