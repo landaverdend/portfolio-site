@@ -53,6 +53,7 @@ function addContent(doc: jsPDF, content: string) {
     if (cursorY + LINE_HEIGHT > pageHeight - 10) {
       // Add new page if the text exceeds the current page
       cursorY = 12.5; // Reset Y position on new page
+      doc.addPage();
     }
     doc.text(line, 10, cursorY);
     cursorY += LINE_HEIGHT; // Move cursor down for the next line
@@ -60,8 +61,12 @@ function addContent(doc: jsPDF, content: string) {
 }
 
 function addFooters(doc: jsPDF) {
+  const totalPages = doc.getNumberOfPages();
   const pageHeight = doc.internal.pageSize.getHeight();
-
   const y = pageHeight - 21;
-  doc.rect(MARGIN_LENGTH, y, CONTENT_WIDTH, 0.5, 'F');
+
+  for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+    doc.setPage(pageNumber);
+    doc.rect(MARGIN_LENGTH, y, CONTENT_WIDTH, 0.5, 'F');
+  }
 }
