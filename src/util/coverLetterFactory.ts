@@ -1,5 +1,9 @@
 import { jsPDF } from 'jspdf';
 
+const CONTENT_WIDTH = 190;
+const MARGIN_LENGTH = 10; // Space on margins
+const LINE_HEIGHT = 10; // Space between lines.
+
 export default function buildCoverLetter(name: string, content: string): jsPDF {
   // Default export is a4 paper, portrait, using millimeters for units
   const doc = new jsPDF();
@@ -9,6 +13,8 @@ export default function buildCoverLetter(name: string, content: string): jsPDF {
 
   addHeaderData(doc);
   addSalutation(doc, name);
+  addContent(doc, content);
+  addFooters(doc);
 
   return doc;
 }
@@ -32,4 +38,30 @@ function addSalutation(doc: jsPDF, name: string) {
   const x = pageWidth * 0.425;
 
   doc.text(`Dear ${name},`, x, 55);
+}
+
+function addContent(doc: jsPDF, content: string) {
+  // doc.text('\n\n' + content, MARGIN_LENGTH, 55, { maxWidth: CONTENT_WIDTH });
+
+  let cursorY = 70; // Starting Y position
+  const pageHeight = doc.internal.pageSize.getHeight() - 10;
+
+  const lines: Array<string> = doc.splitTextToSize(content, CONTENT_WIDTH);
+
+  // Add content line by line
+  lines.forEach((line) => {
+    if (cursorY + LINE_HEIGHT > pageHeight - 10) {
+      // Add new page if the text exceeds the current page
+      cursorY = 12.5; // Reset Y position on new page
+    }
+    doc.text(line, 10, cursorY);
+    cursorY += LINE_HEIGHT; // Move cursor down for the next line
+  });
+}
+
+function addFooters(doc: jsPDF) {
+  const pageHeight = doc.internal.pageSize.getHeight();
+
+  const y = pageHeight - 21;
+  doc.rect(MARGIN_LENGTH, y, CONTENT_WIDTH, 0.5, 'F');
 }
