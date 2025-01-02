@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import captchaIcon from '@assets/images/icons/captcha-icon.png';
 import GridSelector from './gridSelector/GridSelector';
 import { useAppState } from '@/state/appState';
+import LoadSpinner from '../loadSpinner/LoadSpinner';
 
 function FakeCaptchaContainer() {
   const { triggerLoadingSequence } = useAppState();
@@ -42,7 +43,7 @@ function FakeCaptchaContainer() {
             className="checkmark"></span>
         )}
 
-        {captchaOpened && !isCompleted && <span className="load-spinner"></span>}
+        {captchaOpened && !isCompleted && <LoadSpinner />}
 
         {!captchaOpened && (
           <span

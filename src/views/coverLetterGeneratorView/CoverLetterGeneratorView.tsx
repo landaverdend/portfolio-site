@@ -5,7 +5,8 @@ import { useState } from 'react';
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { callCoverLetterEndpoint } from '@/api/backend';
 import ChatBubble from '@/components/chatBubble/ChatBubble';
-import QuestionMark from '@assets/images/icons/question-mark.svg?react';
+import buildCoverLetter from '@/util/coverLetterFactory';
+import LoadSpinner from '@/components/loadSpinner/LoadSpinner';
 
 type UITProps = {
   defaultString: string;
@@ -27,24 +28,33 @@ export default function CoverLetterGeneratorView() {
   const [personalityTraits, setPersonalityTraits] = useState<string[]>([]);
   const [cloudTechnologies, setCloudTechnologies] = useState<string[]>([]);
 
-  function handleClick() {
-    callCoverLetterEndpoint({
-      company: company,
-      tone: tone,
-      frameworks: frameworks,
-      personalityTraits: personalityTraits,
-      cloudTechnologies: cloudTechnologies,
-      position: position,
-      wordCount: wordCount,
-      otherDetails: otherDetails,
-    })
-      .then((response) => {
-        console.log(response);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-      })
-      .catch(() => {
-        alert('There was an error generating your cover letter');
-      });
+  function handleClick() {
+    setIsLoading(true);
+
+    buildCoverLetter(
+      'Chuck Sneed',
+      'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'
+    ).save();
+
+    // callCoverLetterEndpoint({
+    //   company: company,
+    //   tone: tone,
+    //   frameworks: frameworks,
+    //   personalityTraits: personalityTraits,
+    //   cloudTechnologies: cloudTechnologies,
+    //   position: position,
+    //   wordCount: wordCount,
+    //   otherDetails: otherDetails,
+    // })
+    //   .then((response) => {
+    //     buildCoverLetter(response).save('landaverde_cover_letter');
+    //   })
+    //   .catch(() => {
+    //     alert('There was an error generating your cover letter');
+    //   })
+    //   .finally(() => setIsLoading(false));
   }
 
   return (
@@ -116,13 +126,17 @@ export default function CoverLetterGeneratorView() {
             onChange={(e) => setOtherDetails(e.target.value)}></textarea>
         </label>
 
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            handleClick();
-          }}>
-          GENERATE
-        </button>
+        {isLoading ? (
+          <LoadSpinner color="rgb(77, 61, 113)" />
+        ) : (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleClick();
+            }}>
+            GENERATE
+          </button>
+        )}
       </div>
       <div className="letter-container">
         <div className="document">
