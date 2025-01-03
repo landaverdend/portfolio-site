@@ -9,6 +9,8 @@
     flex-direction: column;
     flex: 7;
 
+    margin-left: 5%;
+
     h1 {
       font-size: 2rem;
       max-width: 75%;
@@ -18,8 +20,21 @@
       max-width: 50%;
     }
   }
+}
 
-  .panel-two {
-    flex: 3;
+.panel-two {
+  flex: 3;
+
+  display: flex;
+  flex-direction: column;
+
+  .metric {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .metric-text {
+      margin-top: -25px;
+    }
   }
 }

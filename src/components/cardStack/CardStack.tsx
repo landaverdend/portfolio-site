@@ -1,6 +1,6 @@
-import blurredResume from '@assets/images/blurredResume.png';
-import coverLetterBlurred from '@assets/images/coverLetterBlurred.png';
-import gigachadBlurred from '@assets/images/gigachadBlurred.png';
+import blurredResume from '@assets/images/splash-page/blurredResume.png';
+import coverLetterBlurred from '@assets/images/splash-page/coverLetterBlurred.png';
+import gigachadBlurred from '@assets/images/splash-page/gigachadBlurred.png';
 import './card-stack.css';
 import '@styles/fonts.css';
 import { useState } from 'react';
