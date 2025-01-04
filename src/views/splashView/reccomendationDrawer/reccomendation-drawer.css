@@ -127,7 +127,10 @@
 @media (max-width: 576px) {
   .reccomendation-container {
     height: auto;
-
+    /* align-items: stretch; */
+    width: 100vw;
+    overflow: hidden;
+    
     .testimonial-header {
       display: flex;
       flex-direction: column;
