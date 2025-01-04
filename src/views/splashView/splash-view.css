@@ -6,7 +6,7 @@
 .splash-flexbox {
   display: flex;
   flex-direction: column;
-  gap: 10vh;
+  gap: 12vh;
 
   margin: 0 0 0 0; /* Add some breathing room at the bottom... */
 }

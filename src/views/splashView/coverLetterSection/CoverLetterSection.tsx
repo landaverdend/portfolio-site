@@ -3,11 +3,11 @@ import { SplashPageButton } from '../SplashView';
 import time from '@assets/images/splash-page/time.png';
 import coins from '@assets/images/splash-page/coins.png';
 import feather from '@assets/images/splash-page/feather.png';
+import placeholder from '@assets/images/splash-page/PLACEHOLDER.jpg';
 
 export default function CoverLetterSection() {
   return (
-    <div className="cover-letter-container">
-      
+    <div className="panel-container">
       <div className="panel-one">
         <h1>Tired of lazy applicants not writing you cover letters?</h1>
         <p>
@@ -16,6 +16,7 @@ export default function CoverLetterSection() {
           I’ll whip up a masterpiece that showcases why I'm the perfect fit for your rejection email.
         </p>
         <SplashPageButton displayText="Check it out!" nextView="CoverLetterGeneratorView" />
+        <img src={placeholder} height={300} width={300} />
       </div>
 
       <div className="panel-two">
@@ -50,7 +51,7 @@ export default function CoverLetterSection() {
           </span>
           <div className="metric-text">
             <h2>Take a load off my shoulders</h2>
-            <p>I am lazy and don't want to write cover letters. Use the tool!</p>
+            <p>I'm out of things to write so this is just here to fill in space.</p>
           </div>
         </div>
       </div>
