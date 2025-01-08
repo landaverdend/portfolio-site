@@ -1,0 +1,21 @@
+.splash-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 210px);
+  grid-template-rows: repeat(4, 210px);
+  gap: 10px;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgb(247, 249, 255);
+    border: 2px solid var(--main-indigo);
+
+    border-radius: 4px;
+  }
+
+  .text-column {
+    grid-column: span 2;
+  }
+}

@@ -16,7 +16,7 @@ export default function MainSection() {
           Join the growing number of recruiters who use my groundbreaking{' '}
           <b>
             <i>Resume as a Service</i>
-          </b>{' '}
+          </b>
           (RaaS) platform to gain access to my resume effortlessly. Streamline your hiring process and elevate your
           recruitment game with the first-ever site designed for seamless access to my resume.
         </span>
@@ -41,6 +41,7 @@ export default function MainSection() {
         </div>
       </div>
       <div className="main-section__grid">
+        {/* <h2> Why send your resume once, when you can deliver it forever?</h2> */}
         <SplashGrid />
       </div>
     </div>
