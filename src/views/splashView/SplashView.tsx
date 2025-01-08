@@ -1,6 +1,5 @@
 import './splash-view.css';
 import '@styles/fonts.css';
-import BackgroundCanvas from '@components/backgroundCanvas/BackgroundCanvas.tsx';
 import { createPortal } from 'react-dom';
 import ChatBubble from '@/components/chatBubble/ChatBubble';
 import Navbar from '@/components/navbar/Navbar';
@@ -10,9 +9,10 @@ import CompanyDock from '@/components/companyDock/CompanyDock';
 import ReccomendationDrawer from './reccomendationDrawer/ReccomendationDrawer';
 import CoverLetterSection from './coverLetterSection/CoverLetterSection';
 import { useAppState, View } from '@/state/appState';
+import BackgroundCanvas from '@components/BackgroundCanvas/BackgroundCanvas.tsx';
 
 export function SplashPageButton({ nextView, displayText }: { nextView: View; displayText: string }) {
-  const { triggerLoadingSequence } = useAppState();
+  const { triggerLoadingSequence } = useAppState(); 
 
   return (
     <span

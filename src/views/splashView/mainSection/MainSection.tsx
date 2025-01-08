@@ -1,9 +1,9 @@
 import './main-section.css';
 
-import CardStack from '@/components/cardStack/CardStack';
 import FakeCaptchaContainer from '@/components/fakeCaptcha/FakeCaptchaContainer';
 import { useState } from 'react';
 import { SplashPageButton } from '../SplashView';
+import SplashGrid from '../splashGrid/SplashGrid';
 
 export default function MainSection() {
   const [displayFakeCaptcha, setDisplayFakeCaptcha] = useState(false);
@@ -17,8 +17,8 @@ export default function MainSection() {
           <b>
             <i>Resume as a Service</i>
           </b>{' '}
-          (RaaS) platform to gain access to my resume effortlessly. Streamline your hiring process and elevate your recruitment
-          game with the first-ever site designed for seamless access to my resume.
+          (RaaS) platform to gain access to my resume effortlessly. Streamline your hiring process and elevate your
+          recruitment game with the first-ever site designed for seamless access to my resume.
         </span>
 
         <div className="main-section__buttons">
@@ -32,15 +32,16 @@ export default function MainSection() {
                 style={{ cursor: 'pointer' }}
                 onClick={() => {
                   setDisplayFakeCaptcha(true);
-                }}>
+                }}
+              >
                 I'm already subscribed...
               </u>
             )}
           </span>
         </div>
       </div>
-      <div className="main-section__cards">
-        <CardStack />
+      <div className="main-section__grid">
+        <SplashGrid />
       </div>
     </div>
   );
