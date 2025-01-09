@@ -1,19 +1,39 @@
+:root {
+  --grid-radius: 2.5px;
+}
+
 .splash-grid {
   display: grid;
   grid-template-columns: repeat(4, 210px);
   grid-template-rows: repeat(4, 210px);
-  gap: 10px;
+  gap: 15px;
 
   .grid-item {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 4px;
+    border-radius: var(--grid-radius);
   }
 
   .text-column {
     grid-column: span 2;
+  }
+
+  .tile-text {
+    font-size: 45px;
+  }
+
+  .metric-block1 {
+    background-color: #ff94eb;
+    border: 1px solid black;
+
+    border-radius: var(--grid-radius);
+    box-shadow: 7.5px 7.5px black;
+
+    .giga-text {
+      font-size: 90px;
+    }
   }
 
   .tile-container {
@@ -34,14 +54,21 @@
       width: 100%;
 
       position: absolute;
-      backface-visibility: hidden; 
+      backface-visibility: hidden;
 
-      background-color: rgb(247, 249, 255);
-      border: 2px solid var(--main-indigo);
+      background-color: rgb(162, 184, 255);
+      border-radius: var(--grid-radius);
+      border: 1px solid black;
+
+
+      img {
+        border-radius: var(--grid-radius);
+        box-shadow: 2.5px 2.5px black;
+      }
     }
 
     .tile-back {
-      transform: rotateY(180deg); 
+      transform: rotateY(180deg);
     }
   }
 

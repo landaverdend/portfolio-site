@@ -1,19 +1,31 @@
 import { useEffect, useState } from 'react';
 import './splash-grid.css';
 import coverLetterBlurred from '@assets/images/splash-page/coverLetterBlurred.png';
+import gigachad from '@assets/images/splash-page/gigachadBlurred.png';
+import { randomNumber } from '@/util/random';
 
-type TileProps = { front: React.ReactNode; back: React.ReactNode };
-function Tile({ front, back }: TileProps) {
+type TTProps = {
+  children: React.ReactNode;
+};
+function TileText({ children }: TTProps) {
+  return <span className="tile-text">{children}</span>;
+}
+
+type TileProps = { front: React.ReactNode; back?: React.ReactNode; isFlipEnabled?: boolean };
+function Tile({ front, back, isFlipEnabled }: TileProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   useEffect(() => {
-    const func = setInterval(() => {
-      // setIsFlipped((prev) => !prev);
-    }, 3000);
+    if (isFlipEnabled) {
+      const interval = randomNumber(3000, 6000);
+      const func = setInterval(() => {
+        setIsFlipped((prev) => !prev);
+      }, interval);
 
-    return () => {
-      clearInterval(func);
-    };
+      return () => {
+        clearInterval(func);
+      };
+    }
   }, []);
 
   return (
@@ -28,31 +40,29 @@ export default function SplashGrid() {
   return (
     <div className="splash-grid">
       <div className="grid-item">
-        <Tile
-          front={
-            <span>
-              <img src={coverLetterBlurred} height={200} width={210}></img>
-            </span>
-          }
-          back={
-            <span>
-              <b>COVER LETTERS</b>
-            </span>
-          }
-        />
+        <Tile front={<img src={coverLetterBlurred} height={210} width={210}></img>} isFlipEnabled={false} />
       </div>
       <div className="grid-item">
-        <b>INNNOVATIVE</b>
+        <Tile isFlipEnabled={true} front={<TileText>Innovative</TileText>} back={<TileText>Bold</TileText>} />
       </div>
-      <div className="grid-item text-column">99% RESUME UPTIME</div>
+      <div className="grid-item text-column metric-block1">
+        <span className="giga-text">99%</span> <span>RESUME UPTIME</span>
+      </div>
       <div className="grid-item">AGILE/SCALABLE/EFFICIENCY</div>
-      <div className="grid-item">HEADSHOTS</div>
-      <div className="grid-item">6</div>
+      <div className="grid-item">
+        <Tile front={<img src={gigachad} height={210} width={210} />} />
+      </div>
+      <div className="grid-item">
+        <Tile front={<TileText>AGILE</TileText>} />
+      </div>
       <div className="grid-item">7</div>
       <div className="grid-item text-column">
         Real-Time Resume Analytics (RTRA)
         <ul>
-          <li>Provides recruiters with live metrics: time spent unemployed, skill endorsement velocity, and buzzword density.</li>
+          <li>
+            Provides recruiters with live metrics: time spent unemployed, skill endorsement velocity, and buzzword
+            density.
+          </li>
         </ul>
       </div>
       <div className="grid-item">9</div>
