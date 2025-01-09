@@ -1,12 +1,25 @@
+import { useEffect, useState } from 'react';
 import './splash-grid.css';
 import coverLetterBlurred from '@assets/images/splash-page/coverLetterBlurred.png';
 
 type TileProps = { front: React.ReactNode; back: React.ReactNode };
 function Tile({ front, back }: TileProps) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  useEffect(() => {
+    const func = setInterval(() => {
+      // setIsFlipped((prev) => !prev);
+    }, 3000);
+
+    return () => {
+      clearInterval(func);
+    };
+  }, []);
+
   return (
-    <div className="tile">
-      <div>{front}</div>
-      <div>{back}</div>
+    <div className={`tile-container ${isFlipped ? 'flip-anim' : ''}`}>
+      <div className={'tile-front'}>{front}</div>
+      <div className="tile-back ">{back}</div>
     </div>
   );
 }
@@ -15,8 +28,18 @@ export default function SplashGrid() {
   return (
     <div className="splash-grid">
       <div className="grid-item">
-        <img src={coverLetterBlurred} height={200} width={200}></img>
-        <Tile front={<span></span>} back={<span></span>} />
+        <Tile
+          front={
+            <span>
+              <img src={coverLetterBlurred} height={200} width={210}></img>
+            </span>
+          }
+          back={
+            <span>
+              <b>COVER LETTERS</b>
+            </span>
+          }
+        />
       </div>
       <div className="grid-item">
         <b>INNNOVATIVE</b>
@@ -29,10 +52,7 @@ export default function SplashGrid() {
       <div className="grid-item text-column">
         Real-Time Resume Analytics (RTRA)
         <ul>
-          <li>
-            Provides recruiters with live metrics: time spent unemployed, skill endorsement velocity, and buzzword
-            density.
-          </li>
+          <li>Provides recruiters with live metrics: time spent unemployed, skill endorsement velocity, and buzzword density.</li>
         </ul>
       </div>
       <div className="grid-item">9</div>

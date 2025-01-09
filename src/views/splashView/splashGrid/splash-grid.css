@@ -9,13 +9,43 @@
     align-items: center;
     justify-content: center;
 
-    background-color: rgb(247, 249, 255);
-    border: 2px solid var(--main-indigo);
-
     border-radius: 4px;
   }
 
   .text-column {
     grid-column: span 2;
+  }
+
+  .tile-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+
+    height: 100%;
+    width: 100%;
+
+    .tile-front,
+    .tile-back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      height: 100%;
+      width: 100%;
+
+      position: absolute;
+      backface-visibility: hidden; 
+
+      background-color: rgb(247, 249, 255);
+      border: 2px solid var(--main-indigo);
+    }
+
+    .tile-back {
+      transform: rotateY(180deg); 
+    }
+  }
+
+  .flip-anim {
+    transform: rotateY(180deg);
   }
 }

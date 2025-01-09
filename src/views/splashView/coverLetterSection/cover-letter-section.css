@@ -35,7 +35,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 50px;
-  margin-top: 50px;
+  margin-top: 40px;
 
   .metric {
     display: flex;

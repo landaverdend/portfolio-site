@@ -9,10 +9,10 @@ import CompanyDock from '@/components/companyDock/CompanyDock';
 import ReccomendationDrawer from './reccomendationDrawer/ReccomendationDrawer';
 import CoverLetterSection from './coverLetterSection/CoverLetterSection';
 import { useAppState, View } from '@/state/appState';
-import BackgroundCanvas from '@components/BackgroundCanvas/BackgroundCanvas.tsx';
+import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas';
 
 export function SplashPageButton({ nextView, displayText }: { nextView: View; displayText: string }) {
-  const { triggerLoadingSequence } = useAppState(); 
+  const { triggerLoadingSequence } = useAppState();
 
   return (
     <span
