@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import './splash-grid.css';
-import coverLetterBlurred from '@assets/images/splash-page/coverLetterBlurred.png';
-import gigachad from '@assets/images/splash-page/gigachadBlurred.png';
 import { randomNumber } from '@/util/random';
+import laptop from '@assets/images/splash-page/grid/laptop.jpg';
+import gigachad from '@assets/images/splash-page/grid/gigachadBlurred.png';
+import coverLetterBlurred from '@assets/images/splash-page/grid/coverLetterBlurred.png';
+import monkey from '@assets/images/splash-page/grid/monkey.png';
+import handshake from '@assets/images/splash-page/grid/handshake.png';
+import tree from '@assets/images/splash-page/grid/tree.png';
 
 type TTProps = {
   children: React.ReactNode;
@@ -27,21 +31,19 @@ function ImageTile({ src, text, color }: ITProps) {
   );
 }
 
-type TileProps = { front: React.ReactNode; back?: React.ReactNode; isFlipEnabled?: boolean };
-function Tile({ front, back, isFlipEnabled }: TileProps) {
+type TileProps = { front: React.ReactNode; back?: React.ReactNode };
+function Tile({ front, back }: TileProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   useEffect(() => {
-    if (isFlipEnabled) {
-      const interval = randomNumber(3000, 6000);
-      const func = setInterval(() => {
-        setIsFlipped((prev) => !prev);
-      }, interval);
+    const interval = randomNumber(3000, 6000);
+    const func = setInterval(() => {
+      setIsFlipped((prev) => !prev);
+    }, interval);
 
-      return () => {
-        clearInterval(func);
-      };
-    }
+    return () => {
+      clearInterval(func);
+    };
   }, []);
 
   return (
@@ -59,20 +61,24 @@ export default function SplashGrid() {
         <ImageTile src={coverLetterBlurred} text={'Cover Letters'} color={'black'}></ImageTile>
       </div>
       <div className="grid-item">
-        <Tile isFlipEnabled={true} front={<TextTile>Innovative</TextTile>} back={<TextTile>Bold</TextTile>} />
+        <Tile front={<TextTile>Innovative</TextTile>} back={<TextTile>Bold</TextTile>} />
       </div>
-      <div className="grid-item text-column metric-block1">
+      <div className="grid-item text-column double-block metric-block1">
         <span className="giga-text">99%</span> <span>RESUME UPTIME</span>
       </div>
-      <div className="grid-item">AGILE/SCALABLE/EFFICIENCY</div>
+      <div className="grid-item">
+        <Tile front={<TextTile>AGILE</TextTile>} back={<TextTile>Scalable</TextTile>} />
+      </div>
       <div className="grid-item">
         <ImageTile src={gigachad} text={'Headshots'} />
       </div>
       <div className="grid-item">
-        <Tile front={<TextTile>AGILE</TextTile>} />
+        <ImageTile src={laptop} text={'I am black™'} color="black" />
       </div>
-      <div className="grid-item">7</div>
-      <div className="grid-item text-column">
+      <div className="grid-item">
+        <Tile front={<TextTile>FUCK</TextTile>} back={<TextTile>NIGGA</TextTile>} />
+      </div>
+      <div className="grid-item text-column double-block metric-block2">
         Real-Time Resume Analytics (RTRA)
         <ul>
           <li>
@@ -81,12 +87,24 @@ export default function SplashGrid() {
           </li>
         </ul>
       </div>
-      <div className="grid-item">9</div>
-      <div className="grid-item">10</div>
-      <div className="grid-item">11</div>
-      <div className="grid-item">12</div>
-      <div className="grid-item">13</div>
-      <div className="grid-item">14</div>
+      <div className="grid-item">
+        <Tile front={<TextTile>POOP</TextTile>} back={<TextTile>BALLS</TextTile>} />
+      </div>
+      <div className="grid-item">
+        <ImageTile src={monkey} text={'AI Driven™'} />
+      </div>
+      <div className="grid-item">
+        <ImageTile src={handshake} text={'Leveraging Synergy'} color={'black'} />
+      </div>
+      <div className="grid-item">
+        <Tile front={<TextTile>YOU ARE</TextTile>} back={<TextTile>FEMININE</TextTile>} />
+      </div>
+      <div className="grid-item">
+        <ImageTile src={tree} text={'Framjam Growth'} color="" />
+      </div>
+      <div className="grid-item">
+        <Tile front={<TextTile>YOU ARE</TextTile>} back={<TextTile>GAY</TextTile>} />
+      </div>
     </div>
   );
 }

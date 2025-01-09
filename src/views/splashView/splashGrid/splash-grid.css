@@ -25,16 +25,22 @@
     font-size: 45px;
   }
 
-  .metric-block1 {
-    background-color: #ff94eb;
-    border: var(--grid-border-style);
-
+  .double-block {
     border-radius: var(--grid-radius);
-    box-shadow: 7.5px 7.5px black;
+    box-shadow: 3px 3px black;
+    border: var(--grid-border-style);
 
     .giga-text {
       font-size: 90px;
     }
+  }
+
+  .metric-block1 {
+    background-color: #ff94eb;
+  }
+
+  .metric-block2 {
+    background-color: #b7ff94;
   }
 
   .tile-container {

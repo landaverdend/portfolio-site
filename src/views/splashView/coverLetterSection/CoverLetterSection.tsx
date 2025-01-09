@@ -3,7 +3,7 @@ import { SplashPageButton } from '../SplashView';
 import time from '@assets/images/splash-page/time.png';
 import coins from '@assets/images/splash-page/coins.png';
 import feather from '@assets/images/splash-page/feather.png';
-import placeholder from '@assets/images/splash-page/PLACEHOLDER4.png';
+import placeholder from '@assets/images/splash-page/PLACEHOLDER1.png';
 
 export default function CoverLetterSection() {
   return (
