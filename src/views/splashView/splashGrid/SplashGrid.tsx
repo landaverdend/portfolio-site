@@ -7,8 +7,24 @@ import { randomNumber } from '@/util/random';
 type TTProps = {
   children: React.ReactNode;
 };
-function TileText({ children }: TTProps) {
+function TextTile({ children }: TTProps) {
   return <span className="tile-text">{children}</span>;
+}
+
+type ITProps = {
+  src: string;
+  text: string;
+  color?: string;
+};
+function ImageTile({ src, text, color }: ITProps) {
+  return (
+    <span className="image-tile-container">
+      <img src={src} height={210} width={210}></img>
+      <span className="image-tile-text" style={{ color: color ? color : '' }}>
+        {text}
+      </span>
+    </span>
+  );
 }
 
 type TileProps = { front: React.ReactNode; back?: React.ReactNode; isFlipEnabled?: boolean };
@@ -40,20 +56,20 @@ export default function SplashGrid() {
   return (
     <div className="splash-grid">
       <div className="grid-item">
-        <Tile front={<img src={coverLetterBlurred} height={210} width={210}></img>} isFlipEnabled={false} />
+        <ImageTile src={coverLetterBlurred} text={'Cover Letters'} color={'black'}></ImageTile>
       </div>
       <div className="grid-item">
-        <Tile isFlipEnabled={true} front={<TileText>Innovative</TileText>} back={<TileText>Bold</TileText>} />
+        <Tile isFlipEnabled={true} front={<TextTile>Innovative</TextTile>} back={<TextTile>Bold</TextTile>} />
       </div>
       <div className="grid-item text-column metric-block1">
         <span className="giga-text">99%</span> <span>RESUME UPTIME</span>
       </div>
       <div className="grid-item">AGILE/SCALABLE/EFFICIENCY</div>
       <div className="grid-item">
-        <Tile front={<img src={gigachad} height={210} width={210} />} />
+        <ImageTile src={gigachad} text={'Headshots'} />
       </div>
       <div className="grid-item">
-        <Tile front={<TileText>AGILE</TileText>} />
+        <Tile front={<TextTile>AGILE</TextTile>} />
       </div>
       <div className="grid-item">7</div>
       <div className="grid-item text-column">

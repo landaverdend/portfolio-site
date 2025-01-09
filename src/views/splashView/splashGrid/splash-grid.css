@@ -1,5 +1,6 @@
 :root {
   --grid-radius: 2.5px;
+  --grid-border-style: 1px solid black;
 }
 
 .splash-grid {
@@ -26,7 +27,7 @@
 
   .metric-block1 {
     background-color: #ff94eb;
-    border: 1px solid black;
+    border: var(--grid-border-style);
 
     border-radius: var(--grid-radius);
     box-shadow: 7.5px 7.5px black;
@@ -58,13 +59,7 @@
 
       background-color: rgb(162, 184, 255);
       border-radius: var(--grid-radius);
-      border: 1px solid black;
-
-
-      img {
-        border-radius: var(--grid-radius);
-        box-shadow: 2.5px 2.5px black;
-      }
+      border: var(--grid-border-style);
     }
 
     .tile-back {
@@ -74,5 +69,32 @@
 
   .flip-anim {
     transform: rotateY(180deg);
+  }
+}
+
+.image-tile-container {
+  display: flex;
+
+  position: relative;
+
+  border: var(--grid-border-style);
+  border-radius: var(--grid-radius);
+  box-shadow: 3px 3px black;
+
+  img {
+    border-radius: var(--grid-radius);
+  }
+
+  .image-tile-text {
+    width: 100%;
+    padding: 10px;
+    position: absolute;
+
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: white;
+
+    bottom: 0;
+    left: 0;
   }
 }
