@@ -72,7 +72,7 @@ export default function SplashGrid() {
   return (
     <div className="splash-grid">
       <div className="grid-item">
-        <ImageTile src={coverLetterBlurred} text={'Cover Letters'} color={'black'}></ImageTile>
+        <ImageTile src={coverLetterBlurred} text={'Cover Letters'}></ImageTile>
       </div>
       <div className="grid-item">
         <Tile front={<>Innovate</>} back={<>Bold</>} />
@@ -108,7 +108,7 @@ export default function SplashGrid() {
         <ImageTile src={monkey} text={'AI Driven™'} />
       </div>
       <div className="grid-item">
-        <ImageTile src={handshake} text={'Leveraging Synergy'} color={'black'} />
+        <ImageTile src={handshake} text={'Leveraging Synergy'} />
       </div>
       <div className="grid-item">
         <Tile front={<>RaaS</>} back={<>KPI</>} />

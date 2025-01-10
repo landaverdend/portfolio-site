@@ -19,7 +19,8 @@ export function SplashPageButton({ nextView, displayText }: { nextView: View; di
       className="start__button"
       onClick={() => {
         triggerLoadingSequence(nextView);
-      }}>
+      }}
+    >
       {displayText}
       <i className="fa-solid fa-arrow-right"></i>
     </span>

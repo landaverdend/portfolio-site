@@ -10,7 +10,7 @@ function Navbar({ links }: NavbarProps) {
     <div className="navbar-container">
       <div className="navbar-container__logo">
         <a href="https://github.com/landaverdend">
-          <img src={siteLogo} height={47} width={47} />
+          <img src={siteLogo} height={75} width={75} />
         </a>
       </div>
       <div className="navbar-container__links">

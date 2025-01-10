@@ -1,4 +1,3 @@
-
 :root {
   --grid-radius: 2.5px;
   --grid-border-style: 1px solid black;
@@ -100,9 +99,28 @@
 
     font-weight: 700;
     font-size: 1.25rem;
-    color: white;
+    color: rgb(255, 255, 255);
 
     bottom: 0;
     left: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .splash-grid {
+    grid-template-columns: repeat(2, 150px);
+    grid-template-rows: repeat(2, 150px);
+
+    .tile-text {
+      font-size: 30px;
+      font-weight: 900;
+    }
+  }
+
+  .image-tile-container {
+    img {
+      width: 150px;
+      height: 150px;
+    }
   }
 }
