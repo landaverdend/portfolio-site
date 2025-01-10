@@ -8,18 +8,7 @@ import monkey from '@assets/images/splash-page/grid/monkey.png';
 import handshake from '@assets/images/splash-page/grid/handshake.png';
 import tree from '@assets/images/splash-page/grid/tree.png';
 
-const FONTS = [
-  '"Arial", sans-serif', // Clean and standard sans-serif
-  '"Helvetica", sans-serif', // Classic and corporate
-  '"Georgia", serif', // Traditional serif
-  '"Times New Roman", serif', // Classic and formal serif
-  '"Courier New", monospace', // Monospaced for a tech feel
-  '"Verdana", sans-serif', // Highly legible sans-serif
-  '"Tahoma", sans-serif', // Compact and clean
-  '"Trebuchet MS", sans-serif', // Slightly quirky sans-serif
-  '"Palatino Linotype", serif', // Elegant serif
-  '"Lucida Console", monospace', // Quirky monospaced font
-];
+const FONTS = ['Playwrite_IN', 'Abril_Fatface', 'Montserrat', 'EB_Garamond', 'Arial', 'Roboto'];
 
 type ITProps = {
   src: string;
@@ -47,7 +36,7 @@ function Tile({ front, back }: TileProps) {
 
     const func = setInterval(() => {
       setIsFlipped((prev) => !prev);
-      // setFontIndex((prev) => (prev + 1 === FONTS.length ? 0 : prev + 1));
+      setFontIndex((prev) => (prev + 1 === FONTS.length ? 0 : prev + 1));
     }, interval);
 
     return () => {
@@ -74,13 +63,13 @@ export default function SplashGrid() {
         <ImageTile src={coverLetterBlurred} text={'Cover Letters'} color={'black'}></ImageTile>
       </div>
       <div className="grid-item">
-        <Tile front={<>Innovative</>} back={<>Bold</>} />
+        <Tile front={<>Innovate</>} back={<>Bold</>} />
       </div>
       <div className="grid-item text-column double-block metric-block1">
         <span className="giga-text">99%</span> <span>RESUME UPTIME</span>
       </div>
       <div className="grid-item">
-        <Tile front={<>AGILE</>} back={<>Scalable</>} />
+        <Tile front={<>Agile</>} back={<>Scalable</>} />
       </div>
       <div className="grid-item">
         <ImageTile src={gigachad} text={'Headshots'} />
@@ -89,15 +78,12 @@ export default function SplashGrid() {
         <ImageTile src={laptop} text={'This is me™'} color="black" />
       </div>
       <div className="grid-item">
-        <Tile front={<>FUCK</>} back={<>SNEED</>} />
+        <Tile front={<>Pointless</>} back={<>Yikes</>} />
       </div>
       <div className="grid-item text-column double-block metric-block2">
         Real-Time Resume Analytics (RTRA)
         <ul>
-          <li>
-            Provides recruiters with live metrics: time spent unemployed, skill endorsement velocity, and buzzword
-            density.
-          </li>
+          <li>Provides recruiters with live metrics: time spent unemployed, skill endorsement velocity, and buzzword density.</li>
         </ul>
       </div>
       <div className="grid-item">
@@ -110,13 +96,13 @@ export default function SplashGrid() {
         <ImageTile src={handshake} text={'Leveraging Synergy'} color={'black'} />
       </div>
       <div className="grid-item">
-        <Tile front={<>YOU ARE</>} back={<>FEMININE</>} />
+        <Tile front={<>RaAS</>} back={<>KPI</>} />
       </div>
       <div className="grid-item">
         <ImageTile src={tree} text={'Framjam Growth'} color="" />
       </div>
       <div className="grid-item">
-        <Tile front={<>YOU ARE</>} back={<>GAY</>} />
+        <Tile front={<>Achieve</>} back={<>Synergize</>} />
       </div>
     </div>
   );

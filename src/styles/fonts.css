@@ -16,3 +16,28 @@
   font-weight: 100;
   font-style: thin;
 }
+
+@font-face {
+  font-family: 'Abril_Fatface';
+  src: url('../assets/fonts/Abril_Fatface/AbrilFatface-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Playfair_Display';
+  src: url('../assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'EB_Garamond';
+  src: url('../assets/fonts/EB_Garamond/EBGaramond-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../assets/fonts/Roboto/Roboto-VariableFont_wdthwght.ttf') format('truetype');
+}

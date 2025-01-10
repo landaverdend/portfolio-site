@@ -23,7 +23,9 @@
 body {
   /* Global styles to apply */
   font-family: 'Arial', sans-serif;
-   
+  /* font-family: 'EB_Garamond', sans-serif; */
+  font-family: 'Montserrat', sans-serif;
+
   font-optical-sizing: auto;
   font-weight: 175;
   font-style: thin;
