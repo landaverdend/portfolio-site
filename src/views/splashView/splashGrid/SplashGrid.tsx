@@ -8,7 +8,13 @@ import monkey from '@assets/images/splash-page/grid/monkey.png';
 import handshake from '@assets/images/splash-page/grid/handshake.png';
 import tree from '@assets/images/splash-page/grid/tree.png';
 
-const FONTS = ['Playwrite_IN', 'Abril_Fatface', 'Montserrat', 'EB_Garamond', 'Arial', 'Roboto'];
+const FONTS = [
+  'Montserrat',
+  // 'Arial',
+  'Roboto',
+  'Shippori_Mincho',
+  'Doto',
+];
 
 type ITProps = {
   src: string;
@@ -29,14 +35,20 @@ function ImageTile({ src, text, color }: ITProps) {
 type TileProps = { front: React.ReactNode; back?: React.ReactNode };
 function Tile({ front, back }: TileProps) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [fontIndex, setFontIndex] = useState(randomNumber(0, FONTS.length));
+  const [frontIndex, setFrontIndex] = useState(randomNumber(0, FONTS.length));
+  const [backIndex, setBackIndex] = useState(randomNumber(0, FONTS.length));
 
   useEffect(() => {
     const interval = randomNumber(3000, 6000);
 
     const func = setInterval(() => {
       setIsFlipped((prev) => !prev);
-      setFontIndex((prev) => (prev + 1 === FONTS.length ? 0 : prev + 1));
+
+      if (isFlipped) {
+        setBackIndex((prev) => (prev + 1 === FONTS.length ? 0 : prev + 1));
+      } else {
+        setFrontIndex((prev) => (prev + 1 === FONTS.length ? 0 : prev + 1));
+      }
     }, interval);
 
     return () => {
@@ -46,10 +58,10 @@ function Tile({ front, back }: TileProps) {
 
   return (
     <div className={`tile-container ${isFlipped ? 'flip-anim' : ''}`}>
-      <div className={'tile-front tile-text'} style={{ fontFamily: FONTS[fontIndex] }}>
+      <div className={'tile-front tile-text'} style={{ fontFamily: FONTS[frontIndex] }}>
         {front}
       </div>
-      <div className="tile-back tile-text" style={{ fontFamily: FONTS[fontIndex] }}>
+      <div className="tile-back tile-text" style={{ fontFamily: FONTS[backIndex] }}>
         {back}
       </div>
     </div>
@@ -83,7 +95,10 @@ export default function SplashGrid() {
       <div className="grid-item text-column double-block metric-block2">
         Real-Time Resume Analytics (RTRA)
         <ul>
-          <li>Provides recruiters with live metrics: time spent unemployed, skill endorsement velocity, and buzzword density.</li>
+          <li>
+            Provides recruiters with live metrics: time spent unemployed, skill endorsement velocity, and buzzword
+            density.
+          </li>
         </ul>
       </div>
       <div className="grid-item">
@@ -96,7 +111,7 @@ export default function SplashGrid() {
         <ImageTile src={handshake} text={'Leveraging Synergy'} color={'black'} />
       </div>
       <div className="grid-item">
-        <Tile front={<>RaAS</>} back={<>KPI</>} />
+        <Tile front={<>RaaS</>} back={<>KPI</>} />
       </div>
       <div className="grid-item">
         <ImageTile src={tree} text={'Framjam Growth'} color="" />
