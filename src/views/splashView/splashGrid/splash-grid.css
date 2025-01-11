@@ -116,6 +116,7 @@
 
     .small-text {
       /* flex: 6; */
+      font-size: 0.9rem;
     }
   }
 

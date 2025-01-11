@@ -79,7 +79,10 @@ export default function SplashGrid() {
       </div>
       <div className="grid-item text-column double-block metric-block1">
         <div className="top-text">
-          <span className="giga-text">99.99%</span> <b>Resume Uptime</b>
+          <span className="giga-text">99.99%</span>
+          <span className="small-text">
+            <b>Resume Uptime</b>. Accessible <b>WHENEVER</b> you need it.
+          </span>
         </div>
         <hr />
       </div>
@@ -99,7 +102,8 @@ export default function SplashGrid() {
         <div className="top-text">
           <span className="giga-text">RTRA</span>
           <span className="small-text">
-            <b>Real Time Resume Analytics</b> provide you with live feedback and updates of my resume
+            <b>Real Time Resume Analytics</b> Provides recruiters with live metrics: time spent unemployed, buzzword density, and
+            live changes.
           </span>
         </div>
         <hr />
