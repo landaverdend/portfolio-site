@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './splash-grid.css';
 import { randomNumber } from '@/util/random';
-import laptop from '@assets/images/splash-page/grid/laptop.jpg';
+import spaghetti from '@assets/images/splash-page/grid/spaghetti.png';
 import gigachad from '@assets/images/splash-page/grid/gigachadBlurred.png';
 import coverLetterBlurred from '@assets/images/splash-page/grid/coverLetterBlurred.png';
 import monkey from '@assets/images/splash-page/grid/monkey.png';
@@ -78,7 +78,10 @@ export default function SplashGrid() {
         <Tile front={<>Innovate</>} back={<>Bold</>} />
       </div>
       <div className="grid-item text-column double-block metric-block1">
-        <span className="giga-text">99%</span> <span>RESUME UPTIME</span>
+        <div className="top-text">
+          <span className="giga-text">99.99%</span> <b>Resume Uptime</b>
+        </div>
+        <hr />
       </div>
       <div className="grid-item">
         <Tile front={<>Agile</>} back={<>Scalable</>} />
@@ -87,19 +90,19 @@ export default function SplashGrid() {
         <ImageTile src={gigachad} text={'Headshots'} />
       </div>
       <div className="grid-item">
-        <ImageTile src={laptop} text={'This is me™'} color="black" />
+        <ImageTile src={spaghetti} text={'Devops'} />
       </div>
       <div className="grid-item">
         <Tile front={<>Pointless</>} back={<>Yikes</>} />
       </div>
       <div className="grid-item text-column double-block metric-block2">
-        Real-Time Resume Analytics (RTRA)
-        <ul>
-          <li>
-            Provides recruiters with live metrics: time spent unemployed, skill endorsement velocity, and buzzword
-            density.
-          </li>
-        </ul>
+        <div className="top-text">
+          <span className="giga-text">RTRA</span>
+          <span className="small-text">
+            <b>Real Time Resume Analytics</b> provide you with live feedback and updates of my resume
+          </span>
+        </div>
+        <hr />
       </div>
       <div className="grid-item">
         <Tile front={<>POOP</>} back={<>BALLS</>} />
@@ -114,7 +117,7 @@ export default function SplashGrid() {
         <Tile front={<>RaaS</>} back={<>KPI</>} />
       </div>
       <div className="grid-item">
-        <ImageTile src={tree} text={'Framjam Growth'} color="" />
+        <ImageTile src={tree} text={'Quick Deploy'} color="" />
       </div>
       <div className="grid-item">
         <Tile front={<>Achieve</>} back={<>Synergize</>} />
