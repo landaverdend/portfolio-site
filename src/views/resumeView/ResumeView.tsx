@@ -6,6 +6,8 @@ import ChatBubble from '@/components/chatBubble/ChatBubble';
 import { createPortal } from 'react-dom';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
+import SkillsContainer from './skills/SkillsContainer';
+import ContactContainer from './contact/ContactContainer';
 
 function ResumeView() {
   const navbarLinks = [
@@ -14,7 +16,8 @@ function ResumeView() {
       text: 'About',
     },
     { link: 'projects', text: 'Projects' },
-    { link: 'resume', text: 'Resume' },
+    { link: 'skills', text: 'Skills' },
+    { link: 'contact', text: 'Contact' },
   ];
 
   return (
@@ -33,6 +36,14 @@ function ResumeView() {
 
         <section id="projects">
           <ProjectContainer />
+        </section>
+
+        <section id="skills">
+          <SkillsContainer />
+        </section>
+
+        <section id="contact">
+          <ContactContainer />
         </section>
       </div>
       <Footer />
