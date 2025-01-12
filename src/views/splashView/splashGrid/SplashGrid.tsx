@@ -121,7 +121,7 @@ export default function SplashGrid() {
         <Tile front={<>RaaS</>} back={<>KPI</>} />
       </div>
       <div className="grid-item">
-        <ImageTile src={tree} text={'Quick Deploy'} color="" />
+        <ImageTile src={tree} text={'This is a tree'} />
       </div>
       <div className="grid-item">
         <Tile front={<>Achieve</>} back={<>Synergize</>} />

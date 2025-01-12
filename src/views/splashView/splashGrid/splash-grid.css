@@ -153,4 +153,12 @@
       height: 150px;
     }
   }
+
+  .double-block {
+    .top-text {
+      .giga-text {
+        font-size: 48px;
+      }
+    }
+  }
 }

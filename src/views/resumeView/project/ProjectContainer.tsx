@@ -1,8 +1,7 @@
 import './project-container.css';
 
-import voltorb from '@assets/images/trimmedVoltorb.gif';
-import isleAdvanceGIF from '@assets/images/isleAdvance.png';
-import tetrisGalaxyGif from '@assets/images/tetris-galaxy.png';
+import voltorb from '@assets/videos/voltorbflip.mp4';
+import tetrisGalaxy from '@assets/videos/tetrisgalaxy.mp4';
 
 type PCProps = {
   src: string;
@@ -16,9 +15,12 @@ type PCProps = {
 function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techUsed, title }: PCProps) {
   return (
     <div className="project-card">
-      <div className="project-card__img">
+      <div className="video-container">
         <a href={demoUrl}>
-          <img src={src} height={200} width={300} />
+          <video width={300} height={200} controls>
+            <source src={src} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </a>
       </div>
 
@@ -60,22 +62,24 @@ function ProjectContainer() {
           'ReactJS recreation of the Voltorb Flip minigame from Pokemon HeartGold/SoulSilver with some slight difficulty alterations.'
         }
       />
-      <ProjectCard
+      {/* <ProjectCard
         title={'Isle Advance'}
         src={isleAdvanceGIF}
         sourceCodeUrl={'https://github.com/landaverdend/Procgen-GBA'}
         backgroundColor={'#a2ffba'}
         techUsed={'C, Make'}
         desc={'Gameboy Advance Homebrew project made alongside my friend for our Senior Year capstone project'}
-      />
+      /> */}
       <ProjectCard
         title={'Tetris Galaxy'}
-        src={tetrisGalaxyGif}
+        src={tetrisGalaxy}
         demoUrl={'https://swansonmp.github.io/tetrisGalaxy/'}
         sourceCodeUrl={'https://github.com/landaverdend/tetrisGalaxy'}
         backgroundColor={'#ffe9a2'}
         techUsed={'Java, Java Swing'}
-        desc={'Tetris spinoff that was made as a hackathon project over one very long night alongside my 3 friends'}
+        desc={
+          'Tetris spinoff where pieces fall from all 4 sides that was made at a university hackathon over one very long night alongside my 3 friends. '
+        }
       />
     </div>
   );

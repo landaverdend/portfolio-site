@@ -19,8 +19,7 @@ export function SplashPageButton({ nextView, displayText }: { nextView: View; di
       className="start__button"
       onClick={() => {
         triggerLoadingSequence(nextView);
-      }}
-    >
+      }}>
       {displayText}
       <i className="fa-solid fa-arrow-right"></i>
     </span>
@@ -30,7 +29,7 @@ export function SplashPageButton({ nextView, displayText }: { nextView: View; di
 function SplashView() {
   const navbarLinks = [
     { link: '#main-section', text: 'About' },
-    { link: '#featured-section', text: 'Features' },
+    { link: '#featured-section', text: 'Testimonials' },
     { link: '#utilities-section', text: 'Utilities' },
   ];
   return (

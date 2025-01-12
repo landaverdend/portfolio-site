@@ -17,8 +17,8 @@ export default function MainSection() {
           <b>
             <i>Resume as a Service</i>
           </b>
-          (RaaS) platform to gain access to my resume effortlessly. Streamline your hiring process and elevate your
-          recruitment game with the first-ever site designed for seamless access to my resume.
+          (RaaS) platform to gain access to my resume effortlessly. Streamline your hiring process and elevate your recruitment
+          game with the first-ever site designed for seamless access to my resume.
         </span>
 
         <div className="main-section__buttons">
@@ -32,8 +32,7 @@ export default function MainSection() {
                 style={{ cursor: 'pointer' }}
                 onClick={() => {
                   setDisplayFakeCaptcha(true);
-                }}
-              >
+                }}>
                 I'm already subscribed...
               </u>
             )}
@@ -41,7 +40,6 @@ export default function MainSection() {
         </div>
       </div>
       <div className="main-section__grid">
-        {/* <h2> Why send your resume once, when you can deliver it forever?</h2> */}
         <SplashGrid />
       </div>
     </div>
