@@ -10,19 +10,20 @@ import Footer from '@/components/footer/Footer';
 function ResumeView() {
   const navbarLinks = [
     {
-      link: '#about',
+      link: 'about',
       text: 'About',
     },
-    { link: '#projects', text: 'Projects' },
-    { link: '#experience', text: 'Experience' },
-    { link: '#resume', text: 'Resume' },
+    { link: 'projects', text: 'Projects' },
+    { link: 'resume', text: 'Resume' },
   ];
 
   return (
     <>
       <Navbar links={navbarLinks} />
       <div className="resume-container">
-        <AboutContainer />
+        <section id="about">
+          <AboutContainer />
+        </section>
         <div className="bubble b1"></div>
         <div className="bubble b2"></div>
         <div className="bubble b3"></div>
@@ -30,7 +31,9 @@ function ResumeView() {
         <div className="bubble b5"></div>
         <div className="bubble b6"></div>
 
-        <ProjectContainer />
+        <section id="projects">
+          <ProjectContainer />
+        </section>
       </div>
       <Footer />
       {createPortal(<ChatBubble />, document.getElementById('root') as HTMLElement)}

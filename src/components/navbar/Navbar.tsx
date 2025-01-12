@@ -15,7 +15,18 @@ function Navbar({ links }: NavbarProps) {
       </div>
       <div className="navbar-container__links">
         {links.map((l) => (
-          <a key={l.link} href={l.link}>
+          <a
+            key={l.link}
+            href={l.link}
+            onClick={(e) => {
+              e.preventDefault();
+
+              const element = document.getElementById(l.link);
+
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>
             {l.text}
           </a>
         ))}

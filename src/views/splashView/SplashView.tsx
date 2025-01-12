@@ -28,9 +28,9 @@ export function SplashPageButton({ nextView, displayText }: { nextView: View; di
 
 function SplashView() {
   const navbarLinks = [
-    { link: '#main-section', text: 'About' },
-    { link: '#featured-section', text: 'Testimonials' },
-    { link: '#utilities-section', text: 'Utilities' },
+    { link: 'main-section', text: 'About' },
+    { link: 'featured-section', text: 'Testimonials' },
+    { link: 'utilities-section', text: 'Utilities' },
   ];
   return (
     <div id="splash" className="splash-container">
@@ -39,6 +39,7 @@ function SplashView() {
         <section id="main-section">
           <MainSection />
         </section>
+
         <CompanyDock />
 
         <section id="featured-section">
