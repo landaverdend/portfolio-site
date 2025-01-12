@@ -16,12 +16,10 @@ function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techU
   return (
     <div className="project-card">
       <div className="video-container">
-        <a href={demoUrl}>
-          <video width={300} height={200} controls>
-            <source src={src} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </a>
+        <video width={300} height={200} controls>
+          <source src={src} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       <div className="text-container" style={{ backgroundColor: backgroundColor }}>
