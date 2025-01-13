@@ -1,0 +1,20 @@
+.subheader-container {
+  width: 100%;
+}
+
+.flex-row {
+  width: 100%;
+  gap: 25px;
+}
+
+hr {
+  width: 250px;
+  height: 2px;
+
+  align-self: left;
+
+  background: linear-gradient(to right, transparent, black, transparent);
+
+  border-color: black;
+  background-color: black;
+}
