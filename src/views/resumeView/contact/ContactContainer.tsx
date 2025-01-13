@@ -6,7 +6,11 @@ export default function ContactContainer() {
 
   return (
     <form className="contact-form-container" onSubmit={handleSubmit}>
-      <h1>Contact Me</h1>
+      <div className="header-info">
+        <h1>Contact Me</h1>
+
+        <p>Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.</p>
+      </div>
 
       <label htmlFor="email">Email Address</label>
       <ValidationError prefix="Email" field="email" errors={state.errors} />
