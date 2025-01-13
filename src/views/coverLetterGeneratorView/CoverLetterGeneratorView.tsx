@@ -26,7 +26,6 @@ export default function CoverLetterGeneratorView() {
   const [otherDetails, setOtherDetails] = useState<string>('');
 
   const [frameworks, setFrameworks] = useState<string[]>([]);
-  const [personalityTraits, setPersonalityTraits] = useState<string[]>([]);
   const [cloudTechnologies, setCloudTechnologies] = useState<string[]>([]);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -38,7 +37,6 @@ export default function CoverLetterGeneratorView() {
       company: company,
       tone: tone,
       frameworks: frameworks,
-      personalityTraits: personalityTraits,
       cloudTechnologies: cloudTechnologies,
       position: position,
       wordCount: wordCount,

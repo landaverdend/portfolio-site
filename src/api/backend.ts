@@ -27,7 +27,6 @@ export async function callChatEndpoint(clientChatLog: Array<Chat>): Promise<stri
 export type CoverLetterDTO = {
   otherDetails: string;
   frameworks: string[];
-  personalityTraits: string[];
   cloudTechnologies: string[];
   tone: string;
   company: string;
@@ -35,7 +34,6 @@ export type CoverLetterDTO = {
   wordCount: number;
 };
 export async function callCoverLetterEndpoint(dto: CoverLetterDTO): Promise<string> {
-  
   const response = await fetch(`${baseUrl}/cover_letter`, {
     method: 'POST',
     headers: {

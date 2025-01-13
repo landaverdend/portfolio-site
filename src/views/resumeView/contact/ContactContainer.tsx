@@ -14,6 +14,7 @@ export default function ContactContainer() {
       <textarea id="message" name="message" placeholder="Message" />
 
       <ValidationError prefix="Message" field="message" errors={state.errors} />
+
       <button type="submit" disabled={state.submitting}>
         Submit
       </button>
