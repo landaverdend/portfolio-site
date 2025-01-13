@@ -24,8 +24,8 @@ button {
 
   padding: 50px;
   border-radius: 25px;
-  background-color: rgb(162, 184, 255);
-  box-shadow: 7.5px 7.5px black;
+  background-color: var(--form-background-color);
+  box-shadow: var(--form-box-shadow);
   width: max-content;
 
   h1 {

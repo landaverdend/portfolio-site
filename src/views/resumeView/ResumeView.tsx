@@ -42,7 +42,7 @@ function ResumeView() {
           <SkillsContainer />
         </section>
 
-        <section id="contact">
+        <section id="contact" className="contact-container">
           <ContactContainer />
         </section>
       </div>

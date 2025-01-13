@@ -11,6 +11,13 @@
   overflow: hidden;
 }
 
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
 .bubble {
   border-radius: 100%;
   position: absolute;

@@ -3,7 +3,7 @@ import { SplashPageButton } from '../SplashView';
 import time from '@assets/images/splash-page/time.png';
 import coins from '@assets/images/splash-page/coins.png';
 import feather from '@assets/images/splash-page/feather.png';
-import placeholder from '@assets/images/splash-page/PLACEHOLDER1.png';
+import meTyping from '@assets/images/splash-page/meTyping.png';
 
 export default function CoverLetterSection() {
   return (
@@ -16,7 +16,7 @@ export default function CoverLetterSection() {
           I’ll whip up a masterpiece that showcases why I'm the perfect fit for your rejection email.
         </p>
         <SplashPageButton displayText="Check it out!" nextView="CoverLetterGeneratorView" />
-        <img src={placeholder} height={300} width={300} />
+        <img src={meTyping} height={375} width={438} />
       </div>
 
       <div className="panel-two">

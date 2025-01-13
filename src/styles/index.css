@@ -5,19 +5,8 @@
 
   --main-indigo: rgb(77, 61, 113);
 
-  --background-text-1: hsl(270, 54%, 76%);
-
-  --hover-color-1: #ab0cab;
-  --hover-color-2: rgb(41, 162, 41);
-  --hover-color-3: rgb(59, 67, 181);
-
-  --primary-gradient: linear-gradient(var(--color-1), var(--color-2));
-  --primary-gradient-horizontal: linear-gradient(to right, var(--color-1), var(--color-2));
-  --primary-gradient-hover: linear-gradient(var(--hover-color-1), var(--hover-color-2));
-  --primary-gradient-horizontal-hover: linear-gradient(to right, var(--hover-color-1), var(--hover-color-2));
-
-  --secondary-gradient: linear-gradient(var(--color-1), var(--color-2), var(--color-3));
-  --secondary-gradient-hover: linear-gradient(var(--hover-color-1), var(--hover-color-2), var(--hover-color-3));
+  --form-background-color: rgb(162, 184, 255);
+  --form-box-shadow: 7.5px 7.5px black;
 }
 
 body {

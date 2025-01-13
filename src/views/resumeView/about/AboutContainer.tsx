@@ -1,5 +1,5 @@
 import './about-container.css';
-import me from '@assets/images/me.png';
+import me from '@assets/images/resume/me.png';
 
 function AboutContainer() {
   return (
