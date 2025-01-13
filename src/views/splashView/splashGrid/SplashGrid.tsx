@@ -109,7 +109,7 @@ export default function SplashGrid() {
         <hr />
       </div>
       <div className="grid-item">
-        <Tile front={<>POOP</>} back={<>BALLS</>} />
+        <Tile front={<>UH-OH</>} back={<>WHOOPS</>} />
       </div>
       <div className="grid-item">
         <ImageTile src={monkey} text={'AI Driven™'} />

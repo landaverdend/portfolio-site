@@ -22,7 +22,15 @@ function AboutContainer() {
               <hr />
             </div>
             <div className="social-list flex-row">
-              <EmailLogo /> <LinkedinLogo /> <GithubLogo />
+              <a href="mailto: nicodemus.landaverde98@gmail.com">
+                <EmailLogo />
+              </a>
+              <a href="https://www.linkedin.com/in/nicodemus-landaverde-7562ba19a/">
+                <LinkedinLogo />
+              </a>
+              <a href="https://github.com/landaverdend">
+                <GithubLogo />
+              </a>
             </div>
           </div>
         </div>

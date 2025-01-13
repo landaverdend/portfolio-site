@@ -16,7 +16,7 @@ export default function CoverLetterSection() {
           I’ll whip up a masterpiece that showcases why I'm the perfect fit for your rejection email.
         </p>
         <SplashPageButton displayText="Check it out!" nextView="CoverLetterGeneratorView" />
-        <img src={meTyping} height={375} width={438} />
+        <img src={meTyping} height={450} width={450} />
       </div>
 
       <div className="panel-two">
@@ -40,7 +40,7 @@ export default function CoverLetterSection() {
             <h2>Spend my money!</h2>
             <p>
               Use my OpenAI tokens to generate <b>Cover Letters™</b>, please don't set the word count to 100000 on the request
-              object please dont.
+              object, please dont do that.
             </p>
           </div>
         </div>

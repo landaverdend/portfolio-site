@@ -61,18 +61,23 @@
   }
 
   .social-list {
-    gap: 0.8rem;
+    gap: 1rem;
 
     svg {
       height: 3.5rem;
       width: 3.5rem;
+    }
+
+    svg:hover {
+      opacity: 0.8;
     }
   }
 }
 
 @media (max-width: 576px) {
   .about-container {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse !important;
+
     gap: 25px;
 
     .text-container__text {
