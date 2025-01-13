@@ -38,6 +38,30 @@
   }
 }
 
+.social-dock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  .social-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+
+    width: 100%;
+
+    hr {
+      width: 100%;
+      border-color: black;
+      background-color: black;
+    }
+  }
+}
+
 @media (max-width: 576px) {
   .about-container {
     flex-direction: column-reverse;
