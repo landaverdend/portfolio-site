@@ -2,10 +2,13 @@ import './main-section.css';
 
 import FakeCaptchaContainer from '@/components/fakeCaptcha/FakeCaptchaContainer';
 import { useState } from 'react';
-import { SplashPageButton } from '../SplashView';
 import SplashGrid from '../splashGrid/SplashGrid';
+import LargeButton from '@/components/common/typewriterText/LargeButton/LargeButton';
+import { useAppState } from '@/state/appState';
 
 export default function MainSection() {
+  const { triggerLoadingSequence } = useAppState();
+
   const [displayFakeCaptcha, setDisplayFakeCaptcha] = useState(false);
 
   return (
@@ -22,8 +25,12 @@ export default function MainSection() {
         </span>
 
         <div className="main-section__buttons">
-          <SplashPageButton displayText="Get Started" nextView="SurveyView" />
-
+          <LargeButton
+            onClick={() => {
+              triggerLoadingSequence('SurveyView');
+            }}>
+            Get Started
+          </LargeButton>
           <span style={{ color: 'black' }}>
             {displayFakeCaptcha ? (
               <FakeCaptchaContainer />

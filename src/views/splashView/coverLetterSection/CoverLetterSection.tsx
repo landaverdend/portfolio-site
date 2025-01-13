@@ -1,11 +1,14 @@
 import './cover-letter-section.css';
-import { SplashPageButton } from '../SplashView';
 import time from '@assets/images/splash-page/time.png';
 import coins from '@assets/images/splash-page/coins.png';
 import feather from '@assets/images/splash-page/feather.png';
 import meTyping from '@assets/images/splash-page/meTyping.png';
+import LargeButton from '@/components/common/typewriterText/LargeButton/LargeButton';
+import { useAppState } from '@/state/appState';
 
 export default function CoverLetterSection() {
+  const { triggerLoadingSequence } = useAppState();
+
   return (
     <div className="panel-container">
       <div className="panel-one">
@@ -15,7 +18,12 @@ export default function CoverLetterSection() {
           flipping the script. Simply provide me with your keywords, buzzwords, favorite business clichés, and preferred tone, and
           I’ll whip up a masterpiece that showcases why I'm the perfect fit for your rejection email.
         </p>
-        <SplashPageButton displayText="Check it out!" nextView="CoverLetterGeneratorView" />
+        <LargeButton
+          onClick={() => {
+            triggerLoadingSequence('CoverLetterGeneratorView');
+          }}>
+          Check it out!
+        </LargeButton>
         <img src={meTyping} height={450} width={450} />
       </div>
 
