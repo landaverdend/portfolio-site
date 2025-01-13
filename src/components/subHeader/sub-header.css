@@ -18,3 +18,15 @@ hr {
   border-color: black;
   background-color: black;
 }
+
+
+@media (max-width: 576px) {
+
+  .flex-row {
+    gap: 15px;
+  }
+
+  hr {
+    width: 90px;
+  }
+}

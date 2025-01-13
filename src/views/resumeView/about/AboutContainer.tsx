@@ -42,7 +42,7 @@ function AboutContainer() {
           </LargeButton>
 
           <div className="social-dock">
-            <SubHeader>
+            <SubHeader barWidth='150px'>
               <h3>Socials</h3>
             </SubHeader>
 
