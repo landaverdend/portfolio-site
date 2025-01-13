@@ -8,34 +8,31 @@
   justify-content: center;
   gap: 50px;
 
-  .text-container {
+  .text-container__text {
     display: flex;
-
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 25px;
 
-    .text-container__text {
-      width: 66%;
-      height: calc(auto + 10vh);
-      align-self: center;
+    width: 66%;
+    /* height: calc(auto + 10vh); */
+    align-self: center;
 
-      background-color: #ff9994;
-      border-radius: 5px;
-      box-shadow: 10px 10px black;
+    background-color: #9499ff;
+    border-radius: 5px;
+    box-shadow: 10px 10px black;
 
-      padding: 20px;
-    }
+    padding: 20px;
   }
 
   img {
     height: 500px;
     width: 600px;
-    
+
     max-width: 80%;
     max-height: 900px;
-    
-    
+
     border-radius: 10px;
     object-fit: cover;
   }
