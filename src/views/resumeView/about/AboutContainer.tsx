@@ -4,8 +4,20 @@ import EmailLogo from '@assets/images/logos/email.svg?react';
 import LinkedinLogo from '@assets/images/logos/linkedin.svg?react';
 import GithubLogo from '@assets/images/logos/github.svg?react';
 import SubHeader from '@/components/subHeader/SubHeader';
+import LargeButton from '@/components/common/typewriterText/LargeButton/LargeButton';
+
+// lolol
+import pdfFile from '@assets/files/landaverde_resume.pdf';
 
 function AboutContainer() {
+  const handleDownload = () => {
+    // URL to the PDF file
+    const link = document.createElement('a');
+    link.href = pdfFile;
+    link.download = 'landaverde_resume.pdf'; // Suggested filename for the download
+    link.click();
+  };
+
   return (
     <>
       <div id="about" className="about-container flex-row">
@@ -19,13 +31,15 @@ function AboutContainer() {
             occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
           </p>
 
-          <div>
-            Check out my
-            {' '}
-            <span>
-              <b>resume</b>
-            </span>
-          </div>
+          <LargeButton
+            onClick={() => {
+              handleDownload();
+            }}>
+            Check out my{' '}
+            <b>
+              <i>Resume</i>
+            </b>
+          </LargeButton>
 
           <div className="social-dock">
             <SubHeader>
