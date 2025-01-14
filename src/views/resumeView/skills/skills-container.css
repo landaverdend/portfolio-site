@@ -12,5 +12,24 @@
   grid-template-columns: repeat(5, 300px);
   grid-template-rows: repeat(5, 100px);
   gap: 15px;
+}
 
+.skill-widget {
+  .proficiency-bar {
+    width: 200px;
+    height: 10px;
+  }
+
+  progress[value]::-webkit-progress-bar {
+    /* background-color: #f8f8f8b9; */
+    /* border-radius: 100px; */
+    /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25) inset; */
+    /* background: linear-gradient(to right, rgb(187, 187, 223), rgb(187, 159, 206)); */
+  }
+
+  progress[value]::-webkit-progress-value {
+    /* background-color: var(--main-indigo); */
+    /* border-radius: 100px; */
+    /* background-size: 35px 20px, 100% 100%, 100% 100%; */
+  }
 }

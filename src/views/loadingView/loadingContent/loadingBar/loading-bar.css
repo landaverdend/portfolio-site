@@ -2,42 +2,43 @@
   display: flex;
   flex-direction: column;
   z-index: 250;
-}
 
-.loading-container__label {
-  color: rgb(108, 103, 103);
-  font-size: 0.8em;
-  margin-bottom: 10px;
-}
+  .loading-container__label {
+    color: rgb(108, 103, 103);
+    font-size: 0.8em;
+    margin-bottom: 10px;
+  }
 
-progress {
-  width: 40vw;
-  height: 50px;
+  progress {
+    width: 40vw;
+    height: 50px;
 
-  /* Reset the default appearance */
-  -webkit-appearance: none;
-  appearance: none;
-}
+    /* Reset the default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  progress[value]::-webkit-progress-bar {
+    background-color: #f8f8f8b9;
+    border-radius: 100px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25) inset;
+    background: linear-gradient(to right, rgb(187, 187, 223), rgb(187, 159, 206));
+  }
 
-progress[value]::-webkit-progress-bar {
-  background-color: #f8f8f8b9;
-  border-radius: 100px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25) inset;
-  background: linear-gradient(to right, rgb(187, 187, 223), rgb(187, 159, 206));
-}
-
-progress[value]::-webkit-progress-value {
-  background-color: var(--main-indigo);
-  border-radius: 100px;
-  background-size: 35px 20px, 100% 100%, 100% 100%;
+  progress[value]::-webkit-progress-value {
+    background-color: var(--main-indigo);
+    border-radius: 100px;
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+  }
 }
 
 @media (max-width: 576px) {
-  progress {
-    width: 80vw;
-  }
+  .loading-container {
+    progress {
+      width: 80vw;
+    }
 
-  .loading-container__label {
-    font-size: 10px;
+    .loading-container__label {
+      font-size: 10px;
+    }
   }
 }

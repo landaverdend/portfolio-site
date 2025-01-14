@@ -51,7 +51,7 @@
 }
 
 .curtain-stripe-right {
-  background-color: var(--main-indigo);
+  background-color: var(--panel-blue);
 
   width: 40vw;
   height: 35px;
