@@ -1,3 +1,7 @@
+:root {
+  --proficiency-border-radius: 3px;
+}
+
 .skills-container {
   display: flex;
   flex-direction: column;
@@ -7,25 +11,66 @@
   width: 100vw;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 300px);
-  grid-template-rows: repeat(5, 100px);
-  gap: 15px;
+.sg-container {
+  align-items: flex-start !important;
+  gap: 16px;
+
+  .label {
+    font-size: 2.25rem;
+    font-weight: 400;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 300px);
+    /* grid-template-rows: repeat(6, 100px); */
+    gap: 16px;
+  }
 }
 
 .skill-widget {
-  border: 1px solid var(--main-indigo);
-  
-  .proficiency-bar {
-    width: 200px;
-    height: 10px;
+  width: 80%;
+  align-items: flex-start !important;
+  padding: 15px;
+
+  background-color: rgb(254, 250, 255);
+
+  border: 2px solid var(--main-indigo);
+  border-radius: 3px;
+
+  box-shadow: 5px 5px black;
+
+  .tech-label {
+    justify-content: space-between;
+    width: 100%;
+
+    img {
+      width: 48px;
+      height: 48px;
+    }
+
+    .proficiency {
+      font-size: 0.9rem;
+    }
+  }
+
+  progress {
+    width: 100%;
+    height: 11px;
+
+    /* Reset the default appearance */
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   progress[value]::-webkit-progress-bar {
-    background-color: #f8f8f8b9;
+    border-radius: var(--proficiency-border-radius);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25) inset;
+    background: #868686b9;
   }
 
-  progress[value]::-webkit-progress-value {
+  progress::-webkit-progress-value {
+    background: rgb(78, 204, 78);
+    border-radius: var(--proficiency-border-radius);
   }
 }

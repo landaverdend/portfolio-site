@@ -75,7 +75,7 @@ function LoadingBar() {
   return (
     <div className="loading-container">
       <span className="loading-container__label">{fakeServiceCalls[ind]}</span>
-      <progress className="loading-container__progress" max={100} value={progress}></progress>
+      <progress max={100} value={progress}></progress>
     </div>
   );
 }

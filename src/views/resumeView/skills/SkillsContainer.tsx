@@ -1,5 +1,7 @@
 import SubHeader from '@/components/subHeader/SubHeader';
 import './skills-container.css';
+import reactlogo from '@assets/images/skills/react.svg';
+import angular from '@assets/images/skills/angular.svg';
 
 type SWProps = {
   techSkill: TechSkill;
@@ -9,8 +11,15 @@ function SkillWidget({ techSkill }: SWProps) {
 
   return (
     <div className="skill-widget flex-column">
-      <h3>{skill}</h3>
-      <progress className="proficiency-bar" value={proficiency} max={100}></progress>
+      <div className="tech-label flex-row">
+        <span className="flex-row" style={{ justifyContent: 'flex-start', gap: '10px' }}>
+          <h3>{skill}</h3>
+          {logo ? <img src={logo} /> : <></>}
+        </span>
+
+        <span className="proficiency">{proficiency}%</span>
+      </div>
+      <progress value={proficiency} max={100}></progress>
     </div>
   );
 }
@@ -22,7 +31,7 @@ type SGProps = {
 function SkillGrid({ label, skills }: SGProps) {
   return (
     <div className="sg-container flex-column">
-      <h2>{label}</h2>
+      <span className="label">{label}</span>
       <div className="skills-grid">
         {skills.map((skill) => (
           <SkillWidget techSkill={skill} />
@@ -39,11 +48,11 @@ type TechSkill = {
 };
 
 const frontendSkills: Array<TechSkill> = [
-  { skill: 'React', proficiency: 84, logo: '' },
-  { skill: 'Angular', proficiency: 62, logo: '' },
+  { skill: 'React', proficiency: 84, logo: reactlogo },
+  { skill: 'Angular', proficiency: 62, logo: angular },
   { skill: 'CSS', proficiency: 85, logo: '' },
   { skill: 'NodeJS', proficiency: 60, logo: '' },
-  { skill: 'Typescript/Javascript', proficiency: 89, logo: '' },
+  { skill: 'Typescript', proficiency: 89, logo: '' },
   { skill: 'Esri API', proficiency: 56, logo: '' },
   { skill: 'Webpack', proficiency: 65, logo: '' },
 ];
