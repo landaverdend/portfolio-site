@@ -26,6 +26,7 @@ export default function SkillsContainer() {
       <SubHeader>
         <h1>Skills</h1>
       </SubHeader>
+      
       <div className="skills-grid">{items}</div>
     </div>
   );

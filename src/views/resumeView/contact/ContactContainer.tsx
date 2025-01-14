@@ -24,10 +24,6 @@ export default function ContactContainer() {
         Submit
       </LargeButton>
 
-      <button type="submit" disabled={state.submitting}>
-        Submit
-      </button>
-
       {state.succeeded ? <>Email Sent!</> : <></>}
     </form>
   );
