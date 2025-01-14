@@ -14,7 +14,7 @@ function SkillWidget({ techSkill }: SWProps) {
       <div className="tech-details flex-row">
         <span className="tech-label" style={{ justifyContent: 'flex-start', gap: '10px' }}>
           <h3>{skill}</h3>
-          {logo ? <img src={logo} height={36} width={36} /> : <></>}
+          {logo ? <img src={`/src/assets/images/skills/${logo}.svg`} height={36} width={36} /> : <></>}
         </span>
 
         <span className="proficiency">{proficiency}%</span>
@@ -48,13 +48,21 @@ type TechSkill = {
 };
 
 const frontendSkills: Array<TechSkill> = [
-  { skill: 'React', proficiency: 84, logo: reactlogo },
-  { skill: 'Angular', proficiency: 62, logo: angular },
-  { skill: 'CSS', proficiency: 85, logo: '' },
-  { skill: 'NodeJS', proficiency: 60, logo: '' },
-  { skill: 'Typescript', proficiency: 89, logo: '' },
-  { skill: 'Esri API', proficiency: 56, logo: '' },
-  { skill: 'Webpack', proficiency: 65, logo: '' },
+  { skill: 'React', proficiency: 84, logo: 'react' },
+  { skill: 'Angular', proficiency: 62, logo: 'angular' },
+  { skill: 'NodeJS', proficiency: 60, logo: 'node' },
+  { skill: 'Typescript', proficiency: 89, logo: 'typescript' },
+  { skill: 'Webpack', proficiency: 65, logo: 'webpack' },
+  { skill: 'Javascript', proficiency: 85, logo: 'javascript' },
+];
+
+const backendSkills: Array<TechSkill> = [
+  { skill: 'Java', proficiency: 85, logo: 'java' },
+  { skill: 'Spring Boot', proficiency: 80, logo: 'spring' },
+  { skill: 'AWS', proficiency: 70, logo: 'aws' },
+  { skill: 'Docker', proficiency: 75, logo: 'docker' },
+  { skill: 'Gradle', proficiency: 80, logo: 'gradle' },
+  { skill: 'Maven', proficiency: 80, logo: 'maven' },
 ];
 
 export default function SkillsContainer() {
@@ -65,6 +73,7 @@ export default function SkillsContainer() {
       </SubHeader>
 
       <SkillGrid label={'Frontend'} skills={frontendSkills} />
+      <SkillGrid label={'Backend'} skills={backendSkills} />
     </div>
   );
 }
