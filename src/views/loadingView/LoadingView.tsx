@@ -34,11 +34,11 @@ function LoadingView() {
               }
             }}
             className={`curtain curtain--left-gradient ${lCurtainState[animType]} `}>
-            <div className="curtain__stripe-left"></div>
-            <div className="curtain__stripe-left2"></div>
+            <div className="curtain-stripe curtain-stripe-left"></div>
+            <div className="curtain-stripe curtain-stripe-left2"></div>
           </div>
           <div className={`curtain curtain--right-gradient ${rCurtainState[animType]} `}>
-            <div className="curtain__stripe-right"></div>
+            <div className="curtain-stripe curtain-stripe-right"></div>
           </div>
           <LoadingContent />
         </div>

@@ -45,20 +45,28 @@
   align-items: center;
 }
 
-.curtain__stripe-right {
-  background-color: var(--main-indigo);
-  width: 40vw;
-  height: 35px;
-  position: fixed;
-  top: 22.5vh;
-  left: 30vw;
-  transform: rotate(-19deg) skew(-25deg);
+.curtain-stripe {
+  border: 1.5px solid black;
   box-shadow: 10px 10px black;
 }
 
-.curtain__stripe-left {
+.curtain-stripe-right {
+  background-color: var(--main-indigo);
+
+  width: 40vw;
+  height: 35px;
+
+  position: fixed;
+
+  top: 22.5vh;
+  left: 30vw;
+
+  transform: rotate(-19deg) skew(-25deg);
+}
+
+.curtain-stripe-left {
   position: absolute;
-  background-color: var(--color-2);
+  background-color: var(--panel-pink);
 
   width: 40vw;
   height: 30px;
@@ -67,11 +75,10 @@
   right: 30vw;
 
   transform: rotate(-19deg) skew(-25deg);
-  box-shadow: 10px 10px black;
 }
 
-.curtain__stripe-left2 {
-  background-color: var(--color-1);
+.curtain-stripe-left2 {
+  background-color: var(--panel-green);
 
   width: 25vw;
   height: 25px;
@@ -81,7 +88,6 @@
   right: 35vw;
 
   transform: rotate(-19deg) skew(-25deg);
-  box-shadow: 10px 10px rgba(0, 0, 0, 1);
 }
 
 /* Phones */

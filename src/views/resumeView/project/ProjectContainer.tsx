@@ -54,7 +54,7 @@ function ProjectContainer() {
         src={voltorb}
         demoUrl={'https://voltorb.netlify.app/'}
         sourceCodeUrl={'https://github.com/landaverdend/supervoltorbflip'}
-        backgroundColor={'#ffe9a2'}
+        backgroundColor={'var(--panel-green)'}
         techUsed={'React, Redux, NodeJS'}
         desc={
           'ReactJS recreation of the Voltorb Flip minigame from Pokemon HeartGold/SoulSilver with some slight difficulty alterations.'

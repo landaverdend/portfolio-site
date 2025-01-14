@@ -1,11 +1,9 @@
 :root {
-  --color-1: rgb(163, 92, 163); /* Light purple */
-  --color-2: rgb(125, 228, 125); /* Light green */
-  --color-3: rgb(111, 120, 241); /* indigo */
-
   --main-indigo: rgb(77, 61, 113);
 
   --panel-blue: rgb(162, 184, 255);
+  --panel-pink: #ff94eb;
+  --panel-green: #b7ff94;
 
   --form-box-shadow: 7.5px 7.5px black;
 }

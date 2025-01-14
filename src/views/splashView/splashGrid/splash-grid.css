@@ -129,11 +129,11 @@
 }
 
 .metric-block1 {
-  background-color: #ff94eb;
+  background-color: var(--panel-pink);
 }
 
 .metric-block2 {
-  background-color: #b7ff94;
+  background-color: var(--panel-green);
 }
 
 @media (max-width: 576px) {
