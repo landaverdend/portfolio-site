@@ -11,10 +11,10 @@ function SkillWidget({ techSkill }: SWProps) {
 
   return (
     <div className="skill-widget flex-column">
-      <div className="tech-label flex-row">
-        <span className="flex-row" style={{ justifyContent: 'flex-start', gap: '10px' }}>
+      <div className="tech-details flex-row">
+        <span className="tech-label" style={{ justifyContent: 'flex-start', gap: '10px' }}>
           <h3>{skill}</h3>
-          {logo ? <img src={logo} /> : <></>}
+          {logo ? <img src={logo} height={36} width={36} /> : <></>}
         </span>
 
         <span className="proficiency">{proficiency}%</span>

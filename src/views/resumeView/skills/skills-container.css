@@ -16,41 +16,44 @@
   gap: 16px;
 
   .label {
-    font-size: 2.25rem;
+    font-size: 2rem;
     font-weight: 400;
   }
 
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(6, 300px);
-    /* grid-template-rows: repeat(6, 100px); */
-    gap: 16px;
+
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    column-gap: 16px;
+    row-gap: 12px;
   }
 }
 
 .skill-widget {
-  width: 80%;
   align-items: flex-start !important;
-  padding: 15px;
+  padding: 10px;
 
-  background-color: rgb(254, 250, 255);
-
+  background-color: white;
   border: 2px solid var(--main-indigo);
   border-radius: 3px;
 
-  box-shadow: 5px 5px black;
+  box-shadow: 3px 3px black;
 
-  .tech-label {
+  .tech-details {
     justify-content: space-between;
     width: 100%;
 
-    img {
-      width: 48px;
-      height: 48px;
+    .tech-label {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      font-size: 0.95rem;
     }
 
     .proficiency {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
   }
 
