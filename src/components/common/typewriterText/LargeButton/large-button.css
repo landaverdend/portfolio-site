@@ -7,8 +7,9 @@
   font-weight: 200;
   font-size: x-large;
 
-  background-color: rgb(61, 46, 97);
-  border: 1px solid rgb(61, 46, 97);
+  /* background-color: rgb(61, 46, 97); */
+  background-color: var(--main-indigo);
+  border: 1px solid var(--main-indigo);
   border-radius: 5px;
   box-shadow: 5px 5px black;
 }

@@ -46,7 +46,7 @@
       position: absolute;
       backface-visibility: hidden;
 
-      background-color: rgb(162, 184, 255);
+      background-color: var(--panel-blue);
       border-radius: var(--grid-radius);
       border: var(--grid-border-style);
     }

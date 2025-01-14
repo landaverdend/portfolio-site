@@ -1,3 +1,4 @@
+import LargeButton from '@/components/common/typewriterText/LargeButton/LargeButton';
 import './contact-container.css';
 import { useForm, ValidationError } from '@formspree/react';
 
@@ -18,6 +19,10 @@ export default function ContactContainer() {
       <textarea id="message" name="message" placeholder="Message" />
 
       <ValidationError prefix="Message" field="message" errors={state.errors} />
+
+      <LargeButton onClick={() => {}} type="submit" disabled={state.submitting}>
+        Submit
+      </LargeButton>
 
       <button type="submit" disabled={state.submitting}>
         Submit

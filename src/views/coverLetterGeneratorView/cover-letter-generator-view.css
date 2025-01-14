@@ -20,7 +20,7 @@
 
     font-size: large;
 
-    background-color: rgb(162, 184, 255);
+    background-color: var(--panel-blue);
     box-shadow: 10px 10px black;
 
     max-width: 50vw;

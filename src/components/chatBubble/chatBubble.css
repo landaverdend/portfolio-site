@@ -1,3 +1,7 @@
+:root {
+  --chat-border-color: ;
+}
+
 .chat-container {
   position: fixed;
 
@@ -28,10 +32,12 @@
   }
 
   .chat-container__me img {
-    border: 1px solid rgb(102, 0, 128);
+    border: 2px solid var(--main-indigo);
 
     width: 80px;
     height: 80px;
+
+    padding: 0 0 0 0;
 
     border-radius: 40px;
   }
@@ -118,7 +124,7 @@
     }
 
     .client {
-      background-color: var(--color-3);
+      background-color: var(--main-indigo);
       color: white;
     }
 

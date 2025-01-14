@@ -10,6 +10,10 @@
 
   position: relative;
   overflow: hidden;
+
+  h1 {
+    font-size: 3rem;
+  }
 }
 
 #projects {
@@ -36,7 +40,7 @@
   width: 900px;
 
   /* background-color: red; */
-  background: radial-gradient(rgba(206, 148, 255, 0.494) 35%, rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(rgba(148, 180, 255, 0.494) 35%, rgba(255, 255, 255, 0) 70%);
 }
 
 .b2 {
@@ -141,6 +145,10 @@
   .resume-container {
     font-size: 1rem;
     padding: 5px 0 5vh;
+
+    h1 {
+      font-size: 2rem;
+    }
   }
 }
 

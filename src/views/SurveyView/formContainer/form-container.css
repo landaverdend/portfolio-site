@@ -24,7 +24,7 @@ button {
 
   padding: 50px;
   border-radius: 25px;
-  background-color: var(--form-background-color);
+  background-color: var(--panel-blue);
   box-shadow: var(--form-box-shadow);
   width: max-content;
 

@@ -46,7 +46,7 @@
 }
 
 .curtain__stripe-right {
-  background-color: var(--color-3);
+  background-color: var(--main-indigo);
   width: 40vw;
   height: 35px;
   position: fixed;

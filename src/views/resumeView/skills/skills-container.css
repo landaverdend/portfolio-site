@@ -5,9 +5,11 @@
   align-items: center;
 
   width: 100vw;
+}
 
-  h1 {
-    font-size: 2rem;
-  }
-
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 210px);
+  grid-template-rows: repeat(5, 210px);
+  gap: 15px;
 }

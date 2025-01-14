@@ -7,7 +7,7 @@
   width: 125px;
 
   border-radius: 50%;
-  border: 2px solid var(--color-3);
+  border: 2px solid var(--main-indigo);
 
   position: relative;
   top: -150px;

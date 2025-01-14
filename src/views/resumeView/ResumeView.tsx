@@ -43,9 +43,6 @@ function ResumeView() {
         </section>
 
         <section id="skills">
-          <SubHeader>
-            <h1>Skills</h1>
-          </SubHeader>
           <SkillsContainer />
         </section>
 

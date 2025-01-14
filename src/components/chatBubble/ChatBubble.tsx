@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import './chatBubble.css';
-import me from '@assets/images/meBlob.png';
+import me from '@assets/images/chatBubble.png';
 import SendIcon from '@assets/images/icons/sendIcon.svg?react';
 import VolumeOff from '@assets/images/icons/volumeOff.svg?react';
 import VolumeOn from '@assets/images/icons/volumeUp.svg?react';

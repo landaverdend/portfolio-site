@@ -54,7 +54,7 @@ function ProjectContainer() {
         src={voltorb}
         demoUrl={'https://voltorb.netlify.app/'}
         sourceCodeUrl={'https://github.com/landaverdend/supervoltorbflip'}
-        backgroundColor={'#a2b8ff'}
+        backgroundColor={'#ffe9a2'}
         techUsed={'React, Redux, NodeJS'}
         desc={
           'ReactJS recreation of the Voltorb Flip minigame from Pokemon HeartGold/SoulSilver with some slight difficulty alterations.'
@@ -73,7 +73,7 @@ function ProjectContainer() {
         src={tetrisGalaxy}
         demoUrl={'https://swansonmp.github.io/tetrisGalaxy/'}
         sourceCodeUrl={'https://github.com/landaverdend/tetrisGalaxy'}
-        backgroundColor={'#ffe9a2'}
+        backgroundColor={'var(--panel-blue)'}
         techUsed={'Java, Java Swing'}
         desc={
           'Tetris spinoff where pieces fall from all 4 sides that was made at a university hackathon over one very long night alongside my 3 friends. '
