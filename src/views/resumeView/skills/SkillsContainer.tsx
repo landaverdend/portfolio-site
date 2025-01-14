@@ -10,7 +10,24 @@ function SkillWidget({ techSkill }: SWProps) {
   return (
     <div className="skill-widget flex-column">
       <h3>{skill}</h3>
-      <progress className="proficiency-bar" value={proficiency} ></progress>
+      <progress className="proficiency-bar" value={proficiency} max={100}></progress>
+    </div>
+  );
+}
+
+type SGProps = {
+  label: string;
+  skills: Array<TechSkill>;
+};
+function SkillGrid({ label, skills }: SGProps) {
+  return (
+    <div className="sg-container flex-column">
+      <h2>{label}</h2>
+      <div className="skills-grid">
+        {skills.map((skill) => (
+          <SkillWidget techSkill={skill} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -32,28 +49,13 @@ const frontendSkills: Array<TechSkill> = [
 ];
 
 export default function SkillsContainer() {
-  // const items = [];
-
-  // for (let i = 0; i < 16; i++) {
-  //   items.push(
-  //     <span className="flex-column" style={{ backgroundColor: 'red' }}>
-  //       {i}
-  //     </span>
-  //   );
-  // }
-
   return (
     <div className="skills-container">
       <SubHeader>
         <h1>Skills</h1>
       </SubHeader>
 
-      <div className="skills-grid">
-        {/* {items} */}
-        {frontendSkills.map((skill) => (
-          <SkillWidget techSkill={skill} />
-        ))}
-      </div>
+      <SkillGrid label={'Frontend'} skills={frontendSkills} />
     </div>
   );
 }
