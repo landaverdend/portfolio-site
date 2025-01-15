@@ -140,6 +140,7 @@
   .splash-grid {
     grid-template-columns: repeat(2, 150px);
     grid-template-rows: repeat(2, 150px);
+    align-self: center;
 
     .tile-text {
       font-size: 30px;
@@ -159,6 +160,10 @@
       .giga-text {
         font-size: 48px;
       }
+    }
+
+    hr {
+      width: 90%;
     }
   }
 }

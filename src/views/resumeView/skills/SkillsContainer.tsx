@@ -1,7 +1,5 @@
 import SubHeader from '@/components/subHeader/SubHeader';
 import './skills-container.css';
-import reactlogo from '@assets/images/skills/react.svg';
-import angular from '@assets/images/skills/angular.svg';
 
 type SWProps = {
   techSkill: TechSkill;

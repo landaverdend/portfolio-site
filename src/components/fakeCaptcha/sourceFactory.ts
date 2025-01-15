@@ -17,7 +17,7 @@ function coinFlip() {
 }
 
 const largeCaptchaArray: Array<LargeCaptchaChallenge> = [
-  { imageSrc: OJ, title: 'Murderer', solution: new Set<number>([1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15]) },
+  { imageSrc: OJ, title: 'Murderer', solution: new Set<number>(coinFlip() ? [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15] : []) },
   {
     imageSrc: china,
     title: 'China',

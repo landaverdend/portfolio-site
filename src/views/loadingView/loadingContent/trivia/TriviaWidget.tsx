@@ -23,6 +23,7 @@ function TriviaWidget() {
       <p>
         <TypewriterText speed={35}> {trivia[triviaIndex]} </TypewriterText>
       </p>
+      <span style={{color: 'var(--panel-blue)'}}>{trivia[triviaIndex]}</span>
     </div>
   );
 }

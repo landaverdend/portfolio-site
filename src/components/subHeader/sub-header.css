@@ -24,7 +24,9 @@ hr {
     gap: 15px;
   }
 
-  hr {
-    width: 90px !important;
+  .subheader-container {
+    hr {
+      width: 90px !important;
+    }
   }
 }

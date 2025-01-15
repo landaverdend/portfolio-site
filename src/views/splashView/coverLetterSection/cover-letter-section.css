@@ -55,5 +55,13 @@
 
     width: 100vw;
     overflow: hidden;
+
+
+    .panel-one {
+      img {
+        width: 300px;
+        height: 300px;
+      }
+    }
   }
 }
