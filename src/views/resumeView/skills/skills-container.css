@@ -8,6 +8,8 @@
   justify-content: center;
   align-items: center;
 
+  gap: 25px;
+
   width: 100vw;
 }
 
@@ -23,8 +25,8 @@
   .skills-grid {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 250px);
+    /* grid-template-rows: repeat(4, 1fr); */
     column-gap: 16px;
     row-gap: 12px;
   }
@@ -75,5 +77,30 @@
   progress::-webkit-progress-value {
     background: rgb(78, 204, 78);
     border-radius: var(--proficiency-border-radius);
+  }
+}
+
+@media (max-width: 576px) {
+  .sg-container {
+    .skills-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 170px);
+    }
+  }
+
+  .skill-widget {
+
+    padding: 5px;
+
+    .tech-details {
+      .tech-label {
+        font-size: 0.8rem;
+      }
+
+      .proficiency {
+        font-size: 0.75rem;
+      }
+    }
   }
 }
