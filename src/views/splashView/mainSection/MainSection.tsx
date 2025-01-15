@@ -14,7 +14,11 @@ export default function MainSection() {
   return (
     <div className="main-section">
       <div className="main-section__text">
-        <span id="header-text">Polished Resume, Proven Results</span>
+        <span id="header-text">
+          Polished <br />
+          Resume,
+          <br /> Proven <br /> Results
+        </span>
         <span className="about-paragraph">
           Join the growing number of recruiters who use my groundbreaking{' '}
           <b>

@@ -18,8 +18,8 @@ type AppState = {
 export const useAppState = create<AppState>((set) => ({
   // componentToRender: 'SurveyView',
   // componentToRender: 'CoverLetterGeneratorView',
-  componentToRender: 'ResumeView',
-  // componentToRender: 'SplashView',
+  // componentToRender: 'ResumeView',
+  componentToRender: 'SplashView',
   nextView: '',
 
   isLoading: false,

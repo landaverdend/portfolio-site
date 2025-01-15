@@ -86,6 +86,7 @@
       display: grid;
 
       grid-template-columns: repeat(2, 170px);
+      column-gap: 8px;
     }
   }
 

@@ -1,4 +1,6 @@
 .about-container {
+  margin-top: 15vh;
+
   overflow: hidden;
   gap: 50px;
 
@@ -78,9 +80,10 @@
 
 @media (max-width: 576px) {
   .about-container {
+    margin-top: 5vh;
     flex-direction: column-reverse !important;
 
-    gap: 25px;
+    gap: 50px !important;
 
     .text-container__text {
       width: 80vw;

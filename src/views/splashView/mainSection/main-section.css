@@ -1,9 +1,10 @@
 .main-section {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 10vw;
 
-  margin: 12vh 5vw 0 5vw; /* Add the bottom margin here to give the box-shadow room to breathe...*/
+  margin: 12vh 5vw 0 15vw; /* Add the bottom margin here to give the box-shadow room to breathe...*/
 
   .main-section__text {
     flex: 6;
@@ -42,10 +43,10 @@
 }
 
 /* Big desktops */
-@media (min-width: 1200px) {
-  .main-section {
+@media (min-width: 1500px) {
+  /* .main-section {
     margin: 12vh 15vw 0 15vw;
-  }
+  } */
 }
 
 /* PHONES */
