@@ -2,6 +2,7 @@ import './project-container.css';
 
 import voltorb from '@assets/videos/voltorbflip.mp4';
 import tetrisGalaxy from '@assets/videos/tetrisgalaxy.mp4';
+import isleadvance from '@assets/videos/isleadvance.mp4';
 
 type PCProps = {
   src: string;
@@ -50,6 +51,16 @@ function ProjectContainer() {
   return (
     <div id="projects" className="projects-container">
       <ProjectCard
+        title={'Isle Advance'}
+        src={isleadvance}
+        sourceCodeUrl={'https://github.com/landaverdend/Procgen-GBA'}
+        backgroundColor={'var(--panel-blue)'}
+        techUsed={'C, Make'}
+        desc={
+          'This Homebrew project for the Gameboy Advance was my senior capstone project, developed in collaboration with a friend. My contributions focused on the procedural generation of the game world and the implementation of menu functionality'
+        }
+      />
+      <ProjectCard
         title={'Voltorb Flip JS'}
         src={voltorb}
         demoUrl={'https://voltorb.netlify.app/'}
@@ -60,20 +71,13 @@ function ProjectContainer() {
           'ReactJS recreation of the Voltorb Flip minigame from Pokemon HeartGold/SoulSilver with some slight difficulty alterations.'
         }
       />
-      {/* <ProjectCard
-        title={'Isle Advance'}
-        src={isleAdvanceGIF}
-        sourceCodeUrl={'https://github.com/landaverdend/Procgen-GBA'}
-        backgroundColor={'#a2ffba'}
-        techUsed={'C, Make'}
-        desc={'Gameboy Advance Homebrew project made alongside my friend for our Senior Year capstone project'}
-      /> */}
+
       <ProjectCard
         title={'Tetris Galaxy'}
         src={tetrisGalaxy}
         demoUrl={'https://swansonmp.github.io/tetrisGalaxy/'}
         sourceCodeUrl={'https://github.com/landaverdend/tetrisGalaxy'}
-        backgroundColor={'var(--panel-blue)'}
+        backgroundColor={'var(--panel-pink)'}
         techUsed={'Java, Java Swing'}
         desc={
           'Tetris spinoff where pieces fall from all 4 sides that was made at a university hackathon over one very long night alongside my 3 friends. '
