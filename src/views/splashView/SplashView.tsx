@@ -18,7 +18,7 @@ function SplashView() {
   ];
   return (
     <div id="splash" className="splash-container">
-      <Navbar links={navbarLinks} />
+      <Navbar links={navbarLinks} showSignUp={true} />
       <div className="splash-flexbox">
         <section id="main-section">
           <MainSection />

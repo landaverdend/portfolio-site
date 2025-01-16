@@ -3,13 +3,15 @@ import './navbar.css';
 import siteLogo from '@assets/images/logo.png';
 import Modal from '../modal/Modal';
 import FormContainer from '@/views/surveyView/formContainer/FormContainer';
+import { useAppState } from '@/state/appState';
 
 type NavbarProps = {
   links: Array<{ link: string; text: string }>;
+  showSignUp?: boolean;
 };
 
-function Navbar({ links }: NavbarProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+function Navbar({ links, showSignUp }: NavbarProps) {
+  const { isModalOpen, setIsModalOpen } = useAppState();
 
   return (
     <div className="navbar-container">
@@ -31,23 +33,26 @@ function Navbar({ links }: NavbarProps) {
               if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
               }
-            }}>
+            }}
+          >
             {l.text}
           </a>
         ))}
-
-        <button
-          onClick={() => {
-            setIsModalOpen((prev) => !prev);
-          }}>
-          Sign Up
-        </button>
-
-        {isModalOpen && (
-          <Modal>
-            <FormContainer />
-          </Modal>
+        {showSignUp && (
+          <>
+            <button
+              onClick={() => {
+                setIsModalOpen(true);
+              }}
+            >
+              Sign Up
+            </button>
+          </>
         )}
+
+        <Modal isOpen={isModalOpen}>
+          <FormContainer />
+        </Modal>
       </div>
     </div>
   );
