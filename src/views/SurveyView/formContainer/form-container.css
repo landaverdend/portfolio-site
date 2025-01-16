@@ -28,6 +28,19 @@ button {
   box-shadow: var(--form-box-shadow);
   width: max-content;
 
+  color: black;
+
+  .close-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    font-weight: 800;
+    #x-button:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+  }
+
   h1 {
     font-size: 1.8rem;
   }
