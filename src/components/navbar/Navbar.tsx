@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './navbar.css';
 import siteLogo from '@assets/images/logo.png';
 import Modal from '../modal/Modal';
+import FormContainer from '@/views/surveyView/formContainer/FormContainer';
 
 type NavbarProps = {
   links: Array<{ link: string; text: string }>;
@@ -44,7 +45,7 @@ function Navbar({ links }: NavbarProps) {
 
         {isModalOpen && (
           <Modal>
-            <span>HELLOOOO WORLD!</span>
+            <FormContainer />
           </Modal>
         )}
       </div>

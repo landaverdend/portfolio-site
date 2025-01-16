@@ -2,19 +2,23 @@ import './form-container.css';
 import { useForm } from 'react-hook-form';
 import { Inputs } from '../SurveyView';
 import { ComponentWithPhysics, ErrorText, InputWithPhysics, SelectWithPhysics } from '../physicsInput';
-import { DOMBody } from '../../../hooks/physicsHook';
-import { randomNumber } from '@/util/random';
-import { useState } from 'react';
+import usePhysicsHook, { DOMBody } from '../../../hooks/physicsHook';
+import { getRandomChanceIn, randomNumber } from '@/util/random';
+import { useEffect, useRef, useState } from 'react';
 import { useAppState } from '@/state/appState';
+import { Body } from 'matter-js';
+import { createInputElement, createSelectElement } from '@/util/ElementFactory';
 
-type FCProps = {
-  domMap: Map<string, DOMBody>;
-  triggerPhysics: Function;
+function FormContainer() {
+  const isPhysicsSequenceStarted = useRef<boolean>(false);
 
-  isGiveupEnabled: boolean;
-};
-function FormContainer({ domMap, triggerPhysics, isGiveupEnabled }: FCProps) {
+  const { ref, domMap, addPhysicsElement } = usePhysicsHook();
+
   const [timesTried, setTimesTried] = useState(0);
+
+  const [explosionTriggered, setExplosionTriggered] = useState(false);
+  const [rainTriggered, setRainTriggered] = useState(false);
+  const [isGiveupEnabled, setIsGiveupEnabled] = useState(false);
 
   const {
     register,
@@ -24,6 +28,76 @@ function FormContainer({ domMap, triggerPhysics, isGiveupEnabled }: FCProps) {
   } = useForm<Inputs>({ mode: 'onSubmit' });
   const { triggerLoadingSequence } = useAppState();
 
+  useEffect(
+    function applyExplosionToInputs() {
+      if (!explosionTriggered) return;
+
+      const elements = document.querySelectorAll<HTMLElement>('.physics');
+
+      let i = 0;
+      for (let el of elements) {
+        if (!domMap.current.get(el.id)?.isActive) {
+          const bodyToAdd = addPhysicsElement(el);
+
+          const force = i % 2 == 0 ? 0.7 : -0.7;
+          Body.applyForce(bodyToAdd, bodyToAdd.position, { x: force, y: force });
+
+          i++;
+        }
+      }
+    },
+    [explosionTriggered]
+  );
+
+  useEffect(
+    function beginElementRaining() {
+      const elementFactoryMethods = [createInputElement, createSelectElement];
+
+      let numItems = 0;
+
+      if (rainTriggered && numItems < 300) {
+        const rainInputInterval = setInterval(() => {
+          numItems++;
+          const elToAdd = elementFactoryMethods[randomNumber(0, elementFactoryMethods.length)]();
+          ref.current?.appendChild(elToAdd);
+
+          addPhysicsElement(elToAdd);
+        }, 500);
+
+        return () => {
+          clearInterval(rainInputInterval);
+        };
+      }
+    },
+    [rainTriggered]
+  );
+
+  function triggerPhysics(id: string) {
+    if (!isPhysicsSequenceStarted.current && getRandomChanceIn(5)) {
+      const el = document.getElementById(id);
+
+      if (el) {
+        el.style.zIndex = '190';
+        addPhysicsElement(el);
+      }
+
+      // Set various event triggers
+      setTimeout(() => {
+        setExplosionTriggered(true);
+      }, 2000);
+
+      setTimeout(() => {
+        setRainTriggered(true);
+      }, 3000);
+
+      setTimeout(() => {
+        setIsGiveupEnabled(true);
+      }, 5000);
+
+      isPhysicsSequenceStarted.current = true;
+    }
+  }
+
   return (
     <form className="form-container" onSubmit={handleSubmit(() => {})}>
       <h1>Let's get you started...</h1>
@@ -32,7 +106,7 @@ function FormContainer({ domMap, triggerPhysics, isGiveupEnabled }: FCProps) {
           id={'firstName'}
           labelText={'First Name'}
           placeholder={'John'}
-          isPhysicsEnabled={domMap.get('firstName')?.isActive}
+          isPhysicsEnabled={domMap.current.get('firstName')?.isActive}
           register={register}
           registerOptions={{
             onChange: () => triggerPhysics('firstName'),
@@ -48,7 +122,7 @@ function FormContainer({ domMap, triggerPhysics, isGiveupEnabled }: FCProps) {
           id={'lastName'}
           labelText={'Last Name'}
           placeholder={'Doe'}
-          isPhysicsEnabled={domMap.get('lastName')?.isActive}
+          isPhysicsEnabled={domMap.current.get('lastName')?.isActive}
           register={register}
           registerOptions={{
             onChange: () => triggerPhysics('lastName'),
@@ -63,7 +137,7 @@ function FormContainer({ domMap, triggerPhysics, isGiveupEnabled }: FCProps) {
         <div className="user-details">
           <InputWithPhysics
             id={'email'}
-            isPhysicsEnabled={domMap.get('email')?.isActive}
+            isPhysicsEnabled={domMap.current.get('email')?.isActive}
             labelText={'Work Email'}
             placeholder={'email@asdf.com'}
             register={register}
@@ -80,7 +154,7 @@ function FormContainer({ domMap, triggerPhysics, isGiveupEnabled }: FCProps) {
 
           <InputWithPhysics
             id={'job'}
-            isPhysicsEnabled={domMap.get('job')?.isActive}
+            isPhysicsEnabled={domMap.current.get('job')?.isActive}
             labelText={'Job Title'}
             placeholder={'unemployed'}
             register={register}
@@ -98,7 +172,7 @@ function FormContainer({ domMap, triggerPhysics, isGiveupEnabled }: FCProps) {
             id={'phone'}
             labelText={'Phone Number'}
             register={register}
-            isPhysicsEnabled={domMap.get('phone')?.isActive}
+            isPhysicsEnabled={domMap.current.get('phone')?.isActive}
             placeholder={'(123) 456 7891'}
             registerOptions={{
               onChange: () => triggerPhysics('phone'),

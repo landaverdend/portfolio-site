@@ -146,7 +146,7 @@ function SurveyView() {
             </p>
           </div>
 
-          <FormContainer triggerPhysics={triggerPhysics} domMap={domMap.current} isGiveupEnabled={isGiveupEnabled} />
+          {/* <FormContainer triggerPhysics={triggerPhysics} domMap={domMap.current} isGiveupEnabled={isGiveupEnabled} /> */}
         </div>
         <BackgroundCanvas flipped={true} position="fixed" />
       </div>
