@@ -1,11 +1,15 @@
+import { useState } from 'react';
 import './navbar.css';
 import siteLogo from '@assets/images/logo.png';
+import Modal from '../modal/Modal';
 
 type NavbarProps = {
   links: Array<{ link: string; text: string }>;
 };
 
 function Navbar({ links }: NavbarProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="navbar-container">
       <div className="navbar-container__logo">
@@ -30,6 +34,19 @@ function Navbar({ links }: NavbarProps) {
             {l.text}
           </a>
         ))}
+
+        <button
+          onClick={() => {
+            setIsModalOpen((prev) => !prev);
+          }}>
+          Sign Up
+        </button>
+
+        {isModalOpen && (
+          <Modal>
+            <span>HELLOOOO WORLD!</span>
+          </Modal>
+        )}
       </div>
     </div>
   );
