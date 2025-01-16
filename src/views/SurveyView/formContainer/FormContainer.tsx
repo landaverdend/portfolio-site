@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useAppState } from '@/state/appState';
 import { Body } from 'matter-js';
 import { createInputElement, createSelectElement } from '@/util/ElementFactory';
+import { createPortal } from 'react-dom';
 
 function FormContainer() {
   const isPhysicsSequenceStarted = useRef<boolean>(false);
@@ -99,7 +100,7 @@ function FormContainer() {
   }
 
   return (
-    <>
+    <div className="physics-container" ref={ref}>
       <form className="form-container" onSubmit={handleSubmit(() => {})}>
         <div className="close-container">
           <span id="x-button" onClick={() => setIsModalOpen(false)}>
@@ -270,7 +271,7 @@ function FormContainer() {
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 

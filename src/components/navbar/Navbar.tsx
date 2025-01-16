@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './navbar.css';
 import siteLogo from '@assets/images/logo.png';
 import Modal from '../modal/Modal';

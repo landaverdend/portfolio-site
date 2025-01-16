@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from 'react';
 import usePhysicsHook from '../../hooks/physicsHook.tsx';
 import { Body } from 'matter-js';
 import { getRandomChanceIn, randomNumber } from '@/util/random';
-import FormContainer from './formContainer/FormContainer.tsx';
 import { createInputElement, createSelectElement } from '@/util/ElementFactory.ts';
 
 const dumbSlogans: string[] = [

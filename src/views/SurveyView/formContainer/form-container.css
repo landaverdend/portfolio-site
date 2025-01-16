@@ -1,13 +1,8 @@
-@keyframes give-up-anim {
-  from {
-    opacity: 0;
-    transform: translateX(-400px);
-  }
+.physics-container {
+  position: fixed;
 
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  width: 100vw;
+  height: 100vh;
 }
 
 input,
@@ -217,5 +212,17 @@ button {
   }
 
   100% {
+  }
+}
+
+@keyframes give-up-anim {
+  from {
+    opacity: 0;
+    transform: translateX(-400px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
