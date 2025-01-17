@@ -1,7 +1,7 @@
 import './navbar.css';
 import siteLogo from '@assets/images/logo.png';
 import Modal from '../modal/Modal';
-import FormContainer from '@/views/surveyView/formContainer/FormContainer';
+import FormContainer from '@views/formView/formContainer/FormContainer';
 import { useAppState } from '@/state/appState';
 
 type NavbarProps = {
@@ -32,8 +32,7 @@ function Navbar({ links, showSignUp }: NavbarProps) {
               if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
               }
-            }}
-          >
+            }}>
             {l.text}
           </a>
         ))}
@@ -42,8 +41,7 @@ function Navbar({ links, showSignUp }: NavbarProps) {
             <button
               onClick={() => {
                 setIsModalOpen(true);
-              }}
-            >
+              }}>
               Sign Up
             </button>
           </>

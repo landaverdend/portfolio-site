@@ -5,7 +5,6 @@ import SplashView from '@views/splashView/SplashView';
 import ResumeView from './views/resumeView/ResumeView';
 import { useAppState } from './state/appState';
 import LoadingView from './views/loadingView/LoadingView';
-import SurveyView from './views/surveyView/SurveyView';
 import CoverLetterGeneratorView from './views/coverLetterGeneratorView/CoverLetterGeneratorView';
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
   // Map components to paths
   const componentMap: Record<string, JSX.Element> = {
     ResumeView: <ResumeView />,
-    SurveyView: <SurveyView />,
     SplashView: <SplashView />,
     CoverLetterGeneratorView: <CoverLetterGeneratorView />,
   };

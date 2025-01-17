@@ -7,7 +7,7 @@ import LargeButton from '@/components/common/typewriterText/LargeButton/LargeBut
 import { useAppState } from '@/state/appState';
 
 export default function MainSection() {
-  const { triggerLoadingSequence } = useAppState();
+  const { setIsModalOpen } = useAppState();
 
   const [displayFakeCaptcha, setDisplayFakeCaptcha] = useState(false);
 
@@ -31,9 +31,9 @@ export default function MainSection() {
         <div className="main-section__buttons">
           <LargeButton
             onClick={() => {
-              triggerLoadingSequence('SurveyView');
+              setIsModalOpen(true);
             }}>
-            Get Started
+            Sign Up
           </LargeButton>
           <span style={{ color: 'black' }}>
             {displayFakeCaptcha ? (

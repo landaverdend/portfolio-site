@@ -1,6 +1,17 @@
 import { FieldError, RegisterOptions, UseFormRegister } from 'react-hook-form';
-import { Inputs } from './SurveyView';
 import { ReactNode } from 'react';
+
+export type Inputs = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  companySize: string;
+  companyName: string;
+  job: string;
+  hispanic: string;
+  marketingMaterials: boolean;
+};
 
 type ETProps = {
   text: string;

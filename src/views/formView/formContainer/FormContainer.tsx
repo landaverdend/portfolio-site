@@ -1,6 +1,6 @@
 import './form-container.css';
 import { useForm } from 'react-hook-form';
-import { Inputs } from '../SurveyView';
+import { Inputs } from '../physicsInput';
 import { ComponentWithPhysics, ErrorText, InputWithPhysics, SelectWithPhysics } from '../physicsInput';
 import usePhysicsHook from '../../../hooks/physicsHook';
 import { getRandomChanceIn, randomNumber } from '@/util/random';
@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useAppState } from '@/state/appState';
 import { Body } from 'matter-js';
 import { createInputElement, createSelectElement } from '@/util/ElementFactory';
-import { createPortal } from 'react-dom';
+import LargeButton from '@/components/common/typewriterText/LargeButton/LargeButton';
 
 function FormContainer() {
   const isPhysicsSequenceStarted = useRef<boolean>(false);
@@ -193,13 +193,7 @@ function FormContainer() {
           <SelectWithPhysics
             id="companySize"
             query={'Company Size'}
-            options={[
-              '1-99 employees',
-              '100-299 employees',
-              '300-1999 employees',
-              '2000+ employees',
-              'I have no company',
-            ]}
+            options={['1-99 employees', '100-299 employees', '300-1999 employees', '2000+ employees', 'I have no company']}
             register={register}
             registerOptions={{
               required: false,
@@ -245,16 +239,13 @@ function FormContainer() {
             </label>
 
             <ComponentWithPhysics id="submit">
-              <button
-                className="submit-button"
-                onClick={(e) => {
-                  e.preventDefault();
+              <LargeButton
+                onClick={() => {
                   trigger();
                   setTimesTried((prev) => prev + 1);
-                }}
-              >
+                }}>
                 Let's Go!
-              </button>
+              </LargeButton>
             </ComponentWithPhysics>
 
             {(timesTried >= 2 || isGiveupEnabled) && (
@@ -263,8 +254,7 @@ function FormContainer() {
                 onClick={(e) => {
                   e.preventDefault();
                   triggerLoadingSequence('ResumeView');
-                }}
-              >
+                }}>
                 I give up!
               </button>
             )}
