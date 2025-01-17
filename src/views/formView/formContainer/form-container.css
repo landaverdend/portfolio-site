@@ -15,6 +15,13 @@ button {
   z-index: 10;
 }
 
+#submit {
+  button {
+    background-color: var(--main-indigo);
+    color: white;
+  }
+}
+
 select,
 input {
   border-radius: 2.5px;
