@@ -5,22 +5,25 @@ import FormContainer from '@views/formView/formContainer/FormContainer';
 import { useAppState } from '@/state/appState';
 
 type NavbarProps = {
-  links: Array<{ link: string; text: string }>;
+  links?: Array<{ link: string; text: string }>;
   showSignUp?: boolean;
 };
 
 function Navbar({ links, showSignUp }: NavbarProps) {
-  const { isModalOpen, setIsModalOpen } = useAppState();
+  const { isModalOpen, setIsModalOpen, setView } = useAppState();
 
   return (
     <div className="navbar-container">
       <div className="navbar-container__logo">
-        <a href="https://github.com/landaverdend">
+        <a
+          onClick={() => {
+            setView('SplashView');
+          }}>
           <img src={siteLogo} height={75} width={75} />
         </a>
       </div>
       <div className="navbar-container__links">
-        {links.map((l) => (
+        {links?.map((l) => (
           <a
             key={l.link}
             href={l.link}

@@ -6,12 +6,16 @@ import './loading-content.css';
 import { useAppState } from '@/state/appState';
 
 function LoadingContent() {
-  const { isLoadingBarDone } = useAppState();
+  const { isLoadingBarDone, setIsModalOpen } = useAppState();
 
   return (
     <div className={`curtain-content `}>
       <img className={`curtain-content__logo ${!isLoadingBarDone ? 'logo-slide-and-bounce' : 'logo-slide-out'}`} src={logo} />
-      <div className={`curtain-content__trivia ${!isLoadingBarDone ? 'fade-in' : 'fade-out'}`}>
+      <div
+        className={`curtain-content__trivia ${!isLoadingBarDone ? 'fade-in' : 'fade-out'}`}
+        onAnimationEnd={() => {
+          setIsModalOpen(false);
+        }}>
         <LoadingBar />
         <TriviaWidget />
       </div>

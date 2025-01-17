@@ -8,6 +8,7 @@ import ChatBubble from '@/components/chatBubble/ChatBubble';
 import buildCoverLetter from '@/util/coverLetterFactory';
 import LoadSpinner from '@/components/loadSpinner/LoadSpinner';
 import Footer from '@/components/footer/Footer';
+import Navbar from '@/components/navbar/Navbar';
 
 type UITProps = {
   defaultString: string;
@@ -53,6 +54,7 @@ export default function CoverLetterGeneratorView() {
 
   return (
     <>
+      <Navbar showSignUp={true} />
       <div className="generator-container">
         <div className="form-controls">
           <h2>Cover Letter Generator</h2>
