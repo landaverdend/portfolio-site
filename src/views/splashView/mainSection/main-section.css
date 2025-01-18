@@ -46,17 +46,10 @@
   }
 }
 
-/* Big desktops */
-@media (min-width: 1500px) {
-  /* .main-section {
-    margin: 12vh 15vw 0 15vw;
-  } */
-}
-
 /* PHONES */
 @media (max-width: 576px) {
   .main-section {
-    margin: 5vh 10vw 5vh 10vw;
+    margin: 5vh 5vw 5vh 5vw;
 
     .main-section__text {
       gap: 7vh;

@@ -4,6 +4,7 @@ import Modal from '../modal/Modal';
 import FormContainer from '@views/formView/formContainer/FormContainer';
 import { useAppState } from '@/state/appState';
 import { useEffect, useState } from 'react';
+import HamburgerMenu from '@assets/images/icons/hamburger.svg?react';
 
 const MOBILE_WIDTH = 600;
 
@@ -81,6 +82,8 @@ function Navbar({ links, showSignUp }: NavbarProps) {
             </Modal>
           </>
         )}
+
+        {isMobileView && !isMobileMenuOpen && <HamburgerMenu width={48} height={48} />}
       </div>
     </div>
   );
