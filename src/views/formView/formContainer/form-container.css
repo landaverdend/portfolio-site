@@ -26,7 +26,7 @@ select,
 input {
   border-radius: 2.5px;
   border: 1px solid #bebebe;
-  padding: 7.5px;
+  padding: 12px;
 }
 
 .form-container {
@@ -35,6 +35,7 @@ input {
   align-items: center;
   justify-content: center;
 
+  font-size: 1.1rem;
   padding: 50px;
   border-radius: 25px;
   border: 1px solid black;
@@ -51,7 +52,8 @@ input {
     justify-content: flex-end;
     width: 100%;
     font-weight: 800;
-    
+    font-size: 1.2rem;
+  
     #x-button:hover {
       cursor: pointer;
       opacity: 0.5;
@@ -68,13 +70,6 @@ input {
     justify-items: stretch;
     gap: 5px;
     align-items: center;
-
-    select,
-    input {
-      border-radius: 2.5px;
-      border: 1px solid #bebebe;
-      padding: 7.5px;
-    }
 
     label {
       display: flex;

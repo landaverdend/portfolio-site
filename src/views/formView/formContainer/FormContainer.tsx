@@ -63,7 +63,7 @@ function FormContainer() {
           ref.current?.appendChild(elToAdd);
 
           addPhysicsElement(elToAdd);
-        }, 500);
+        }, 250);
 
         return () => {
           clearInterval(rainInputInterval);
@@ -89,11 +89,11 @@ function FormContainer() {
 
       setTimeout(() => {
         setRainTriggered(true);
-      }, 3000);
+      }, 2500);
 
       setTimeout(() => {
         setIsGiveupEnabled(true);
-      }, 5000);
+      }, 8000);
 
       isPhysicsSequenceStarted.current = true;
     }
@@ -240,6 +240,7 @@ function FormContainer() {
 
             <ComponentWithPhysics id="submit">
               <LargeButton
+                fontSize="1.5rem"
                 onClick={() => {
                   trigger();
                   setTimesTried((prev) => prev + 1);

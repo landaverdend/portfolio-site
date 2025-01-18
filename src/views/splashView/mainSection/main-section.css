@@ -9,6 +9,8 @@
   .main-section__text {
     flex: 6;
 
+    font-size: 1.5rem;
+
     display: flex;
     flex-direction: column;
     gap: 5vh;
@@ -20,12 +22,14 @@
     }
 
     .about-paragraph {
-      font-size: large;
+      font-size: 1.25rem;
     }
 
     .main-section__buttons {
       display: flex;
       flex-direction: row;
+
+      height: 90px;
 
       gap: 25px;
       align-items: center;

@@ -24,12 +24,13 @@ export default function MainSection() {
           <b>
             <i>Resume as a Service</i>
           </b>
-          (RaaS) platform to gain access to my resume effortlessly. Streamline your hiring process and elevate your recruitment
-          game with the first-ever site designed for seamless access to my resume.
+          {'  '}(RaaS) platform to gain access to my resume effortlessly. Streamline your hiring process and elevate your
+          recruitment game with the first-ever site designed for seamless access to my resume.
         </span>
 
         <div className="main-section__buttons">
           <LargeButton
+            fontSize="2rem"
             onClick={() => {
               setIsModalOpen(true);
             }}>
