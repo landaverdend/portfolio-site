@@ -58,9 +58,14 @@
 
 
     .panel-one {
+      
       img {
         width: 300px;
         height: 300px;
+      }
+
+      p {
+        max-width: 100%;
       }
     }
   }

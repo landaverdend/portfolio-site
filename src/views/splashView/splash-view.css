@@ -1,6 +1,7 @@
 .splash-container {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .splash-flexbox {
@@ -15,6 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 /* ========== Extra Small Devices (Phones) ========== */
