@@ -102,7 +102,7 @@ export default function SplashGrid() {
         <div className="top-text">
           <span className="giga-text">RTRA</span>
           <span className="small-text">
-            <b>Real Time Resume Analytics</b> Provides recruiters with live metrics: time spent unemployed, buzzword density, and
+            <b>Real Time Resume Analytics</b>: Provides recruiters with live metrics: time spent unemployed, buzzword density, and
             live changes.
           </span>
         </div>

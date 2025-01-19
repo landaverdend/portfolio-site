@@ -83,7 +83,15 @@ function Navbar({ links, showSignUp }: NavbarProps) {
           </>
         )}
 
-        {isMobileView && !isMobileMenuOpen && <HamburgerMenu width={48} height={48} />}
+        {isMobileView && !isMobileMenuOpen && (
+          <HamburgerMenu
+            width={48}
+            height={48}
+            onClick={() => {
+              console.log('clicked the hamburger');
+            }}
+          />
+        )}
       </div>
     </div>
   );

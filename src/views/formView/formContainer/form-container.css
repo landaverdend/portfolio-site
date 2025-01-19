@@ -53,7 +53,7 @@ input {
     width: 100%;
     font-weight: 800;
     font-size: 1.2rem;
-  
+
     #x-button:hover {
       cursor: pointer;
       opacity: 0.5;
@@ -190,8 +190,9 @@ input {
 /* Phone Screens */
 @media (max-width: 576px) {
   .form-container {
+    margin: 25vh 0 0 0;
+
     padding: 10px;
-    margin: 0 auto 5vh auto;
 
     .input-grid {
       display: flex;

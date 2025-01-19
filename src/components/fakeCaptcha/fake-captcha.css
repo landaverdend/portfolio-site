@@ -13,6 +13,7 @@
   background-color: #f9f9f9;
   box-shadow: 1px 1px 1px rgba(44, 46, 46, 0.5);
 
+  font-size: 1rem;
   font-family: Arial, Helvetica, sans-serif;
 
   .captcha-container__left {

@@ -178,6 +178,7 @@
         position: relative;
         width: 380px;
         height: 380px;
+        -webkit-user-drag: none;
       }
     }
   }
