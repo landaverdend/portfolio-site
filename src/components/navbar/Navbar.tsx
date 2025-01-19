@@ -5,18 +5,40 @@ import FormContainer from '@views/formView/formContainer/FormContainer';
 import { useAppState } from '@/state/appState';
 import { useEffect, useState } from 'react';
 import HamburgerMenu from '@assets/images/icons/hamburger.svg?react';
+import Cross from '@assets/images/icons/cross.svg?react';
 
 const MOBILE_WIDTH = 600;
+type Link = { link: string; text: string };
+
+type LProps = {
+  link: Link;
+};
+function Link({ link }: LProps) {
+  return (
+    <a
+      key={link.link}
+      href={link.text}
+      onClick={(e) => {
+        e.preventDefault();
+
+        const element = document.getElementById(link.link);
+
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }}>
+      {link.text}
+    </a>
+  );
+}
 
 type NavbarProps = {
-  links?: Array<{ link: string; text: string }>;
+  links?: Array<Link>;
   showSignUp?: boolean;
 };
-
 function Navbar({ links, showSignUp }: NavbarProps) {
   const [isMobileView, setMobileView] = useState(window.innerWidth <= MOBILE_WIDTH);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const { isModalOpen, setIsModalOpen, setView } = useAppState();
 
@@ -38,61 +60,69 @@ function Navbar({ links, showSignUp }: NavbarProps) {
   }, []);
 
   return (
-    <div className="navbar-container">
-      <div className="navbar-container__logo">
-        <a
-          onClick={() => {
-            setView('SplashView');
-          }}>
-          <img src={siteLogo} height={75} width={75} />
-        </a>
-      </div>
-      <div className="navbar-container__links">
-        {!isMobileView && (
-          <>
-            {links?.map((l) => (
-              <a
-                key={l.link}
-                href={l.link}
-                onClick={(e) => {
-                  e.preventDefault();
-
-                  const element = document.getElementById(l.link);
-
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}>
-                {l.text}
-              </a>
-            ))}
-          </>
-        )}
-
-        {showSignUp && (
-          <>
-            <button
-              onClick={() => {
-                setIsModalOpen(true);
-              }}>
-              Sign Up
-            </button>
-            <Modal isOpen={isModalOpen}>
-              <FormContainer />
-            </Modal>
-          </>
-        )}
-
-        {isMobileView && !isMobileMenuOpen && (
-          <HamburgerMenu
-            width={48}
-            height={48}
+    <div style={{ position: 'relative' }}>
+      <div className="navbar-container">
+        <div className="navbar-container__logo">
+          <a
             onClick={() => {
-              console.log('clicked the hamburger');
-            }}
-          />
-        )}
+              setView('SplashView');
+            }}>
+            <img src={siteLogo} height={75} width={75} />
+          </a>
+        </div>
+        <div className="navbar-container__links">
+          {!isMobileView && (
+            <>
+              {links?.map((l) => (
+                <Link link={l} />
+              ))}
+            </>
+          )}
+
+          {showSignUp && (
+            <>
+              <button
+                onClick={() => {
+                  setIsModalOpen(true);
+                }}>
+                Sign Up
+              </button>
+              <Modal isOpen={isModalOpen}>
+                <FormContainer />
+              </Modal>
+            </>
+          )}
+
+          {isMobileView && !isMobileMenuOpen && (
+            <HamburgerMenu
+              width={48}
+              height={48}
+              onClick={() => {
+                setMobileMenuOpen(true);
+              }}
+            />
+          )}
+          {isMobileView && isMobileMenuOpen && (
+            <Cross
+              width={48}
+              height={48}
+              onClick={() => {
+                setMobileMenuOpen(false);
+              }}
+            />
+          )}
+        </div>
       </div>
+
+      {isMobileView && (
+        <div className={`dropdown-list ${isMobileMenuOpen ? 'show' : 'hidden'}`}>
+          {links?.map((l) => (
+            <span className="link-background">
+              <Link link={l} />
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
