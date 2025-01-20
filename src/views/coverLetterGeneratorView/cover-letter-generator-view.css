@@ -119,3 +119,12 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .generator-container {
+    flex-wrap: wrap-reverse;
+    .form-controls {
+
+    }
+  }
+}

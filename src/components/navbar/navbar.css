@@ -1,5 +1,6 @@
 .navbar-container {
   height: 10vh;
+  width: 100vw;
   color: white;
 
   background-color: var(--main-indigo);
@@ -13,16 +14,17 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 15px 0 15px;
   font-size: 1.5rem;
 
   .navbar-container__logo {
+    margin-left: 25px;
     img {
       border-radius: 100px;
     }
   }
 
   .navbar-container__links {
+    margin-right: 25px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -59,7 +61,7 @@
 
 .dropdown-list {
   margin-top: 5vh;
-  
+
   position: absolute;
   width: 100vw;
 
