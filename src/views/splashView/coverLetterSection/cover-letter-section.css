@@ -4,6 +4,7 @@
   justify-content: center;
   width: 85vw;
   margin: 0 5vw 5vh 5vw;
+  font-size: 1.2rem;
 
   .panel-one {
     flex: 6;
@@ -21,7 +22,7 @@
     }
 
     p {
-      max-width: 80%;
+       max-width: 80%;
     }
 
     img {
