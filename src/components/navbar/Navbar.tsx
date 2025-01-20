@@ -13,25 +13,6 @@ type Link = { link: string; text: string };
 type LProps = {
   link: Link;
 };
-function Link({ link }: LProps) {
-  return (
-    <a
-      className="link"
-      key={link.link}
-      href={link.text}
-      onClick={(e) => {
-        e.preventDefault();
-
-        const element = document.getElementById(link.link);
-
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }}>
-      {link.text}
-    </a>
-  );
-}
 
 type NavbarProps = {
   links?: Array<Link>;
@@ -42,6 +23,26 @@ function Navbar({ links, showSignUp }: NavbarProps) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { isModalOpen, setIsModalOpen, setView } = useAppState();
+
+  function Link({ link }: LProps) {
+    return (
+      <a
+        className="link"
+        key={link.link}
+        href={link.text}
+        onClick={(e) => {
+          e.preventDefault();
+          setMobileMenuOpen(false);
+          const element = document.getElementById(link.link);
+
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}>
+        {link.text}
+      </a>
+    );
+  }
 
   // Update the state when the viewport size changes
   useEffect(() => {
