@@ -15,18 +15,19 @@ button {
   z-index: 10;
 }
 
+input,
+select {
+  font-size: 1.2rem;
+  border-radius: 2.5px;
+  border: 1px solid #bebebe;
+  padding: 12px;
+}
+
 #submit {
   button {
     background-color: var(--main-indigo);
     color: white;
   }
-}
-
-select,
-input {
-  border-radius: 2.5px;
-  border: 1px solid #bebebe;
-  padding: 12px;
 }
 
 .form-container {
@@ -35,7 +36,6 @@ input {
   align-items: center;
   justify-content: center;
 
-  font-size: 1.1rem;
   padding: 50px;
   border-radius: 25px;
   border: 1px solid black;
@@ -52,7 +52,6 @@ input {
     justify-content: flex-end;
     width: 100%;
     font-weight: 800;
-    font-size: 1.2rem;
 
     #x-button:hover {
       cursor: pointer;
@@ -76,18 +75,15 @@ input {
       flex-direction: column;
       gap: 5px;
 
-      font-size: 0.9rem;
       height: 6rem;
+      font-size: 1rem;
 
-      input {
-        /* width: 298px; */
-        width: 18rem;
-        max-width: 18rem;
-      }
-
+      input,
       select {
-        width: 19rem;
-        max-width: 21rem;
+        font-size: 1.2rem;
+        border-radius: 2.5px;
+        border: 1px solid #bebebe;
+        padding: 12px;
       }
     }
 
@@ -139,6 +135,7 @@ input {
 
       /* checkbox. */
       label {
+        font-size: 1.1rem;
         flex-direction: row;
         align-items: center;
         justify-content: center;
@@ -150,7 +147,7 @@ input {
       }
 
       .submit-button {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
 
         color: white;
 

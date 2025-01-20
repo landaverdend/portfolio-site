@@ -10,6 +10,7 @@ export type DOMBody = {
   x: number;
   y: number;
   angle: number;
+  width: number; // Width needs to be tracked due to the
 };
 
 function usePhysicsHook(shouldRender = false) {
@@ -28,7 +29,7 @@ function usePhysicsHook(shouldRender = false) {
 
     for (const el of elements) {
       const { x, y } = el.getBoundingClientRect();
-      domMap.current.set(el.id, { isActive: false, x: x, y: y, angle: 0 });
+      domMap.current.set(el.id, { isActive: false, x: x, y: y, angle: 0, width: el.offsetWidth });
     }
   }, []);
 
@@ -68,7 +69,6 @@ function usePhysicsHook(shouldRender = false) {
   }, []);
 
   useEffect(() => {
-    // TODO: fix this
     function handleResize() {
       if (!ref.current) return;
 
@@ -85,8 +85,6 @@ function usePhysicsHook(shouldRender = false) {
     // // Attach the resize event listener
     window.addEventListener('resize', handleResize);
 
-    // Perform initial setup
-
     // Cleanup on unmount
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -95,7 +93,7 @@ function usePhysicsHook(shouldRender = false) {
 
   function buildScene() {
     if (!ref.current) return;
-     
+
     const width = ref.current.scrollWidth;
     const height = ref.current.scrollHeight;
 
@@ -130,7 +128,7 @@ function usePhysicsHook(shouldRender = false) {
         const { x, y } = body.position;
         const { angle } = body;
 
-        dom.set(body.plugin.domId, { isActive: isActive, x: x, y: y, angle: body.angle });
+        dom.set(body.plugin.domId, { isActive: isActive, x: x, y: y, angle: body.angle, width: body.plugin.width });
 
         // UPDATE THE dom object with data from matterjs.
         const el = document.getElementById(plugin.domId);
@@ -139,6 +137,8 @@ function usePhysicsHook(shouldRender = false) {
           el.style.top = `${y}px`;
           el.style.left = `${x}px`;
           el.style.transform = `translate(-50%, -50%) rotate(${angle}rad)`;
+          el.style.width = `${plugin.width - 25}px`;
+          // el.style.padding = `12px`
         }
       }
 
@@ -156,15 +156,14 @@ function usePhysicsHook(shouldRender = false) {
 
   // UTIL FUNCTIONS
   function createPhysicsBodyFromDOM(el: HTMLElement, options = {}) {
-    const { width, height } = el.getBoundingClientRect();
     const x = el.offsetLeft;
     const y = el.offsetTop;
 
     // Calculate Matter.js coordinates (centered origin)
-    const centerX = x + width / 2;
-    const centerY = y + height / 2;
+    const centerX = x + el.offsetWidth / 2;
+    const centerY = y + el.offsetHeight / 2;
 
-    const toRet = Bodies.rectangle(centerX, centerY, width, height, options);
+    const toRet = Bodies.rectangle(centerX, centerY, el.offsetWidth, el.offsetHeight, options);
     toRet.friction = 0.0001;
     toRet.frictionAir = 0.00005;
     toRet.restitution = 0.1;
@@ -174,11 +173,20 @@ function usePhysicsHook(shouldRender = false) {
 
   function addPhysicsElement(el: HTMLElement) {
     // Make the body from the given element.
-    const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, { isStatic: false, plugin: { domId: el.id } });
+    const bodyToAdd = createPhysicsBodyFromDOM(el as HTMLElement, {
+      isStatic: false,
+      plugin: { domId: el.id, width: el.offsetWidth },
+    });
     Composite.add(engine.current.world, bodyToAdd);
 
     // Save the id to the translation map.
-    domMap.current.set(el.id, { isActive: true, x: bodyToAdd.position.x, y: bodyToAdd.position.y, angle: bodyToAdd.angle });
+    domMap.current.set(el.id, {
+      isActive: true,
+      x: bodyToAdd.position.x,
+      y: bodyToAdd.position.y,
+      angle: bodyToAdd.angle,
+      width: bodyToAdd.plugin.weight,
+    });
 
     return bodyToAdd;
   }

@@ -61,6 +61,7 @@ function Navbar({ links, showSignUp }: NavbarProps) {
   }, []);
 
   return (
+    // <div style={{position: 'sticky'}}>
     <>
       <div className="navbar-container">
         <div className="navbar-container__logo">
@@ -125,6 +126,7 @@ function Navbar({ links, showSignUp }: NavbarProps) {
         </div>
       )}
     </>
+    // </div>
   );
 }
 

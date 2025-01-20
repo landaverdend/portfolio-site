@@ -49,7 +49,7 @@ export function InputWithPhysics({
       {labelText}
       <input
         id={id}
-        className={`physics ${className}`}
+        className={`physics ${className ? className : ''}`}
         type="text"
         placeholder={placeholder}
         {...(register ? register(id as keyof Inputs, registerOptions) : {})}
