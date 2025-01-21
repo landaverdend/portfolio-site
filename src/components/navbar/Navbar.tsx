@@ -38,7 +38,8 @@ function Navbar({ links, showSignUp }: NavbarProps) {
           if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
           }
-        }}>
+        }}
+      >
         {link.text}
       </a>
     );
@@ -62,14 +63,14 @@ function Navbar({ links, showSignUp }: NavbarProps) {
   }, []);
 
   return (
-    // <div style={{position: 'sticky'}}>
-    <>
+    <div className="navbar">
       <div className="navbar-container">
         <div className="navbar-container__logo">
           <a
             onClick={() => {
               setView('SplashView');
-            }}>
+            }}
+          >
             <img src={siteLogo} height={75} width={75} />
           </a>
         </div>
@@ -87,7 +88,9 @@ function Navbar({ links, showSignUp }: NavbarProps) {
               <button
                 onClick={() => {
                   setIsModalOpen(true);
-                }}>
+                  setMobileMenuOpen(false);
+                }}
+              >
                 Sign Up
               </button>
               <Modal isOpen={isModalOpen}>
@@ -126,8 +129,7 @@ function Navbar({ links, showSignUp }: NavbarProps) {
           ))}
         </div>
       )}
-    </>
-    // </div>
+    </div>
   );
 }
 
