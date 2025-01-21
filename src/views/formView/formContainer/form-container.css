@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
 
-  position: fixed;
+  /* position: fixed; */
 
   width: 100vw;
   height: 100vh;
@@ -35,6 +35,8 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  overflow-y: auto;
 
   padding: 50px;
   border-radius: 25px;
@@ -135,6 +137,7 @@ select {
 
       /* checkbox. */
       label {
+        display: flex;
         font-size: 1.1rem;
         flex-direction: row;
         align-items: center;
@@ -187,24 +190,45 @@ select {
 /* Phone Screens */
 @media (max-width: 576px) {
   .form-container {
-    margin: 25vh 0 0 0;
+    margin: 50vh 0 0 0;
 
+    width: 85vw;
     padding: 10px;
 
     .input-grid {
       display: flex;
       flex-direction: column;
+      gap: 5vh;
 
       label {
         height: 4rem;
+        align-items: center;
+
+        input,
+        select {
+          width: 15rem;
+        }
       }
 
       .user-details {
         flex-direction: column;
+        gap: 5vh;
+
+        label {
+          align-items: center;
+        }
 
         input {
-          width: 18rem;
+          width: 15rem;
         }
+      }
+
+      .optional-text-field {
+        display: none;
+      }
+
+      .button-container {
+        width: 60vw;
       }
     }
   }

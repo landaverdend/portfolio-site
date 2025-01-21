@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import HamburgerMenu from '@assets/images/icons/hamburger.svg?react';
 import Cross from '@assets/images/icons/cross.svg?react';
 
-const MOBILE_WIDTH = 600;
+export const MOBILE_WIDTH = 600;
 type Link = { link: string; text: string };
 
 type LProps = {

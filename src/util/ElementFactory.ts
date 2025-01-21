@@ -1,3 +1,4 @@
+import { MOBILE_WIDTH } from '@/components/navbar/Navbar';
 import { randomNumber } from './random';
 
 export function createDebugCanvas(): HTMLElement {
@@ -109,9 +110,11 @@ export function createInputElement(): HTMLElement {
   inputToAdd.id = `${crypto.randomUUID()}`;
   inputToAdd.className = 'physics input-style';
 
-  const x = randomNumber(document.body.scrollWidth * 0.2, document.body.scrollWidth * 0.6);
+  const x = getValidXPosition(inputToAdd);
+
   inputToAdd.style.position = 'absolute';
   inputToAdd.style.top = `0px`;
+
   inputToAdd.style.left = `${x}px`;
   return inputToAdd;
 }
@@ -122,7 +125,7 @@ export function createSelectElement(): HTMLElement {
 
   el.className = 'physics input-style';
 
-  const x = randomNumber(document.body.scrollWidth * 0.2, document.body.scrollWidth * 0.6);
+  const x = getValidXPosition(el);
 
   el.style.position = 'absolute';
   el.style.top = `0px`;
@@ -136,4 +139,14 @@ export function createSelectElement(): HTMLElement {
     el.appendChild(option);
   }
   return el;
+}
+
+function getValidXPosition(el: HTMLElement): number {
+  let x = randomNumber(window.innerWidth * 0.2, window.innerWidth * 0.7);
+
+  if (window.innerWidth <= MOBILE_WIDTH) {
+    x = 50;
+  }
+
+  return x;
 }

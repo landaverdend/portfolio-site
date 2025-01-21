@@ -9,6 +9,7 @@ import { useAppState } from '@/state/appState';
 import { Body } from 'matter-js';
 import { createInputElement, createSelectElement } from '@/util/ElementFactory';
 import LargeButton from '@/components/common/typewriterText/LargeButton/LargeButton';
+import { MOBILE_WIDTH } from '@/components/navbar/Navbar';
 
 function FormContainer() {
   const isPhysicsSequenceStarted = useRef<boolean>(false);
@@ -55,15 +56,20 @@ function FormContainer() {
       const elementFactoryMethods = [createInputElement, createSelectElement];
 
       let numItems = 0;
+      const isMobile = window.innerWidth < MOBILE_WIDTH;
+
+      const interval = isMobile ? 1000 : 350;
 
       if (rainTriggered && numItems < 300) {
         const rainInputInterval = setInterval(() => {
           numItems++;
-          const elToAdd = elementFactoryMethods[randomNumber(0, elementFactoryMethods.length)]();
+          const elToAdd = elementFactoryMethods[isMobile ? 0 : randomNumber(0, elementFactoryMethods.length)]();
+          if (elToAdd.offsetWidth >= window.innerWidth) return;
+
           ref.current?.appendChild(elToAdd);
 
           addPhysicsElement(elToAdd);
-        }, 250);
+        }, interval);
 
         return () => {
           clearInterval(rainInputInterval);
@@ -232,7 +238,7 @@ function FormContainer() {
                   },
                 })}
               />
-              I agree to receive marketing notifications
+              <p>I agree to receive marketing notifications</p>
               {errors.marketingMaterials && (
                 <ErrorText text={errors.marketingMaterials?.message ? errors.marketingMaterials.message : ''} />
               )}
