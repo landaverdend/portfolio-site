@@ -3,13 +3,14 @@ import { useEffect, useState } from 'react';
 import trivia from './trivia';
 import './trivia-styles.css';
 import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
+import { randomNumber } from '@/util/random';
 
 function TriviaWidget() {
-  const [triviaIndex, setTriviaIndex] = useState(0);
+  const [triviaIndex, setTriviaIndex] = useState(randomNumber(0, trivia.length));
 
   useEffect(() => {
     const triviaChangeInterval = setInterval(() => {
-      setTriviaIndex(Math.floor(Math.random() * trivia.length));
+      setTriviaIndex(randomNumber(0, trivia.length));
     }, 6000);
 
     return () => {
@@ -23,7 +24,7 @@ function TriviaWidget() {
       <p>
         <TypewriterText speed={35}> {trivia[triviaIndex]} </TypewriterText>
       </p>
-      <span style={{color: 'var(--panel-blue)'}}>{trivia[triviaIndex]}</span>
+      <span style={{ color: 'var(--panel-blue)' }}>{trivia[triviaIndex]}</span>
     </div>
   );
 }
