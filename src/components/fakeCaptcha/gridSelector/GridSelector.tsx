@@ -1,5 +1,5 @@
 import './grid-selector.css';
-import { grabRandomSmallChallenge, grabRandomLargeChallenge, LargeCaptchaChallenge } from '../sourceFactory';
+import { grabRandomLargeChallenge, LargeCaptchaChallenge } from '../sourceFactory';
 import _ from 'lodash';
 import { useMemo, useState } from 'react';
 import rickroll from '@assets/sounds/rickroll.mp3';
@@ -15,27 +15,6 @@ function areSetsEqual(s1: Set<number>, solution: Set<number>): boolean {
   }
 
   return true;
-}
-
-type SGProps = {};
-function SmallGrid({}: SGProps) {
-  const smallChallenge = grabRandomSmallChallenge();
-
-  let imageSources = [];
-
-  for (let i = 1; i <= 9; i++) {
-    imageSources.push(smallChallenge.imageTemplate + i + '.png');
-  }
-
-  imageSources = _.shuffle(imageSources);
-
-  return (
-    <div className="captcha-grid-small">
-      {imageSources.map((src) => (
-        <img key={Math.random()} className="captcha-grid-item" src={src}></img>
-      ))}
-    </div>
-  );
 }
 
 type BGProps = {
@@ -69,7 +48,8 @@ function LargeGrid({ imgSrc, selected, setSelected }: BGProps) {
                 return new Set(prev);
               });
             }
-          }}>
+          }}
+        >
           <img style={{ left: `${leftOffset}%`, top: `${topOffset * -100}%` }} src={imgSrc} />
         </div>
       </div>
@@ -129,7 +109,8 @@ function GridSelector({ isOpen, isCompleted, setIsCompleted }: GProps) {
             onClick={() => {
               setChallenge(grabRandomLargeChallenge());
               setSelected(new Set<number>());
-            }}></div>
+            }}
+          ></div>
           <div className="button-holder audio-button-holder" onClick={() => rickrollSound.play()}></div>
           <div className="button-holder help-button-holder" onClick={() => setShowHelpText((prev) => !prev)}></div>
         </span>
@@ -139,8 +120,8 @@ function GridSelector({ isOpen, isCompleted, setIsCompleted }: GProps) {
       </div>
       {showHelpText && (
         <span className="captcha-help">
-          Click on any tiles you see with the object described in the text. If new images appear with the same object, click those
-          as well. When there are none left, click Verify.
+          Click on any tiles you see with the object described in the text. If new images appear with the same
+          object, click those as well. When there are none left, click Verify.
         </span>
       )}
     </div>

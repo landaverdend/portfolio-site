@@ -1,12 +1,12 @@
-import { jsPDF } from 'jspdf';
+import jsPDF from 'jspdf';
 
 const CONTENT_WIDTH = 190;
 const MARGIN_LENGTH = 10; // Space on margins
 const LINE_HEIGHT = 10; // Space between lines.
 
-export default function buildCoverLetter(name: string, content: string): jsPDF {
+export default function buildCoverLetter(name: string, content: string): any {
   // Default export is a4 paper, portrait, using millimeters for units
-  const doc = new jsPDF();
+  const doc: any = new jsPDF();
 
   doc.setFont('Times New Roman');
   doc.setFontSize(13);
@@ -19,7 +19,7 @@ export default function buildCoverLetter(name: string, content: string): jsPDF {
   return doc;
 }
 
-function addHeaderData(doc: jsPDF) {
+function addHeaderData(doc: any) {
   doc.text('Nicodemus Landaverde\n\nnicodemus.landaverde98@gmail.com\n\n(919) 428-8578', 10, 15);
 
   const email = 'nicodemus.landaverde98@gmail.com';
@@ -31,7 +31,7 @@ function addHeaderData(doc: jsPDF) {
   doc.rect(10, 42.5, 190, 1, 'F'); // x, y, width, height, mode ('F' for filled)
 }
 
-function addSalutation(doc: jsPDF, name: string) {
+function addSalutation(doc: any, name: string) {
   const pageWidth = doc.internal.pageSize.getWidth();
 
   doc.setTextColor(0, 0, 0);
@@ -40,7 +40,7 @@ function addSalutation(doc: jsPDF, name: string) {
   doc.text(`Dear ${name},`, x, 55);
 }
 
-function addContent(doc: jsPDF, content: string) {
+function addContent(doc: any, content: string) {
   // doc.text('\n\n' + content, MARGIN_LENGTH, 55, { maxWidth: CONTENT_WIDTH });
 
   let cursorY = 70; // Starting Y position
@@ -60,7 +60,7 @@ function addContent(doc: jsPDF, content: string) {
   });
 }
 
-function addFooters(doc: jsPDF) {
+function addFooters(doc: any) {
   const totalPages = doc.getNumberOfPages();
   const pageHeight = doc.internal.pageSize.getHeight();
   const y = pageHeight - 21;

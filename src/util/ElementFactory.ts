@@ -110,7 +110,7 @@ export function createInputElement(): HTMLElement {
   inputToAdd.id = `${crypto.randomUUID()}`;
   inputToAdd.className = 'physics input-style';
 
-  const x = getValidXPosition(inputToAdd);
+  const x = getValidXPosition();
 
   inputToAdd.style.position = 'absolute';
   inputToAdd.style.top = `0px`;
@@ -125,7 +125,7 @@ export function createSelectElement(): HTMLElement {
 
   el.className = 'physics input-style';
 
-  const x = getValidXPosition(el);
+  const x = getValidXPosition();
 
   el.style.position = 'absolute';
   el.style.top = `0px`;
@@ -141,7 +141,7 @@ export function createSelectElement(): HTMLElement {
   return el;
 }
 
-function getValidXPosition(el: HTMLElement): number {
+function getValidXPosition(): number {
   let x = randomNumber(window.innerWidth * 0.2, window.innerWidth * 0.7);
 
   if (window.innerWidth <= MOBILE_WIDTH) {
