@@ -80,7 +80,6 @@
 
 @media (max-width: 576px) {
   .about-container {
-    margin-top: 5vh;
     flex-direction: column-reverse !important;
 
     gap: 50px !important;

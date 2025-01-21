@@ -25,16 +25,23 @@ function AboutContainer() {
           <h1>About Me</h1>
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+            Hello- I'm Nicodemus Landaverde, I'm a software developer. When I'm not at my actual job or working on{' '}
+            <b>not</b>-funny side projects, you can usually find me at one of three places:
+            <ul>
+              <li>The gym</li>
+              <li>Krave Kava Bar</li>
+              <li>My house at 110 W Main St, Carrboro, NC 27510 (Please come knock on my door)</li>
+            </ul>
+            Here's a showcase of some of the stuff I've made in the past- I like to stay flexible in terms of
+            projects/skills but if I had to categorize myself I definitely fall under the web-umbrella of things.
+            Please feel free to reach out with any queries!
           </p>
 
           <LargeButton
             onClick={() => {
               handleDownload();
-            }}>
+            }}
+          >
             Check out my{' '}
             <b>
               <i>Resume</i>
@@ -42,7 +49,7 @@ function AboutContainer() {
           </LargeButton>
 
           <div className="social-dock">
-            <SubHeader barWidth='150px'>
+            <SubHeader barWidth="150px">
               <h3>Socials</h3>
             </SubHeader>
 
@@ -62,7 +69,14 @@ function AboutContainer() {
 
         <div className="flex-column portrait-container">
           <img src={me} />
-          <figcaption>(Pictured: Me using my favorite debugger)</figcaption>
+          <figcaption>
+            (Pictured: Me{' ...'}
+            <b>
+              <i>removing</i>
+            </b>
+            {'... '}
+            bugs from your codebase)
+          </figcaption>
         </div>
       </div>
     </>
