@@ -12,7 +12,15 @@ function SkillWidget({ techSkill }: SWProps) {
       <div className="tech-details flex-row">
         <span className="tech-label" style={{ justifyContent: 'flex-start', gap: '10px' }}>
           <h3>{skill}</h3>
-          {logo ? <img src={`/src/assets/images/skills/${logo}.svg`} height={36} width={36} /> : <></>}
+          {logo ? (
+            <img
+              src={new URL(`/src/assets/images/skills/${logo}.svg`, import.meta.url).toString()}
+              height={36}
+              width={36}
+            />
+          ) : (
+            <></>
+          )}
         </span>
 
         <span className="proficiency">{proficiency}%</span>
@@ -21,7 +29,6 @@ function SkillWidget({ techSkill }: SWProps) {
     </div>
   );
 }
-
 type SGProps = {
   label: string;
   skills: Array<TechSkill>;
