@@ -13,6 +13,7 @@ export async function callChatEndpoint(clientChatLog: Array<Chat>): Promise<stri
     });
 
     if (!response.ok) {
+      console.error(response);
       throw new Error('Network response was not ok');
     }
 
