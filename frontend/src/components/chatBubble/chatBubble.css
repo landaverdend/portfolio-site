@@ -1,5 +1,5 @@
 :root {
-  --chat-border-color: ;
+  --message-font-size: 1.1rem;
 }
 
 .chat-container {
@@ -48,6 +48,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  font-size: var(--message-font-size);
 
   position: fixed;
   right: 30px;
@@ -110,6 +112,7 @@
 
     overflow-y: auto;
 
+    font-size: var(--message-font-size);
     width: 95%;
 
     .chat-text {
@@ -161,7 +164,9 @@
     textarea {
       width: 75%;
       padding: 7.5px;
+      height: 60px;
 
+      font-size: var(--message-font-size);
       font-family: inherit;
       background-color: rgb(227, 224, 224);
       border-radius: 15px;
