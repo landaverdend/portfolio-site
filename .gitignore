@@ -10,7 +10,6 @@ lerna-debug.log*
 frontend/dist
 frontend/node_modules/
 backend/.gradle/
-backend/src/main/resources/static/*
 backend/build/
 frontend/node_modules
 dist
@@ -28,3 +27,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+/backend/src/main/resources/static/
