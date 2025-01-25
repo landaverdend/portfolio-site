@@ -8,6 +8,8 @@ spring:
 
 server:
   port: 443
+  forward-headers-strategy: native
+  use-forward-headers: true
   ssl:
     enabled: true
     key-store: /etc/letsencrypt/live/landaverde.in/keystore.p12
