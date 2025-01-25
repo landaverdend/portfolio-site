@@ -1,0 +1,16 @@
+spring:
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o
+
+server:
+  port: 443
+  ssl:
+    enabled: true
+    key-store: /etc/letsencrypt/live/landaverde.in/keystore.p12
+    key-store-password: password
+    key-store-type: PKCS12
+    key-alias: tomcat

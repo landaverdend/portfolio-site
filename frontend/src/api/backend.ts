@@ -1,6 +1,6 @@
 import { Chat } from '@/state/chatState';
 
-const baseUrl = 'https://landaverde.in';
+const baseUrl = '';
 
 export async function callChatEndpoint(clientChatLog: Array<Chat>): Promise<string | null> {
   try {
