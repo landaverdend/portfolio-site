@@ -5,7 +5,7 @@
 }
 
 .navbar-container {
-  height: 10vh;
+  padding: 10px;
   width: 100vw;
   color: white;
 
@@ -68,12 +68,14 @@
   .navbar-container {
     position: fixed;
     top: 0;
+
+    padding: 5px 0 0 0;
   }
 
   .navbar-container__logo {
     img {
-      height: 50px;
-      width: 50px;
+      height: 70px;
+      width: 70px;
       margin-left: 5px;
     }
   }
