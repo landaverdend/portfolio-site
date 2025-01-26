@@ -97,13 +97,21 @@ export default function CoverLetterGeneratorView() {
           <ChipInput
             label={'Frameworks to mention:'}
             chips={frameworks}
-            setChips={setFrameworks}
+            setChips={(str) => {
+              handleInputChange();
+              setFrameworks((prev) => [...prev, str]);
+            }}
+            removeChip={(str) => setFrameworks((prev) => prev.filter((el) => el !== str))}
             placeholder="Angular, React, BLAZER"
           />
           <ChipInput
             label={'Name some cloud™ technologies you want mentioned: '}
             chips={cloudTechnologies}
-            setChips={setCloudTechnologies}
+            setChips={(str) => {
+              handleInputChange();
+              setCloudTechnologies((prev) => [...prev, str]);
+            }}
+            removeChip={(str) => setCloudTechnologies((prev) => prev.filter((el) => el !== str))}
             placeholder={'AWS Ginkgo Biloba, AWS Alpha-Brain AG1 Rogan Goop'}
           />
 

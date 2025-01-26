@@ -5,15 +5,16 @@ type CIProps = {
   label: string;
   placeholder?: string;
   chips: string[];
-  
-  setChips: React.Dispatch<React.SetStateAction<string[]>>;
+
+  setChips: (str: string) => void;
+  removeChip: (str: string) => void;
 };
-export default function ChipInput({ label, placeholder, chips, setChips }: CIProps) {
+export default function ChipInput({ label, placeholder, chips, setChips, removeChip }: CIProps) {
   const [chipInputValue, setChipInputValue] = useState<string>('');
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && chipInputValue !== '') {
-      setChips((prev) => [...prev, chipInputValue]);
+      setChips(chipInputValue);
       setChipInputValue('');
     }
   };
@@ -38,7 +39,7 @@ export default function ChipInput({ label, placeholder, chips, setChips }: CIPro
               <span
                 className="close"
                 onClick={() => {
-                  setChips(chips.filter((el) => el !== str));
+                  removeChip(str);
                 }}>
                 ✕
               </span>
