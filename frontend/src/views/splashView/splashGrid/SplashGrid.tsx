@@ -96,7 +96,7 @@ export default function SplashGrid() {
         <ImageTile src={spaghetti} text={'Devops'} />
       </div>
       <div className="grid-item">
-        <Tile front={<>Pointless</>} back={<>Yikes</>} />
+        <Tile front={<>Pointless</>} back={<>Complexity</>} />
       </div>
       <div className="grid-item text-column double-block metric-block2">
         <div className="top-text">
