@@ -19,9 +19,9 @@ type AppState = {
 };
 
 export const useAppState = create<AppState>((set) => ({
-  componentToRender: 'CoverLetterGeneratorView',
+  // componentToRender: 'CoverLetterGeneratorView',
   // componentToRender: 'ResumeView',
-  // componentToRender: 'SplashView',
+  componentToRender: 'SplashView',
   nextView: '',
 
   isLoading: false,
