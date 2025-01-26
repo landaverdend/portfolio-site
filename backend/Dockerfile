@@ -8,7 +8,7 @@ WORKDIR /app
 COPY build/libs/portfolio-site-backend-1.0-SNAPSHOT.jar app.jar
 
 # Expose the port your application runs on (default 8080)
-EXPOSE 443
+EXPOSE 8080
 
 # Command to run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
