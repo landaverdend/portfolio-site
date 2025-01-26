@@ -193,3 +193,28 @@
     transition: 0.1s ease;
   }
 }
+
+@media (max-width: 576px) {
+  .captcha-grid-container {
+    left: -20px;
+
+    min-width: auto;
+
+    .captcha-grid-large {
+      .captcha-grid-item {
+        width: 80px;
+        height: 80px;
+
+        .captcha-grid-item__wrapper {
+          width: 80px;
+          height: 80px;
+
+          img {
+            width: 380px;
+            height: 380px;
+          }
+        }
+      }
+    }
+  }
+}

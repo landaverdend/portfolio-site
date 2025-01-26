@@ -82,7 +82,6 @@
   }
 }
 
-
 @keyframes checkmarkAnimation {
   0% {
     background-position: 0 0;
@@ -90,4 +89,15 @@
   100% {
     background-position: 0 -630px;
   }
+}
+
+
+@media (max-width: 576px) {
+  .captcha-container {
+
+    .captcha-grid-container {
+      
+    }
+
+  } 
 }
