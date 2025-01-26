@@ -17,5 +17,4 @@ IMAGE_NAME="portfolio-site"
 
 echo "Building docker container"
 docker build --no-cache -t $IMAGE_NAME:latest .
-docker-compose down
-docker-compose up -d 
+docker system prune -f 
