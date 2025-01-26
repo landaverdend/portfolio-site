@@ -7,13 +7,9 @@ spring:
           model: gpt-4o
 
 server:
-  address: landaverde.in
-  port: 443
+  port: 8080
   forward-headers-strategy: native
-  use-forward-headers: true
   tomcat:
-    remote-ip-header: x-forwarded-for
-    protocol-header: x-forwarded-proto
     use-relative-redirects: true
   ssl:
     enabled: true
