@@ -122,6 +122,15 @@
 
 @media (max-width: 576px) {
   .generator-container {
+    margin-top: 10vh;
     flex-wrap: wrap-reverse;
+
+    .document {
+      width: 90vw;
+    }
+
+    .form-controls {
+      max-width: 90vw;
+    }
   }
 }

@@ -61,7 +61,12 @@ export default function CoverLetterGeneratorView() {
 
           <label>
             Your Title/Name:
-            <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Seymour Butts"></input>
+            <input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              type="text"
+              placeholder="Seymour Butts"
+            ></input>
           </label>
           <label>
             Your Company/Business
@@ -69,7 +74,8 @@ export default function CoverLetterGeneratorView() {
               value={company}
               onChange={(e) => setCompany(e.target.value)}
               type="text"
-              placeholder="Chuck's Seed and Feed"></input>
+              placeholder="Chuck's Seed and Feed"
+            ></input>
           </label>
 
           <label>
@@ -78,7 +84,8 @@ export default function CoverLetterGeneratorView() {
               value={position}
               onChange={(e) => setPosition(e.target.value)}
               type="text"
-              placeholder="Software Engineer II"></input>
+              placeholder="Software Engineer II"
+            ></input>
           </label>
 
           <ChipInput
@@ -117,9 +124,12 @@ export default function CoverLetterGeneratorView() {
           <label>
             Other Details:
             <textarea
-              placeholder={'Mention any other details you want noted before a custom Cover Letter™ is made for you'}
+              placeholder={
+                'Mention any other details you want noted before a custom Cover Letter™ is made for you'
+              }
               value={otherDetails}
-              onChange={(e) => setOtherDetails(e.target.value)}></textarea>
+              onChange={(e) => setOtherDetails(e.target.value)}
+            ></textarea>
           </label>
 
           {isLoading ? (
@@ -129,7 +139,8 @@ export default function CoverLetterGeneratorView() {
               onClick={(e) => {
                 e.preventDefault();
                 handleClick();
-              }}>
+              }}
+            >
               GENERATE
             </button>
           )}
@@ -137,25 +148,30 @@ export default function CoverLetterGeneratorView() {
         <div className="letter-container">
           <div className="document">
             <h2>
-              Dear <UserInputText field={title} defaultString="YOUR_NAME_HERE"></UserInputText>
+              Dear <UserInputText field={title} defaultString="Your Name"></UserInputText>,
             </h2>
             <p className="letter-content">
               <TypewriterText speed={35}>
                 It is with a humility so profound it borders on desperation that I submit my application for the [
                 <span style={{ color: 'red' }}>{position !== '' ? position : 'YOUR_POSITION'}</span>] role at [
-                <span style={{ color: 'red' }}>{company !== '' ? company : 'YOUR_COMPANY'}</span>]. The chance to merely dream of
-                joining your illustrious organization is an honor I will recount to my grandchildren, should I ever attain the
-                life stability required to have them. From the moment I saw your job posting—crafted with the kind of perfection I
-                can only hope to absorb through osmosis—I knew this position was meant for me. <br />
+                <span style={{ color: 'red' }}>{company !== '' ? company : 'YOUR_COMPANY'}</span>]. The chance to
+                merely dream of joining your illustrious organization is an honor I will recount to my
+                grandchildren, should I ever attain the life stability required to have them. From the moment I saw
+                your job posting—crafted with the kind of perfection I can only hope to absorb through osmosis—I
+                knew this position was meant for me. <br />
                 <br />
-                My entire existence has been a meandering prelude to this opportunity. Who needs a “calling” when one can have job
-                descriptions? Let me be clear: my qualifications, while technically aligned with your requirements, are utterly
-                insignificant compared to the boundless contributions I will bring to your team. <br />
-                <br /> I possess a unique ability to contort myself into any mold required, much like a gelatin dessert. My skills
-                in [<span style={{ color: 'red' }}>{frameworks.length >= 1 ? frameworks[0] : 'RELEVANT_SKILL_1'}</span>], [
-                <span style={{ color: 'red' }}>{frameworks.length >= 2 ? frameworks[1] : 'RELEVANT_SKILL_2'}</span>], and [
-                <span style={{ color: 'red' }}>{frameworks.length >= 3 ? frameworks[2] : 'RELEVANT_SKILL_3'}</span>] are merely
-                tools in service of my true talent: tirelessly seeking your approval.
+                My entire existence has been a meandering prelude to this opportunity. Who needs a “calling” when
+                one can have job descriptions? Let me be clear: my qualifications, while technically aligned with
+                your requirements, are utterly insignificant compared to the boundless contributions I will bring
+                to your team. <br />
+                <br /> I possess a unique ability to contort myself into any mold required, much like a gelatin
+                dessert. My skills in [
+                <span style={{ color: 'red' }}>{frameworks.length >= 1 ? frameworks[0] : 'RELEVANT_SKILL_1'}</span>
+                ], [
+                <span style={{ color: 'red' }}>{frameworks.length >= 2 ? frameworks[1] : 'RELEVANT_SKILL_2'}</span>
+                ], and [
+                <span style={{ color: 'red' }}>{frameworks.length >= 3 ? frameworks[2] : 'RELEVANT_SKILL_3'}</span>
+                ] are merely tools in service of my true talent: tirelessly seeking your approval.
               </TypewriterText>
             </p>
             <p>
