@@ -6,6 +6,8 @@
   min-height: 100vh;
   overflow: hidden;
 
+  margin-top: 10vh;
+
   .form-controls {
     flex: 3;
     display: flex;
@@ -112,6 +114,7 @@
 
     .letter-content {
       flex: 8;
+      max-width: 90%;
     }
 
     p {

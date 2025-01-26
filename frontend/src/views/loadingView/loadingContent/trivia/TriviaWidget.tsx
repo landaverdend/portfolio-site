@@ -2,8 +2,8 @@ import '@styles/fonts.css';
 import { useEffect, useState } from 'react';
 import trivia from './trivia';
 import './trivia-styles.css';
-import TypewriterText from '@/components/common/typewriterText/TypeWriterText';
 import { randomNumber } from '@/util/random';
+import Typewriter from 'typewriter-effect';
 
 function TriviaWidget() {
   const [triviaIndex, setTriviaIndex] = useState(randomNumber(0, trivia.length));
@@ -21,9 +21,17 @@ function TriviaWidget() {
   return (
     <div className="trivia-container">
       <h2>Did you know?</h2>
-      <p>
-        <TypewriterText speed={35}> {trivia[triviaIndex]} </TypewriterText>
-      </p>
+      <Typewriter
+        key={triviaIndex}
+        onInit={(typewriter) => {
+          typewriter.typeString(trivia[triviaIndex]).start();
+        }}
+        options={{
+          delay: 40,
+          deleteSpeed: 20,
+          cursor: '|',
+        }}
+      />
       <span style={{ color: 'var(--panel-blue)' }}>{trivia[triviaIndex]}</span>
     </div>
   );
