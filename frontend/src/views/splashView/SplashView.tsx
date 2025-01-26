@@ -14,7 +14,7 @@ function SplashView() {
   const navbarLinks = [
     { link: 'main-section', text: 'About' },
     { link: 'featured-section', text: 'Testimonials' },
-    { link: 'utilities-section', text: 'Utilities' },
+    { link: 'tools-section', text: 'Tools' },
   ];
   return (
     <div id="splash" className="splash-container">
@@ -30,7 +30,7 @@ function SplashView() {
           <ReccomendationDrawer />
         </section>
 
-        <section id="utilities-section">
+        <section id="tools-section">
           <CoverLetterSection />
         </section>
       </div>
