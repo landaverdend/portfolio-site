@@ -4,8 +4,8 @@
   z-index: 250;
 
   .loading-container__label {
-    color: rgb(108, 103, 103);
-    font-size: 0.8em;
+    color: black;
+    font-size: 1rem;
     margin-bottom: 10px;
   }
 
@@ -38,7 +38,7 @@
     }
 
     .loading-container__label {
-      font-size: 10px;
+      font-size: 12px;
     }
   }
 }

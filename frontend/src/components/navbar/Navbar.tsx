@@ -78,7 +78,7 @@ function Navbar({ links, showSignUp }: NavbarProps) {
           {!isMobileView && (
             <>
               {links?.map((l) => (
-                <Link link={l} />
+                <Link key={crypto.randomUUID()} link={l} />
               ))}
             </>
           )}

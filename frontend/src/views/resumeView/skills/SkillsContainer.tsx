@@ -39,7 +39,7 @@ function SkillGrid({ label, skills }: SGProps) {
       <span className="label">{label}</span>
       <div className="skills-grid">
         {skills.map((skill) => (
-          <SkillWidget techSkill={skill} />
+          <SkillWidget key={crypto.randomUUID()} techSkill={skill} />
         ))}
       </div>
     </div>

@@ -24,7 +24,7 @@ function AboutContainer() {
         <div className="flex-column text-container__text">
           <h1>About Me</h1>
 
-          <p>
+          <span>
             Hello- I'm Nicodemus Landaverde, I'm a software developer. When I'm not at my actual job or working on{' '}
             <b>not</b>-funny side projects, you can usually find me at one of three places:
             <ul>
@@ -35,7 +35,7 @@ function AboutContainer() {
             Here's a showcase of some of the stuff I've made in the past- I like to stay flexible in terms of
             projects/skills but if I had to categorize myself I definitely fall under the web-umbrella of things.
             Please feel free to reach out with any queries!
-          </p>
+          </span>
 
           <LargeButton
             onClick={() => {
