@@ -9,7 +9,7 @@
   box-shadow: var(--form-box-shadow);
   border-radius: 5px;
   padding: 25px;
-
+  border: 1px solid black;
   width: 40%;
 
   .header-info {

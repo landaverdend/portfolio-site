@@ -124,7 +124,7 @@ function Navbar({ links, showSignUp }: NavbarProps) {
         <div className={`dropdown-list ${isMobileMenuOpen ? 'show' : 'hidden'}`}>
           {links?.map((l) => (
             <span className="link-background">
-              <Link link={l} />
+              <Link key={crypto.randomUUID()} link={l} />
             </span>
           ))}
         </div>
