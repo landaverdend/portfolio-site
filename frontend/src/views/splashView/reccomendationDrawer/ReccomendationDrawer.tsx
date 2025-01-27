@@ -23,21 +23,6 @@ type Testimonial = {
 
 const testimonials: Array<Testimonial> = [
   {
-    imageSrc: WarrenBuffet,
-    tagLine: 'Driving Solutions That Navigate',
-    reccomendation: "It's me, Warren Buffet. I REALLY like Nicodemus.",
-    title: 'CEO and Chairman of Berkshire Hathaway',
-    name: 'Warren Buffet',
-    companySvg: { src: BerkshireHathaway, height: '1.5rem' },
-  },
-  {
-    imageSrc: JensenHuang,
-    tagLine: 'Synchronizing Your Agility',
-    reccomendation: "You aren't as funny as you think you are.",
-    title: 'CEO and Founder of Nvidia',
-    name: 'Jensen Huang',
-    companySvg: { src: Nvidia, height: '1.5rem' },
-  },{
     imageSrc: BillGates,
     tagLine: 'Driving Actionable Items Through Uplift',
     reccomendation:
@@ -55,7 +40,22 @@ const testimonials: Array<Testimonial> = [
     name: 'Larry Ellison',
     companySvg: { src: Oracle, height: '1.5rem' },
   },
-
+  {
+    imageSrc: WarrenBuffet,
+    tagLine: 'Driving Solutions That Navigate',
+    reccomendation: "It's me, Warren Buffet. I REALLY like Nicodemus.",
+    title: 'CEO and Chairman of Berkshire Hathaway',
+    name: 'Warren Buffet',
+    companySvg: { src: BerkshireHathaway, height: '1.5rem' },
+  },
+  {
+    imageSrc: JensenHuang,
+    tagLine: 'Synchronizing Your Agility',
+    reccomendation: "You aren't as funny as you think you are.",
+    title: 'CEO and Founder of Nvidia',
+    name: 'Jensen Huang',
+    companySvg: { src: Nvidia, height: '1.5rem' },
+  },
 ];
 
 export default function ReccomendationDrawer() {
@@ -113,7 +113,7 @@ export default function ReccomendationDrawer() {
                 onClick={() => {
                   setTestimonialIndex(i);
                 }}
-                style={{ borderTop: `3px solid ${i === testimonialIndex ? '#f6b614' : 'var(--main-indigo)'}`}}>
+                style={{ borderTop: `3px solid ${i === testimonialIndex ? '#f6b614' : 'var(--main-indigo)'}` }}>
                 <img
                   src={testimonial.companySvg.src}
                   style={{

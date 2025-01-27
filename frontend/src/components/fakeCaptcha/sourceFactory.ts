@@ -1,9 +1,11 @@
 import OJ from '@assets/images/captcha/bigGrid/OJ.png';
 import china from '@assets/images/captcha/bigGrid/china.png';
-import argentina from '@assets/images/captcha/bigGrid/argentina.png';
 import waldo from '@assets/images/captcha/bigGrid/waldo.png';
 import theDress from '@assets/images/captcha/bigGrid/thedress.jpg';
-import michaelJackson from '@assets/images/captcha/bigGrid/blackpeople.png';
+import colorblind from '@assets/images/captcha/bigGrid/colorblind.webp';
+import waldo2 from '@assets/images/captcha/bigGrid/waldo2.png';
+import waldo3 from '@assets/images/captcha/bigGrid/waldo3.png';
+
 import { randomNumber } from '@/util/random';
 
 export type LargeCaptchaChallenge = {
@@ -25,32 +27,21 @@ const largeCaptchaArray: Array<LargeCaptchaChallenge> = [
   {
     imageSrc: china,
     title: 'China',
-    solution: new Set<number>(
-      coinFlip() ? [0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12] : [0, 1, 2, 4, 5, 6, 8, 9, 10, 11]
-    ),
-  },
-  {
-    imageSrc: argentina,
-    title: 'Argentina',
-    solution: new Set<number>(coinFlip() ? [0, 1, 4, 5, 8, 9, 12, 13] : [0, 1, 4, 5, 8, 9, 12, 13, 14, 15]),
+    solution: new Set<number>(coinFlip() ? [0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12] : [0, 1, 2, 4, 5, 6, 8, 9, 10, 11]),
   },
   { imageSrc: waldo, title: 'Waldo', solution: new Set<number>([9, 13]) },
   {
     imageSrc: theDress,
     title: randomNumber(0, 1) === 0 ? 'Blue Dress' : 'Gold Dress',
-    solution:
-      randomNumber(0, 1) === 0
-        ? new Set<number>([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
-        : new Set([]),
+    solution: randomNumber(0, 1) === 0 ? new Set<number>([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]) : new Set([]),
   },
   {
-    imageSrc: michaelJackson,
-    title: 'Black People',
-    solution:
-      randomNumber(0, 1) === 0
-        ? new Set<number>([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
-        : new Set<number>([0, 1, 2, 3, 4, 5, 67, 8, 9, 12, 13]),
+    imageSrc: colorblind,
+    title: 'The number 73',
+    solution: new Set([5, 6, 7, 9, 10, 11, 14]),
   },
+  { imageSrc: waldo2, title: 'Waldo', solution: new Set([0]) },
+  { imageSrc: waldo3, title: 'Waldo', solution: new Set([9]) },
 ];
 
 export type SmallCaptchaChallenge = {
