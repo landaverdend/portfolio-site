@@ -6,15 +6,13 @@ import GithubLogo from '@assets/images/logos/github.svg?react';
 import SubHeader from '@/components/subHeader/SubHeader';
 import LargeButton from '@/components/common/typewriterText/LargeButton/LargeButton';
 
-// lolol
-import pdfFile from '@assets/files/landaverde_resume.pdf';
-
 function AboutContainer() {
   const handleDownload = () => {
     // URL to the PDF file
     const link = document.createElement('a');
-    link.href = pdfFile;
+    link.href = 'https://landaverde.in/pdfs/landaverde_resume.pdf';
     link.download = 'landaverde_resume.pdf'; // Suggested filename for the download
+
     link.click();
   };
 
@@ -25,23 +23,22 @@ function AboutContainer() {
           <h1>About Me</h1>
 
           <span>
-            Hello- I'm Nicodemus Landaverde, I'm a software developer. When I'm not at my actual job or working on{' '}
-            <b>not</b>-funny side projects, you can usually find me at one of three places:
+            Hello- I'm Nicodemus Landaverde, I'm a software developer. When I'm not at my actual job or working on <b>not</b>
+            -funny side projects, you can usually find me at one of three places:
             <ul>
               <li>The gym</li>
               <li>Krave Kava Bar</li>
               <li>My house at 110 W Main St, Carrboro, NC 27510 (Please come knock on my door)</li>
             </ul>
-            Here's a showcase of some of the stuff I've made in the past- I like to stay flexible in terms of
-            projects/skills but if I had to categorize myself I definitely fall under the web-umbrella of things.
-            Please feel free to reach out with any queries!
+            Here's a showcase of some of the stuff I've made in the past- I like to stay flexible in terms of projects/skills but
+            if I had to categorize myself I definitely fall under the web-umbrella of things. Please feel free to reach out with
+            any queries!
           </span>
 
           <LargeButton
             onClick={() => {
               handleDownload();
-            }}
-          >
+            }}>
             Check out my{' '}
             <b>
               <i>Resume</i>
