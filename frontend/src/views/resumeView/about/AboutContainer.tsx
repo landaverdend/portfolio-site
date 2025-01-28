@@ -12,8 +12,11 @@ function AboutContainer() {
     const link = document.createElement('a');
     link.href = 'https://landaverde.in/pdfs/landaverde_resume.pdf';
     link.download = 'landaverde_resume.pdf'; // Suggested filename for the download
+    document.body.appendChild(link); // Append to the DOM
 
-    link.click();
+    link.click(); // Trigger the download
+
+    document.body.removeChild(link); // Clean up
   };
 
   return (

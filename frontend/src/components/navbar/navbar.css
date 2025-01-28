@@ -22,9 +22,18 @@
   font-size: 1.5rem;
 
   .navbar-container__logo {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
     margin-left: 25px;
     img {
-      border-radius: 100px;
+      border-radius: 10px;
+      border: 2px solid rgb(125, 104, 158);
+    }
+
+    .studio-name {
+      font-weight: 500;
     }
   }
 
@@ -74,9 +83,13 @@
 
   .navbar-container__logo {
     img {
-      height: 70px;
-      width: 70px;
+      height: 60px;
+      width: 60px;
       margin-left: 5px;
+    }
+    
+    .studio-name {
+      display: none;
     }
   }
 }

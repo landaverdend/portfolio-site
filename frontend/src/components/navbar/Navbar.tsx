@@ -38,8 +38,7 @@ function Navbar({ links, showSignUp }: NavbarProps) {
           if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
           }
-        }}
-      >
+        }}>
         {link.text}
       </a>
     );
@@ -69,10 +68,10 @@ function Navbar({ links, showSignUp }: NavbarProps) {
           <a
             onClick={() => {
               setView('SplashView');
-            }}
-          >
+            }}>
             <img src={siteLogo} height={75} width={75} />
           </a>
+          {window.innerWidth >= 576 && <span className="studio-name"> Fields of Green Studios</span>}
         </div>
         <div className="navbar-container__links">
           {!isMobileView && (
@@ -89,8 +88,7 @@ function Navbar({ links, showSignUp }: NavbarProps) {
                 onClick={() => {
                   setIsModalOpen(true);
                   setMobileMenuOpen(false);
-                }}
-              >
+                }}>
                 Sign Up
               </button>
               <Modal isOpen={isModalOpen}>

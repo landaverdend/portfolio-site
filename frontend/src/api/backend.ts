@@ -49,33 +49,3 @@ export async function callCoverLetterEndpoint(dto: CoverLetterDTO): Promise<stri
 
   return response.text();
 }
-
-export async function fetchAndDownloadFile(url: string, fileName: string): Promise<void> {
-  try {
-    // Fetch the file
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error(`Failed to fetch file: ${response.statusText}`);
-    }
-
-    // Convert the response to a Blob
-    const blob = await response.blob();
-    
-
-    // Create a temporary <a> element to trigger the download
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = fileName; // Set the desired file name
-    document.body.appendChild(link); // Append the link to the DOM
-    link.click(); // Trigger the download
-
-    // Clean up
-    document.body.removeChild(link);
-    URL.revokeObjectURL(link.href);
-
-    console.log(`File downloaded successfully as ${fileName}`);
-  } catch (error) {
-    console.error('Error downloading file:', error);
-  }
-}
