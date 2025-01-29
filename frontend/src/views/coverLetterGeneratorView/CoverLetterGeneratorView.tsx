@@ -1,7 +1,7 @@
 import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas';
 import './cover-letter-generator-view.css';
 import ChipInput from '@/components/chipInput/ChipInput';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { callCoverLetterEndpoint } from '@/api/backend';
 import ChatBubble from '@/components/chatBubble/ChatBubble';
 import buildCoverLetter from '@/util/coverLetterFactory';
@@ -51,6 +51,10 @@ export default function CoverLetterGeneratorView() {
       })
       .finally(() => setIsLoading(false));
   }
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
 
   // Key to force rerendering Typewriter
   const [typewriterKey, setTypewriterKey] = useState<number>(0);
@@ -156,7 +160,7 @@ export default function CoverLetterGeneratorView() {
           )}
         </div>
         <div className="letter-container">
-          <div className="document">
+          <div className="document" id="letter">
             <h2>
               Dear <UserInputText field={title} defaultString="Your Name"></UserInputText>,
             </h2>
