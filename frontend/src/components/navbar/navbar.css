@@ -52,7 +52,7 @@
 
   a:hover {
     cursor: pointer;
-    color: #eeb319;
+    color: var(--panel-pink);
   }
 
   button {

@@ -79,8 +79,8 @@ function FormContainer() {
     [rainTriggered]
   );
 
-  function triggerPhysics(id: string) {
-    if (!isPhysicsSequenceStarted.current && getRandomChanceIn(5)) {
+  function triggerPhysics(id: string, hardTrigger = false) {
+    if ((!isPhysicsSequenceStarted.current && getRandomChanceIn(5)) || hardTrigger) {
       const el = document.getElementById(id);
 
       if (el) {
@@ -244,16 +244,28 @@ function FormContainer() {
               )}
             </label>
 
-            <ComponentWithPhysics id="submit">
-              <LargeButton
-                fontSize="1.5rem"
-                onClick={() => {
-                  trigger();
-                  setTimesTried((prev) => prev + 1);
-                }}>
-                Let's Go!
-              </LargeButton>
-            </ComponentWithPhysics>
+            <div className="flex-row">
+              <ComponentWithPhysics id="submit">
+                <LargeButton
+                  fontSize="1.5rem"
+                  onClick={() => {
+                    trigger();
+                    setTimesTried((prev) => prev + 1);
+                  }}>
+                  Let's Go!
+                </LargeButton>
+              </ComponentWithPhysics>
+              <ComponentWithPhysics id="skip-sign-up">
+                <LargeButton
+                  fontSize="1rem"
+                  backgroundColor="var(--panel-pink)"
+                  onClick={() => {
+                    triggerPhysics('skip-sign-up', true);
+                  }}>
+                  Skip for now...
+                </LargeButton>
+              </ComponentWithPhysics>
+            </div>
 
             {(timesTried >= 2 || isGiveupEnabled) && (
               <button

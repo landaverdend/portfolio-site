@@ -34,6 +34,15 @@
       gap: 25px;
       align-items: center;
       justify-content: center;
+
+      .portfolio-skip {
+        color: black;
+      }
+
+      .portfolio-skip:hover {
+        color: var(--panel-pink);
+        cursor: pointer;
+      }
     }
   }
 

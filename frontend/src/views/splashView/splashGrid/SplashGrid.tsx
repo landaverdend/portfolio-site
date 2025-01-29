@@ -84,7 +84,6 @@ export default function SplashGrid() {
             <b>Resume Uptime</b>. Accessible <b>WHENEVER</b> you need it.
           </span>
         </div>
-        {/* <hr /> */}
       </div>
       <div className="grid-item">
         <Tile front={<>Agile</>} back={<>Scalable</>} />

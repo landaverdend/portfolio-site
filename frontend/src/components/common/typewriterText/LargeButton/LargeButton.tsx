@@ -6,11 +6,15 @@ type LBProps = {
   type?: 'submit' | 'reset' | 'button'; // for inputs
   disabled?: boolean;
   fontSize?: string;
+  backgroundColor?: string;
 };
-export default function LargeButton({ children, onClick, type, disabled, fontSize }: LBProps) {
+export default function LargeButton({ children, onClick, type, disabled, fontSize, backgroundColor }: LBProps) {
   return (
     <button
-      style={{ fontSize: fontSize ? fontSize : 'large' }}
+      style={{
+        fontSize: fontSize ? fontSize : 'large',
+        backgroundColor: backgroundColor ? backgroundColor : 'var(--main-indigo)',
+      }}
       onClick={() => onClick()}
       className="large-button-container"
       type={type ? type : 'button'}

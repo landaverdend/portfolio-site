@@ -34,18 +34,18 @@ export default function MainSection() {
             onClick={() => {
               setIsModalOpen(true);
             }}>
-            Sign Up
+            Get Started
           </LargeButton>
-          <span style={{ color: 'black' }}>
+          <span>
             {displayFakeCaptcha ? (
               <FakeCaptchaContainer />
             ) : (
               <u
-                style={{ cursor: 'pointer' }}
+                className="portfolio-skip"
                 onClick={() => {
                   setDisplayFakeCaptcha(true);
                 }}>
-                I'm already subscribed...
+                Skip to the portfolio...
               </u>
             )}
           </span>
