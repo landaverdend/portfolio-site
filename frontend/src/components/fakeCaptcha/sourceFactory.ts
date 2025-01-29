@@ -59,6 +59,6 @@ export type SmallCaptchaChallenge = {
 export function grabRandomLargeChallenge() {
   // const ind = Math.floor(Math.random() * largeCaptchaArray.length);
   const ind = randomNumber(0, largeCaptchaArray.length);
-  // return largeCaptchaArray[ind];
-  return largeCaptchaArray[7];
+  return largeCaptchaArray[ind];
+  // return largeCaptchaArray[7];
 }
