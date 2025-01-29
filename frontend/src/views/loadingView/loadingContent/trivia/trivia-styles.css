@@ -12,6 +12,11 @@
   border: 1px solid black;
   box-shadow: 5px 5px black;
 }
+
+.hidden-text {
+  visibility: hidden;
+}
+
 /* Phones */
 @media (max-width: 576px) {
   .trivia-container {

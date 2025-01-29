@@ -32,7 +32,7 @@ function TriviaWidget() {
           cursor: '|',
         }}
       />
-      <span style={{ color: 'var(--panel-blue)' }}>{trivia[triviaIndex]}</span>
+      <span className="hidden-text">{trivia[triviaIndex]}</span>
     </div>
   );
 }
