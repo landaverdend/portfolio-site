@@ -1,7 +1,7 @@
 import './cover-letter-section.css';
 import time from '@assets/images/splash-page/time.png';
-import coins from '@assets/images/splash-page/coins.png';
-import feather from '@assets/images/splash-page/feather.png';
+import weight from '@assets/images/splash-page/weight.png';
+import wallet from '@assets/images/splash-page/wallet.png';
 import meTyping from '@assets/images/splash-page/meTyping.png';
 import LargeButton from '@/components/common/typewriterText/LargeButton/LargeButton';
 import { useAppState } from '@/state/appState';
@@ -29,9 +29,7 @@ export default function CoverLetterSection() {
 
       <div className="panel-two">
         <div className="metric">
-          <span>
-            <img src={time} height={120} width={120} />
-          </span>
+          <img src={time} />
           <div className="metric-text">
             <h2>Save me time!</h2>
             <p>
@@ -41,9 +39,7 @@ export default function CoverLetterSection() {
         </div>
 
         <div className="metric">
-          <span>
-            <img src={coins} height={120} width={120} />
-          </span>
+          <img src={wallet} />
           <div className="metric-text">
             <h2>Spend my money!</h2>
             <p>
@@ -54,9 +50,7 @@ export default function CoverLetterSection() {
         </div>
 
         <div className="metric">
-          <span>
-            <img src={feather} height={120} width={120} />
-          </span>
+          <img src={weight} />
           <div className="metric-text">
             <h2>Take a load off my shoulders</h2>
             <p>I'm out of things to write so this is just here to fill in space.</p>

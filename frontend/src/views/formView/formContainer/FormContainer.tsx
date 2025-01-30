@@ -99,7 +99,7 @@ function FormContainer() {
 
       setTimeout(() => {
         setIsGiveupEnabled(true);
-      }, 8000);
+      }, 3000);
 
       isPhysicsSequenceStarted.current = true;
     }
