@@ -9,7 +9,6 @@ import Footer from '@/components/footer/Footer';
 import SkillsContainer from './skills/SkillsContainer';
 import ContactContainer from './contact/ContactContainer';
 import SubHeader from '@/components/subHeader/SubHeader';
-import { useEffect } from 'react';
 
 function ResumeView() {
   const navbarLinks = [
@@ -21,13 +20,6 @@ function ResumeView() {
     { link: 'skills', text: 'Skills' },
     { link: 'contact', text: 'Contact' },
   ];
-
-  useEffect(() => {
-    const el = document.getElementById('about');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, []);
 
   return (
     <>

@@ -19,8 +19,6 @@ type AppState = {
 };
 
 export const useAppState = create<AppState>((set) => ({
-  // componentToRender: 'CoverLetterGeneratorView',
-  // componentToRender: 'ResumeView',
   componentToRender: 'SplashView',
   nextView: '',
 
@@ -32,6 +30,5 @@ export const useAppState = create<AppState>((set) => ({
   setView: (view) => set({ componentToRender: view }),
   setIsLoading: (val) => set({ isLoading: val }),
   setIsModalOpen: (val) => set({ isModalOpen: val }),
-
   triggerLoadingSequence: (nextView) => set({ nextView: nextView, isLoading: true, isLoadingBarDone: false }),
 }));

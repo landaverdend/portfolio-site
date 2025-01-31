@@ -29,6 +29,8 @@ function LoadingView() {
           <div
             onAnimationEnd={() => {
               // the Loading state is finally considered 'done' when the curtain animation is over.
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+
               if (isLoadingBarDone) {
                 setIsLoading(false);
               }

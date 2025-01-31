@@ -11,16 +11,14 @@ import useInactivityHook from './hooks/inactivityHook';
 import sound from '@assets/sounds/notification.mp3';
 
 type MCProps = {
-  isVolumeEnabled: boolean;
-  setIsVolumeEnabled: Function;
   closeFn: Function;
   chatLog: Array<Chat>;
 };
-function MessageContainer({ chatLog, closeFn, isVolumeEnabled, setIsVolumeEnabled }: MCProps) {
+function MessageContainer({ chatLog, closeFn }: MCProps) {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const [input, setInput] = useState<string>('');
-  const { clientChatLog, isLoading, addChat, setIsLoading } = useChatStore();
+  const { clientChatLog, isLoading, isChatMuted, addChat, setIsLoading, setIsChatMuted } = useChatStore();
 
   // Add chat to the global store. Clear the input field.
   const handleSend = () => {
@@ -57,8 +55,8 @@ function MessageContainer({ chatLog, closeFn, isVolumeEnabled, setIsVolumeEnable
       <div className="messenger-container__header">
         <img src={me} height={30} width={30} />
         <span>Nicodemus Landaverde</span>
-        <span onClick={() => setIsVolumeEnabled(!isVolumeEnabled)}>
-          {isVolumeEnabled ? <VolumeOn className="hoverable" /> : <VolumeOff className="hoverable" />}
+        <span onClick={() => setIsChatMuted(!isChatMuted)}>
+          {!isChatMuted ? <VolumeOn className="hoverable" /> : <VolumeOff className="hoverable" />}
         </span>
         <span className="messenger-container__close hoverable" onClick={() => closeFn()}>
           &#10005;
@@ -105,10 +103,9 @@ function MessageContainer({ chatLog, closeFn, isVolumeEnabled, setIsVolumeEnable
 
 function ChatBubble() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isVolumeEnabled, setIsVolumeEnabled] = useState(true);
 
   const [unreadMessages, setUnreadMessages] = useState(0);
-  const { addChat, clientChatLog: chatlog } = useChatStore();
+  const { addChat, clientChatLog: chatlog, isChatMuted } = useChatStore();
 
   const notificationSound = useMemo(() => new Audio(sound), []);
   const parentRef = useRef<HTMLDivElement | null>(null);
@@ -116,8 +113,8 @@ function ChatBubble() {
   useInactivityHook(addChat, parentRef);
 
   useEffect(() => {
-    notificationSound.volume = isVolumeEnabled ? 1 : 0;
-  }, [isVolumeEnabled]);
+    notificationSound.volume = isChatMuted ? 1 : 0;
+  }, [isChatMuted]);
 
   useEffect(() => {
     if (!isOpen && chatlog.length > 0) {
@@ -144,14 +141,7 @@ function ChatBubble() {
         </div>
       )}
 
-      {isOpen && (
-        <MessageContainer
-          closeFn={setIsOpen}
-          chatLog={chatlog}
-          isVolumeEnabled={isVolumeEnabled}
-          setIsVolumeEnabled={setIsVolumeEnabled}
-        />
-      )}
+      {isOpen && <MessageContainer closeFn={setIsOpen} chatLog={chatlog} />}
     </div>
   );
 }
