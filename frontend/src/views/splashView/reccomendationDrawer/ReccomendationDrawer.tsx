@@ -77,16 +77,23 @@ export default function ReccomendationDrawer() {
       <hr />
 
       <div className="reccomendation-drawer">
-        <div
+        {/* <div
           className="arrow-control"
           onClick={() => {
             setTestimonialIndex((prev) => (prev + 1 === testimonials.length ? 0 : prev + 1));
           }}>
           &larr;
-        </div>
+        </div> */}
 
         <div className="panel-container">
           <div className="reccomendation-info">
+            <div
+              className="arrow-control"
+              onClick={() => {
+                setTestimonialIndex((prev) => (prev + 1 === testimonials.length ? 0 : prev + 1));
+              }}>
+              &larr;
+            </div>
             <div className="reccomendation-image">
               <img src={imageSrc} width={537} height={347}></img>
             </div>
@@ -103,6 +110,13 @@ export default function ReccomendationDrawer() {
                 <span>{title}</span>
               </span>
             </blockquote>
+            <div
+              className="arrow-control"
+              onClick={() => {
+                setTestimonialIndex((prev) => (prev + 1 === testimonials.length ? 0 : prev + 1));
+              }}>
+              &rarr;
+            </div>
           </div>
 
           <div className="panels">
@@ -123,13 +137,13 @@ export default function ReccomendationDrawer() {
             ))}
           </div>
         </div>
-        <div
+        {/* <div
           className="arrow-control"
           onClick={() => {
             setTestimonialIndex((prev) => (prev + 1 === testimonials.length ? 0 : prev + 1));
           }}>
           &rarr;
-        </div>
+        </div> */}
       </div>
     </div>
   );

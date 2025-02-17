@@ -41,7 +41,6 @@
   }
 
   .reccomendation-drawer {
-    display: flex;
     align-items: center;
     justify-content: space-around;
     gap: 50px;
@@ -107,7 +106,10 @@
     }
 
     .arrow-control {
-      padding: 15px 17px;
+      flex: 2;
+      padding: 5px;
+      /* padding: 15px 17px; */
+      text-align: center;
       border-radius: 50px;
       border: 1px solid var(--main-indigo);
       user-select: none;

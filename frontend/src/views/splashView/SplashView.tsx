@@ -23,7 +23,7 @@ function SplashView() {
         <section id="main-section">
           <MainSection />
         </section>
-         
+
         <CompanyDock />
 
         <section id="featured-section">
