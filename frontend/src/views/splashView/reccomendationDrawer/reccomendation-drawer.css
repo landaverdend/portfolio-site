@@ -8,7 +8,6 @@
   /* background: linear-gradient(to bottom right,#f1c3fc,#531945); */
   border-radius: 10px;
 
-
   .testimonial-header {
     display: flex;
     flex-direction: row;
@@ -59,9 +58,12 @@
         display: flex;
         align-items: center;
         gap: 50px;
+        justify-content: center;
 
         .reccomendation-image img {
           border-radius: 12.5px;
+          width: 450px;
+          height: 300px;
         }
 
         .quote-area {
@@ -69,7 +71,7 @@
           flex-direction: column;
           gap: 1rem;
 
-          font-size: 1.5rem;
+          font-size: 1rem;
           font-weight: 500;
 
           .reccomender {
@@ -126,6 +128,20 @@
   }
 }
 
+@media (max-width: 610px) {
+  .reccomendation-container {
+    .reccomendation-drawer {
+      .panel-container {
+        .reccomendation-info {
+          .arrow-control {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
 /* ========== Extra Small Devices (Phones) ========== */
 @media (max-width: 576px) {
   .reccomendation-container {
@@ -133,7 +149,7 @@
     /* align-items: stretch; */
     width: 100vw;
     overflow: hidden;
-    
+
     .testimonial-header {
       display: flex;
       flex-direction: column;
@@ -177,6 +193,9 @@
               font-size: 1rem;
             }
           }
+          .arrow-control {
+            display: none;
+          }
         }
 
         .panels {
@@ -186,10 +205,9 @@
             }
           }
         }
-      }
-
-      .arrow-control {
-        display: none;
+        /* .arrow-control {
+          display: none;
+        } */
       }
     }
   }

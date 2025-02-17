@@ -74,6 +74,8 @@
 
   img {
     border-radius: var(--grid-radius);
+    height: 210px;
+    width: 210px;
   }
 
   .image-tile-text {
@@ -137,6 +139,26 @@
 .metric-block2 {
   background-color: var(--panel-green);
 }
+
+@media (max-height: 900px) {
+  .splash-grid {
+    grid-template-columns: repeat(4, 185px);
+    grid-template-rows: repeat(4, 185px);
+
+    .tile-text {
+      font-size: 30px;
+    }
+  }
+
+  .image-tile-container {
+
+    img {
+      width: 185px;
+      height: 185px;
+    }
+  }
+}
+
 
 @media (max-width: 576px) {
   .splash-grid {

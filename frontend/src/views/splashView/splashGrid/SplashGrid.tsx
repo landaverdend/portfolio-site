@@ -24,7 +24,7 @@ type ITProps = {
 function ImageTile({ src, text, color }: ITProps) {
   return (
     <span className="image-tile-container">
-      <img src={src} height={210} width={210}></img>
+      <img src={src}></img>
       <span className="image-tile-text" style={{ color: color ? color : '' }}>
         {text}
       </span>

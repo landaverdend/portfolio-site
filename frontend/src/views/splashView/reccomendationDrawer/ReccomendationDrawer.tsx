@@ -29,16 +29,16 @@ const testimonials: Array<Testimonial> = [
       "Nicodemus was instrumental in driving our strategic initiative to diminish Windows' usability, aligning with our overarching goals. His innovative Resume-as-a-Service solution streamlined and optimized the talent acquisition process, delivering measurable efficiency gains.",
     title: 'Former CEO and Founder of Microsoft',
     name: 'Bill Gates',
-    companySvg: { src: Microsoft, height: '2rem' },
+    companySvg: { src: Microsoft, height: '80%' },
   },
   {
     imageSrc: LarryEllison,
     tagLine: 'Automating YOUR Optimizations',
     reccomendation:
-      "Nicodemus played a pivotal role in advancing Oracle's strategic vision of ensuring its microservices architecture remains as opaque and labyrinthine as possible. His groundbreaking Microservices-as-a-Mystery™ solution introduced a suite of services that seamlessly interact to achieve absolutely nothing",
+      "Nicodemus's groundbreaking Microservices-as-a-Mystery™ solution introduced a suite of services that seamlessly interact to achieve absolutely nothing",
     title: 'Oracle Chairman and Cofounder',
     name: 'Larry Ellison',
-    companySvg: { src: Oracle, height: '1.5rem' },
+    companySvg: { src: Oracle, height: '80%' },
   },
   {
     imageSrc: WarrenBuffet,
@@ -46,7 +46,7 @@ const testimonials: Array<Testimonial> = [
     reccomendation: "It's me, Warren Buffet. I REALLY like Nicodemus.",
     title: 'CEO and Chairman of Berkshire Hathaway',
     name: 'Warren Buffet',
-    companySvg: { src: BerkshireHathaway, height: '1.5rem' },
+    companySvg: { src: BerkshireHathaway, height: '80%' },
   },
   {
     imageSrc: JensenHuang,
@@ -54,7 +54,7 @@ const testimonials: Array<Testimonial> = [
     reccomendation: "You aren't as funny as you think you are.",
     title: 'CEO and Founder of Nvidia',
     name: 'Jensen Huang',
-    companySvg: { src: Nvidia, height: '1.5rem' },
+    companySvg: { src: Nvidia, height: '80%' },
   },
 ];
 
@@ -77,25 +77,10 @@ export default function ReccomendationDrawer() {
       <hr />
 
       <div className="reccomendation-drawer">
-        {/* <div
-          className="arrow-control"
-          onClick={() => {
-            setTestimonialIndex((prev) => (prev + 1 === testimonials.length ? 0 : prev + 1));
-          }}>
-          &larr;
-        </div> */}
-
         <div className="panel-container">
           <div className="reccomendation-info">
-            <div
-              className="arrow-control"
-              onClick={() => {
-                setTestimonialIndex((prev) => (prev + 1 === testimonials.length ? 0 : prev + 1));
-              }}>
-              &larr;
-            </div>
             <div className="reccomendation-image">
-              <img src={imageSrc} width={537} height={347}></img>
+              <img src={imageSrc}></img>
             </div>
             <blockquote className="quote-area">
               <h3>{tagLine}</h3>
@@ -110,13 +95,6 @@ export default function ReccomendationDrawer() {
                 <span>{title}</span>
               </span>
             </blockquote>
-            <div
-              className="arrow-control"
-              onClick={() => {
-                setTestimonialIndex((prev) => (prev + 1 === testimonials.length ? 0 : prev + 1));
-              }}>
-              &rarr;
-            </div>
           </div>
 
           <div className="panels">
@@ -137,13 +115,6 @@ export default function ReccomendationDrawer() {
             ))}
           </div>
         </div>
-        {/* <div
-          className="arrow-control"
-          onClick={() => {
-            setTestimonialIndex((prev) => (prev + 1 === testimonials.length ? 0 : prev + 1));
-          }}>
-          &rarr;
-        </div> */}
       </div>
     </div>
   );
