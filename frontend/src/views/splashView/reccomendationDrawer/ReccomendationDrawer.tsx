@@ -100,7 +100,7 @@ export default function ReccomendationDrawer() {
           <div className="panels">
             {testimonials.map((testimonial, i) => (
               <span
-                key={crypto.randomUUID()}
+                key={testimonial.name}
                 className="panel-item"
                 onClick={() => {
                   setTestimonialIndex(i);
