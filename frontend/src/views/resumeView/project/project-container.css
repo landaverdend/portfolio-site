@@ -10,6 +10,8 @@
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
+    flex-wrap: wrap;
+
     gap: 25px;
 
     .text-container {
@@ -22,13 +24,12 @@
 
       text-align: left;
 
-      height: auto;
-      
       border-radius: 5px;
       box-shadow: 10px 10px black;
       padding: 40px;
-      border: 1px solid black;
 
+      min-width: 30%;
+      border: 1px solid black;
 
       .courier-text {
         font-family: 'Courier New', Courier, monospace;
@@ -43,20 +44,18 @@
 
       .text-container__description {
         text-align: left;
-        font-size: 1.2rem;
+        font-size: clamp(0.9rem, 3vw, 1.15rem);
       }
     }
 
-    .video-container {
+    video {
       flex: 5;
 
-      video {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 5px;
-        border: 1px solid var(--main-indigo);
-      }
+      width: clamp(600px, 100%, 800px);
+      height: clamp(400px, 100%, 600px);
+      object-fit: cover;
+      border-radius: 5px;
+      border: 1px solid var(--main-indigo);
     }
   }
 }

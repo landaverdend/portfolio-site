@@ -16,12 +16,10 @@ type PCProps = {
 function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techUsed, title }: PCProps) {
   return (
     <div className="project-card">
-      <div className="video-container">
-        <video width={300} height={200} controls>
-          <source src={src} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      <video controls>
+        <source src={src} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
       <div className="text-container" style={{ backgroundColor: backgroundColor }}>
         <h2>{title}</h2>
