@@ -216,3 +216,22 @@
     }
   }
 }
+
+@media (min-width: 901px) {
+  .reccomendation-container {
+    .reccomendation-drawer {
+      .quote-area {
+        gap: 12px;
+
+        font-size: 1rem;
+        font-weight: 500;
+
+        max-width: 50%;
+
+        .reccomender {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

@@ -114,7 +114,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 0px;
-    margin: 25vh 5vw 5vh 5vw;
+    margin: clamp(100px, 15vw, 300px) 5vw 5vh 5vw;
     height: 80vh;
 
     .main-section__text {
