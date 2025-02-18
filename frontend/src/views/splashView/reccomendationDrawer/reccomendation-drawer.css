@@ -24,7 +24,7 @@
 
     p {
       font-size: clamp(0.75rem, 5vw, 1.15rem);
-      max-width: 40%;
+      max-width: 50%;
     }
   }
 
@@ -64,8 +64,8 @@
 
         .reccomendation-image img {
           border-radius: 12.5px;
-          width: clamp(350px, 30vw, 900px);
-          height: clamp(250px, 20vw, 600px);
+          width: clamp(300px, 30vw, 900px);
+          height: clamp(200px, 20vw, 600px);
         }
 
         .quote-area {

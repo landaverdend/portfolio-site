@@ -15,11 +15,14 @@ import Halliburton from '@assets/images/dock/Halliburton.svg';
 import Dole from '@assets/images/dock/DOLE.png';
 
 export default function CompanyDock() {
-  const logos = [Pearson, Monsanto, Pfizer , Halliburton,  UnitedHealth, Nestle, BP];
+  const logos = [Pearson, Monsanto, Pfizer, Halliburton, UnitedHealth, Nestle, BP];
   const logos2 = [Dole, Weinstein, Palantir, Temu, Blackrock, Reddit, AARP];
 
   return (
     <div id="featured" className="featured-dock">
+      
+      <h2>Companies I Like:</h2>
+
       <div className="dock-list-container">
         <span className="company-list">
           {logos.map((logo) => (

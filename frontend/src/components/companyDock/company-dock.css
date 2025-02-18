@@ -6,8 +6,9 @@
   align-items: center;
   justify-content: center;
 
+
   h2 {
-    font-size: 1.75rem;
+    /* font-size: 1.75rem; */
   }
 
   .dock-list-container {
