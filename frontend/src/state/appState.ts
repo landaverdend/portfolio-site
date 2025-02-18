@@ -19,7 +19,8 @@ type AppState = {
 };
 
 export const useAppState = create<AppState>((set) => ({
-  componentToRender: 'SplashView',
+  // componentToRender: 'SplashView',
+  componentToRender: 'ResumeView',
   nextView: '',
   
   isLoading: false,
