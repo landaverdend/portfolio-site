@@ -209,3 +209,41 @@
     }
   }
 }
+
+@media (min-width: 581px) {
+  .splash-grid {
+    grid-template-columns: repeat(4, 105px);
+    grid-template-rows: repeat(4, 105px);
+    align-self: center;
+
+    .tile-text {
+      font-size: 18px;
+      font-weight: 900;
+    }
+  }
+
+  .image-tile-container {
+    img {
+      width: 105px;
+      height: 105px;
+    }
+  }
+
+  .double-block {
+    .top-text {
+      font-size: small;
+
+      .giga-text {
+        font-size: 25px;
+      }
+
+      .small-text {
+        font-size: 0.75rem;
+      }
+    }
+
+    hr {
+      width: 90%;
+    }
+  }
+}
