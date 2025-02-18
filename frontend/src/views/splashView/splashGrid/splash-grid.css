@@ -174,7 +174,7 @@
 
 @media (min-width: 581px) {
   :root {
-    --grid-size: clamp(105px, 10vw, 225px);
+    --grid-size: clamp(105px, 12vw, 260px);
     --tile-font-size: clamp(18px, 1.2vw, 40px);
     --giga-text-size: clamp(25px, 2vw, 50px);
     --small-text-size: clamp(0.75rem, 1vw, 1.25rem);
