@@ -156,3 +156,11 @@
 .dropdown-list.hidden {
   transform: translateY(-100%); /* Start slightly above */
 }
+
+
+
+@media (min-width: 577) {
+
+
+}
+@media (max-width: 576) {}

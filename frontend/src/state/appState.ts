@@ -21,7 +21,7 @@ type AppState = {
 export const useAppState = create<AppState>((set) => ({
   componentToRender: 'SplashView',
   nextView: '',
-
+  
   isLoading: false,
   isLoadingBarDone: false,
   isModalOpen: false,

@@ -52,6 +52,9 @@
   }
 }
 
+@media (min-width: 557px) {
+}
+
 /* ========== Extra Small Devices (Phones) ========== */
 @media (max-width: 576px) {
   .panel-container {
@@ -60,6 +63,10 @@
     align-items: stretch;
 
     .panel-one {
+      h1 {
+        font-size: 1.5rem;
+      }
+
       img {
         width: 300px;
         height: 300px;
@@ -67,6 +74,7 @@
 
       p {
         max-width: 100%;
+        font-size: 0.9rem;
       }
     }
 
@@ -75,6 +83,16 @@
         img {
           width: 180px;
           height: 180px;
+        }
+
+        .metric-text {
+          h2 {
+            font-size: 1.2rem;
+          }
+
+          p {
+            font-size: 0.75rem;
+          }
         }
       }
     }
