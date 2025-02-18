@@ -21,7 +21,7 @@ function AboutContainer() {
 
   return (
     <>
-      <div id="about" className="about-container flex-row">
+      <div id="about" className="about-container ">
         <div className="flex-column text-container__text">
           <h1>About Me</h1>
 
