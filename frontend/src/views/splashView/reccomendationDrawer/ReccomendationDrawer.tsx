@@ -54,7 +54,7 @@ const testimonials: Array<Testimonial> = [
     reccomendation: "You aren't as funny as you think you are.",
     title: 'CEO and Founder of Nvidia',
     name: 'Jensen Huang',
-    companySvg: { src: Nvidia, height: '65%', },
+    companySvg: { src: Nvidia, height: '65%' },
   },
 ];
 
@@ -105,13 +105,7 @@ export default function ReccomendationDrawer() {
                 onClick={() => {
                   setTestimonialIndex(i);
                 }}
-                style={{ borderTop: `3px solid ${i === testimonialIndex ? '#f6b614' : 'var(--main-indigo)'}` }}>
-                <img
-                  src={testimonial.companySvg.src}
-                  style={{
-                    height: testimonial.companySvg.height,
-                  }}></img>
-              </span>
+                style={{ borderTop: `3px solid ${i === testimonialIndex ? '#f6b614' : 'var(--main-indigo)'}` }}></span>
             ))}
           </div>
         </div>

@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import HamburgerMenu from '@assets/images/icons/hamburger.svg?react';
 import Cross from '@assets/images/icons/cross.svg?react';
 
-export const MOBILE_WIDTH = 600;
+export const MOBILE_WIDTH = 730;
 type Link = { link: string; text: string };
 
 type LProps = {
@@ -71,7 +71,7 @@ function Navbar({ links, showSignUp }: NavbarProps) {
             }}>
             <img src={siteLogo} height={75} width={75} />
           </a>
-          {window.innerWidth >= 576 && <span className="studio-name"> Fields of Green Studios</span>}
+          {window.innerWidth >= MOBILE_WIDTH && <span className="studio-name"> Fields of Green Studios</span>}
         </div>
         <div className="navbar-container__links">
           {!isMobileView && (

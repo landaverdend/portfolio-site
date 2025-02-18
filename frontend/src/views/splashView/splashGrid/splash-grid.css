@@ -160,7 +160,7 @@
 }
 
 
-@media (max-width: 576px) {
+@media (max-width: 600px) {
   .splash-grid {
     grid-template-columns: repeat(2, 150px);
     grid-template-rows: repeat(2, 150px);

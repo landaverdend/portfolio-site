@@ -56,16 +56,23 @@
 }
 
 /* PHONES */
-@media (max-width: 576px) {
+@media (max-width: 430px) {
   .main-section {
     margin: 15vh 5vw 5vh 5vw;
 
     .main-section__text {
       gap: 7vh;
+      justify-content: center;
+      align-items: center;
 
       #header-text {
-        font-size: 4rem;
+        font-size: 3.7rem;
         /* max-width: 65%; */
+      }
+
+      .about-paragraph {
+        font-size: 0.95rem;
+        width: 75vw;
       }
 
       .main-section__buttons {

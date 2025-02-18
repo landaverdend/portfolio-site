@@ -52,11 +52,15 @@
   }
 }
 
-@media (min-width: 557px) {
+/* */
+@media (min-width: 768px) {
+}
+
+@media (min-width: 578px) {
 }
 
 /* ========== Extra Small Devices (Phones) ========== */
-@media (max-width: 576px) {
+@media (max-width: 577px) {
   .panel-container {
     display: flex;
     flex-direction: column;
