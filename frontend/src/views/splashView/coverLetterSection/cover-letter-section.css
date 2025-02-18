@@ -57,6 +57,13 @@
 }
 
 @media (min-width: 578px) {
+  .panel-container {
+    display: flex;
+    flex-direction: column;
+
+
+  }
+
 }
 
 /* ========== Extra Small Devices (Phones) ========== */
