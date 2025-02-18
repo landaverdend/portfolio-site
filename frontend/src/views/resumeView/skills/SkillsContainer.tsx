@@ -13,11 +13,7 @@ function SkillWidget({ techSkill }: SWProps) {
         <span className="tech-label" style={{ justifyContent: 'flex-start', gap: '10px' }}>
           <h3>{skill}</h3>
           {logo ? (
-            <img
-              src={new URL(`/src/assets/images/skills/${logo}.svg`, import.meta.url).toString()}
-              height={36}
-              width={36}
-            />
+            <img src={new URL(`/src/assets/images/skills/${logo}.svg`, import.meta.url).toString()} />
           ) : (
             <></>
           )}
