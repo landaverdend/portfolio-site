@@ -20,9 +20,8 @@ export default function CompanyDock() {
 
   return (
     <div id="featured" className="featured-dock">
-      
       <h2>Companies I Like:</h2>
-
+      <br />
       <div className="dock-list-container">
         <span className="company-list">
           {logos.map((logo) => (
