@@ -128,20 +128,28 @@
   }
 }
 
-@media (max-width: 610px) {
+@media (min-width: 577px) {
   .reccomendation-container {
+    .testimonial-header {
+      h2 {
+        font-size: 2.5rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
     .reccomendation-drawer {
       .panel-container {
         .reccomendation-info {
-          .arrow-control {
-            display: none;
-          }
+          display: flex;
+          flex-direction: column;
         }
       }
     }
   }
 }
-
 /* ========== Extra Small Devices (Phones) ========== */
 @media (max-width: 576px) {
   .reccomendation-container {
@@ -206,9 +214,6 @@
             }
           }
         }
-        /* .arrow-control {
-          display: none;
-        } */
       }
     }
   }
