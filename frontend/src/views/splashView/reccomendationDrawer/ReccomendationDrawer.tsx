@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './reccomendation-drawer.css';
 import BillGates from '@assets/images/reccomenders/billgates.webp';
 import LarryEllison from '@assets/images/reccomenders/larryellision.webp';
@@ -47,9 +47,33 @@ const testimonials: Array<Testimonial> = [
 ];
 
 export default function ReccomendationDrawer() {
+  const [progresses, setProgresses] = useState([0, 0, 0, 0]);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [isCyclingEnabled, setIsCyclingEnabled] = useState(true);
 
   const { name, title, reccomendation, imageSrc, tagLine } = testimonials[testimonialIndex];
+
+  useEffect(() => {
+    if (!isCyclingEnabled) return;
+
+    let func = setInterval(() => {
+      setProgresses((prev) => {
+        const toUpdate = [...prev];
+        toUpdate[testimonialIndex]++;
+
+        if (toUpdate[testimonialIndex] >= 100) {
+          setTestimonialIndex((prev) => (prev + 1) % testimonials.length);
+          toUpdate[testimonialIndex] = 0;
+        }
+
+        return toUpdate;
+      });
+    }, 60);
+
+    return () => {
+      clearInterval(func);
+    };
+  }, [isCyclingEnabled, testimonialIndex]);
 
   return (
     <div className="reccomendation-container">
@@ -87,13 +111,25 @@ export default function ReccomendationDrawer() {
 
           <div className="panels">
             {testimonials.map((testimonial, i) => (
-              <span
+              <progress
                 key={testimonial.name}
-                className="panel-item"
                 onClick={() => {
                   setTestimonialIndex(i);
+                  setIsCyclingEnabled(false);
+                  setProgresses((prev) => {
+                    const toUpdate = [...prev];
+
+                    for (let j = 0; j < toUpdate.length; j++) {
+                      if (j === i) toUpdate[j] = 100;
+                      else toUpdate[j] = 0;
+                    }
+
+                    return toUpdate;
+                  });
                 }}
-                style={{ borderTop: `3px solid ${i === testimonialIndex ? '#f6b614' : 'var(--main-indigo)'}` }}></span>
+                className={`progress-bar ${testimonialIndex === i ? 'progress-bar__active' : ''}`}
+                value={progresses[i]}
+                max={100}></progress>
             ))}
           </div>
         </div>

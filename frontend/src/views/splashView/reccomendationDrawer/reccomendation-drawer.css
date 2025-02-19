@@ -77,7 +77,7 @@
           font-size: clamp(1rem, 5vw, 1.5rem);
           font-weight: 300;
           max-width: 50%;
-
+          height: auto;
           .reccomender {
             font-size: clamp(0.9rem, 5vw, 1.5rem);
           }
@@ -91,18 +91,30 @@
         align-items: center;
         gap: 25px;
 
-        .panel-item {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 25px;
-          width: 15%;
-          border-top: 3px solid var(--main-indigo);
-          font-size: 1.5rem;
-          height: 1.5rem;
+        .progress-bar {
+          height: 3.5px;
+          width: clamp(50px, 10vw, 150px);
+
+          /* Reset the default appearance */
+          -webkit-appearance: none;
+          appearance: none;
         }
 
-        .panel-item:hover {
+        progress[value]::-webkit-progress-bar {
+          border-radius: 1px;
+          background: var(--main-indigo);
+        }
+
+        progress::-webkit-progress-value {
+          background: var(--main-indigo);
+          border-radius: 1px;
+        }
+
+        .progress-bar__active[value]::-webkit-progress-value {
+          background: #f6b614;
+        }
+
+        .progress-bar:hover {
           cursor: pointer;
           opacity: 0.5;
         }
@@ -111,3 +123,16 @@
   }
 }
 
+@media (max-width: 600px) {
+  .reccomendation-container {
+    .reccomendation-drawer {
+      .panel-container {
+        .reccomendation-info {
+          .quote-area {
+            max-width: 90%;
+          }
+        }
+      }
+    }
+  }
+}
