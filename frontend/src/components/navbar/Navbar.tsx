@@ -2,14 +2,18 @@ import './navbar.css';
 import siteLogo from '@assets/images/logo.png';
 import Modal from '../modal/Modal';
 import FormContainer from '@views/formView/formContainer/FormContainer';
-import { useAppState } from '@/state/appState';
+import { useAppState, View } from '@/state/appState';
 import { useEffect, useState } from 'react';
 import HamburgerMenu from '@assets/images/icons/hamburger.svg?react';
 import Cross from '@assets/images/icons/cross.svg?react';
 
 export const MOBILE_WIDTH = 730;
-type Link = { link: string; text: string };
-
+export type Link = {
+  type: 'link' | 'view';
+  link?: string;
+  text: string;
+  view?: View;
+};
 type LProps = {
   link: Link;
 };
@@ -19,6 +23,7 @@ type NavbarProps = {
   showSignUp?: boolean;
 };
 function Navbar({ links, showSignUp }: NavbarProps) {
+  const { triggerLoadingSequence } = useAppState();
   const [isMobileView, setMobileView] = useState(window.innerWidth <= MOBILE_WIDTH);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -32,11 +37,18 @@ function Navbar({ links, showSignUp }: NavbarProps) {
         href={link.text}
         onClick={(e) => {
           e.preventDefault();
-          setMobileMenuOpen(false);
-          const element = document.getElementById(link.link);
 
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+          if (link.type === 'link' && link.link) {
+            setMobileMenuOpen(false);
+            const element = document.getElementById(link.link as string);
+
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          } else if (link.type === 'view' && link.view) {
+            console.log('link view')
+            setMobileMenuOpen(false);
+            triggerLoadingSequence(link.view);
           }
         }}>
         {link.text}

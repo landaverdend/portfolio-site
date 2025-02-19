@@ -4,23 +4,23 @@ import AboutContainer from './about/AboutContainer';
 import ProjectContainer from './project/ProjectContainer';
 import ChatBubble from '@/components/chatBubble/ChatBubble';
 import { createPortal } from 'react-dom';
-import Navbar from '@/components/navbar/Navbar';
+import Navbar, { Link } from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import SkillsContainer from './skills/SkillsContainer';
 import ContactContainer from './contact/ContactContainer';
 import SubHeader from '@/components/subHeader/SubHeader';
 
 function ResumeView() {
-  const navbarLinks = [
+  const navbarLinks: Array<Link> = [
     {
       link: 'about',
       text: 'About',
+      type: 'link',
     },
-    { link: 'projects', text: 'Projects' },
-    { link: 'skills', text: 'Skills' },
-    { link: 'contact', text: 'Contact' },
+    { link: 'projects', text: 'Projects', type: 'link' },
+    { link: 'skills', text: 'Skills', type: 'link' },
+    { link: 'contact', text: 'Contact', type: 'link' },
   ];
-
   return (
     <>
       <Navbar links={navbarLinks} />

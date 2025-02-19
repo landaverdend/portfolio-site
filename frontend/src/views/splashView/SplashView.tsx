@@ -2,7 +2,7 @@ import './splash-view.css';
 import '@styles/fonts.css';
 import { createPortal } from 'react-dom';
 import ChatBubble from '@/components/chatBubble/ChatBubble';
-import Navbar from '@/components/navbar/Navbar';
+import Navbar, { Link } from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import MainSection from './mainSection/MainSection';
 import CompanyDock from '@/components/companyDock/CompanyDock';
@@ -11,10 +11,15 @@ import CoverLetterSection from './coverLetterSection/CoverLetterSection';
 import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas';
 
 function SplashView() {
-  const navbarLinks = [
-    { link: 'main-section', text: 'About' },
-    { link: 'featured-section', text: 'Testimonials' },
-    { link: 'tools-section', text: 'Tools' },
+  const navbarLinks: Array<Link> = [
+    {
+      view: 'ResumeView',
+      text: 'About',
+      type: 'view',
+    },
+    { link: 'projects', text: 'Projects', type: 'link' },
+    { link: 'skills', text: 'Skills', type: 'link' },
+    { link: 'contact', text: 'Contact', type: 'link' },
   ];
   return (
     <div id="splash" className="splash-container">
