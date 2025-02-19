@@ -4,10 +4,6 @@ import BillGates from '@assets/images/reccomenders/billgates.webp';
 import LarryEllison from '@assets/images/reccomenders/larryellision.webp';
 import WarrenBuffet from '@assets/images/reccomenders/warren-buffet.webp';
 import JensenHuang from '@assets/images/reccomenders/jensenhuang.webp';
-import Microsoft from '@assets/images/dock/microsoft.svg';
-import Nvidia from '@assets/images/dock/nvidia.svg';
-import Oracle from '@assets/images/dock/Oracle.svg';
-import BerkshireHathaway from '@assets/images/dock/berskhire-hathaway.svg';
 
 type Testimonial = {
   imageSrc: string;
@@ -15,10 +11,6 @@ type Testimonial = {
   reccomendation: string;
   title: string;
   name: string;
-  companySvg: {
-    src: string;
-    height: string;
-  };
 };
 
 const testimonials: Array<Testimonial> = [
@@ -29,7 +21,6 @@ const testimonials: Array<Testimonial> = [
       "Nicodemus was instrumental in driving our strategic initiative to diminish Windows' usability, aligning with our overarching corporate goals. His innovative Resume-as-a-Service solution streamlined and optimized the talent acquisition process, delivering measurable efficiency gains.",
     title: 'Former CEO and Founder of Microsoft',
     name: 'Bill Gates',
-    companySvg: { src: Microsoft, height: '65%' },
   },
   {
     imageSrc: LarryEllison,
@@ -38,7 +29,6 @@ const testimonials: Array<Testimonial> = [
       "Nicodemus's groundbreaking Microservices-as-a-Mystery™ solution introduced a suite of services that seamlessly interact to achieve absolutely nothing",
     title: 'Oracle Chairman and Cofounder',
     name: 'Larry Ellison',
-    companySvg: { src: Oracle, height: '65%' },
   },
   {
     imageSrc: WarrenBuffet,
@@ -46,7 +36,6 @@ const testimonials: Array<Testimonial> = [
     reccomendation: "It's me, Warren Buffet. I REALLY like Nicodemus.",
     title: 'CEO and Chairman of Berkshire Hathaway',
     name: 'Warren Buffet',
-    companySvg: { src: BerkshireHathaway, height: '65%' },
   },
   {
     imageSrc: JensenHuang,
@@ -54,7 +43,6 @@ const testimonials: Array<Testimonial> = [
     reccomendation: "You aren't as funny as you think you are.",
     title: 'CEO and Founder of Nvidia',
     name: 'Jensen Huang',
-    companySvg: { src: Nvidia, height: '65%' },
   },
 ];
 

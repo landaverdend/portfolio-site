@@ -20,7 +20,7 @@ export default function MainSection() {
           <br /> Proven <br /> Results
         </span>
         <span className="about-paragraph">
-          Join the growing number of recruiters who use my groundbreaking{' '}
+          Join the growing number of recruiters who use the groundbreaking{' '}
           <b>
             <i>Resume as a Service</i>
           </b>
