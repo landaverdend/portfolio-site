@@ -14,12 +14,11 @@ function SplashView() {
   const navbarLinks: Array<Link> = [
     {
       view: 'ResumeView',
-      text: 'About',
+      text: 'Portfolio',
       type: 'view',
     },
-    { link: 'projects', text: 'Projects', type: 'link' },
-    { link: 'skills', text: 'Skills', type: 'link' },
-    { link: 'contact', text: 'Contact', type: 'link' },
+    { link: 'featured-section', text: 'Featured', type: 'link' },
+    { link: 'tools-section', text: 'Tools', type: 'link' },
   ];
   return (
     <div id="splash" className="splash-container">

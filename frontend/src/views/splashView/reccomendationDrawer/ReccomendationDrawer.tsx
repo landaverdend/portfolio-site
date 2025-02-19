@@ -26,7 +26,7 @@ const testimonials: Array<Testimonial> = [
     imageSrc: BillGates,
     tagLine: 'Driving Actionable Items Through Uplift',
     reccomendation:
-      "Nicodemus was instrumental in driving our strategic initiative to diminish Windows' usability, aligning with our overarching goals. His innovative Resume-as-a-Service solution streamlined and optimized the talent acquisition process, delivering measurable efficiency gains.",
+      "Nicodemus was instrumental in driving our strategic initiative to diminish Windows' usability, aligning with our overarching corporate goals. His innovative Resume-as-a-Service solution streamlined and optimized the talent acquisition process, delivering measurable efficiency gains.",
     title: 'Former CEO and Founder of Microsoft',
     name: 'Bill Gates',
     companySvg: { src: Microsoft, height: '65%' },
