@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Load environment variables from .env file
+if [ -f .env ]; then
+    export $(cat .env | grep -v '^#' | xargs)
+elif [ -f ./frontend/.env ]; then
+    export $(cat ./frontend/.env | grep -v '^#' | xargs)
+elif [ -f ./backend/.env ]; then
+    export $(cat ./backend/.env | grep -v '^#' | xargs)
+fi
+
 # build the frontend package first.
 echo "Shutting systems down"
 docker-compose down
