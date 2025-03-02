@@ -19,14 +19,6 @@ export default function MainSection() {
           Resume,
           <br /> Proven <br /> Results
         </span>
-        <span className="about-paragraph">
-          Join the growing number of recruiters who use the groundbreaking{' '}
-          <b>
-            <i>Resume as a Service</i>
-          </b>
-          {'  '}(RaaS) platform to gain access to my resume effortlessly. Streamline your hiring process and elevate your
-          recruitment game with the first-ever site designed for seamless access to my resume.
-        </span>
 
         <div className="main-section__buttons">
           <LargeButton
@@ -34,7 +26,7 @@ export default function MainSection() {
             onClick={() => {
               setIsModalOpen(true);
             }}>
-            Get Started
+            See Projects
           </LargeButton>
           <span>
             {displayFakeCaptcha ? (
@@ -50,6 +42,14 @@ export default function MainSection() {
             )}
           </span>
         </div>
+        <span className="about-paragraph">
+          Join the growing number of recruiters who use the groundbreaking{' '}
+          <b>
+            <i>Resume as a Service</i>
+          </b>
+          {'  '}(RaaS) platform to gain access to my resume effortlessly. Streamline your hiring process and elevate your
+          recruitment game with the first-ever site designed for seamless access to my resume.
+        </span>
       </div>
       <div className="main-section__grid">
         <SplashGrid />
