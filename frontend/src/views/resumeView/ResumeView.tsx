@@ -9,6 +9,7 @@ import Footer from '@/components/footer/Footer';
 import SkillsContainer from './skills/SkillsContainer';
 import ContactContainer from './contact/ContactContainer';
 import SubHeader from '@/components/subHeader/SubHeader';
+import BackgroundBubbles from '@/components/backgroundBubbles/BackgroundBubbles';
 
 function ResumeView() {
   const navbarLinks: Array<Link> = [
@@ -28,12 +29,8 @@ function ResumeView() {
         <section id="about">
           <AboutContainer />
         </section>
-        <div className="bubble b1"></div>
-        <div className="bubble b2"></div>
-        <div className="bubble b3"></div>
-        <div className="bubble b4"></div>
-        <div className="bubble b5"></div>
-        <div className="bubble b6"></div>
+
+        <BackgroundBubbles />
 
         <section id="projects" className="flex-column">
           <SubHeader>
