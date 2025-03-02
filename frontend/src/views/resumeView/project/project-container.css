@@ -48,7 +48,8 @@
       }
     }
 
-    video {
+    video,
+    img {
       flex: 5;
 
       width: clamp(600px, 100%, 800px);
@@ -87,7 +88,8 @@
         }
       }
 
-      video {
+      video,
+      img {
         flex: 5;
         width: 95vw;
       }
