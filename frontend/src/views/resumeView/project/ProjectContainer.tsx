@@ -94,9 +94,9 @@ function ProjectContainer() {
       <ProjectCard
         title={'Trivia Generator'}
         src={trivia}
-        demoUrl={'https://github.com/landaverdend/trivia-generator'}
+        demoUrl={'https://trivia.landaverde.in/'}
         type={'image'}
-        sourceCodeUrl={'https://github.com/landavderdend'}
+        sourceCodeUrl={'https://github.com/landaverdend/trivia-generator'}
         backgroundColor="var(--panel-blue)"
         techUsed={'Express, Typescript, React'}
         desc={'AI Powered trivia generator in a web browser...'}></ProjectCard>

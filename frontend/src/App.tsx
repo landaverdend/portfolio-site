@@ -27,7 +27,7 @@ function App() {
   }, [componentToRender, navigate, location.pathname]);
 
   // Determine the component to render based on the current path
-  const currentComponent = componentMap[location.pathname.slice(1)] || <SplashView />;
+  const currentComponent = componentMap[location.pathname.slice(1)] || <ResumeView/>;
 
   // Override browser's back button globally
   useEffect(() => {

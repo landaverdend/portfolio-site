@@ -255,16 +255,6 @@ function FormContainer() {
                   Let's Go!
                 </LargeButton>
               </ComponentWithPhysics>
-              <ComponentWithPhysics id="skip-sign-up">
-                <LargeButton
-                  fontSize="1rem"
-                  backgroundColor="var(--panel-pink)"
-                  onClick={() => {
-                    triggerPhysics('skip-sign-up', true);
-                  }}>
-                  Skip for now...
-                </LargeButton>
-              </ComponentWithPhysics>
             </div>
 
             {(timesTried >= 2 || isGiveupEnabled) && (
