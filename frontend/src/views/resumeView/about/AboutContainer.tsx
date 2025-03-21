@@ -70,7 +70,7 @@ function AboutContainer() {
 
         <div className="flex-column portrait-container">
           <img src={me} />
-          <figcaption>(Pictured: Me carrying the team on my back)</figcaption>
+          <figcaption>(Pictured: This is how hard I will work)</figcaption>
         </div>
       </div>
     </>
