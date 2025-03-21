@@ -11,6 +11,7 @@ import { createInputElement, createSelectElement } from '@/util/ElementFactory';
 import LargeButton from '@/components/common/typewriterText/LargeButton/LargeButton';
 import { MOBILE_WIDTH } from '@/components/navbar/Navbar';
 
+
 function FormContainer() {
   const isPhysicsSequenceStarted = useRef<boolean>(false);
   const { setIsModalOpen } = useAppState();

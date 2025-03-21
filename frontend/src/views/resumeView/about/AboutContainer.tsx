@@ -1,5 +1,6 @@
 import './about-container.css';
-import me from '@assets/images/resume/me.png';
+// import me from '@assets/images/resume/me.png'; // add this to be edgy.
+import me from '@assets/images/splash-page/weight.png';
 import EmailLogo from '@assets/images/logos/email.svg?react';
 import LinkedinLogo from '@assets/images/logos/linkedin.svg?react';
 import GithubLogo from '@assets/images/logos/github.svg?react';
@@ -69,14 +70,7 @@ function AboutContainer() {
 
         <div className="flex-column portrait-container">
           <img src={me} />
-          <figcaption>
-            (Pictured: Me{' ...'}
-            <b>
-              <i>removing</i>
-            </b>
-            {'... '}
-            bugs from your codebase)
-          </figcaption>
+          <figcaption>(Pictured: Me carrying the team on my back)</figcaption>
         </div>
       </div>
     </>
