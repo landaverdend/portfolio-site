@@ -19,7 +19,7 @@ function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techU
   return (
     <div className="project-card">
       {type === 'video' ? (
-        <video controls>
+        <video controls preload="metadata">
           <source src={src} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
