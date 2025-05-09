@@ -4,7 +4,7 @@ import voltorb from '@assets/videos/voltorbflip.mp4';
 import tetrisGalaxy from '@assets/videos/tetrisgalaxy.mp4';
 import isleadvance from '@assets/videos/isleadvance.mp4';
 import trivia from '@assets/images/resume/trivia.png';
-
+import battlesnakes from '@assets/videos/battlesnakes.mp4';
 type PCProps = {
   src: string;
   type: 'video' | 'image';
@@ -13,7 +13,7 @@ type PCProps = {
   title: string;
   backgroundColor: string;
   demoUrl?: string;
-  sourceCodeUrl: string;
+  sourceCodeUrl?: string;
 };
 function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techUsed, title, type }: PCProps) {
   return (
@@ -44,7 +44,7 @@ function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techU
           ) : (
             <></>
           )}
-          <a href={sourceCodeUrl}>Source Code</a>
+          {sourceCodeUrl !== undefined && <a href={sourceCodeUrl}>Source Code</a>}
         </p>
       </div>
     </div>
@@ -54,6 +54,18 @@ function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techU
 function ProjectContainer() {
   return (
     <div id="projects" className="projects-container">
+      <ProjectCard
+        title={'Battle Snakes'}
+        type={'video'}
+        src={battlesnakes}
+        backgroundColor={'var(--panel-pink'}
+        techUsed={'sockets.io, Typescript, React'}
+        desc={
+          'A multiplayer, round-based snake game where you can battle other players online in real time. Built with websockets and a lot of help from my good friend, Cursor. Heavily inspired by slither.io and skribbl.io'
+        }
+        demoUrl={'https://battlesnakes.io/'}
+      />
+
       <ProjectCard
         title={'Isle Advance'}
         src={isleadvance}
