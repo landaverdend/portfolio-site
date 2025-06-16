@@ -14,6 +14,7 @@ docker-compose down
 echo "Building frontend.."
 cd ./frontend/
 npm install
+npm run clean
 npm run build
 
 cd ..
