@@ -21,7 +21,7 @@ function ResumeView() {
     { link: 'projects', text: 'Projects', type: 'link' },
     { link: 'skills', text: 'Skills', type: 'link' },
     { link: 'contact', text: 'Contact', type: 'link' },
-    { view: 'SplashView', text: 'Marketing', type: 'view' },
+    { view: 'SplashView', text: 'Laughs', type: 'view' },
   ];
   return (
     <>
