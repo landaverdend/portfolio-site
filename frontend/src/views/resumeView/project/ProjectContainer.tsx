@@ -58,7 +58,8 @@ function ProjectContainer() {
         title={'Battle Snakes'}
         type={'video'}
         src={battlesnakes}
-        backgroundColor={'var(--panel-pink'}
+        sourceCodeUrl={'https://github.com/landaverdend/battle-snakes'}
+        backgroundColor={'var(--panel-pink)'}
         techUsed={'sockets.io, Typescript, React'}
         desc={
           'A multiplayer, round-based snake game where you can battle other players online in real time. Built with websockets and a lot of help from my good friend, Cursor. Heavily inspired by slither.io and skribbl.io'

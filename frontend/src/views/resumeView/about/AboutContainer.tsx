@@ -1,6 +1,6 @@
 import './about-container.css';
 // import me from '@assets/images/resume/me.png'; // add this to be edgy.
-import me from '@assets/images/splash-page/weight.png';
+import me from '@assets/images/splash-page/meTyping.png';
 import EmailLogo from '@assets/images/logos/email.svg?react';
 import LinkedinLogo from '@assets/images/logos/linkedin.svg?react';
 import GithubLogo from '@assets/images/logos/github.svg?react';
@@ -11,7 +11,7 @@ function AboutContainer() {
   const handleDownload = () => {
     // URL to the PDF file
     const link = document.createElement('a');
-    link.href = 'https://landaverde.in/pdfs/landaverde_resume.pdf';
+    link.href = 'https://landaverde.io/pdfs/landaverde_resume.pdf';
     link.download = 'landaverde_resume.pdf'; // Suggested filename for the download
     document.body.appendChild(link); // Append to the DOM
 
@@ -70,7 +70,7 @@ function AboutContainer() {
 
         <div className="flex-column portrait-container">
           <img src={me} />
-          <figcaption>(Pictured: This is how hard I will work)</figcaption>
+          <figcaption>(Me)</figcaption>
         </div>
       </div>
     </>

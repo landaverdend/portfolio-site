@@ -87,7 +87,7 @@
       width: 60px;
       margin-left: 5px;
     }
-    
+
     .studio-name {
       display: none;
     }
@@ -157,11 +157,8 @@
   transform: translateY(-100%); /* Start slightly above */
 }
 
-
-
 @media (min-width: 577) {
-
-
 }
 
-@media (max-width: 576) {}
+@media (max-width: 576) {
+}

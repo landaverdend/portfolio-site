@@ -12,7 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         // Allow requests from your frontend domain (and other origins if needed)
         registry.addMapping("/**")
-                .allowedOrigins("https://landaverde.in","http://localhost:5173", "https://194.195.214.234" )
+                .allowedOrigins("https://landaverde.in", "https://landaverde.io", "http://localhost:5173", "https://194.195.214.234" )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")  // Include OPTIONS for preflight
                 .allowedHeaders("*")  // Accept all headers
                 .allowCredentials(true);  // Allow cookies, if needed
