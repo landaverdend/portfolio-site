@@ -112,7 +112,7 @@ function ProjectContainer() {
         sourceCodeUrl={'https://github.com/landaverdend/trivia-generator'}
         backgroundColor="var(--panel-blue)"
         techUsed={'Express, Typescript, React'}
-        desc={'AI Powered trivia generator in a web browser...'}></ProjectCard>
+        desc={'AI Wrapper for generating trivia questions and answers'}></ProjectCard>
     </div>
   );
 }

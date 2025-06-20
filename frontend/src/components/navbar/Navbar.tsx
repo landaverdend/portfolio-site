@@ -43,10 +43,9 @@ function Navbar({ links, showSignUp }: NavbarProps) {
             const element = document.getElementById(link.link as string);
 
             if (element) {
-              element.scrollIntoView({ behavior: 'smooth' });
+              window.scrollTo({ top: element.offsetTop, behavior: 'smooth' });
             }
           } else if (link.type === 'view' && link.view) {
-            console.log('link view')
             setMobileMenuOpen(false);
             triggerLoadingSequence(link.view);
           }
