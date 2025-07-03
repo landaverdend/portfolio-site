@@ -5,6 +5,8 @@ import tetrisGalaxy from '@assets/videos/tetrisgalaxy.mp4';
 import isleadvance from '@assets/videos/isleadvance.mp4';
 import trivia from '@assets/images/resume/trivia.png';
 import battlesnakes from '@assets/videos/battlesnakes.mp4';
+import bitcoinTools from '@assets/images/resume/btc-tools.png';
+
 type PCProps = {
   src: string;
   type: 'video' | 'image';
@@ -54,6 +56,19 @@ function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techU
 function ProjectContainer() {
   return (
     <div id="projects" className="projects-container">
+      <ProjectCard
+        title={'Bitcoin Browser Tools'}
+        type={'image'}
+        src={bitcoinTools}
+        backgroundColor={'var(--panel-blue)'}
+        techUsed={'Typescript, React, Node'}
+        desc={
+          'A collection of tools that allow you to write and debug bitcoin scripts in the browser. Includes a debugger and transaction parser, alongside support for legacy and segwit transactions.'
+        }
+        demoUrl={'https://bitcointools.landaverde.io/'}
+        sourceCodeUrl={'https://github.com/landaverdend/btc-web-tools'}
+      />
+
       <ProjectCard
         title={'Battle Snakes'}
         type={'video'}
