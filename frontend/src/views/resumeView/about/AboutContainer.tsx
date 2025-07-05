@@ -27,16 +27,12 @@ function AboutContainer() {
           <h1>About Me</h1>
 
           <span>
-            Hello- I'm Nicodemus Landaverde, I'm a software developer. When I'm not at my actual job or working on <b>not</b>
-            -funny side projects, you can usually find me at one of three places:
-            <ul>
-              <li>The gym</li>
-              <li>Krave Kava Bar</li>
-              <li>My house at 110 W Main St, Carrboro, NC 27510 (Please come knock on my door)</li>
-            </ul>
-            Here's a showcase of some of the stuff I've made in the past- I like to stay flexible in terms of projects/skills but
-            if I had to categorize myself I definitely fall under the web-umbrella of things. Please feel free to reach out with
-            any queries!
+            Hello- I'm Nicodemus (Nic) Landaverde, a software developer currently working on Healthcare Systems at Clearwave Inc.
+            I like building software, even if it's pointless or not useful (to other people). Most of the stuff here is just
+            web-stuff that I've built for fun or for the strict purpose of learning new tech.
+            <br />
+            <br />
+            If I had to categorize myself, I'd probably say I'm a full-stack developer. I like doing a little bit of everything
           </span>
 
           <LargeButton
@@ -70,7 +66,9 @@ function AboutContainer() {
 
         <div className="flex-column portrait-container">
           <img src={me} />
-          <figcaption>(Me)</figcaption>
+          <figcaption>
+            👆👆<b>Me</b>👆👆 (I am actually purple in real life)
+          </figcaption>
         </div>
       </div>
     </>
