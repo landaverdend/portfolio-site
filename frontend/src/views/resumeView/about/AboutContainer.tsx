@@ -32,7 +32,10 @@ function AboutContainer() {
             web-stuff that I've built for fun or for the strict purpose of learning new tech.
             <br />
             <br />
-            If I had to categorize myself, I'd probably say I'm a full-stack developer. I like doing a little bit of everything
+            If I had to categorize myself, I'd probably say I'm a full-stack developer. I like doing a little bit of everything.
+            <br />
+            <br />
+            <b>Check out some of my projects below!</b>
           </span>
 
           <LargeButton

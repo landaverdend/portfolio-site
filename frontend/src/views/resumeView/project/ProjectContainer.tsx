@@ -90,7 +90,7 @@ function ProjectContainer() {
         techUsed={'C, Make'}
         type={'video'}
         desc={
-          'This Homebrew project for the Gameboy Advance was my senior capstone project, developed in collaboration with a friend. My contributions focused on the procedural generation of the game world and the implementation of menu functionality'
+          'Homebrew Gameboy Advance game made in collaboration with a friend for a university capstone project. My contributions focused on the procedural generation of the game world and the implementation of menu functionality. '
         }
       />
       <ProjectCard
