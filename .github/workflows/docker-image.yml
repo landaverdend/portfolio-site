@@ -28,6 +28,19 @@ jobs:
           cd frontend
           npm run build
 
+      - name: Create target directory
+        run: mkdir -p backend/src/main/resources/static
+
       - name: Copy frontend build to backend
         run: |
           cp -r frontend/dist/* backend/src/main/resources/static
+
+      - name: Build backend
+        run: |
+          cd backend
+          ./gradlew clean build
+
+      - name: Build Docker image
+        run: |
+          cd backend
+          docker build . --file Dockerfile --tag portfolio-site:$(date +%s)
