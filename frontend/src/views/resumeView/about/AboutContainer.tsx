@@ -1,9 +1,10 @@
 import './about-container.css';
 // import me from '@assets/images/resume/me.png'; // add this to be edgy.
-import me from '@assets/images/splash-page/meTyping.png';
+import me from '@assets/images/splash-page/weight.png';
 import EmailLogo from '@assets/images/logos/email.svg?react';
 import LinkedinLogo from '@assets/images/logos/linkedin.svg?react';
 import GithubLogo from '@assets/images/logos/github.svg?react';
+import NostrLogo from '@assets/images/logos/nostr.svg?react';
 import SubHeader from '@/components/subHeader/SubHeader';
 import LargeButton from '@/components/common/typewriterText/LargeButton/LargeButton';
 
@@ -27,9 +28,9 @@ function AboutContainer() {
           <h1>About Me</h1>
 
           <span>
-            Hello- I'm Nicodemus (Nic) Landaverde, a software developer currently working on Healthcare Systems at Clearwave Inc.
-            I like building software, even if it's pointless or not useful (to other people). Most of the stuff here is just
-            web-stuff that I've built for fun or for the strict purpose of learning new tech.
+            Hello- I'm Nic(o) Landaverde, a software developer currently working on Healthcare Systems at Clearwave Inc. I like
+            building software, even if it's pointless or not useful. Most of the stuff here is just web-stuff that I've built for
+            fun or for the strict purpose of learning new tech.
             <br />
             <br />
             If I had to categorize myself, I'd probably say I'm a full-stack developer. I like doing a little bit of everything.
@@ -54,14 +55,19 @@ function AboutContainer() {
             </SubHeader>
 
             <div className="social-list flex-row">
-              <a href="mailto: nicodemus.landaverde98@gmail.com">
+              <a href="mailto: nicodemus.landaverde98@gmail.com" target="_blank">
                 <EmailLogo />
               </a>
-              <a href="https://www.linkedin.com/in/nicodemus-landaverde-7562ba19a/">
+              <a href="https://www.linkedin.com/in/nicodemus-landaverde-7562ba19a/" target="_blank">
                 <LinkedinLogo />
               </a>
-              <a href="https://github.com/landaverdend">
+              <a href="https://github.com/landaverdend" target="_blank">
                 <GithubLogo />
+              </a>
+              <a
+                href="https://primal.net/p/nprofile1qqs0wee2fnqm7glta9gelz88fdq65nmy3xqmk8d7jx9zkq9fkx783hsypmaft"
+                target="_blank">
+                <NostrLogo />
               </a>
             </div>
           </div>
@@ -70,7 +76,7 @@ function AboutContainer() {
         <div className="flex-column portrait-container">
           <img src={me} />
           <figcaption>
-            👆👆<b>Me</b>👆👆 (I actually look like this in real life)
+            I <b>will</b> deliver under pressure
           </figcaption>
         </div>
       </div>

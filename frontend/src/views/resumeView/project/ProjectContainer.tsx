@@ -1,15 +1,14 @@
 import './project-container.css';
 
-import voltorb from '@assets/videos/voltorbflip.mp4';
-import tetrisGalaxy from '@assets/videos/tetrisgalaxy.mp4';
-import isleadvance from '@assets/videos/isleadvance.mp4';
 import trivia from '@assets/images/resume/trivia.png';
-import battlesnakes from '@assets/videos/battlesnakes.mp4';
 import bitcoinTools from '@assets/images/resume/btc-tools.png';
+import isleadvance from '@assets/images/resume/isle_advance.png';
+import battlesnakes from '@assets/images/resume/battle_snakes.png';
+import voltorb from '@assets/images/resume/voltorb_flip.png';
+import tetrisGalaxy from '@assets/images/resume/galaxy.png';
 
 type PCProps = {
   src: string;
-  type: 'video' | 'image';
   desc: string;
   techUsed: string;
   title: string;
@@ -17,17 +16,10 @@ type PCProps = {
   demoUrl?: string;
   sourceCodeUrl?: string;
 };
-function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techUsed, title, type }: PCProps) {
+function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techUsed, title }: PCProps) {
   return (
     <div className="project-card">
-      {type === 'video' ? (
-        <video controls preload="metadata">
-          <source src={src} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      ) : (
-        <img src={src}></img>
-      )}
+      <img src={src}></img>
 
       <div className="text-container" style={{ backgroundColor: backgroundColor }}>
         <h2>{title}</h2>
@@ -58,7 +50,6 @@ function ProjectContainer() {
     <div id="projects" className="projects-container">
       <ProjectCard
         title={'Bitcoin Browser Tools'}
-        type={'image'}
         src={bitcoinTools}
         backgroundColor={'var(--panel-blue)'}
         techUsed={'Typescript, React, Node'}
@@ -71,7 +62,6 @@ function ProjectContainer() {
 
       <ProjectCard
         title={'Battle Snakes'}
-        type={'video'}
         src={battlesnakes}
         sourceCodeUrl={'https://github.com/landaverdend/battle-snakes'}
         backgroundColor={'var(--panel-pink)'}
@@ -88,7 +78,6 @@ function ProjectContainer() {
         sourceCodeUrl={'https://github.com/landaverdend/Procgen-GBA'}
         backgroundColor={'var(--panel-blue)'}
         techUsed={'C, Make'}
-        type={'video'}
         desc={
           'Homebrew Gameboy Advance game made in collaboration with a friend for a university capstone project. My contributions focused on the procedural generation of the game world and the implementation of menu functionality. '
         }
@@ -96,7 +85,6 @@ function ProjectContainer() {
       <ProjectCard
         title={'Voltorb Flip JS'}
         src={voltorb}
-        type={'video'}
         demoUrl={'https://voltorb.landaverde.in/'}
         sourceCodeUrl={'https://github.com/landaverdend/supervoltorbflip'}
         backgroundColor={'var(--panel-green)'}
@@ -111,7 +99,6 @@ function ProjectContainer() {
         src={tetrisGalaxy}
         demoUrl={'https://swansonmp.github.io/tetrisGalaxy/'}
         sourceCodeUrl={'https://github.com/landaverdend/tetrisGalaxy'}
-        type={'video'}
         backgroundColor={'var(--panel-pink)'}
         techUsed={'Java, Java Swing'}
         desc={
@@ -123,7 +110,6 @@ function ProjectContainer() {
         title={'Trivia Generator'}
         src={trivia}
         demoUrl={'https://trivia.landaverde.in/'}
-        type={'image'}
         sourceCodeUrl={'https://github.com/landaverdend/trivia-generator'}
         backgroundColor="var(--panel-blue)"
         techUsed={'Express, Typescript, React'}
