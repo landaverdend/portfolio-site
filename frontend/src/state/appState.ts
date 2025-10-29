@@ -10,6 +10,9 @@ type AppState = {
   isLoadingBarDone: boolean;
   isModalOpen: boolean;
 
+  sessionToken: string;
+  setSessionToken: (token: string) => void;
+
   setView: (view: View) => void;
   setIsLoading: (val: boolean) => void;
   setIsLoadingBarDone: (val: boolean) => void;
@@ -19,10 +22,11 @@ type AppState = {
 };
 
 export const useAppState = create<AppState>((set) => ({
-  // componentToRender: 'SplashView',
   componentToRender: 'ResumeView',
   nextView: '',
-  
+  sessionToken: '',
+  setSessionToken: (token) => set({ sessionToken: token }),
+
   isLoading: false,
   isLoadingBarDone: false,
   isModalOpen: false,

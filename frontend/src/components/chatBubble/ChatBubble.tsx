@@ -9,6 +9,7 @@ import { callChatEndpoint } from '@/api/backend';
 import ChatLoadingWidget from './chatLoadingWidget/ChatLoadingWidget';
 import useInactivityHook from './hooks/inactivityHook';
 import sound from '@assets/sounds/notification.mp3';
+import { useAppState } from '@/state/appState';
 
 type MCProps = {
   closeFn: Function;
@@ -16,9 +17,9 @@ type MCProps = {
 };
 function MessageContainer({ chatLog, closeFn }: MCProps) {
   const scrollRef = useRef<HTMLDivElement | null>(null);
-
-  const [input, setInput] = useState<string>('');
+  const { sessionToken } = useAppState();
   const { clientChatLog, isLoading, isChatMuted, addChat, setIsLoading, setIsChatMuted } = useChatStore();
+  const [input, setInput] = useState<string>('');
 
   // Add chat to the global store. Clear the input field.
   const handleSend = () => {
@@ -26,12 +27,12 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
       addChat(input, 'client');
 
       setIsLoading(true);
-      callChatEndpoint([...clientChatLog, { sender: 'client', content: input }])
+      callChatEndpoint(sessionToken, [...clientChatLog, { sender: 'client', content: input }])
         .then((serverResponse) => {
           if (serverResponse !== null) {
             addChat(serverResponse, 'server');
           }
-          // TODO: implement some error handling later for empty responses...
+
         })
         .finally(() => setIsLoading(false));
 

@@ -54,7 +54,6 @@ public class GPTService {
 
         StringBuilder copy = new StringBuilder(chatPrompt);
         String response = chatClient.call(
-                // append the json to the system prompt lololololololol.
                 copy.append(
                         JsonUtil.convertObjectToJson(clientChatLog.getClientChatLog())
                 ).toString()

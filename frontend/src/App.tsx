@@ -6,9 +6,10 @@ import ResumeView from './views/resumeView/ResumeView';
 import { useAppState } from './state/appState';
 import LoadingView from './views/loadingView/LoadingView';
 import CoverLetterGeneratorView from './views/coverLetterGeneratorView/CoverLetterGeneratorView';
+import { establishHandshake } from './api/backend';
 
 function App() {
-  const { componentToRender, isLoading, setView } = useAppState();
+  const { componentToRender, isLoading, setSessionToken } = useAppState();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -27,21 +28,15 @@ function App() {
   }, [componentToRender, navigate, location.pathname]);
 
   // Determine the component to render based on the current path
-  const currentComponent = componentMap[location.pathname.slice(1)] || <ResumeView/>;
+  const currentComponent = componentMap[location.pathname.slice(1)] || <ResumeView />;
 
-  // Override browser's back button globally
+  // Establish handshake with the backend.
   useEffect(() => {
-    const handlePopState = (event: PopStateEvent) => {
-      event.preventDefault(); // Prevent default browser behavior
-      navigate('/SplashView'); // Redirect to the main page
-      setView('SplashView');
-    };
-
-    window.addEventListener('popstate', handlePopState);
-
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
+    establishHandshake()
+      .then((response) => {
+        setSessionToken(response.sessionToken);
+      })
+      .catch((error) => console.error(error));
   }, []);
 
   return (

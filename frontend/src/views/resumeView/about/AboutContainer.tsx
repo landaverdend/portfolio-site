@@ -30,7 +30,7 @@ function AboutContainer() {
           <span>
             Hello- I'm Nic(o) Landaverde, a software developer currently working on Healthcare Systems at Clearwave Inc. I like
             building software, even if it's pointless or not useful. Most of the stuff here is just web-stuff that I've built for
-            fun or for the strict purpose of learning new tech.
+            fun or for the strict purpose of learning.
             <br />
             <br />
             If I had to categorize myself, I'd probably say I'm a full-stack developer. I like doing a little bit of everything.
