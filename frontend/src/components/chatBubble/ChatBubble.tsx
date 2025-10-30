@@ -18,7 +18,7 @@ type MCProps = {
 function MessageContainer({ chatLog, closeFn }: MCProps) {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const { sessionToken } = useAppState();
-  const { clientChatLog, isLoading, isChatMuted, addChat, setIsLoading, setIsChatMuted } = useChatStore();
+  const { isLoading, isChatMuted, addChat, setIsLoading, setIsChatMuted } = useChatStore();
   const [input, setInput] = useState<string>('');
 
   // Add chat to the global store. Clear the input field.
@@ -27,12 +27,12 @@ function MessageContainer({ chatLog, closeFn }: MCProps) {
       addChat(input, 'client');
 
       setIsLoading(true);
-      callChatEndpoint(sessionToken, [...clientChatLog, { sender: 'client', content: input }])
+      callChatEndpoint(sessionToken, input)
         .then((serverResponse) => {
+          console.log(serverResponse);
           if (serverResponse !== null) {
             addChat(serverResponse, 'server');
           }
-
         })
         .finally(() => setIsLoading(false));
 

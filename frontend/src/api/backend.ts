@@ -1,9 +1,7 @@
-import { Chat } from '@/state/chatState';
-
 // TODO: Change to the actual backend URL
 const baseUrl = 'http://127.0.0.1:3000';
 
-export async function callChatEndpoint(sessionToken: string, clientChatLog: Array<Chat>): Promise<string | null> {
+export async function callChatEndpoint(sessionToken: string, userMessage: string): Promise<string | null> {
   try {
     const response = await fetch(`${baseUrl}/api/chat`, {
       method: 'POST',
@@ -11,7 +9,7 @@ export async function callChatEndpoint(sessionToken: string, clientChatLog: Arra
         'Content-Type': 'application/json',
         'Session-Token': sessionToken,
       },
-      body: JSON.stringify({ clientChatLog: clientChatLog }),
+      body: JSON.stringify({ userMessage }),
     });
 
     if (!response.ok) {

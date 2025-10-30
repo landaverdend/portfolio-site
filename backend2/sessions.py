@@ -43,7 +43,7 @@ class SessionManager:
     del self.active_sessions[oldest_session.session_token]
     self.num_sessions -= 1
 
-    return
-  
+    return 
+
   def __repr__(self) -> str:
     return f"SessionManager(num_sessions={self.num_sessions}, active_sessions={self.active_sessions})"

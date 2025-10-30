@@ -75,9 +75,7 @@ function AboutContainer() {
 
         <div className="flex-column portrait-container">
           <img src={me} />
-          <figcaption>
-            I <b>will</b> deliver under pressure
-          </figcaption>
+          <figcaption>I will build your next project</figcaption>
         </div>
       </div>
     </>
