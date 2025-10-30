@@ -69,7 +69,6 @@ export async function establishHandshake(): Promise<HandshakeResponse> {
   }
 
   const responseBody = await response.json();
-  console.log(responseBody);
 
   return responseBody as HandshakeResponse;
 }

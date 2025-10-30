@@ -1,26 +1,22 @@
-import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import uuid
 from sessions import SessionManager
-import openai
-from dotenv import load_dotenv
 
-
-load_dotenv()
-openai.api_key = os.getenv('OPENAI_API_KEY')
-print(openai.api_key)
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173"]}})
 
 session_manager = SessionManager()
 
 @app.route('/api/chat', methods=['POST'])
-def chat():
+def chat() -> str:
+
   session_token = request.headers.get('Session-Token')
   user_message = request.json.get('userMessage')
 
-  return jsonify({'success': True, 'message': 'Chat request received'})
+  response = session_manager.send_user_message(session_token, user_message)
+
+  return response
 
 @app.route('/api/handshake', methods=['GET'])
 def enableHandshake():
