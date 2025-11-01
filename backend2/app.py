@@ -6,6 +6,7 @@ from sessions import SessionManager
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173"]}})
 
+CHARACTER_LIMIT = 1000 
 session_manager = SessionManager()
 
 @app.route('/api/chat', methods=['POST'])
@@ -13,6 +14,12 @@ def chat() -> str:
 
   session_token = request.headers.get('Session-Token')
   user_message = request.json.get('userMessage')
+
+  if len(user_message) == 0 or user_message is None:
+    return jsonify({'error': 'User message is empty'})
+
+  if len(user_message) > CHARACTER_LIMIT:
+    return jsonify({'error': f'User message is too long. Maximum length is {CHARACTER_LIMIT} characters.'})
 
   response = session_manager.send_user_message(session_token, user_message)
 
