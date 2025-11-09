@@ -13,7 +13,7 @@ import BackgroundCanvas from '@/components/backgroundCanvas/BackgroundCanvas';
 function SplashView() {
   const navbarLinks: Array<Link> = [
     {
-      view: 'ResumeView',
+      view: 'resume',
       text: 'Portfolio',
       type: 'view',
     },
