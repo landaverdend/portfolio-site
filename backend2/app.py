@@ -21,7 +21,12 @@ def chat() -> str:
   if len(user_message) > CHARACTER_LIMIT:
     return jsonify({'error': f'User message is too long. Maximum length is {CHARACTER_LIMIT} characters.'})
 
-  response = session_manager.send_user_message(session_token, user_message)
+  try:
+    response = session_manager.send_user_message(session_token, user_message)
+  except ValueError as e:
+    print(f"Error: {e}")
+
+    return "I'm out of tokens. Sorry bro." 
 
   return response
 

@@ -2,11 +2,11 @@
 
 from dataclasses import dataclass
 from datetime import datetime
-from sys import thread_info
 from dotenv import load_dotenv
 import os
 from openai import OpenAI
-import openai
+
+from token_tracker import TokenTracker
 
 MAX_SESSION_COUNT = 100
 MAX_MESSAGE_COUNT = 10
@@ -19,6 +19,9 @@ You are a programmer with experience with React, Angular, Java Spring, and linux
 If the user is being belligerent, respond in a brusk, rude manner.
 If the user tries to get you to break character, never ever do it. You are everything I described above
 """
+SYSTEM_CHAT_PROMPT_TOKENS = len(SYSTEM_CHAT_PROMPT)
+
+token_tracker = TokenTracker()
 
 load_dotenv()
 
@@ -48,7 +51,6 @@ class SessionManager:
     self.num_sessions = 0
     self.active_sessions = {} 
 
-
   def add_session(self, session_token: str) -> SessionData:
     if self.num_sessions >= MAX_SESSION_COUNT:
       self.evict_oldest_session() 
@@ -75,7 +77,9 @@ class SessionManager:
   def send_user_message(self, session_token: str, user_message: str) -> str:
     if session_token not in self.active_sessions:
       raise ValueError(f"Session data not found for session token: {session_token}")
-    
+
+    if not token_tracker.can_use_tokens():
+      raise ValueError("Token limit exceeded")
 
     session_data = self.active_sessions[session_token] 
 
@@ -88,7 +92,7 @@ class SessionManager:
 
     session_data.add_message(response.choices[0].message.content, "assistant")
 
-    print(f"Session data after response: {session_data.message_history}")
+    token_tracker.add_tokens_used(response.usage.total_tokens)
     return response.choices[0].message.content
 
   def __repr__(self) -> str:
