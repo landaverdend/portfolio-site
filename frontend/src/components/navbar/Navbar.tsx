@@ -78,7 +78,7 @@ function Navbar({ links, showSignUp }: NavbarProps) {
         <div className="navbar-container__logo">
           <a
             onClick={() => {
-              setView('SplashView');
+              setView('splash');
             }}>
             <img src={siteLogo} height={75} width={75} />
           </a>

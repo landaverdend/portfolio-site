@@ -9,15 +9,15 @@ import CoverLetterGeneratorView from './views/coverLetterGeneratorView/CoverLett
 import { establishHandshake } from './api/backend';
 
 function App() {
-  const { componentToRender, isLoading, setSessionToken } = useAppState();
+  const { componentToRender, isLoading, setSessionToken, setView } = useAppState();
   const navigate = useNavigate();
   const location = useLocation();
 
   // Map components to paths
   const componentMap: Record<string, JSX.Element> = {
-    ResumeView: <ResumeView />,
-    SplashView: <SplashView />,
-    CoverLetterGeneratorView: <CoverLetterGeneratorView />,
+    resume: <ResumeView />,
+    splash: <SplashView />,
+    cover_letter: <CoverLetterGeneratorView />,
   };
 
   // Navigate to the correct route dynamically when `componentToRender` changes
@@ -26,6 +26,24 @@ function App() {
       navigate(`/${componentToRender}`);
     }
   }, [componentToRender, navigate, location.pathname]);
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case '/splash':
+        setView('splash');
+        break;
+      case '/cover_letter':
+        setView('cover_letter');
+        break;
+      case '/resume':
+        setView('resume');
+        break;
+      default:
+        setView('resume');
+        break;
+    }
+
+  }, []);
 
   // Determine the component to render based on the current path
   const currentComponent = componentMap[location.pathname.slice(1)] || <ResumeView />;

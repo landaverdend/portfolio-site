@@ -20,7 +20,7 @@ export default function CoverLetterSection() {
         </p>
         <LargeButton
           onClick={() => {
-            triggerLoadingSequence('CoverLetterGeneratorView');
+            triggerLoadingSequence('cover_letter');
           }}>
           Check it out!
         </LargeButton>

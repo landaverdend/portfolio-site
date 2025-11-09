@@ -19,7 +19,7 @@ function ResumeView() {
     },
     { link: 'projects', text: 'Projects', type: 'link' },
     { link: 'contact', text: 'Contact', type: 'link' },
-    { view: 'SplashView', text: 'Laughs', type: 'view' },
+    { view: 'splash', text: 'Laughs', type: 'view' },
   ];
   return (
     <>

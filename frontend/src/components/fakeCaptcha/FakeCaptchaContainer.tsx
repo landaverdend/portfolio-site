@@ -38,7 +38,7 @@ function FakeCaptchaContainer() {
         {isCompleted && (
           <span
             onAnimationEnd={() => {
-              triggerLoadingSequence('ResumeView');
+              triggerLoadingSequence('resume');
             }}
             className="checkmark"></span>
         )}

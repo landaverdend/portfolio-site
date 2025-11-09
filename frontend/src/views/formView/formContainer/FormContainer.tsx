@@ -263,7 +263,7 @@ function FormContainer() {
                 className="give-up-button"
                 onClick={(e) => {
                   e.preventDefault();
-                  triggerLoadingSequence('ResumeView');
+                  triggerLoadingSequence('resume');
                 }}>
                 I give up!
               </button>

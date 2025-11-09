@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export type View = 'SplashView' | 'CoverLetterGeneratorView' | 'ResumeView' | '';
+export type View = 'splash' | 'cover_letter' | 'resume' | '';
 
 type AppState = {
   componentToRender: View;
@@ -22,7 +22,7 @@ type AppState = {
 };
 
 export const useAppState = create<AppState>((set) => ({
-  componentToRender: 'ResumeView',
+  componentToRender: 'resume',
   nextView: '',
   sessionToken: '',
   setSessionToken: (token) => set({ sessionToken: token }),
