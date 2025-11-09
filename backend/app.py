@@ -5,7 +5,7 @@ from cover_letter_generator import CoverLetterDTO
 from sessions import SessionManager
 
 app = Flask(__name__, static_folder='static')
-CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173"]}})
+CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173", "https://landaverde.io", "http://landaverde.io"]}})
 
 CHARACTER_LIMIT = 1000 
 session_manager = SessionManager()

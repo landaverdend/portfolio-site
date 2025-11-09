@@ -1,5 +1,5 @@
 // TODO: Change to the actual backend URL
-const baseUrl = 'http://127.0.0.1:3000';
+const baseUrl = '';
 
 export async function callChatEndpoint(sessionToken: string, userMessage: string): Promise<string | null> {
   try {
