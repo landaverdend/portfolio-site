@@ -1,10 +1,10 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, send_from_directory
 from flask_cors import CORS
 import uuid
 from cover_letter_generator import CoverLetterDTO 
 from sessions import SessionManager
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173"]}})
 
 CHARACTER_LIMIT = 1000 
@@ -40,7 +40,6 @@ def enableHandshake():
 
   return jsonify({'success': True, 'sessionToken': session_token})
 
-
 @app.route('/api/cover_letter', methods=['POST'])
 def prompt_cover_letter():
   session_token = request.headers.get('Session-Token')
@@ -53,5 +52,12 @@ def prompt_cover_letter():
   except ValueError as e:
     return jsonify({'error': str(e)}), 500
 
+
+@app.route('/')
+@app.route('/<path:path>')
+def index(path='index.html'):
+  return send_from_directory(app.static_folder, path)
+
+
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=3000)
+  app.run(host='0.0.0.0', port=8080)

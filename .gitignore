@@ -30,3 +30,4 @@ dist-ssr
 /backend/src/main/resources/static/
 
 __pycache__/
+static/
