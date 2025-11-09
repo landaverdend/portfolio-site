@@ -45,7 +45,6 @@ jobs:
 
       - name: Build Docker image
         run: |
-          cd backend
           docker build -t ghcr.io/${{ github.repository }}/portfolio-site:latest .
 
       - name: Push Docker image
