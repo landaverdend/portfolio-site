@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
 import uuid
+from cover_letter_generator import CoverLetterDTO 
 from sessions import SessionManager
 
 app = Flask(__name__)
@@ -38,6 +39,19 @@ def enableHandshake():
   session_manager.add_session(session_token)
 
   return jsonify({'success': True, 'sessionToken': session_token})
+
+
+@app.route('/api/cover_letter', methods=['POST'])
+def prompt_cover_letter():
+  session_token = request.headers.get('Session-Token')
+  dto = request.get_json()
+  dto = CoverLetterDTO(**dto)
+
+  try:
+    response = session_manager.prompt_cover_letter(session_token, dto)
+    return response
+  except ValueError as e:
+    return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=3000)

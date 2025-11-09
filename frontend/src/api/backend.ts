@@ -34,11 +34,12 @@ export type CoverLetterDTO = {
   position: string;
   wordCount: number;
 };
-export async function callCoverLetterEndpoint(dto: CoverLetterDTO): Promise<string> {
+export async function callCoverLetterEndpoint(sessionToken: string, dto: CoverLetterDTO): Promise<string> {
   const response = await fetch(`${baseUrl}/api/cover_letter`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Session-Token': sessionToken,
     },
     body: JSON.stringify(dto),
   });

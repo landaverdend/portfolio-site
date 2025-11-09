@@ -22,7 +22,7 @@ type AppState = {
 };
 
 export const useAppState = create<AppState>((set) => ({
-  componentToRender: 'ResumeView',
+  componentToRender: 'CoverLetterGeneratorView',
   nextView: '',
   sessionToken: '',
   setSessionToken: (token) => set({ sessionToken: token }),

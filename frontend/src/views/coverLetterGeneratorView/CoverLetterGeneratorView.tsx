@@ -9,6 +9,7 @@ import LoadSpinner from '@/components/loadSpinner/LoadSpinner';
 import Footer from '@/components/footer/Footer';
 import Navbar from '@/components/navbar/Navbar';
 import Typewriter from 'typewriter-effect';
+import { useAppState } from '@/state/appState';
 
 type UITProps = {
   defaultString: string;
@@ -19,6 +20,8 @@ function UserInputText({ defaultString, field }: UITProps) {
 }
 
 export default function CoverLetterGeneratorView() {
+  const { sessionToken } = useAppState();
+
   const [title, setTitle] = useState<string>('');
   const [company, setCompany] = useState<string>('');
   const [tone, setTone] = useState<string>('Formal');
@@ -34,7 +37,7 @@ export default function CoverLetterGeneratorView() {
   function handleClick() {
     setIsLoading(true);
 
-    callCoverLetterEndpoint({
+    callCoverLetterEndpoint(sessionToken, {
       company: company,
       tone: tone,
       frameworks: frameworks,

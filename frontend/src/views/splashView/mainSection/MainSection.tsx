@@ -37,7 +37,7 @@ export default function MainSection() {
                 onClick={() => {
                   setDisplayFakeCaptcha(true);
                 }}>
-                Skip to the portfolio...
+                Skip to portfolio
               </u>
             )}
           </span>

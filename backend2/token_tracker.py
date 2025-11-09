@@ -24,3 +24,4 @@ class TokenTracker:
   def add_tokens_used(self, tokens: int) -> None:
     self.hourly_log.append((datetime.now(), tokens))
 
+token_tracker = TokenTracker()

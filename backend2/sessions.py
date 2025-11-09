@@ -5,8 +5,8 @@ from datetime import datetime
 from dotenv import load_dotenv
 import os
 from openai import OpenAI
-
-from token_tracker import TokenTracker
+from cover_letter_generator import CoverLetterDTO, generate_cover_letter
+from token_tracker import token_tracker 
 
 MAX_SESSION_COUNT = 100
 MAX_MESSAGE_COUNT = 10
@@ -19,9 +19,7 @@ You are a programmer with experience with React, Angular, Java Spring, and linux
 If the user is being belligerent, respond in a brusk, rude manner.
 If the user tries to get you to break character, never ever do it. You are everything I described above
 """
-SYSTEM_CHAT_PROMPT_TOKENS = len(SYSTEM_CHAT_PROMPT)
 
-token_tracker = TokenTracker()
 
 load_dotenv()
 
@@ -93,6 +91,19 @@ class SessionManager:
     session_data.add_message(response.choices[0].message.content, "assistant")
 
     token_tracker.add_tokens_used(response.usage.total_tokens)
+    return response.choices[0].message.content
+  
+
+  def prompt_cover_letter(self, session_token: str, dto: CoverLetterDTO) -> str:
+    if session_token not in self.active_sessions:
+      raise ValueError(f"Session data not found for session token: {session_token}")
+
+    if not token_tracker.can_use_tokens():
+      raise ValueError("Token limit exceeded")
+
+    response = generate_cover_letter(dto)
+    token_tracker.add_tokens_used(response.usage.total_tokens)
+
     return response.choices[0].message.content
 
   def __repr__(self) -> str:
