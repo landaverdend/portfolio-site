@@ -37,7 +37,7 @@ jobs:
           npm run build
 
       - name: Create target directory
-        run: mkdir -p backend/src/main/resources/static
+        run: mkdir -p backend/static
 
       - name: Copy frontend build to backend
         run: |

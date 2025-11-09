@@ -2,10 +2,10 @@ FROM python:3.9
 
 WORKDIR /app
 
-COPY backend2/requirements.txt ./
+COPY backend/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY backend2/ ./
+COPY backend/ ./
 
 ENV FLASK_APP=app.py
 
