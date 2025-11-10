@@ -55,7 +55,7 @@ def prompt_cover_letter():
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
-def index():
+def index(path='index.html'):
   return send_from_directory(app.static_folder, 'index.html')
 
 
