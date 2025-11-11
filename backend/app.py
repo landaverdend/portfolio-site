@@ -3,8 +3,9 @@ from flask_cors import CORS
 import uuid
 from cover_letter_generator import CoverLetterDTO 
 from sessions import SessionManager
+import os
 
-app = Flask(__name__, static_folder='static', static_url_path='')
+app = Flask(__name__, static_folder='static', static_url_path='/static')
 CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173", "https://landaverde.io", "http://landaverde.io"]}})
 
 CHARACTER_LIMIT = 1000 
@@ -55,8 +56,12 @@ def prompt_cover_letter():
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
-def index(path='index.html'):
-  return send_from_directory(app.static_folder, 'index.html')
+def serve_frontend(path):
+    file_path = os.path.join(app.static_folder, path)
+    if os.path.isfile(file_path):
+        return send_from_directory(app.static_folder, path)
+    # Anything else goes to the React app
+    return send_from_directory(app.static_folder, 'index.html')
 
 
 if __name__ == '__main__':
