@@ -8,15 +8,15 @@ export default function ContactContainer() {
   return (
     <form className="contact-form-container" onSubmit={handleSubmit}>
       <div className="header-info">
-        <h1>Contact Me</h1>
+        <h1 className='text-2xl font-semibold'>Contact Me</h1>
 
         <p>Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.</p>
       </div>
 
       <label htmlFor="email">Email Address</label>
       <ValidationError prefix="Email" field="email" errors={state.errors} />
-      <input id="email" type="email" name="email" placeholder="chuck@gmail.com" />
-      <textarea id="message" name="message" placeholder="Message" />
+      <input id="email" type="email" name="email" placeholder="chuck@gmail.com" className="bg-white" />
+      <textarea id="message" name="message" placeholder="Message" className="bg-white"/>
 
       <ValidationError prefix="Message" field="message" errors={state.errors} />
 

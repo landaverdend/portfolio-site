@@ -33,7 +33,7 @@ function ResumeView() {
 
         <section id="projects" className="flex-column">
           <SubHeader>
-            <h1>Projects</h1>
+            <h1 className="text-2xl font-semibold">Projects</h1>
           </SubHeader>
           <ProjectContainer />
         </section>

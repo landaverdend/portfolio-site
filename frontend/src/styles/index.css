@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 :root {
   --main-indigo: rgb(77, 61, 113);
 

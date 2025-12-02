@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import svgr from 'vite-plugin-svgr';
 import viteImagemin from 'vite-plugin-imagemin';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,6 +18,7 @@ export default defineConfig({
         plugins: [{ removeViewBox: false }],
       },
     }),
+    tailwindcss(),
   ],
   resolve: {
     alias: {

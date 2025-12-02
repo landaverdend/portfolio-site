@@ -25,7 +25,7 @@ function AboutContainer() {
     <>
       <div id="about" className="about-container ">
         <div className="flex-column text-container__text">
-          <h1>About Me</h1>
+          <h1 className='text-2xl font-semibold'>About Me</h1>
 
           <span>
             Hello- I'm Nic(o) Landaverde, a software developer currently working on Healthcare Systems at Clearwave Inc. I like

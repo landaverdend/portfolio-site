@@ -12,7 +12,7 @@ export default function CoverLetterSection() {
   return (
     <div className="panel-container">
       <div className="panel-one">
-        <h1>Tired of lazy applicants not writing cover letters?</h1>
+        <h1 className="text-2xl font-semibold">Tired of lazy applicants not writing cover letters?</h1>
         <p>
           Using my <b>Cover Letter Generator™</b>, I will craft a painstakingly tailored cover letter… for YOU. That’s right, —I’m
           flipping the script. Simply provide me with your keywords, buzzwords, favorite business clichés, and preferred tone, and

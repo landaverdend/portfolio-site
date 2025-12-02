@@ -32,13 +32,19 @@ function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techU
           <br />
           {demoUrl != undefined ? (
             <>
-              <a href={demoUrl}>Demo</a>
+              <a href={demoUrl} className="text-blue-800 underline">
+                Demo
+              </a>
               <br />
             </>
           ) : (
             <></>
           )}
-          {sourceCodeUrl !== undefined && <a href={sourceCodeUrl}>Source Code</a>}
+          {sourceCodeUrl !== undefined && (
+            <a href={sourceCodeUrl} className="text-blue-800 underline">
+              Source Code
+            </a>
+          )}
         </p>
       </div>
     </div>
