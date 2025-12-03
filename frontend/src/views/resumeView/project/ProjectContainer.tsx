@@ -4,6 +4,7 @@ import isleadvance from '@assets/images/resume/isle_advance.png';
 import battlesnakes from '@assets/images/resume/battle_snakes.png';
 import voltorb from '@assets/images/resume/voltorb_flip.png';
 import tetrisGalaxy from '@assets/images/resume/galaxy.png';
+import whatDidTheFoxSay from '@assets/images/resume/fox_site.png';
 
 type PCProps = {
   src: string;
@@ -58,6 +59,16 @@ function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techU
 function ProjectContainer() {
   return (
     <div id="projects" className="projects-container flex flex-col justify-center items-center gap-[25px] sm:items-start">
+      <ProjectCard
+        title="What Did the Fox Say?"
+        src={whatDidTheFoxSay}
+        demoUrl="https://www.whatdidthefoxsay.com/"
+        techUsed="NextJS, TailwindCSS, Prisma, PostgreSQL, Vercel"
+        desc="A progressive web app of memorable/funny quotes from my friend Ryan Fox. Includes admin and user functionality for adding/editing quotes and reacting to them."
+        sourceCodeUrl="https://github.com/landaverdend/fox-repository"
+        backgroundColor="var(--panel-green)"
+      />
+
       <ProjectCard
         title={'Bitcoin Browser Tools'}
         src={bitcoinTools}
