@@ -12,6 +12,10 @@
   --form-box-shadow: 7.5px 7.5px black;
 }
 
+.courier {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 body {
   /* Global styles to apply */
   font-family: 'Arial', sans-serif;

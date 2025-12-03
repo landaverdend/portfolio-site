@@ -16,19 +16,21 @@ type PCProps = {
 };
 function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techUsed, title }: PCProps) {
   return (
-    <div className="project-card flex justify-around items-center flex-wrap flex-row gap-[25px]">
+    <div className="flex justify-around items-center flex-wrap flex-col gap-[25px] sm:flex-row">
       <img
         src={src}
-        className="flex-5 w-[clamp(600px,100%,800px)] h-[clamp(400px,100%,600px)] object-cover rounded-md border border-indigo-500"></img>
+        className="flex-5 w-[95vw] sm:w-[clamp(600px,100%,800px)] h-[clamp(400px,100%,600px)] object-cover rounded-md border border-indigo-500"></img>
 
       <div
-        className="text-container flex flex-5 flex-col justify-center items-start text-left rounded-md p-[40px] border border-black min-w-[30%]"
+        className="flex flex-5 flex-col justify-center items-start text-left rounded-md p-[40px] border border-black min-w-[30%] gap-3 mx-3"
         style={{ backgroundColor: backgroundColor, boxShadow: '10px 10px black' }}>
         <h2 className="text-xl font-semibold">{title}</h2>
-        <p className="text-container__tech-used text-center">
-          Technologies used: <span className="">{techUsed}</span>
+
+        <p className="flex flew-row flex-wrap gap-2">
+          <span className="font-semibold">Technologies used:</span>{' '}
+          <span className="courier bg-gray-300 rounded-md p-px">{techUsed}</span>
         </p>
-        <p className="text-container__description">
+        <p className="text-left text-md">
           {desc}
           <br />
           <br />
@@ -55,7 +57,7 @@ function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techU
 
 function ProjectContainer() {
   return (
-    <div id="projects" className="projects-container flex flex-col justify-center gap-[25px]">
+    <div id="projects" className="projects-container flex flex-col justify-center items-center gap-[25px] sm:items-start">
       <ProjectCard
         title={'Bitcoin Browser Tools'}
         src={bitcoinTools}
@@ -93,7 +95,7 @@ function ProjectContainer() {
       <ProjectCard
         title={'Voltorb Flip JS'}
         src={voltorb}
-        demoUrl={'https://voltorb.landaverde.in/'}
+        demoUrl={'https://voltorb.landaverde.io/'}
         sourceCodeUrl={'https://github.com/landaverdend/supervoltorbflip'}
         backgroundColor={'var(--panel-green)'}
         techUsed={'React, Redux, NodeJS'}
@@ -117,7 +119,7 @@ function ProjectContainer() {
       <ProjectCard
         title={'Trivia Generator'}
         src={trivia}
-        demoUrl={'https://trivia.landaverde.in/'}
+        demoUrl={'https://trivia.landaverde.io/'}
         sourceCodeUrl={'https://github.com/landaverdend/trivia-generator'}
         backgroundColor="var(--panel-blue)"
         techUsed={'Express, Typescript, React'}
