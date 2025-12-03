@@ -1,5 +1,3 @@
-// import './project-container.css';
-
 import trivia from '@assets/images/resume/trivia.png';
 import bitcoinTools from '@assets/images/resume/btc-tools.png';
 import isleadvance from '@assets/images/resume/isle_advance.png';
