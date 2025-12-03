@@ -1,4 +1,4 @@
-import './project-container.css';
+// import './project-container.css';
 
 import trivia from '@assets/images/resume/trivia.png';
 import bitcoinTools from '@assets/images/resume/btc-tools.png';
@@ -18,13 +18,17 @@ type PCProps = {
 };
 function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techUsed, title }: PCProps) {
   return (
-    <div className="project-card">
-      <img src={src}></img>
+    <div className="project-card flex justify-around items-center flex-wrap flex-row gap-[25px]">
+      <img
+        src={src}
+        className="flex-5 w-[clamp(600px,100%,800px)] h-[clamp(400px,100%,600px)] object-cover rounded-md border border-indigo-500"></img>
 
-      <div className="text-container" style={{ backgroundColor: backgroundColor }}>
+      <div
+        className="text-container flex flex-5 flex-col justify-center items-start text-left rounded-md p-[40px] border border-black min-w-[30%]"
+        style={{ backgroundColor: backgroundColor, boxShadow: '10px 10px black' }}>
         <h2 className="text-xl font-semibold">{title}</h2>
-        <p className="text-container__tech-used">
-          Technologies used: <span className="courier-text">{techUsed}</span>
+        <p className="text-container__tech-used text-center">
+          Technologies used: <span className="">{techUsed}</span>
         </p>
         <p className="text-container__description">
           {desc}
@@ -53,7 +57,7 @@ function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techU
 
 function ProjectContainer() {
   return (
-    <div id="projects" className="projects-container">
+    <div id="projects" className="projects-container flex flex-col justify-center gap-[25px]">
       <ProjectCard
         title={'Bitcoin Browser Tools'}
         src={bitcoinTools}
