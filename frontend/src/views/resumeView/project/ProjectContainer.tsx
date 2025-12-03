@@ -22,7 +22,7 @@ function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techU
       <img src={src}></img>
 
       <div className="text-container" style={{ backgroundColor: backgroundColor }}>
-        <h2>{title}</h2>
+        <h2 className="text-xl font-semibold">{title}</h2>
         <p className="text-container__tech-used">
           Technologies used: <span className="courier-text">{techUsed}</span>
         </p>

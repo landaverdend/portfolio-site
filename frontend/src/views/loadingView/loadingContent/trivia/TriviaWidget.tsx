@@ -20,7 +20,7 @@ function TriviaWidget() {
 
   return (
     <div className="trivia-container">
-      <h2>Did you know?</h2>
+      <h2 className="text-lg font-semibold">Did you know?</h2>
       <Typewriter
         key={triviaIndex}
         onInit={(typewriter) => {

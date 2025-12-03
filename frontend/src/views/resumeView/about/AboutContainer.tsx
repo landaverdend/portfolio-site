@@ -51,7 +51,7 @@ function AboutContainer() {
 
           <div className="social-dock">
             <SubHeader barWidth="150px">
-              <h3>Socials</h3>
+              <h3 className="text-lg font-semibold">Socials</h3>
             </SubHeader>
 
             <div className="social-list flex-row">
