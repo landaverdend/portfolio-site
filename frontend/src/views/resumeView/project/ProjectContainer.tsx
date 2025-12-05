@@ -57,7 +57,6 @@ function ProjectCard({ src, demoUrl, sourceCodeUrl, backgroundColor, desc, techU
 }
 
 function ProjectContainer() {
-
   return (
     <div id="projects" className="projects-container flex flex-col justify-center items-center gap-[25px] sm:items-start">
       <ProjectCard
@@ -127,15 +126,6 @@ function ProjectContainer() {
           'Tetris spinoff where pieces fall from all 4 sides that was made at a university hackathon over one very long night alongside my 3 friends. '
         }
       />
-
-      <ProjectCard
-        title={'Trivia Generator'}
-        src={trivia}
-        demoUrl={'https://trivia.landaverde.io/'}
-        sourceCodeUrl={'https://github.com/landaverdend/trivia-generator'}
-        backgroundColor="var(--panel-blue)"
-        techUsed={'Express, Typescript, React'}
-        desc={'AI Wrapper for generating trivia questions and answers'}></ProjectCard>
     </div>
   );
 }

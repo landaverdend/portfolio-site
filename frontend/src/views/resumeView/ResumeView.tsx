@@ -31,14 +31,14 @@ function ResumeView() {
 
         <BackgroundBubbles />
 
-        <section id="projects" className="flex-column">
+        <section id="projects" className="flex flex-col justify-center items-center ">
           <SubHeader>
             <h1 className="text-2xl font-semibold">Projects</h1>
           </SubHeader>
           <ProjectContainer />
         </section>
 
-        <section id="contact" className="flex-column">
+        <section id="contact" className="flex flex-col justify-center items-center">
           <ContactContainer />
         </section>
       </div>
