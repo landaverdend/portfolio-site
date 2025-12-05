@@ -20,13 +20,13 @@ function AboutContainer() {
 
   return (
     <>
-      <div id="about" className="about-container flex flex-col-reverse items-center justify-center mt-20 gap-10 lg:flex-row">
+      <div id="about" className="flex flex-col-reverse justify-center items-center mt-20 gap-10 lg:flex-row lg:items-stretch">
         <div
-          className="flex flex-col justify-center items-center gap-5 bg-(--panel-blue) rounded-lg p-5 border border-black w-[90%] h-fit lg:w-3/5 "
+          className="w-[90%] h-fill flex flex-col justify-center items-center gap-8 bg-(--panel-blue) rounded-lg p-5 border border-black lg:w-3/5 "
           style={{ boxShadow: '5px 5px black' }}>
-          <h1 className="text-2xl font-semibold">About Me</h1>
+          <h1 className="text-1xl font-semibold lg:text-3xl 2xl:text-6xl">About Me</h1>
 
-          <span className="text-left">
+          <span className="text-md lg:text-xl 2xl:text-3xl">
             Hello- I'm Nic(o) Landaverde, a software developer currently working on Healthcare Systems at Clearwave Inc. I like
             building software, even if it's pointless or not useful. Most of the stuff here is just web-stuff that I've built for
             fun or for the strict purpose of learning.
@@ -49,9 +49,9 @@ function AboutContainer() {
           </LargeButton>
 
           <div className="flex flex-col justify-center items-center gap-4">
-            <h3 className="text-lg font-semibold">Socials</h3>
+            <h3 className="text-lg font-semibold lg:text-xl 2xl:text-2xl">Socials</h3>
 
-            <div className="social-list flex flex-row gap-3 items-center justify-center">
+            <div className="flex flex-row gap-3 items-center justify-center">
               <a href="mailto: nicodemus.landaverde98@gmail.com" target="_blank">
                 <EmailLogo className="h-10 w-10 cursor-pointer hover:opacity-80" />
               </a>
@@ -71,9 +71,9 @@ function AboutContainer() {
         </div>
 
         <div
-          className="flex flex-col justify-center items-center bg-(--panel-lavender) rounded-lg p-4 border border-black w-[90%] h-fit sm:w-1/2"
+          className="flex flex-col justify-center items-center bg-(--panel-lavender) rounded-lg p-5 border border-black w-[90%] h-fill sm:w-1/2"
           style={{ boxShadow: '5px 5px black' }}>
-          <img src={me} className="h-full w-full lg:w-3/5" />
+          <img src={me} className="h-auto w-full object-contain" />
           <figcaption>I will build your next project</figcaption>
         </div>
       </div>

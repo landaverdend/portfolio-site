@@ -1,5 +1,3 @@
-import './large-button.css';
-
 type LBProps = {
   children: React.ReactNode;
   onClick: Function;
@@ -12,11 +10,13 @@ export default function LargeButton({ children, onClick, type, disabled, fontSiz
   return (
     <button
       style={{
-        fontSize: fontSize ? fontSize : 'large',
         backgroundColor: backgroundColor ? backgroundColor : 'var(--main-indigo)',
+        boxShadow: '5px 5px black',
       }}
       onClick={() => onClick()}
-      className="large-button-container"
+      className={`text-white w-fit px-4 py-2 rounded-md border border-black hover:opacity-50 cursor-pointer text-[${
+        fontSize ? fontSize : 'lg'
+      }] 2xl:text-3xl 2xl:p-5`}
       type={type ? type : 'button'}
       disabled={disabled}>
       {children}
