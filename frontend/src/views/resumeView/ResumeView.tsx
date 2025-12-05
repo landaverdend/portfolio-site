@@ -7,7 +7,6 @@ import { createPortal } from 'react-dom';
 import Navbar, { Link } from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import ContactContainer from './contact/ContactContainer';
-import SubHeader from '@/components/subHeader/SubHeader';
 import BackgroundBubbles from '@/components/backgroundBubbles/BackgroundBubbles';
 
 function ResumeView() {
@@ -32,9 +31,7 @@ function ResumeView() {
         <BackgroundBubbles />
 
         <section id="projects" className="flex flex-col justify-center items-center ">
-          <SubHeader>
-            <h1 className="text-2xl font-semibold">Projects</h1>
-          </SubHeader>
+          <h1 className="text-xl font-semibold">Side Projects</h1>
           <ProjectContainer />
         </section>
 

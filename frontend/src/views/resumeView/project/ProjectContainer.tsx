@@ -1,4 +1,3 @@
-import trivia from '@assets/images/resume/trivia.png';
 import bitcoinTools from '@assets/images/resume/btc-tools.png';
 import isleadvance from '@assets/images/resume/isle_advance.png';
 import battlesnakes from '@assets/images/resume/battle_snakes.png';
@@ -70,7 +69,7 @@ function ProjectContainer() {
       />
 
       <ProjectCard
-        title={'Bitcoin Browser Tools'}
+        title={'Bitcoin Script Debugger'}
         src={bitcoinTools}
         backgroundColor={'var(--panel-blue)'}
         techUsed={'Typescript, React, Node'}
