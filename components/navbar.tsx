@@ -14,8 +14,8 @@ export default function Navbar() {
         lg:w-2/3 lg:justify-between 
         py-4 px-4 bg-indigo-900 rounded-full bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 border">
         <div className="hidden text-center lg:w-1/3 lg:flex items-center justify-center gap-2">
-          <Image src="/logo.png" alt="logo" width={50} height={50} className="rounded-full" />
-          landaverde.io
+          <Image src="/logo.png" alt="logo" width={60} height={60} className="rounded-full" />
+          <span className="font-semibold">landaverde.io</span>
         </div>
 
         <div className="">
@@ -49,7 +49,7 @@ export default function Navbar() {
 
 function NavbarItem({ href, icon, children }: { href: string; icon: React.ReactNode; children: React.ReactNode }) {
   return (
-    <Link href={href} className="flex flex-row gap-2 items-center justify-center hover:text-indigo-300 transition-colors duration-300">
+    <Link href={href} className="flex flex-row gap-2 items-center justify-center transition-colors duration-300 hover:bg-indigo-100/10 rounded-full p-2">
       {icon}
       <span className="hidden lg:block">{children}</span>
     </Link>
