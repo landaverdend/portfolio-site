@@ -35,6 +35,19 @@ export default function Home() {
             <SocialButton href="mailto:nicodemus.landaverde98@gmail.com" icon={<EnvelopeClosedIcon className="w-5 h-5" />} />
           </div>
         </div>
+
+        <div className="flex flex-col items-center justify-center w-full gap-5">
+          <p className="mx-5">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+
+          <div className="">
+            <button className="bg-indigo-900 rounded-lg px-4 py-2  border border-indigo-400">
+              <span>Click Me!</span>
+            </button>
+          </div>
+        </div>
       </main>
     </div>
   );
