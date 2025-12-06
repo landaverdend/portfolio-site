@@ -16,7 +16,7 @@ export default function LargeButton({ children, onClick, type, disabled, fontSiz
       onClick={() => onClick()}
       className={`text-white w-fit px-4 py-2 rounded-md border border-black hover:opacity-50 cursor-pointer text-[${
         fontSize ? fontSize : 'lg'
-      }] 2xl:text-3xl 2xl:p-5`}
+      }] lg:text-lg 2xl:p-5`}
       type={type ? type : 'button'}
       disabled={disabled}>
       {children}

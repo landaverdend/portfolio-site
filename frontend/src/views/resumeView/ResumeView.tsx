@@ -22,7 +22,7 @@ function ResumeView() {
   ];
   return (
     <>
-      <Navbar links={navbarLinks} showSignUp={true} />
+      <Navbar links={navbarLinks} />
       <div className="resume-container">
         <section id="about">
           <AboutContainer />

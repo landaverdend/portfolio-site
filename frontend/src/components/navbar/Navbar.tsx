@@ -1,7 +1,5 @@
 import './navbar.css';
 import siteLogo from '@assets/images/logo.png';
-import Modal from '../modal/Modal';
-import FormContainer from '@views/formView/formContainer/FormContainer';
 import { useAppState, View } from '@/state/appState';
 import { useEffect, useState } from 'react';
 import HamburgerMenu from '@assets/images/icons/hamburger.svg?react';
@@ -20,14 +18,13 @@ type LProps = {
 
 type NavbarProps = {
   links?: Array<Link>;
-  showSignUp?: boolean;
 };
-function Navbar({ links, showSignUp }: NavbarProps) {
+function Navbar({ links }: NavbarProps) {
   const { triggerLoadingSequence } = useAppState();
   const [isMobileView, setMobileView] = useState(window.innerWidth <= MOBILE_WIDTH);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const { isModalOpen, setIsModalOpen, setView } = useAppState();
+  const { setView } = useAppState();
 
   function Link({ link }: LProps) {
     return (
@@ -90,21 +87,6 @@ function Navbar({ links, showSignUp }: NavbarProps) {
               {links?.map((l) => (
                 <Link key={crypto.randomUUID()} link={l} />
               ))}
-            </>
-          )}
-
-          {showSignUp && (
-            <>
-              <button
-                onClick={() => {
-                  setIsModalOpen(true);
-                  setMobileMenuOpen(false);
-                }}>
-                Sign Up
-              </button>
-              <Modal isOpen={isModalOpen}>
-                <FormContainer />
-              </Modal>
             </>
           )}
 

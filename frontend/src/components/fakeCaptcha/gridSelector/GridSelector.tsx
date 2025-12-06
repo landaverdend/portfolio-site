@@ -48,8 +48,7 @@ function LargeGrid({ imgSrc, selected, setSelected }: BGProps) {
                 return new Set(prev);
               });
             }
-          }}
-        >
+          }}>
           <img style={{ left: `${leftOffset}%`, top: `${topOffset * -100}%` }} src={imgSrc} />
         </div>
       </div>
@@ -95,7 +94,6 @@ function GridSelector({ isOpen, isCompleted, setIsCompleted }: GProps) {
         </div>
       </div>
 
-      {/* <SmallGrid /> */}
       <span onClick={() => setIsIncorrect(false)}>
         <LargeGrid imgSrc={challenge.imageSrc} selected={selected} setSelected={setSelected} />
       </span>
@@ -109,8 +107,7 @@ function GridSelector({ isOpen, isCompleted, setIsCompleted }: GProps) {
             onClick={() => {
               setChallenge(grabRandomLargeChallenge());
               setSelected(new Set<number>());
-            }}
-          ></div>
+            }}></div>
           <div className="button-holder audio-button-holder" onClick={() => rickrollSound.play()}></div>
           <div className="button-holder help-button-holder" onClick={() => setShowHelpText((prev) => !prev)}></div>
         </span>
@@ -120,8 +117,8 @@ function GridSelector({ isOpen, isCompleted, setIsCompleted }: GProps) {
       </div>
       {showHelpText && (
         <span className="captcha-help">
-          Click on any tiles you see with the object described in the text. If new images appear with the same
-          object, click those as well. When there are none left, click Verify.
+          Click on any tiles you see with the object described in the text. If new images appear with the same object, click those
+          as well. When there are none left, click Verify.
         </span>
       )}
     </div>
