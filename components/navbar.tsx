@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { PersonIcon, EnvelopeClosedIcon, ArchiveIcon, BackpackIcon } from '@radix-ui/react-icons';
+import { PersonIcon, EnvelopeOpenIcon, ArchiveIcon, BackpackIcon } from '@radix-ui/react-icons';
 
 export default function Navbar() {
   return (
@@ -12,7 +12,7 @@ export default function Navbar() {
       <nav
         className="flex items-center justify-center text-center
         lg:w-fit lg:justify-between 
-        py-2 lg:py-4 px-10 bg-indigo-900 rounded-full bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 border">
+        py-1 lg:py-4 px-10 bg-indigo-900 rounded-full bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 border border-indigo-500">
         <div className="hidden text-center lg:w-1/5 lg:flex items-center justify-center gap-2">
           <Image src="/logo.png" alt="logo" width={60} height={60} className="rounded-full" />
           <span className="font-semibold">landaverde.io</span>
@@ -36,7 +36,7 @@ export default function Navbar() {
               </NavbarItem>
             </li>
             <li>
-              <NavbarItem href="/contact" icon={<EnvelopeClosedIcon />}>
+              <NavbarItem href="/contact" icon={<EnvelopeOpenIcon />}>
                 Contact
               </NavbarItem>
             </li>
