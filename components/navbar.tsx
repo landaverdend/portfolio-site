@@ -7,14 +7,14 @@ import { PersonIcon, EnvelopeOpenIcon, ArchiveIcon, BackpackIcon } from '@radix-
 export default function Navbar() {
   return (
     <div
-      className="w-screen flex items-center justify-center fixed bottom-5 left-0 right-0 z-50
+      className="w-full flex items-center justify-center fixed bottom-5 left-0 right-0 z-50
       lg:top-5 lg:bottom-auto">
       <nav
         className="flex items-center justify-center text-center
-        lg:w-fit lg:justify-between 
+        lg:min-w-fit lg:justify-between lg:max-w-3/4 
         py-1 lg:py-4 px-10 bg-indigo-900 rounded-full bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 border border-indigo-500">
         <div className="hidden text-center lg:w-1/5 lg:flex items-center justify-center gap-2">
-          <Image src="/logo.png" alt="logo" width={60} height={60} className="rounded-full" />
+          <Image src="/logo.png" alt="logo" width={48} height={48} className="rounded-full" />
           <span className="font-semibold">landaverde.io</span>
         </div>
 
