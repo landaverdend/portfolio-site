@@ -1,5 +1,6 @@
 'use client';
 
+import TechCarousel from '@/components/ui/tech-carousel';
 import { Timeline, TimelineItem, TimelineHeader, TimelineSeparator, TimelineIcon, TimelineBody } from '@/components/ui/timeline';
 import { Badge, Briefcase, GraduationCap } from 'lucide-react';
 
@@ -59,9 +60,12 @@ export default function Experience() {
                 techStack={['Java', 'Couchbase', 'Spring Boot', 'Kafka']}>
                 <p className={paragraphStyle}>
                   Developed and maintained asynchronous microservices and Couchbase databases to manage product catalog updates,
-                  tracking, and changes. Built backend APIs that served real-time pricing data to millions of users on lowes.com
-                  and the mobile app. Generated price reports and analytics dashboards for marketing teams to support strategic
-                  decision-making.
+                  tracking, and changes.{' '}
+                </p>
+                <br />
+                <p className={paragraphStyle}>
+                  Built backend APIs that served real-time pricing data to millions of users on lowes.com and the mobile app.
+                  Generated price reports and analytics dashboards for marketing teams to support strategic decision-making.
                 </p>
               </ExperienceItem>
             </TimelineBody>
@@ -103,6 +107,7 @@ function ExperienceItem({ title, date, children, techStack }: ExperienceItemProp
         <p className="text-muted-foreground text-xs">{date}</p>
       </div>
       {children}
+      <TechCarousel />
     </div>
   );
 }
