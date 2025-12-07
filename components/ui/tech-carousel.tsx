@@ -21,6 +21,7 @@ export default function TechCarousel({}) {
           {items.map((item, i) => (
             <span key={i}>{item}</span>
           ))}
+          <span className="w-3"></span>
         </div>
         <div className="col-span-2 flex flex-row items-center gap-4" style={{ width: '50%', flexShrink: 0 }}>
           {items.map((item, i) => (
