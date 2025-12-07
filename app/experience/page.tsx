@@ -10,8 +10,8 @@ export default function Experience() {
   return (
     <div className="w-full flex flex-col items-center justify-center pt-10 gap-8 pb-15 lg:pb-0 ">
       <h1 className="text-2xl font-bold">Experience</h1>
-      <div className="w-3/5 flex items-center justify-center ">
-        <Timeline color="primary" orientation="vertical">
+      <div className=" flex items-center justify-center ">
+        <Timeline color="primary" orientation="vertical" className="w-4/5">
           <TimelineItem>
             <TimelineHeader>
               <TimelineSeparator />
@@ -99,13 +99,11 @@ type ExperienceItemProps = {
 
   techStack?: string[];
 };
-function ExperienceItem({ title, date, children, techStack }: ExperienceItemProps) {
+function ExperienceItem({ title, date, children }: ExperienceItemProps) {
   return (
-    <div>
-      <div className="space-y-1">
-        <h3 className="text-base leading-none font-semibold">{title}</h3>
-        <p className="text-muted-foreground text-xs">{date}</p>
-      </div>
+    <div className="flex flex-col items-start justify-center ">
+      <h3 className="text-base leading-none font-semibold">{title}</h3>
+      <p className="text-muted-foreground text-xs">{date}</p>
       {children}
       <TechCarousel />
     </div>

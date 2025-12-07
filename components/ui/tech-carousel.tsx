@@ -14,21 +14,12 @@ export default function TechCarousel({}) {
     <PostgreSQLSVG className="fill-white w-9 h-9 " />,
   ];
 
-  const half = items.length / 2;
-  const firstHalf = items.slice(0, half);
-  const secondHalf = items.slice(half);
-
   const animationDrawer = 'col-span-2 flex flex-row items-center justify-center gap-4 animate-dock-slide';
 
   return (
-    <div className="flex flex-row items-center justify-center gap-10 ">
+    <div className="w-8/10 overflow-hidden sm:w-1/2">
       <div className={animationDrawer}>
-        {firstHalf.map((item, i) => (
-          <span key={i}>{item}</span>
-        ))}
-      </div>
-      <div className={animationDrawer}>
-        {secondHalf.map((item, i) => (
+        {items.map((item, i) => (
           <span key={i}>{item}</span>
         ))}
       </div>
