@@ -1,11 +1,13 @@
 'use client';
 
 import { Timeline, TimelineItem, TimelineHeader, TimelineSeparator, TimelineIcon, TimelineBody } from '@/components/ui/timeline';
-import { Briefcase, School } from 'lucide-react';
+import { Badge, Briefcase, GraduationCap } from 'lucide-react';
 
 export default function Experience() {
+  const paragraphStyle = 'text-muted-foreground mt-3 text-sm';
+
   return (
-    <div className="w-full flex flex-col items-center justify-center pt-10 gap-5 pb-15 lg:pb-0 ">
+    <div className="w-full flex flex-col items-center justify-center pt-10 gap-8 pb-15 lg:pb-0 ">
       <h1 className="text-2xl font-bold">Experience</h1>
       <div className="w-3/5 flex items-center justify-center ">
         <Timeline color="primary" orientation="vertical">
@@ -17,14 +19,12 @@ export default function Experience() {
               </TimelineIcon>
             </TimelineHeader>
             <TimelineBody className="-translate-y-1.5">
-              <div className="space-y-1">
-                <h3 className="text-base leading-none font-semibold">Full Stack Developer at Clearwave Corporation</h3>
-                <p className="text-muted-foreground text-xs">March 2022 - Present</p>
-              </div>
-              <p className="text-muted-foreground mt-3 text-sm">
-                Successfully established the new office location with all necessary equipment and infrastructure in place. The
-                team is ready to begin operations.
-              </p>
+              <ExperienceItem title="Full Stack Developer at Clearwave Corporation" date="March 2022">
+                <p className={paragraphStyle}>
+                  Successfully established the new office location with all necessary equipment and infrastructure in place. The
+                  team is ready to begin operations.
+                </p>
+              </ExperienceItem>
             </TimelineBody>
           </TimelineItem>
 
@@ -36,14 +36,12 @@ export default function Experience() {
               </TimelineIcon>
             </TimelineHeader>
             <TimelineBody className="-translate-y-1.5">
-              <div className="space-y-1">
-                <h3 className="text-base leading-none font-semibold">Full Stack Developer at ECS Federal</h3>
-                <p className="text-muted-foreground text-xs">March 2022</p>
-              </div>
-              <p className="text-muted-foreground mt-3 text-sm">
-                Successfully established the new office location with all necessary equipment and infrastructure in place. The
-                team is ready to begin operations.
-              </p>
+              <ExperienceItem title="Full Stack Developer at ECS Federal" date="March 2022">
+                <p className={paragraphStyle}>
+                  Successfully established the new office location with all necessary equipment and infrastructure in place. The
+                  team is ready to begin operations.
+                </p>
+              </ExperienceItem>
             </TimelineBody>
           </TimelineItem>
 
@@ -55,38 +53,56 @@ export default function Experience() {
               </TimelineIcon>
             </TimelineHeader>
             <TimelineBody className="-translate-y-1.5">
-              <div className="space-y-1">
-                <h3 className="text-base leading-none font-semibold">Associate Backend Developer at Lowe's Home Improvement</h3>
-                <p className="text-muted-foreground text-xs">May 2021</p>
-              </div>
-              <p className="text-muted-foreground mt-3 text-sm">
-                Developed and maintained asynchronous microservices and Couchbase databases to manage product catalog updates,
-                tracking, and changes. Built backend APIs that served real-time pricing data to millions of users on lowes.com and
-                the mobile app. Generated price reports and analytics dashboards for marketing teams to support strategic
-                decision-making.
-              </p>
+              <ExperienceItem
+                title="Associate Backend Developer at Lowe's Home Improvement"
+                date="May 2021"
+                techStack={['Java', 'Couchbase', 'Spring Boot', 'Kafka']}>
+                <p className={paragraphStyle}>
+                  Developed and maintained asynchronous microservices and Couchbase databases to manage product catalog updates,
+                  tracking, and changes. Built backend APIs that served real-time pricing data to millions of users on lowes.com
+                  and the mobile app. Generated price reports and analytics dashboards for marketing teams to support strategic
+                  decision-making.
+                </p>
+              </ExperienceItem>
             </TimelineBody>
           </TimelineItem>
 
           <TimelineItem>
             <TimelineHeader>
               <TimelineIcon>
-                <School className="h-4 w-4" />
+                <GraduationCap className="h-4 w-4" />
               </TimelineIcon>
             </TimelineHeader>
             <TimelineBody className="-translate-y-1.5">
-              <div className="space-y-1">
-                <h3 className="text-base leading-none font-semibold">Graduated from Appalachian State University</h3>
-                <p className="text-muted-foreground text-xs">May 2021</p>
-              </div>
-              <p className="text-muted-foreground mt-3 text-sm">
-                Graduated from Appalachian State University with a Bachelor of Science in Computer Science.
-              </p>
-              <p className="text-muted-foreground mt-3 text-sm">GPA: 3.8</p>
+              <ExperienceItem title="Graduated from Appalachian State University" date="May 2021">
+                <p className={paragraphStyle}>
+                  Graduated from Appalachian State University with a Bachelor of Science in Computer Science.
+                </p>
+                <p className="text-muted-foreground mt-3 text-sm">GPA: 3.8</p>
+              </ExperienceItem>
             </TimelineBody>
           </TimelineItem>
         </Timeline>
       </div>
+    </div>
+  );
+}
+
+type ExperienceItemProps = {
+  title: string;
+  date: string;
+  children: React.ReactNode;
+
+  techStack?: string[];
+};
+function ExperienceItem({ title, date, children, techStack }: ExperienceItemProps) {
+  return (
+    <div>
+      <div className="space-y-1">
+        <h3 className="text-base leading-none font-semibold">{title}</h3>
+        <p className="text-muted-foreground text-xs">{date}</p>
+      </div>
+      {children}
     </div>
   );
 }

@@ -60,7 +60,6 @@ function TimelineSeparator({ className, ...props }: React.HTMLAttributes<HTMLDiv
 
 function TimelineIcon({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   const { color = 'primary' } = React.useContext(TimelineContext);
-  console.log(color);
   const colorClasses = {
     primary: 'bg-primary text-primary-foreground',
     secondary: 'bg-secondary text-secondary-foreground',
