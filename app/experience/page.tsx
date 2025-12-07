@@ -1,15 +1,14 @@
 'use client';
 
 import { Timeline, TimelineItem, TimelineHeader, TimelineSeparator, TimelineIcon, TimelineBody } from '@/components/ui/timeline';
-import { Bell, Briefcase, DollarSign, Home, School } from 'lucide-react';
+import { Briefcase, School } from 'lucide-react';
 
 export default function Experience() {
   return (
-    <div className="w-full flex flex-col items-center justify-center pt-10 gap-5">
+    <div className="w-full flex flex-col items-center justify-center pt-10 gap-5 pb-15 lg:pb-0 ">
       <h1 className="text-2xl font-bold">Experience</h1>
       <div className="w-3/5 flex items-center justify-center ">
-        <Timeline color="secondary" orientation="vertical">
-          
+        <Timeline color="primary" orientation="vertical">
           <TimelineItem>
             <TimelineHeader>
               <TimelineSeparator />
@@ -61,8 +60,10 @@ export default function Experience() {
                 <p className="text-muted-foreground text-xs">May 2021</p>
               </div>
               <p className="text-muted-foreground mt-3 text-sm">
-                Joined Lowe's Home Improvement as an Associate Software Engineer working on cloud microservices and APIs that
-                powered the Lowe's Home Improvement website and mobile app.
+                Developed and maintained asynchronous microservices and Couchbase databases to manage product catalog updates,
+                tracking, and changes. Built backend APIs that served real-time pricing data to millions of users on lowes.com and
+                the mobile app. Generated price reports and analytics dashboards for marketing teams to support strategic
+                decision-making.
               </p>
             </TimelineBody>
           </TimelineItem>
@@ -79,9 +80,9 @@ export default function Experience() {
                 <p className="text-muted-foreground text-xs">May 2021</p>
               </div>
               <p className="text-muted-foreground mt-3 text-sm">
-                Graduated from Appalachian State University with a Bachelor of Science in Computer Science. Add electives and
-                other courses here
+                Graduated from Appalachian State University with a Bachelor of Science in Computer Science.
               </p>
+              <p className="text-muted-foreground mt-3 text-sm">GPA: 3.8</p>
             </TimelineBody>
           </TimelineItem>
         </Timeline>
