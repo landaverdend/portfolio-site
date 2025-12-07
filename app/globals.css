@@ -112,7 +112,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --animate-dock-slide: dock-slide linear 10s infinite;
+  --animate-dock-slide: dock-slide linear 5s infinite;
 
   @keyframes dock-slide {
     0% {
@@ -120,7 +120,7 @@
     }
 
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-50%);
     }
   }
 }

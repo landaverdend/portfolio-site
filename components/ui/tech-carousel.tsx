@@ -14,14 +14,19 @@ export default function TechCarousel({}) {
     <PostgreSQLSVG className="fill-white w-9 h-9 " />,
   ];
 
-  const animationDrawer = 'col-span-2 flex flex-row items-center justify-center gap-4 animate-dock-slide';
-
   return (
-    <div className="w-8/10 overflow-hidden sm:w-1/2">
-      <div className={animationDrawer}>
-        {items.map((item, i) => (
-          <span key={i}>{item}</span>
-        ))}
+    <div className="w-8/10 overflow-hidden sm:w-1/2 [mask-image:linear-gradient(90deg,transparent_0%,#000_10%,#000_90%,transparent_100%)]">
+      <div className="flex animate-dock-slide" style={{ width: '200%' }}>
+        <div className="col-span-2 flex flex-row items-center gap-4" style={{ width: '50%', flexShrink: 0 }}>
+          {items.map((item, i) => (
+            <span key={i}>{item}</span>
+          ))}
+        </div>
+        <div className="col-span-2 flex flex-row items-center gap-4" style={{ width: '50%', flexShrink: 0 }}>
+          {items.map((item, i) => (
+            <span key={i}>{item}</span>
+          ))}
+        </div>
       </div>
     </div>
   );
