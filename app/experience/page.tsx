@@ -101,7 +101,7 @@ type ExperienceItemProps = {
 };
 function ExperienceItem({ title, date, children }: ExperienceItemProps) {
   return (
-    <div className="flex flex-col items-start justify-center ">
+    <div className="flex flex-col items-start justify-center gap-3">
       <h3 className="text-base leading-none font-semibold">{title}</h3>
       <p className="text-muted-foreground text-xs">{date}</p>
       {children}
