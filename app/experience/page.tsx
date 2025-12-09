@@ -38,7 +38,23 @@ export default function Experience() {
                 title="Full Stack Developer at Clearwave Corporation"
                 date="March 2022"
                 techLogos={[React, Java, Spring, PostgreSQL, Mongo, RabbitMQ]}>
-                <p className={paragraphStyle}></p>
+                <p className={paragraphStyle}>
+                  Current position working as a Full Stack Developer on a variety of projects within the Healthcare Industry for
+                  Clearwave Corporation.
+                </p>
+                <h3 className="text-base leading-none font-semibold">Projects</h3>
+                <ul className="list-disc list-inside text-sm">
+                  <li>
+                    <b>System Wide Audit Tool:</b> Built a set of microservices that consumed system events from RabbitMQ,
+                    persisted them to MongoDB, and exposed a queryable API for a frontend application to retrieve audit events for
+                    users
+                  </li>
+                  <li>
+                    <b>Electronic Health Record (EHR) Cache:</b> Developed a custom caching solution to work around hard-set EHR
+                    API rate limits by caching results and implementing a change listener to update cached data as changes occur,
+                    preventing rate limit violations
+                  </li>
+                </ul>
               </ExperienceItem>
             </TimelineBody>
           </TimelineItem>
@@ -61,12 +77,12 @@ export default function Experience() {
                 <h3 className="text-base leading-none font-semibold">Projects</h3>
                 <ul className="list-disc list-inside text-sm">
                   <li>
-                    <b>USPS Carrier Location Tracker:</b> Worked on a real-time tracking application that monitored carrier locations
-                    nationwide using GPS-enabled tracking devices
+                    <b>USPS Carrier Location Tracker:</b> Worked on a real-time tracking application that monitored carrier
+                    locations nationwide using GPS-enabled tracking devices
                   </li>
                   <li>
-                    <b>Package Success Dashboard:</b> Added a feature that overlaid National Weather Service (NWS) data onto package
-                    delivery metrics, providing weather-specific context for success rate analytics
+                    <b>Package Success Dashboard:</b> Added a feature that overlaid National Weather Service (NWS) data onto
+                    package delivery metrics, providing weather-specific context for success rate analytics
                   </li>
                 </ul>
               </ExperienceItem>
