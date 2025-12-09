@@ -2,7 +2,9 @@
 
 import {
   AngularSVG,
+  AwsSvg,
   CouchbaseSVG,
+  JavaSvg,
   KafkaSVG,
   PostgreSQLSVG,
   ReactSVG,
@@ -47,7 +49,10 @@ export default function Experience() {
               </TimelineIcon>
             </TimelineHeader>
             <TimelineBody className="-translate-y-1.5">
-              <ExperienceItem title="Full Stack Developer at ECS Federal" date="March 2022">
+              <ExperienceItem
+                title="Full Stack Developer at ECS Federal"
+                date="March 2022"
+                techLogos={[Angular, Aws, Typescript, Spring, Java]}>
                 <p className={paragraphStyle}>
                   Successfully established the new office location with all necessary equipment and infrastructure in place. The
                   team is ready to begin operations.
@@ -67,8 +72,10 @@ export default function Experience() {
               <ExperienceItem
                 title="Associate Backend Developer at Lowe's Home Improvement"
                 date="May 2021"
-                techLogos={[Spring, Kafka, Couchbase, Redis, React]}>
-                <p>Worked on the pricing API for Lowe's.com and the mobile app, as well as price reports for marketing teams.</p>
+                techLogos={[Spring, Kafka, Couchbase, Redis, Java]}>
+                <p className={paragraphStyle}>
+                  Worked on the pricing API for Lowe's.com and the mobile app, as well as price reports for marketing teams.
+                </p>
                 <ul className="list-disc list-inside text-sm">
                   <li>
                     Developed and maintained asynchronous microservices and Couchbase databases to manage product catalog updates,
@@ -93,8 +100,7 @@ export default function Experience() {
             <TimelineBody className="-translate-y-1.5">
               <ExperienceItem title="Graduated from Appalachian State University" date="May 2021">
                 <p className={paragraphStyle}>
-                  Graduated from Appalachian State University with a Bachelor of Science in Computer Science. Was a member of the
-                  Competitive Programming Club.
+                  Graduated from Appalachian State University with a Bachelor of Science in Computer Science.{' '}
                 </p>
                 <p className="mt-3 text-sm text-white">GPA: 3.8</p>
               </ExperienceItem>
@@ -126,9 +132,11 @@ function ExperienceItem({ title, date, children, techLogos }: ExperienceItemProp
 
 const React = <ReactSVG className="fill-white w-10 h-10" />;
 const Spring = <SpringSVG className="fill-white w-8 h-8" />;
+const Aws = <AwsSvg className="fill-white w-8 h-8" />;
 const Typescript = <TypescriptSVG className="w-8 h-8" />;
 const Kafka = <KafkaSVG className="fill-white text-white w-12 h-12" />;
 const Angular = <AngularSVG className="fill-white w-9 h-9 text-white" />;
 const PostgreSQL = <PostgreSQLSVG className="fill-white w-9 h-9 " />;
 const Couchbase = <CouchbaseSVG className="fill-white w-8 h-8 " />;
 const Redis = <RedisSVG className="fill-white text-white w-8 h-8 " />;
+const Java = <JavaSvg className="fill-white w-8 h-8 " />;
