@@ -67,7 +67,7 @@ export default function Experience() {
               <ExperienceItem
                 title="Associate Backend Developer at Lowe's Home Improvement"
                 date="May 2021"
-                techLogos={[Spring, Kafka, Couchbase, Redis]}>
+                techLogos={[Spring, Kafka, Couchbase, Redis, React]}>
                 <p>Worked on the pricing API for Lowe's.com and the mobile app, as well as price reports for marketing teams.</p>
                 <ul className="list-disc list-inside text-sm">
                   <li>
