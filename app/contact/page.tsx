@@ -1,6 +1,7 @@
 'use client';
 
 import Button from '@/components/button';
+import { Spinner } from '@/components/ui/spinner';
 import { useForm, ValidationError } from '@formspree/react';
 
 export default function Contact() {
@@ -23,28 +24,32 @@ export default function Contact() {
           <label htmlFor="email" className="text-lg font-semibold">
             Email Address
           </label>
-          <ValidationError prefix="Email" field="email" errors={state.errors} />
+
+          <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500" />
           <input
             id="email"
             type="email"
             name="email"
             placeholder="chuck@gmail.com"
-            className="bg-indigo-800/80 p-2 rounded-md hover:bg-indigo-700 transition-colors duration-300"
+            className="w-[200px] sm:w-[250px] bg-indigo-800/80 p-2 rounded-md hover:bg-indigo-700 transition-colors duration-300"
           />
 
           <textarea
             id="message"
             name="message"
             placeholder="Message"
-            className="bg-indigo-800/80 p-2 rounded-md resize-none h-[200px] w-3/5 hover:bg-indigo-700 transition-colors duration-300"
+            className="w-9/10 bg-indigo-800/80 p-2 rounded-md resize-none h-[200px] sm:w-3/5 hover:bg-indigo-700 transition-colors duration-300"
           />
           <ValidationError prefix="Message" field="message" errors={state.errors} />
         </div>
 
-        <Button onClick={() => {}} disabled={state.submitting}>
-          Submit
-        </Button>
-        {state.succeeded ? <>Email Sent!</> : <></>}
+        {!state.succeeded && !state.submitting && (
+          <Button onClick={() => {}} disabled={state.submitting || state.succeeded}>
+            Submit
+          </Button>
+        )}
+        {state.submitting && <Spinner className="w-6 h-6" />}
+        {state.succeeded ? <p className="text-green-500">Email Sent!</p> : <></>}
       </form>
     </div>
   );
