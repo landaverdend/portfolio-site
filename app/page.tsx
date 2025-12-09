@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="">
       <main
-        className="w-full flex flex-col items-center justify-center gap-4  
+        className="w-full flex flex-col items-center justify-center gap-4 
         lg:flex-row lg:gap-10 lg:items-start">
         <div className="flex flex-col items-center justify-center gap-2">
           <Image src="/me.jpg" alt="logo" width={148} height={148} className="rounded-full border-1 border-gray-100 shadow-lg" />
