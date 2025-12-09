@@ -6,6 +6,7 @@ import {
   CouchbaseSVG,
   JavaSvg,
   KafkaSVG,
+  MongoSvg,
   PostgreSQLSVG,
   ReactSVG,
   RedisSVG,
@@ -32,7 +33,10 @@ export default function Experience() {
               </TimelineIcon>
             </TimelineHeader>
             <TimelineBody className="-translate-y-1.5">
-              <ExperienceItem title="Full Stack Developer at Clearwave Corporation" date="March 2022">
+              <ExperienceItem
+                title="Full Stack Developer at Clearwave Corporation"
+                date="March 2022"
+                techLogos={[React, Java, Spring, PostgreSQL, Mongo]}>
                 <p className={paragraphStyle}>
                   Successfully established the new office location with all necessary equipment and infrastructure in place. The
                   team is ready to begin operations.
@@ -140,3 +144,4 @@ const PostgreSQL = <PostgreSQLSVG className="fill-white w-9 h-9 " />;
 const Couchbase = <CouchbaseSVG className="fill-white w-8 h-8 " />;
 const Redis = <RedisSVG className="fill-white text-white w-8 h-8 " />;
 const Java = <JavaSvg className="fill-white w-8 h-8 " />;
+const Mongo = <MongoSvg className="w-8 h-8 " />;
