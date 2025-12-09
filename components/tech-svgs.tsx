@@ -1,3 +1,5 @@
+import { HoverCard, HoverCardContent, HoverCardTrigger } from './ui/hover-card';
+
 type SVGProps = {
   className?: string;
 };
@@ -12,7 +14,6 @@ export const ReactSVG = ({ className }: SVGProps) => {
 export const SpringSVG = ({ className }: SVGProps) => {
   return (
     <svg className={className} viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
-      <title>Spring icon</title>
       <path d="M21.822 1.248c-.338.806-.766 1.57-1.281 2.272A12.045 12.045 0 0012.03 0C5.431 0 0 5.43 0 12.031c0 3.293 1.35 6.445 3.737 8.717l.444.393a12.041 12.041 0 007.75 2.83c6.275 0 11.55-4.911 11.997-11.172.328-3.065-.572-6.941-2.106-11.55zM5.447 20.817c-.194.24-.49.38-.8.38a1.033 1.033 0 01-1.028-1.03c0-.564.465-1.03 1.028-1.03a1.032 1.032 0 01.8 1.68zm16.325-3.602c-2.969 3.954-9.31 2.622-13.375 2.812 0 0-.722.044-1.447.162 0 0 .272-.115.625-.25 2.853-.992 4.203-1.185 5.937-2.075 3.266-1.66 6.494-5.293 7.166-9.072-1.244 3.636-5.012 6.76-8.447 8.03-2.353.867-6.603 1.71-6.603 1.71l-.172-.09c-2.894-1.408-2.981-7.672 2.278-9.694 2.303-.886 4.507-.4 6.994-.992 2.656-.63 5.728-2.622 6.978-5.219 1.4 4.154 3.085 10.658.066 14.678z" />
     </svg>
   );
@@ -93,13 +94,13 @@ export const AwsSvg = ({ className }: SVGProps) => {
         <path
           fillRule="evenodd"
           d="M14.465 11.813c-1.75 1.297-4.294 1.986-6.481 1.986-3.065 0-5.827-1.137-7.913-3.027-.165-.15-.016-.353.18-.235 2.257 1.313 5.04 2.109 7.92 2.109 1.941 0 4.075-.406 6.039-1.239.293-.133.543.192.255.406z"
-          clip-rule="evenodd"
+          clipRule="evenodd"
         />
 
         <path
           fillRule="evenodd"
           d="M15.194 10.98c-.223-.287-1.479-.138-2.048-.069-.17.022-.197-.128-.043-.24 1-.705 2.645-.502 2.836-.267.192.24-.053 1.89-.99 2.68-.143.123-.281.06-.217-.1.212-.53.686-1.72.462-2.003z"
-          clip-rule="evenodd"
+          clipRule="evenodd"
         />
       </g>
     </svg>
@@ -109,7 +110,6 @@ export const AwsSvg = ({ className }: SVGProps) => {
 export const JavaSvg = ({ className }: SVGProps) => {
   return (
     <svg fill="white" className={className} viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-      <title>java</title>
       <path d="M13.168 30.901c5.401 0.346 13.695-0.191 13.891-2.747 0 0-0.377 0.968-4.464 1.738-2.257 0.407-4.855 0.639-7.508 0.639-2.173 0-4.309-0.156-6.398-0.457l0.239 0.028c0-0.001 0.691 0.571 4.24 0.799zM19 1.004s3.117 3.117-2.955 7.91c-4.869 3.845-1.11 6.038-0.001 8.543-2.842-2.566-4.927-4.821-3.529-6.922 2.054-3.085 7.744-4.58 6.486-9.531zM22.393 22.978c5.627-2.924 3.025-5.735 1.21-5.355-0.249 0.047-0.465 0.107-0.674 0.182l0.030-0.009c0.119-0.167 0.283-0.296 0.474-0.369l0.007-0.002c3.593-1.263 6.356 3.725-1.16 5.701 0.046-0.041 0.084-0.090 0.111-0.145l0.001-0.003zM12.616 17.512s-5.451 1.295-1.929 1.764c0.948 0.078 2.052 0.122 3.166 0.122 1.424 0 2.831-0.073 4.218-0.214l-0.174 0.014c2.257-0.19 4.521-0.596 4.521-0.596-0.531 0.232-0.982 0.477-1.409 0.756l0.037-0.022c-5.535 1.456-16.228 0.779-13.149-0.71 1.357-0.703 2.963-1.115 4.665-1.115 0.019 0 0.038 0 0.057 0h-0.003zM25.16 26.627s0.849 0.699-0.933 1.238c-3.389 1.027-14.106 1.336-17.081 0.041-1.070-0.466 0.937-1.112 1.567-1.247 0.291-0.074 0.626-0.117 0.97-0.117 0.023 0 0.045 0 0.068 0.001l-0.003-0c-1.191-0.839-7.693 1.646-3.303 2.358 11.972 1.941 21.821-0.875 18.716-2.274zM17.395 15.344c0.314 0.377 0.505 0.868 0.505 1.402 0 0.719-0.346 1.358-0.88 1.759l-0.006 0.004s3.673-1.897 1.986-4.271c-1.576-2.214-2.784-3.314 3.758-7.108 0-0.001-10.267 2.563-5.363 8.214zM11.346 20.915s-1.285 0.951 0.677 1.155c0.859 0.108 1.852 0.169 2.86 0.169 1.826 0 3.605-0.202 5.315-0.585l-0.162 0.030c0.344 0.322 0.755 0.578 1.209 0.744l0.025 0.008c-7.097 2.076-15.004 0.162-9.925-1.522zM12.065 24.198s-1.146 0.667 0.816 0.892c0.719 0.107 1.548 0.168 2.392 0.168 1.354 0 2.671-0.157 3.934-0.455l-0.116 0.023c0.467 0.285 1.010 0.557 1.577 0.782l0.074 0.026c-5.872 2.516-13.287-0.147-8.676-1.436z"></path>
     </svg>
   );
@@ -126,3 +126,76 @@ export const MongoSvg = ({ className }: SVGProps) => {
     </svg>
   );
 };
+
+type ItemWrapperProps = {
+  children: React.ReactNode;
+  content: string;
+};
+
+const ItemWrapper = ({ children, content }: ItemWrapperProps) => (
+  <HoverCard>
+    <HoverCardTrigger>{children}</HoverCardTrigger>
+    <HoverCardContent className="w-fit ">{content}</HoverCardContent>
+  </HoverCard>
+);
+
+export const Mongo = (
+  <ItemWrapper content="MongoDB">
+    <MongoSvg className="w-8 h-8" />
+  </ItemWrapper>
+);
+
+export const React = (
+  <ItemWrapper content="React">
+    <ReactSVG className="fill-white w-10 h-10" />
+  </ItemWrapper>
+);
+
+export const Spring = (
+  <ItemWrapper content="Spring">
+    <SpringSVG className="fill-white w-8 h-8" />
+  </ItemWrapper>
+);
+
+export const Aws = (
+  <ItemWrapper content="AWS">
+    <AwsSvg className="fill-white w-8 h-8" />
+  </ItemWrapper>
+);
+
+export const Typescript = (
+  <ItemWrapper content="Typescript">
+    <TypescriptSVG className="w-8 h-8" />
+  </ItemWrapper>
+);
+
+export const Kafka = (
+  <ItemWrapper content="Kafka">
+    <KafkaSVG className="fill-white text-white w-12 h-12" />
+  </ItemWrapper>
+);
+export const Angular = (
+  <ItemWrapper content="Angular">
+    <AngularSVG className="fill-white w-9 h-9 text-white" />
+  </ItemWrapper>
+);
+export const PostgreSQL = (
+  <ItemWrapper content="PostgreSQL">
+    <PostgreSQLSVG className="fill-white w-9 h-9 " />
+  </ItemWrapper>
+);
+export const Couchbase = (
+  <ItemWrapper content="Couchbase">
+    <CouchbaseSVG className="fill-white w-8 h-8 " />
+  </ItemWrapper>
+);
+export const Redis = (
+  <ItemWrapper content="Redis">
+    <RedisSVG className="fill-white text-white w-8 h-8 " />
+  </ItemWrapper>
+);
+export const Java = (
+  <ItemWrapper content="Java">
+    <JavaSvg className="fill-white w-8 h-8 " />
+  </ItemWrapper>
+);

@@ -8,8 +8,8 @@
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --popover: oklch(0.418 0.111 276.35);
+  --popover-foreground: oklch(1 0 0);
   --primary: var(--color-indigo-900);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);

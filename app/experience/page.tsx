@@ -1,18 +1,6 @@
 'use client';
 
-import {
-  AngularSVG,
-  AwsSvg,
-  CouchbaseSVG,
-  JavaSvg,
-  KafkaSVG,
-  MongoSvg,
-  PostgreSQLSVG,
-  ReactSVG,
-  RedisSVG,
-  SpringSVG,
-  TypescriptSVG,
-} from '@/components/tech-svgs';
+import { React, Spring, Aws, Typescript, Kafka, Angular, PostgreSQL, Couchbase, Mongo, Java, Redis } from '@/components/tech-svgs';
 import TechCarousel from '@/components/ui/tech-carousel';
 import { Timeline, TimelineItem, TimelineHeader, TimelineSeparator, TimelineIcon, TimelineBody } from '@/components/ui/timeline';
 import { Briefcase, GraduationCap } from 'lucide-react';
@@ -133,15 +121,3 @@ function ExperienceItem({ title, date, children, techLogos }: ExperienceItemProp
     </div>
   );
 }
-
-const React = <ReactSVG className="fill-white w-10 h-10" />;
-const Spring = <SpringSVG className="fill-white w-8 h-8" />;
-const Aws = <AwsSvg className="fill-white w-8 h-8" />;
-const Typescript = <TypescriptSVG className="w-8 h-8" />;
-const Kafka = <KafkaSVG className="fill-white text-white w-12 h-12" />;
-const Angular = <AngularSVG className="fill-white w-9 h-9 text-white" />;
-const PostgreSQL = <PostgreSQLSVG className="fill-white w-9 h-9 " />;
-const Couchbase = <CouchbaseSVG className="fill-white w-8 h-8 " />;
-const Redis = <RedisSVG className="fill-white text-white w-8 h-8 " />;
-const Java = <JavaSvg className="fill-white w-8 h-8 " />;
-const Mongo = <MongoSvg className="w-8 h-8 " />;
