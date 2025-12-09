@@ -19,7 +19,7 @@ import { Timeline, TimelineItem, TimelineHeader, TimelineSeparator, TimelineIcon
 import { Briefcase, GraduationCap } from 'lucide-react';
 
 export default function Experience() {
-  const paragraphStyle = 'text-muted-foreground mt-3 text-sm text-white';
+  const paragraphStyle = 'text-muted-foreground mt-3 text-md text-white';
 
   return (
     <div className="w-full flex flex-col items-center justify-center pt-10 gap-8 pb-15 lg:pb-0 ">
@@ -38,10 +38,7 @@ export default function Experience() {
                 title="Full Stack Developer at Clearwave Corporation"
                 date="March 2022"
                 techLogos={[React, Java, Spring, PostgreSQL, Mongo, RabbitMQ]}>
-                <p className={paragraphStyle}>
-                  Successfully established the new office location with all necessary equipment and infrastructure in place. The
-                  team is ready to begin operations.
-                </p>
+                <p className={paragraphStyle}></p>
               </ExperienceItem>
             </TimelineBody>
           </TimelineItem>
@@ -59,9 +56,19 @@ export default function Experience() {
                 date="March 2022"
                 techLogos={[Angular, Aws, Typescript, Spring, Java]}>
                 <p className={paragraphStyle}>
-                  Successfully established the new office location with all necessary equipment and infrastructure in place. The
-                  team is ready to begin operations.
+                  Worked on applications for the USPS that track carrier locations and packages nationwide.
                 </p>
+                <h3 className="text-base leading-none font-semibold">Projects</h3>
+                <ul className="list-disc list-inside text-sm">
+                  <li>
+                    <b>USPS Carrier Location Tracker:</b> Worked on a real-time tracking application that monitored carrier locations
+                    nationwide using GPS-enabled tracking devices
+                  </li>
+                  <li>
+                    <b>Package Success Dashboard:</b> Added a feature that overlaid National Weather Service (NWS) data onto package
+                    delivery metrics, providing weather-specific context for success rate analytics
+                  </li>
+                </ul>
               </ExperienceItem>
             </TimelineBody>
           </TimelineItem>
@@ -81,6 +88,7 @@ export default function Experience() {
                 <p className={paragraphStyle}>
                   Worked on the pricing API for Lowe's.com and the mobile app, as well as price reports for marketing teams.
                 </p>
+                <h3 className="text-base leading-none font-semibold">Projects</h3>
                 <ul className="list-disc list-inside text-sm">
                   <li>
                     Developed and maintained asynchronous microservices and Couchbase databases to manage product catalog updates,
