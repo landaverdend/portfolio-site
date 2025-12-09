@@ -1,11 +1,21 @@
 'use client';
 
+import {
+  AngularSVG,
+  CouchbaseSVG,
+  KafkaSVG,
+  PostgreSQLSVG,
+  ReactSVG,
+  RedisSVG,
+  SpringSVG,
+  TypescriptSVG,
+} from '@/components/tech-svgs';
 import TechCarousel from '@/components/ui/tech-carousel';
 import { Timeline, TimelineItem, TimelineHeader, TimelineSeparator, TimelineIcon, TimelineBody } from '@/components/ui/timeline';
-import { Badge, Briefcase, GraduationCap } from 'lucide-react';
+import { Briefcase, GraduationCap } from 'lucide-react';
 
 export default function Experience() {
-  const paragraphStyle = 'text-muted-foreground mt-3 text-sm';
+  const paragraphStyle = 'text-muted-foreground mt-3 text-sm text-white';
 
   return (
     <div className="w-full flex flex-col items-center justify-center pt-10 gap-8 pb-15 lg:pb-0 ">
@@ -57,16 +67,19 @@ export default function Experience() {
               <ExperienceItem
                 title="Associate Backend Developer at Lowe's Home Improvement"
                 date="May 2021"
-                techStack={['Java', 'Couchbase', 'Spring Boot', 'Kafka']}>
-                <p className={paragraphStyle}>
-                  Developed and maintained asynchronous microservices and Couchbase databases to manage product catalog updates,
-                  tracking, and changes.{' '}
-                </p>
-                <br />
-                <p className={paragraphStyle}>
-                  Built backend APIs that served real-time pricing data to millions of users on lowes.com and the mobile app.
-                  Generated price reports and analytics dashboards for marketing teams to support strategic decision-making.
-                </p>
+                techLogos={[Spring, Kafka, Couchbase, Redis]}>
+                <p>Worked on the pricing API for Lowe's.com and the mobile app, as well as price reports for marketing teams.</p>
+                <ul className="list-disc list-inside text-sm">
+                  <li>
+                    Developed and maintained asynchronous microservices and Couchbase databases to manage product catalog updates,
+                    tracking, and changes.
+                  </li>
+                  <li>
+                    Built backend APIs that served real-time pricing data to tens of thousands of concurrent users on lowes.com
+                    and the mobile app. Generated price reports and analytics dashboards for marketing teams to support strategic
+                    decision-making.
+                  </li>
+                </ul>
               </ExperienceItem>
             </TimelineBody>
           </TimelineItem>
@@ -80,9 +93,10 @@ export default function Experience() {
             <TimelineBody className="-translate-y-1.5">
               <ExperienceItem title="Graduated from Appalachian State University" date="May 2021">
                 <p className={paragraphStyle}>
-                  Graduated from Appalachian State University with a Bachelor of Science in Computer Science.
+                  Graduated from Appalachian State University with a Bachelor of Science in Computer Science. Was a member of the
+                  Competitive Programming Club.
                 </p>
-                <p className="text-muted-foreground mt-3 text-sm">GPA: 3.8</p>
+                <p className="mt-3 text-sm text-white">GPA: 3.8</p>
               </ExperienceItem>
             </TimelineBody>
           </TimelineItem>
@@ -97,15 +111,24 @@ type ExperienceItemProps = {
   date: string;
   children: React.ReactNode;
 
-  techStack?: string[];
+  techLogos?: React.ReactNode[];
 };
-function ExperienceItem({ title, date, children }: ExperienceItemProps) {
+function ExperienceItem({ title, date, children, techLogos }: ExperienceItemProps) {
   return (
     <div className="flex flex-col items-start justify-center gap-3">
       <h3 className="text-base leading-none font-semibold">{title}</h3>
       <p className="text-muted-foreground text-xs">{date}</p>
       {children}
-      <TechCarousel />
+      <TechCarousel items={techLogos ?? []} />
     </div>
   );
 }
+
+const React = <ReactSVG className="fill-white w-10 h-10" />;
+const Spring = <SpringSVG className="fill-white w-8 h-8" />;
+const Typescript = <TypescriptSVG className="w-8 h-8" />;
+const Kafka = <KafkaSVG className="fill-white text-white w-12 h-12" />;
+const Angular = <AngularSVG className="fill-white w-9 h-9 text-white" />;
+const PostgreSQL = <PostgreSQLSVG className="fill-white w-9 h-9 " />;
+const Couchbase = <CouchbaseSVG className="fill-white w-8 h-8 " />;
+const Redis = <RedisSVG className="fill-white text-white w-8 h-8 " />;
