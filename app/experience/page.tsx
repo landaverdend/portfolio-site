@@ -1,6 +1,19 @@
 'use client';
 
-import { React, Spring, Aws, Typescript, Kafka, Angular, PostgreSQL, Couchbase, Mongo, Java, Redis } from '@/components/tech-svgs';
+import {
+  React,
+  Spring,
+  Aws,
+  Typescript,
+  Kafka,
+  Angular,
+  PostgreSQL,
+  Couchbase,
+  Mongo,
+  Java,
+  Redis,
+  RabbitMQ,
+} from '@/components/tech-svgs';
 import TechCarousel from '@/components/ui/tech-carousel';
 import { Timeline, TimelineItem, TimelineHeader, TimelineSeparator, TimelineIcon, TimelineBody } from '@/components/ui/timeline';
 import { Briefcase, GraduationCap } from 'lucide-react';
@@ -24,7 +37,7 @@ export default function Experience() {
               <ExperienceItem
                 title="Full Stack Developer at Clearwave Corporation"
                 date="March 2022"
-                techLogos={[React, Java, Spring, PostgreSQL, Mongo]}>
+                techLogos={[React, Java, Spring, PostgreSQL, Mongo, RabbitMQ]}>
                 <p className={paragraphStyle}>
                   Successfully established the new office location with all necessary equipment and infrastructure in place. The
                   team is ready to begin operations.
