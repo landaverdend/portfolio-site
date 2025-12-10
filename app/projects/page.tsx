@@ -33,12 +33,18 @@ export default function Projects() {
     <div className="w-full flex flex-col items-center">
       <div className="w-3/5 grid grid-cols-1 md:grid-cols-2  gap-4">
         {projects.map((project, index) => (
-          <div key={index} className="bg-indigo-800/20 border border-indigo-300 p-4 rounded-lg">
-            <div className="relative w-full aspect-video">
-              <Image src={project.href} alt="Fox" fill className="object-cover " />
-            </div>
-          </div>
+          <ProjectCard key={index} project={project} />
         ))}
+      </div>
+    </div>
+  );
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <div className="bg-indigo-800/20 border border-indigo-300 p-4 rounded-lg">
+      <div className="relative w-full aspect-video">
+        <Image src={project.href} alt="Fox" fill className="object-cover " />
       </div>
     </div>
   );
