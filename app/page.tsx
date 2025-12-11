@@ -51,7 +51,16 @@ export default function Home() {
             <Button onClick={() => alert('Hello!')}>
               <span className="text-nowrap">Click Here! 🤡</span>
             </Button>
-            <Button onClick={() => alert('Hello!')} alt>
+            <Button
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = '/docs/landaverde_resume.pdf';
+                link.download = 'landaverde_resume.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+              alt>
               <span className="flex flex-row items-center gap-2 text-nowrap">
                 Download CV
                 <DownloadIcon className="w-4 h-4" />
