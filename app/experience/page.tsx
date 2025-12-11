@@ -24,11 +24,13 @@ export default function Experience() {
   return (
     <div className="w-screen flex flex-col items-center justify-center pt-10 pb-15 lg:pb-0">
       <div className="self-center flex flex-col items-center gap-[32px] lg:w-3/5">
-        <h1 className="text-4xl font-bold animate-gradient">Experience</h1>
+        <h1 className="text-4xl font-bold animate-slide-up-fade opacity-0" style={{ animationDelay: '0.1s' }}>
+          Experience
+        </h1>
 
         <div className="flex items-center justify-center ">
           <Timeline color="primary" orientation="vertical" className="w-4/5">
-            <TimelineItem>
+            <TimelineItem className="animate-slide-up-fade opacity-0" style={{ animationDelay: '0.2s' }}>
               <TimelineHeader>
                 <TimelineSeparator />
                 <TimelineIcon>
@@ -61,7 +63,7 @@ export default function Experience() {
               </TimelineBody>
             </TimelineItem>
 
-            <TimelineItem>
+            <TimelineItem className="animate-slide-up-fade opacity-0" style={{ animationDelay: '0.3s' }}>
               <TimelineHeader>
                 <TimelineSeparator />
                 <TimelineIcon>
@@ -91,7 +93,7 @@ export default function Experience() {
               </TimelineBody>
             </TimelineItem>
 
-            <TimelineItem>
+            <TimelineItem className="animate-slide-up-fade opacity-0" style={{ animationDelay: '0.4s' }}>
               <TimelineHeader>
                 <TimelineSeparator />
                 <TimelineIcon>
@@ -122,7 +124,7 @@ export default function Experience() {
               </TimelineBody>
             </TimelineItem>
 
-            <TimelineItem>
+            <TimelineItem className="animate-slide-up-fade opacity-0" style={{ animationDelay: '0.5s' }}>
               <TimelineHeader>
                 <TimelineIcon>
                   <GraduationCap className="h-4 w-4" />
