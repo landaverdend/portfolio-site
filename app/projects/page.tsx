@@ -3,36 +3,61 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import Link from 'next/link';
+
+const projects: Project[] = [
+  {
+    title: 'Battle Snakes',
+    description:
+      'A multiplayer, round-based snake game where you can battle other players online in real time. Built with React, Node.js, and Socket.io.',
+    href: '/projects/battle_snakes.png',
+    link: 'https://battlesnakes.io',
+  },
+  {
+    title: 'Bitcoin Script Debugger',
+    description:
+      'A collection of tools that allow you to write and debug bitcoin scripts in the browser. Includes a debugger and transaction parser, alongside support for legacy and segwit transactions.',
+    href: '/projects/btc_tools.png',
+    link: 'https://bitcointools.landaverde.io/',
+  },
+  {
+    title: 'Fox Archives',
+    description:
+      'A progressive web app that archives memorable quotes from my friend, Ryan Fox. Features admin and user roles for adding, editing, and reacting to quotes.',
+    href: '/projects/fox_site.png',
+    link: 'https://whatdidthefoxsay.com/',
+  },
+  {
+    title: 'Isle Advance',
+    description:
+      'A homebrew Game Boy Advance game similar to Minecraft, built as a university capstone project with my friend. Implemented procedural generation optimized for the hardware constraints.',
+    href: '/projects/isle_advance.png',
+    link: 'https://github.com/landaverdend/Procgen-GBA',
+  },
+
+  {
+    title: 'Tetris Galaxy',
+    description: 'A Tetris spinoff developed with 3 friends that won first place at our university hackathon, AppalHack 2019.',
+    href: '/projects/galaxy.png',
+    link: 'https://github.com/landaverdend/tetrisGalaxy',
+  },
+  {
+    title: 'Voltorb Flip',
+    description: 'A browser recreation of the Voltorb Flip minigame from the classic Pokémon games.',
+    href: '/projects/voltorb_flip.png',
+    link: 'https://voltorb.landaverde.io/',
+  },
+];
 
 type Project = {
   title: string;
   description: string;
   href: string;
+  link: string;
 };
-
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const images = [
-    '/projects/battle_snakes.png',
-    '/projects/btc_tools.png',
-    '/projects/fox_site.png',
-    '/projects/galaxy.png',
-    '/projects/isle_advance.png',
-    '/projects/trivia.png',
-    '/projects/voltorb_flip.png',
-  ];
-  const projects: Project[] = [];
-
-  for (const image of images) {
-    projects.push({
-      title: 'Project',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      href: image,
-    });
-  }
 
   return (
     <div className="w-full flex flex-col items-center gap-10 pt-5">
@@ -95,6 +120,12 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
         <div className="absolute bottom-0 left-0 right-0 bg-indigo-900/50 dark:bg-indigo-950/40 backdrop-blur-lg border-t border-white/20 dark:border-indigo-400/30 flex flex-col gap-2 py-4 px-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
           <h3 className="text-white font-semibold">{project.title}</h3>
           <p className="text-white text-sm line-clamp-2">{project.description}</p>
+          <Link
+            href={project.link}
+            target="_blank"
+            className="text-white text-lg bg-indigo-900/70 dark:bg-indigo-950/60 w-fit px-2 py-1 rounded-md hover:text-indigo-400 transition-colors duration-300">
+            Visit
+          </Link>
         </div>
       </div>
     </div>
