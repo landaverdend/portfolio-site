@@ -61,9 +61,9 @@ export default function Home() {
           </p>
 
           <div className="flex flex-row items-center gap-2 animate-slide-up-fade opacity-0" style={{ animationDelay: '0.6s' }}>
-            <Button onClick={() => alert('Hello!')}>
+            {/* <Button onClick={() => alert('Hello!')}>
               <span className="text-nowrap">Click Here! 🤡</span>
-            </Button>
+            </Button> */}
             <Button
               onClick={() => {
                 const link = document.createElement('a');
@@ -72,8 +72,7 @@ export default function Home() {
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-              }}
-              alt>
+              }}>
               <span className="flex flex-row items-center gap-2 text-nowrap">
                 Download CV
                 <DownloadIcon className="w-4 h-4" />
