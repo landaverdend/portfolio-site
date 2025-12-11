@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import Link from 'next/link';
 
@@ -58,6 +58,7 @@ type Project = {
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   return (
     <div className="w-full flex flex-col items-center gap-10 pt-5">
@@ -69,6 +70,11 @@ export default function Projects() {
             key={index}
             project={project}
             onClick={() => {
+              // Cancel any pending close timeout
+              if (closeTimeoutRef.current) {
+                clearTimeout(closeTimeoutRef.current);
+                closeTimeoutRef.current = null;
+              }
               setSelectedProject(project);
               setIsDialogOpen(true);
             }}
@@ -81,7 +87,17 @@ export default function Projects() {
         onOpenChange={(open) => {
           setIsDialogOpen(open);
           if (!open) {
-            setTimeout(() => setSelectedProject(null), 200);
+            // Cancel any existing timeout
+            if (closeTimeoutRef.current) {
+              clearTimeout(closeTimeoutRef.current);
+            }
+            closeTimeoutRef.current = setTimeout(() => setSelectedProject(null), 200);
+          } else {
+            // Cancel timeout if dialog is being opened
+            if (closeTimeoutRef.current) {
+              clearTimeout(closeTimeoutRef.current);
+              closeTimeoutRef.current = null;
+            }
           }
         }}
         modal={false}>
@@ -123,6 +139,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
           <Link
             href={project.link}
             target="_blank"
+            onClick={(e) => e.stopPropagation()}
             className="text-white text-lg bg-indigo-900/70 dark:bg-indigo-950/60 w-fit px-2 py-1 rounded-md hover:text-indigo-400 transition-colors duration-300">
             Visit
           </Link>
