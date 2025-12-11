@@ -42,9 +42,15 @@ export default function Projects() {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="bg-indigo-800/20 border border-indigo-300 p-4 rounded-lg">
+    <div className="group relative bg-indigo-800/20 border border-indigo-300 p-4 rounded-lg overflow-hidden">
       <div className="relative w-full aspect-video">
-        <Image src={project.href} alt="Fox" fill className="object-cover " />
+        <Image src={project.href} alt="Fox" fill className="object-cover" />
+
+        {/* Combined overlay - bottom portion */}
+        <div className="absolute bottom-0 left-0 right-0 bg-indigo-900/50 dark:bg-indigo-950/40 backdrop-blur-lg border-t border-white/20 dark:border-indigo-400/30 flex flex-col gap-2 py-4 px-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+          <h3 className="text-white font-semibold">{project.title}</h3>
+          <p className="text-white text-sm line-clamp-2">{project.description}</p>
+        </div>
       </div>
     </div>
   );
