@@ -61,10 +61,14 @@ export default function Projects() {
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   return (
-    <div className="w-full flex flex-col items-center gap-10 pt-5">
-      <h1 className="text-5xl font-bold text-center animate-gradient">Projects</h1>
+    <div className="w-full flex flex-col items-center gap-12 pt-10 pb-20">
+      <h1
+        className="text-4xl lg:text-5xl font-bold text-center animate-slide-up-fade opacity-0"
+        style={{ animationDelay: '0.1s' }}>
+        Projects
+      </h1>
 
-      <div className="w-4/5 grid grid-cols-1 md:grid-cols-2  gap-10">
+      <div className="w-4/5 max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
         {projects.map((project, index) => (
           <ProjectCard
             key={index}
@@ -102,11 +106,11 @@ export default function Projects() {
           }
         }}
         modal={false}>
-        <DialogContent className="max-w-2xl bg-indigo-950/95 border-indigo-300/30 text-white">
+        <DialogContent className="max-w-3xl bg-indigo-950/95 backdrop-blur-md border-indigo-300/50 text-white shadow-[0_0_60px_rgba(129,140,248,0.4)]">
           {selectedProject && (
-            <div className="flex flex-col gap-4">
-              <DialogTitle className="text-2xl text-white">{selectedProject.title}</DialogTitle>
-              <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+            <div className="flex flex-col gap-6">
+              <DialogTitle className="text-3xl lg:text-4xl font-bold text-white">{selectedProject.title}</DialogTitle>
+              <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-indigo-400/30 shadow-lg">
                 <Image
                   src={selectedProject.href}
                   alt={selectedProject.title}
@@ -116,7 +120,17 @@ export default function Projects() {
                   loading="eager"
                 />
               </div>
-              <DialogDescription className="text-base text-white/90">{selectedProject.description}</DialogDescription>
+              <DialogDescription className="text-base lg:text-lg text-white/90 leading-relaxed">
+                {selectedProject.description}
+              </DialogDescription>
+              <div className="flex justify-end pt-2">
+                <Link
+                  href={selectedProject.link}
+                  target="_blank"
+                  className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg transition-colors duration-300 border border-indigo-400/50">
+                  Visit Project →
+                </Link>
+              </div>
             </div>
           )}
         </DialogContent>
@@ -129,35 +143,38 @@ function ProjectCard({ project, onClick, index }: { project: Project; onClick: (
   return (
     <div
       onClick={onClick}
-      className="group relative bg-indigo-800/20 border border-indigo-300 p-4 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(129,140,248,0.8)] animate-slide-up-fade opacity-0"
+      className="group relative bg-indigo-900/30 backdrop-blur-sm border border-indigo-300/50 p-1 rounded-xl cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_50px_rgba(129,140,248,0.6)] hover:border-indigo-300/80 animate-slide-up-fade opacity-0"
       style={{ animationDelay: `${index * 0.1}s` }}>
-      <div className="relative w-full aspect-video overflow-hidden rounded">
+      <div className="relative w-full aspect-video overflow-hidden rounded-lg">
         <Image
           src={project.href}
           alt={project.title}
           fill
-          className="object-cover"
-          sizes="(max-width: 768px) 80vw, calc(40vw - 2.5rem)"
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          sizes="(max-width: 768px) 80vw, (max-width: 1024px) 40vw, 35vw"
           loading="eager"
         />
 
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/90 via-indigo-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
         {/* Static project name - bottom left */}
-        <div className="absolute bottom-0 left-0 p-3 group-hover:opacity-0 transition-opacity duration-300">
-          <h3 className="text-white font-semibold bg-indigo-900/70 dark:bg-indigo-950/60 backdrop-blur-sm px-3 py-1.5 rounded-md text-md lg:text-xl">
+        <div className="absolute bottom-0 left-0 p-4 group-hover:opacity-0 transition-opacity duration-300 z-10">
+          <h3 className="text-white font-bold bg-indigo-900/80 backdrop-blur-md px-4 py-2 rounded-lg text-lg lg:text-xl shadow-lg border border-indigo-400/30">
             {project.title}
           </h3>
         </div>
 
-        {/* Combined overlay - bottom portion */}
-        <div className="absolute bottom-0 left-0 right-0 bg-indigo-900/50 dark:bg-indigo-950/40 backdrop-blur-lg border-t border-white/20 dark:border-indigo-400/30 flex flex-col gap-2 py-4 px-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-          <h3 className="text-white font-semibold">{project.title}</h3>
-          <p className="text-white text-sm line-clamp-2">{project.description}</p>
+        {/* Hover overlay - bottom portion */}
+        <div className="absolute bottom-0 left-0 right-0 bg-indigo-900/95 backdrop-blur-xl border-t border-indigo-400/40 flex flex-col gap-3 py-5 px-5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100 z-20">
+          <h3 className="text-white font-bold text-xl lg:text-2xl">{project.title}</h3>
+          <p className="text-white/90 text-sm lg:text-base leading-relaxed line-clamp-3">{project.description}</p>
           <Link
             href={project.link}
             target="_blank"
             onClick={(e) => e.stopPropagation()}
-            className="text-white text-lg bg-indigo-900/70 dark:bg-indigo-950/60 w-fit px-2 py-1 rounded-md hover:text-indigo-400 transition-colors duration-300">
-            Visit
+            className="text-white font-semibold bg-indigo-600 hover:bg-indigo-500 w-fit px-4 py-2 rounded-lg transition-colors duration-300 border border-indigo-400/50 mt-1">
+            Visit Project →
           </Link>
         </div>
       </div>
