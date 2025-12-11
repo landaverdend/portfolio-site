@@ -35,24 +35,31 @@ export default function Projects() {
   }
 
   return (
-    <div className="w-full flex flex-col items-center gap-10">
+    <div className="w-full flex flex-col items-center gap-10 pt-5">
       <h1 className="text-5xl font-bold text-center">Projects</h1>
 
       <div className="w-4/5 grid grid-cols-1 md:grid-cols-2  gap-10">
         {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} onClick={() => {
-            setSelectedProject(project);
-            setIsDialogOpen(true);
-          }} />
+          <ProjectCard
+            key={index}
+            project={project}
+            onClick={() => {
+              setSelectedProject(project);
+              setIsDialogOpen(true);
+            }}
+          />
         ))}
       </div>
 
-      <Dialog open={isDialogOpen} onOpenChange={(open) => {
-        setIsDialogOpen(open);
-        if (!open) {
-          setTimeout(() => setSelectedProject(null), 200);
-        }
-      }} modal={false}>
+      <Dialog
+        open={isDialogOpen}
+        onOpenChange={(open) => {
+          setIsDialogOpen(open);
+          if (!open) {
+            setTimeout(() => setSelectedProject(null), 200);
+          }
+        }}
+        modal={false}>
         <DialogContent className="max-w-2xl bg-indigo-950/95 border-indigo-300/30 text-white">
           {selectedProject && (
             <div className="flex flex-col gap-4">
@@ -76,6 +83,13 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
       className="group relative bg-indigo-800/20 border border-indigo-300 p-4 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(129,140,248,0.8)]">
       <div className="relative w-full aspect-video overflow-hidden rounded">
         <Image src={project.href} alt="Fox" fill className="object-cover" />
+
+        {/* Static project name - bottom left */}
+        <div className="absolute bottom-0 left-0 p-3 group-hover:opacity-0 transition-opacity duration-300">
+          <h3 className="text-white font-semibold bg-indigo-900/70 dark:bg-indigo-950/60 backdrop-blur-sm px-3 py-1.5 rounded-md text-md lg:text-xl">
+            {project.title}
+          </h3>
+        </div>
 
         {/* Combined overlay - bottom portion */}
         <div className="absolute bottom-0 left-0 right-0 bg-indigo-900/50 dark:bg-indigo-950/40 backdrop-blur-lg border-t border-white/20 dark:border-indigo-400/30 flex flex-col gap-2 py-4 px-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
