@@ -69,6 +69,7 @@ export default function Projects() {
           <ProjectCard
             key={index}
             project={project}
+            index={index}
             onClick={() => {
               // Cancel any pending close timeout
               if (closeTimeoutRef.current) {
@@ -106,7 +107,14 @@ export default function Projects() {
             <div className="flex flex-col gap-4">
               <DialogTitle className="text-2xl text-white">{selectedProject.title}</DialogTitle>
               <div className="relative w-full aspect-video rounded-lg overflow-hidden">
-                <Image src={selectedProject.href} alt={selectedProject.title} fill className="object-cover" />
+                <Image
+                  src={selectedProject.href}
+                  alt={selectedProject.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 90vw, 672px"
+                  loading="eager"
+                />
               </div>
               <DialogDescription className="text-base text-white/90">{selectedProject.description}</DialogDescription>
             </div>
@@ -117,13 +125,21 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
+function ProjectCard({ project, onClick, index }: { project: Project; onClick: () => void; index: number }) {
   return (
     <div
       onClick={onClick}
-      className="group relative bg-indigo-800/20 border border-indigo-300 p-4 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(129,140,248,0.8)]">
+      className="group relative bg-indigo-800/20 border border-indigo-300 p-4 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(129,140,248,0.8)] animate-slide-up-fade opacity-0"
+      style={{ animationDelay: `${index * 0.1}s` }}>
       <div className="relative w-full aspect-video overflow-hidden rounded">
-        <Image src={project.href} alt="Fox" fill className="object-cover" />
+        <Image
+          src={project.href}
+          alt={project.title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 80vw, calc(40vw - 2.5rem)"
+          loading="eager"
+        />
 
         {/* Static project name - bottom left */}
         <div className="absolute bottom-0 left-0 p-3 group-hover:opacity-0 transition-opacity duration-300">
