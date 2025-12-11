@@ -19,17 +19,17 @@ import { Timeline, TimelineItem, TimelineHeader, TimelineSeparator, TimelineIcon
 import { Briefcase, GraduationCap } from 'lucide-react';
 
 export default function Experience() {
-  const paragraphStyle = 'text-muted-foreground mt-3 text-md text-white';
+  const paragraphStyle = 'text-white/80 mt-3 text-sm lg:text-base leading-relaxed';
 
   return (
-    <div className="w-screen flex flex-col items-center justify-center pt-10 pb-15 lg:pb-0">
-      <div className="self-center flex flex-col items-center gap-[32px] lg:w-3/5">
-        <h1 className="text-4xl font-bold animate-slide-up-fade opacity-0" style={{ animationDelay: '0.1s' }}>
+    <div className="w-screen flex flex-col items-center justify-center pt-10 pb-20 lg:pb-0">
+      <div className="self-center flex flex-col items-center gap-8 lg:w-4/5 max-w-4xl">
+        <h1 className="text-4xl lg:text-5xl font-bold animate-slide-up-fade opacity-0" style={{ animationDelay: '0.1s' }}>
           Experience
         </h1>
 
-        <div className="flex items-center justify-center ">
-          <Timeline color="primary" orientation="vertical" className="w-4/5">
+        <div className="flex items-center justify-center w-full">
+          <Timeline color="primary" orientation="vertical" className="w-full">
             <TimelineItem className="animate-slide-up-fade opacity-0" style={{ animationDelay: '0.2s' }}>
               <TimelineHeader>
                 <TimelineSeparator />
@@ -46,17 +46,23 @@ export default function Experience() {
                     Current position working as a Full Stack Developer on a variety of projects within the Healthcare Industry for
                     Clearwave Corporation.
                   </p>
-                  <h3 className="text-base leading-none font-semibold">Projects</h3>
-                  <ul className="list-disc list-inside text-sm">
-                    <li>
-                      <b>System Wide Audit Tool:</b> Built a set of microservices that consumed system events from RabbitMQ,
-                      persisted them to MongoDB, and exposed a queryable API for a frontend application to retrieve audit events
-                      for users
+                  <h3 className="text-base lg:text-lg leading-none font-semibold mt-4 mb-2 text-white">Projects</h3>
+                  <ul className="list-none space-y-3 text-sm lg:text-base">
+                    <li className="flex gap-2">
+                      <span className="text-indigo-400 mt-1.5">•</span>
+                      <span className="text-white/90">
+                        <b className="text-white font-semibold">System Wide Audit Tool:</b> Built a set of microservices that
+                        consumed system events from RabbitMQ, persisted them to MongoDB, and exposed a queryable API for a
+                        frontend application to retrieve audit events for users
+                      </span>
                     </li>
-                    <li>
-                      <b>Electronic Health Record (EHR) Cache:</b> Developed a custom caching solution to work around hard-set EHR
-                      API rate limits by caching results and implementing a change listener to update cached data as changes
-                      occur, preventing rate limit violations
+                    <li className="flex gap-2">
+                      <span className="text-indigo-400 mt-1.5">•</span>
+                      <span className="text-white/90">
+                        <b className="text-white font-semibold">Electronic Health Record (EHR) Cache:</b> Developed a custom
+                        caching solution to work around hard-set EHR API rate limits by caching results and implementing a change
+                        listener to update cached data as changes occur, preventing rate limit violations
+                      </span>
                     </li>
                   </ul>
                 </ExperienceItem>
@@ -78,15 +84,22 @@ export default function Experience() {
                   <p className={paragraphStyle}>
                     Worked on applications for the USPS that track carrier locations and packages nationwide.
                   </p>
-                  <h3 className="text-base leading-none font-semibold">Projects</h3>
-                  <ul className="list-disc list-inside text-sm">
-                    <li>
-                      <b>USPS Carrier Location Tracker:</b> Worked on a real-time tracking application that monitored carrier
-                      locations nationwide using GPS-enabled tracking devices
+                  <h3 className="text-base lg:text-lg leading-none font-semibold mt-4 mb-2 text-white">Projects</h3>
+                  <ul className="list-none space-y-3 text-sm lg:text-base">
+                    <li className="flex gap-2">
+                      <span className="text-indigo-400 mt-1.5">•</span>
+                      <span className="text-white/90">
+                        <b className="text-white font-semibold">USPS Carrier Location Tracker:</b> Worked on a real-time tracking
+                        application that monitored carrier locations nationwide using GPS-enabled tracking devices
+                      </span>
                     </li>
-                    <li>
-                      <b>Package Success Dashboard:</b> Added a feature that overlaid National Weather Service (NWS) data onto
-                      package delivery metrics, providing weather-specific context for success rate analytics
+                    <li className="flex gap-2">
+                      <span className="text-indigo-400 mt-1.5">•</span>
+                      <span className="text-white/90">
+                        <b className="text-white font-semibold">Package Success Dashboard:</b> Added a feature that overlaid
+                        National Weather Service (NWS) data onto package delivery metrics, providing weather-specific context for
+                        success rate analytics
+                      </span>
                     </li>
                   </ul>
                 </ExperienceItem>
@@ -108,16 +121,22 @@ export default function Experience() {
                   <p className={paragraphStyle}>
                     Worked on the pricing API for Lowe's.com and the mobile app, as well as price reports for marketing teams.
                   </p>
-                  <h3 className="text-base leading-none font-semibold">Projects</h3>
-                  <ul className="list-disc list-inside text-sm">
-                    <li>
-                      Developed and maintained asynchronous microservices and Couchbase databases to manage product catalog
-                      updates, tracking, and changes.
+                  <h3 className="text-base lg:text-lg leading-none font-semibold mt-4 mb-2 text-white">Projects</h3>
+                  <ul className="list-none space-y-3 text-sm lg:text-base">
+                    <li className="flex gap-2">
+                      <span className="text-indigo-400 mt-1.5">•</span>
+                      <span className="text-white/90">
+                        Developed and maintained asynchronous microservices and Couchbase databases to manage product catalog
+                        updates, tracking, and changes.
+                      </span>
                     </li>
-                    <li>
-                      Built backend APIs that served real-time pricing data to tens of thousands of concurrent users on lowes.com
-                      and the mobile app. Generated price reports and analytics dashboards for marketing teams to support
-                      strategic decision-making.
+                    <li className="flex gap-2">
+                      <span className="text-indigo-400 mt-1.5">•</span>
+                      <span className="text-white/90">
+                        Built backend APIs that served real-time pricing data to tens of thousands of concurrent users on
+                        lowes.com and the mobile app. Generated price reports and analytics dashboards for marketing teams to
+                        support strategic decision-making.
+                      </span>
                     </li>
                   </ul>
                 </ExperienceItem>
@@ -133,9 +152,11 @@ export default function Experience() {
               <TimelineBody className="-translate-y-1.5">
                 <ExperienceItem title="Graduated from Appalachian State University" date="May 2021">
                   <p className={paragraphStyle}>
-                    Graduated from Appalachian State University with a Bachelor of Science in Computer Science.{' '}
+                    Graduated from Appalachian State University with a Bachelor of Science in Computer Science.
                   </p>
-                  <p className="mt-3 text-sm text-white">GPA: 3.8</p>
+                  <p className="mt-2 text-sm lg:text-base text-white font-semibold bg-indigo-400/10 border border-indigo-400/30 rounded-md px-3 py-1.5 w-fit">
+                    GPA: 3.8
+                  </p>
                 </ExperienceItem>
               </TimelineBody>
             </TimelineItem>
@@ -155,11 +176,17 @@ type ExperienceItemProps = {
 };
 function ExperienceItem({ title, date, children, techLogos }: ExperienceItemProps) {
   return (
-    <div className="flex flex-col items-start justify-center gap-3">
-      <h3 className="text-base leading-none font-semibold">{title}</h3>
-      <p className="text-muted-foreground text-xs">{date}</p>
+    <div className="flex flex-col items-start justify-center gap-4 bg-indigo-900/20 backdrop-blur-sm border border-indigo-300/30 rounded-lg p-5 lg:p-6 hover:bg-indigo-900/30 hover:border-indigo-300/50 transition-all duration-300">
+      <div className="flex flex-col gap-1">
+        <h3 className="text-lg lg:text-xl leading-tight font-bold text-white">{title}</h3>
+        <p className="text-indigo-300 text-xs lg:text-sm font-medium">{date}</p>
+      </div>
       {children}
-      <TechCarousel items={techLogos ?? []} />
+      {techLogos && techLogos.length > 0 && (
+        <div className="mt-2">
+          <TechCarousel items={techLogos} />
+        </div>
+      )}
     </div>
   );
 }
