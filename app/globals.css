@@ -174,7 +174,7 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradient-shift 6s ease infinite;
+    animation: gradient-shift 10s ease infinite;
   }
 }
 

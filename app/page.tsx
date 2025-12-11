@@ -47,7 +47,7 @@ export default function Home() {
           <p className="mx-5 lg:text-left lg:mx-auto">
             I'm a Full stack developer that likes to build end-to-end applications with modern technologies like React and
             Next.js. I'm particularly interested in Bitcoin, financial technology, and creating solutions that span the entire
-            development stack. I enjoy working across different domains and technologies.
+            development stack. I like to work across different domains and technologies.
           </p>
 
           <div className="flex flex-row items-center gap-2">
