@@ -30,8 +30,10 @@ export default function Projects() {
   }
 
   return (
-    <div className="w-full flex flex-col items-center">
-      <div className="w-3/5 grid grid-cols-1 md:grid-cols-2  gap-4">
+    <div className="w-full flex flex-col items-center gap-10">
+      <h1 className="text-5xl font-bold text-center">Projects</h1>
+
+      <div className="w-4/5 grid grid-cols-1 md:grid-cols-2  gap-10">
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} />
         ))}
@@ -42,8 +44,8 @@ export default function Projects() {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group relative bg-indigo-800/20 border border-indigo-300 p-4 rounded-lg overflow-hidden">
-      <div className="relative w-full aspect-video">
+    <div className="group relative bg-indigo-800/20 border border-indigo-300 p-4 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(129,140,248,0.8)]">
+      <div className="relative w-full aspect-video overflow-hidden rounded">
         <Image src={project.href} alt="Fox" fill className="object-cover" />
 
         {/* Combined overlay - bottom portion */}
