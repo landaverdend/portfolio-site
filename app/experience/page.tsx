@@ -178,7 +178,7 @@ function ExperienceItem({ title, date, children, techLogos }: ExperienceItemProp
   return (
     <div className="flex flex-col items-start justify-center gap-3 lg:gap-4 bg-indigo-900/20 backdrop-blur-sm border border-indigo-300/30 rounded-lg p-4 sm:p-5 lg:p-6 hover:bg-indigo-900/30 hover:border-indigo-300/50 transition-all duration-300 w-full max-w-full overflow-hidden">
       <div className="flex flex-col gap-1 w-full">
-        <h3 className="text-base sm:text-lg lg:text-xl leading-tight font-bold text-white break-words">{title}</h3>
+        <h3 className="text-base sm:text-lg lg:text-xl leading-tight font-bold text-white wrap-break-words">{title}</h3>
         <p className="text-indigo-300 text-xs lg:text-sm font-medium">{date}</p>
       </div>
       <div className="w-full">{children}</div>

@@ -156,7 +156,7 @@ function ProjectCard({ project, onClick, index }: { project: Project; onClick: (
         />
 
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/90 via-indigo-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-linear-to-t from-indigo-950/90 via-indigo-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         {/* Static project name - bottom left */}
         <div className="absolute bottom-0 left-0 p-4 group-hover:opacity-0 transition-opacity duration-300 z-10">
