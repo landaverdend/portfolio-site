@@ -15,7 +15,7 @@ export default function BubbleBackground() {
         <div
           key={i}
           className={`absolute ${bubble.size} ${bubble.opacity} rounded-full blur-3xl
-            bg-linear-to-r from-pink-500/60  to-fuchsia-500/10
+            bg-gradient-to-r from-blue-500/50 to-cyan-500/15
             animate-float`}
           style={{
             left: bubble.x,
