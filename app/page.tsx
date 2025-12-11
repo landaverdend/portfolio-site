@@ -26,7 +26,9 @@ export default function Home() {
 
         <div className="flex flex-col items-center justify-center gap-5 lg:w-1/4 lg:items-start">
           <div className="flex flex-col items-center lg:items-start">
-            <h1 className="text-4xl font-extrabold tracking-tighter lg:text-6xl">Nico Landaverde</h1>
+            <h1 className="text-4xl font-extrabold tracking-tighter lg:text-6xl">
+              Nico <span className="animate-gradient">Landaverde</span>
+            </h1>
             <span className="text-xl text-gray-500 font-light lg:text-2xl">Full Stack Developer</span>
           </div>
 

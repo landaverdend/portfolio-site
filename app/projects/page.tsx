@@ -62,7 +62,7 @@ export default function Projects() {
 
   return (
     <div className="w-full flex flex-col items-center gap-10 pt-5">
-      <h1 className="text-5xl font-bold text-center">Projects</h1>
+      <h1 className="text-5xl font-bold text-center animate-gradient">Projects</h1>
 
       <div className="w-4/5 grid grid-cols-1 md:grid-cols-2  gap-10">
         {projects.map((project, index) => (

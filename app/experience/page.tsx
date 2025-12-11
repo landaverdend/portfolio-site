@@ -24,7 +24,7 @@ export default function Experience() {
   return (
     <div className="w-screen flex flex-col items-center justify-center pt-10 pb-15 lg:pb-0">
       <div className="self-center flex flex-col items-center gap-[32px] lg:w-3/5">
-        <h1 className="text-2xl font-bold">Experience</h1>
+        <h1 className="text-2xl font-bold animate-gradient">Experience</h1>
 
         <div className="flex items-center justify-center ">
           <Timeline color="primary" orientation="vertical" className="w-4/5">
