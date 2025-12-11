@@ -1,6 +1,8 @@
 'use client';
 
 import Image from 'next/image';
+import { useState } from 'react';
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 type Project = {
   title: string;
@@ -9,6 +11,9 @@ type Project = {
 };
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   const images = [
     '/projects/battle_snakes.png',
     '/projects/btc_tools.png',
@@ -35,16 +40,40 @@ export default function Projects() {
 
       <div className="w-4/5 grid grid-cols-1 md:grid-cols-2  gap-10">
         {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} />
+          <ProjectCard key={index} project={project} onClick={() => {
+            setSelectedProject(project);
+            setIsDialogOpen(true);
+          }} />
         ))}
       </div>
+
+      <Dialog open={isDialogOpen} onOpenChange={(open) => {
+        setIsDialogOpen(open);
+        if (!open) {
+          setTimeout(() => setSelectedProject(null), 200);
+        }
+      }} modal={false}>
+        <DialogContent className="max-w-2xl bg-indigo-950/95 border-indigo-300/30 text-white">
+          {selectedProject && (
+            <div className="flex flex-col gap-4">
+              <DialogTitle className="text-2xl text-white">{selectedProject.title}</DialogTitle>
+              <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+                <Image src={selectedProject.href} alt={selectedProject.title} fill className="object-cover" />
+              </div>
+              <DialogDescription className="text-base text-white/90">{selectedProject.description}</DialogDescription>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
   return (
-    <div className="group relative bg-indigo-800/20 border border-indigo-300 p-4 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(129,140,248,0.8)]">
+    <div
+      onClick={onClick}
+      className="group relative bg-indigo-800/20 border border-indigo-300 p-4 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(129,140,248,0.8)]">
       <div className="relative w-full aspect-video overflow-hidden rounded">
         <Image src={project.href} alt="Fox" fill className="object-cover" />
 
