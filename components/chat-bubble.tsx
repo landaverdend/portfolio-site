@@ -6,6 +6,34 @@ import { Spinner } from '@/components/ui/spinner';
 import { PaperPlaneIcon, Cross2Icon } from '@radix-ui/react-icons';
 import { useChat, Message } from '@/contexts/chat-context';
 
+function TypingIndicator() {
+  return (
+    <div className="flex items-center gap-1.5 py-1">
+      <span
+        className="w-2 h-2 bg-white/70 rounded-full"
+        style={{
+          animation: 'typing-bounce 1.4s ease-in-out infinite',
+          animationDelay: '0ms',
+        }}
+      />
+      <span
+        className="w-2 h-2 bg-white/70 rounded-full"
+        style={{
+          animation: 'typing-bounce 1.4s ease-in-out infinite',
+          animationDelay: '200ms',
+        }}
+      />
+      <span
+        className="w-2 h-2 bg-white/70 rounded-full"
+        style={{
+          animation: 'typing-bounce 1.4s ease-in-out infinite',
+          animationDelay: '400ms',
+        }}
+      />
+    </div>
+  );
+}
+
 export default function ChatBubble() {
   const { messages, setMessages, isOpen, setIsOpen } = useChat();
   const [inputValue, setInputValue] = useState('');
@@ -19,7 +47,7 @@ export default function ChatBubble() {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, isSubmitting]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -165,6 +193,13 @@ export default function ChatBubble() {
                 </div>
               </div>
             ))}
+            {isSubmitting && (
+              <div className="flex justify-start">
+                <div className="max-w-[85%] sm:max-w-[75%] rounded-2xl px-3 sm:px-4 py-2 bg-indigo-800/60 text-white rounded-bl-sm border border-indigo-400/30">
+                  <TypingIndicator />
+                </div>
+              </div>
+            )}
             <div ref={messagesEndRef} />
           </div>
 

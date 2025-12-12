@@ -176,6 +176,23 @@
     -webkit-text-fill-color: transparent;
     animation: gradient-shift 10s ease infinite;
   }
+
+  .animate-typing {
+    animation: typing-bounce 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes typing-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
 }
 
 @layer base {

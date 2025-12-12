@@ -21,7 +21,7 @@ const ChatContext = createContext<ChatContextType | undefined>(undefined);
 const DEFAULT_MESSAGES: Message[] = [
   {
     id: '1',
-    text: "What's up",
+    text: "what's up",
     sender: 'bot',
     timestamp: new Date(),
   },
@@ -31,11 +31,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
   const [messages, setMessages] = useState<Message[]>(DEFAULT_MESSAGES);
   const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <ChatContext.Provider value={{ messages, setMessages, isOpen, setIsOpen }}>
-      {children}
-    </ChatContext.Provider>
-  );
+  return <ChatContext.Provider value={{ messages, setMessages, isOpen, setIsOpen }}>{children}</ChatContext.Provider>;
 }
 
 export function useChat() {
