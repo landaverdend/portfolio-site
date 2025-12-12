@@ -1,12 +1,14 @@
 'use client';
 
 import { createContext, useContext, useState, ReactNode } from 'react';
+import { Emote } from '@/types/types';
 
 export interface Message {
   id: string;
   text: string;
   sender: 'user' | 'bot';
   timestamp: Date;
+  emote?: Emote;
 }
 
 interface ChatContextType {

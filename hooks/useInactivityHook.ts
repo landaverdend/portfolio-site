@@ -1,33 +1,34 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { useChat, Message } from '@/contexts/chat-context';
+import { Emote } from '@/types/types';
 
 function getRandomNumber(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const coldMessages = [
-  'Hey',
-  'Im a developer in your area looking for work',
-  'hey this is actually me it isnt a joke Im actually here right now texting you.',
-  "It's rude to not respond you know....",
-  'please respond to me',
-  "I put a lot of effort into this site and you're just gonna ignore me?",
-  'Alright seriously...',
-  '?????',
-  "hey it's rude to ignore people that are messaging you, yaknow....",
-  'GIVE ME ATTENTION',
-  'DUUUDE',
-  'ARE YOU KIDDING ME',
-  'HELP HELP HELP',
-  'hi',
-  'Good morning.....',
-  'Do you think im funny?',
-  'DO NOT IGNORE ME',
-  'ignore me at your own peril',
-  "this isn't gonna work if you dont talk to me....",
-  "I'm a very needy person, please respond",
-  'I love you.',
-  'I need you....',
+const coldMessages: Array<{ text: string; emote: Emote }> = [
+  { text: 'Hey', emote: 'happy' },
+  { text: 'Im a developer in your area looking for work', emote: 'happy' },
+  { text: 'hey this is actually me it isnt a joke Im actually here right now texting you.', emote: 'surprised' },
+  { text: "It's rude to not respond you know....", emote: 'unamused' },
+  { text: 'please respond to me', emote: 'sad' },
+  { text: "I put a lot of effort into this site and you're just gonna ignore me?", emote: 'sad' },
+  { text: 'Alright seriously...', emote: 'unamused' },
+  { text: '?????', emote: 'surprised' },
+  { text: "hey it's rude to ignore people that are messaging you, yaknow....", emote: 'unamused' },
+  { text: 'GIVE ME ATTENTION', emote: 'angry' },
+  { text: 'DUUUDE', emote: 'surprised' },
+  { text: 'ARE YOU KIDDING ME', emote: 'angry' },
+  { text: 'HELP HELP HELP', emote: 'surprised' },
+  { text: 'hi', emote: 'happy' },
+  { text: 'Good morning.....', emote: 'happy' },
+  { text: 'Do you think im funny?', emote: 'happy' },
+  { text: 'DO NOT IGNORE ME', emote: 'angry' },
+  { text: 'ignore me at your own peril', emote: 'angry' },
+  { text: "this isn't gonna work if you dont talk to me....", emote: 'sad' },
+  { text: "I'm a very needy person, please respond", emote: 'sad' },
+  { text: 'I love you.', emote: 'happy' },
+  { text: 'I need you....', emote: 'sad' },
 ];
 
 export function useInactivityHook() {
@@ -44,11 +45,13 @@ export function useInactivityHook() {
   }, [setMessages]);
 
   const sendColdMessage = useCallback(() => {
+    const selectedMessage = coldMessages[getRandomNumber(0, coldMessages.length - 1)];
     const coldMessage: Message = {
       id: Date.now().toString(),
-      text: coldMessages[getRandomNumber(0, coldMessages.length - 1)],
+      text: selectedMessage.text,
       sender: 'bot',
       timestamp: new Date(),
+      emote: selectedMessage.emote,
     };
     setMessagesRef.current((prev) => [...prev, coldMessage]);
   }, []);
@@ -73,11 +76,13 @@ export function useInactivityHook() {
 
         // If user hasn't sent a new message, send another cold message
         if (currentLastUserMessageId === lastUserMessageIdRef.current && shouldContinueRef.current) {
+          const selectedMessage = coldMessages[getRandomNumber(0, coldMessages.length - 1)];
           const nextColdMessage: Message = {
             id: Date.now().toString(),
-            text: coldMessages[getRandomNumber(0, coldMessages.length - 1)],
+            text: selectedMessage.text,
             sender: 'bot',
             timestamp: new Date(),
+            emote: selectedMessage.emote,
           };
           // Add the message
           const updatedMessages = [...currentMessages, nextColdMessage];

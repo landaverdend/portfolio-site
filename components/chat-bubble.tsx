@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { Spinner } from '@/components/ui/spinner';
 import { PaperPlaneIcon, Cross2Icon } from '@radix-ui/react-icons';
 import { useChat, Message } from '@/contexts/chat-context';
 import { useInactivityHook } from '@/hooks/useInactivityHook';
+import { Emote } from '@/types/types';
 
 function TypingIndicator() {
   return (
@@ -35,6 +36,13 @@ function TypingIndicator() {
   );
 }
 
+function getChatBubbleImage(emote?: Emote): string {
+  if (!emote) {
+    return '/chatBubble.png';
+  }
+  return `/emotes/chatBubble_${emote}.png`;
+}
+
 export default function ChatBubble() {
   const { messages, setMessages, isOpen, setIsOpen, unreadCount, setUnreadCount } = useChat();
   const [inputValue, setInputValue] = useState('');
@@ -47,6 +55,14 @@ export default function ChatBubble() {
 
   // Hook to send cold messages when user is inactive
   useInactivityHook();
+
+  // Get the emote from the last bot message
+  const lastBotMessageEmote = useMemo(() => {
+    const lastBotMessage = [...messages].reverse().find((msg) => msg.sender === 'bot');
+    return lastBotMessage?.emote;
+  }, [messages]);
+
+  const chatBubbleImage = getChatBubbleImage(lastBotMessageEmote);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -212,14 +228,14 @@ export default function ChatBubble() {
             className="relative hover:scale-110 transition-transform duration-300 drop-shadow-lg cursor-pointer"
             aria-label="Open chat">
             <Image
-              src="/chatBubble.png"
+              src={chatBubbleImage}
               alt="Chat bubble"
-              width={90}
-              height={90}
-              className="drop-shadow-lg rounded-full border border-indigo-300/50 w-16 h-16 sm:w-16 sm:h-16"
+              width={120}
+              height={120}
+              className="drop-shadow-lg rounded-full border border-indigo-300/50 w-16 h-16 sm:w-24 sm:h-24"
             />
             {unreadCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 shadow-lg ">
+              <span className="absolute  -top-0.5 -right-0.5 sm:-top-1 sm:right-1 bg-red-500 text-white text-md sm:text-lg font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 shadow-lg ">
                 {unreadCount > 99 ? '99+' : unreadCount}
               </span>
             )}
@@ -235,7 +251,7 @@ export default function ChatBubble() {
           <div className="px-4 sm:px-6 pt-4 pb-3 border-b border-indigo-300/30 flex items-center justify-between">
             <div className="flex items-center gap-2 justify-center">
               <Image
-                src="/chatBubble.png"
+                src={chatBubbleImage}
                 alt="Chat bubble"
                 width={36}
                 height={36}
