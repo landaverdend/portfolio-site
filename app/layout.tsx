@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/navbar';
 import BubbleBackground from '@/components/bubble-background';
+import ChatBubble from '@/components/chat-bubble';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,6 +31,7 @@ export default function RootLayout({
         <BubbleBackground />
         <Navbar />
         {children}
+        <ChatBubble />
       </body>
     </html>
   );
