@@ -4,24 +4,10 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { Spinner } from '@/components/ui/spinner';
 import { PaperPlaneIcon, Cross2Icon } from '@radix-ui/react-icons';
-
-interface Message {
-  id: string;
-  text: string;
-  sender: 'user' | 'bot';
-  timestamp: Date;
-}
+import { useChat, Message } from '@/contexts/chat-context';
 
 export default function ChatBubble() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      text: "What's up",
-      sender: 'bot',
-      timestamp: new Date(),
-    },
-  ]);
+  const { messages, setMessages, isOpen, setIsOpen } = useChat();
   const [inputValue, setInputValue] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -37,9 +23,21 @@ export default function ChatBubble() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (isOpen && chatWindowRef.current && !chatWindowRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
+      if (!isOpen || !chatWindowRef.current) return;
+
+      const target = event.target as Node;
+      const element = target as Element;
+      
+      // Don't close if clicking on a navigation link
+      if (element.closest('a[href]')) {
+        return;
       }
+
+      // Don't close if clicking inside the chat window
+      if (chatWindowRef.current.contains(target)) return;
+
+      // Close if clicking outside
+      setIsOpen(false);
     };
 
     if (isOpen) {
@@ -49,7 +47,7 @@ export default function ChatBubble() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, setIsOpen]);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/navbar';
 import BubbleBackground from '@/components/bubble-background';
 import ChatBubble from '@/components/chat-bubble';
+import { ChatProvider } from '@/contexts/chat-context';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -28,10 +29,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased pb-[100px] lg:pt-[130px] text-white`}>
-        <BubbleBackground />
-        <Navbar />
-        {children}
-        <ChatBubble />
+        <ChatProvider>
+          <BubbleBackground />
+          <Navbar />
+          {children}
+          <ChatBubble />
+        </ChatProvider>
       </body>
     </html>
   );
