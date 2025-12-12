@@ -17,7 +17,7 @@ export default function ChatBubble() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hi! I'm Nico. How can I help you today?",
+      text: "What's up",
       sender: 'bot',
       timestamp: new Date(),
     },
@@ -63,40 +63,53 @@ export default function ChatBubble() {
       sender: 'user',
       timestamp: new Date(),
     };
-    setMessages((prev) => [...prev, userMessage]);
-    const messageText = inputValue;
+    const updatedMessages = [...messages, userMessage];
+    setMessages(updatedMessages);
     setInputValue('');
     setIsSubmitting(true);
 
-    // Submit to Formspree
-    const formData = new FormData();
-    formData.append('email', 'chat@example.com');
-    formData.append('message', messageText);
-
     try {
-      await fetch('https://formspree.io/f/xzzzozwp', {
+      // Call OpenAI API
+      const response = await fetch('/api/chat', {
         method: 'POST',
-        body: formData,
         headers: {
-          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+          messages: updatedMessages.map((msg) => ({
+            text: msg.text,
+            sender: msg.sender,
+          })),
+        }),
       });
-    } catch (error) {
-      console.error('Error sending message:', error);
-    }
 
-    setIsSubmitting(false);
+      if (!response.ok) {
+        throw new Error('Failed to get response');
+      }
 
-    // Add bot response
-    setTimeout(() => {
+      const data = await response.json();
+
+      // Add bot response
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: "Thanks for your message! I'll get back to you soon.",
+        text: data.message,
         sender: 'bot',
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botMessage]);
-    }, 1000);
+    } catch (error) {
+      console.error('Error getting AI response:', error);
+      // Add error message
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: 'Uhhhhhh.... I think something went wrong.',
+        sender: 'bot',
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -104,14 +117,14 @@ export default function ChatBubble() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 hover:scale-110 transition-transform duration-300 drop-shadow-lg cursor-pointer"
+          className="fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-50 hover:scale-110 transition-transform duration-300 drop-shadow-lg cursor-pointer"
           aria-label="Open chat">
           <Image
             src="/chatBubble.png"
             alt="Chat bubble"
-            width={64}
-            height={64}
-            className="drop-shadow-lg rounded-full border border-indigo-300/50 w-12 h-12 sm:w-16 sm:h-16"
+            width={90}
+            height={90}
+            className="drop-shadow-lg rounded-full border border-indigo-300/50 w-16 h-16 sm:w-16 sm:h-16"
           />
         </button>
       )}
@@ -122,8 +135,15 @@ export default function ChatBubble() {
           className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100%-2rem)] max-w-[320px] h-[500px] max-h-[calc(100vh-2rem)] sm:w-[380px] sm:h-[600px] sm:max-h-[calc(100vh-3rem)] bg-indigo-950/95 backdrop-blur-md border border-indigo-300/50 text-white shadow-[0_0_60px_rgba(129,140,248,0.4)] rounded-lg flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
           {/* Header */}
           <div className="px-4 sm:px-6 pt-4 pb-3 border-b border-indigo-300/30 flex items-center justify-between">
-            <div>
-              <h3 className="text-base sm:text-lg font-bold animate-gradient">Nico(demus) Landaverde</h3>
+            <div className="flex items-center gap-2 justify-center">
+              <Image
+                src="/chatBubble.png"
+                alt="Chat bubble"
+                width={36}
+                height={36}
+                className="rounded-full border border-indigo-300/50 w-9 h-9 lg:w-12 lg:h-12"
+              />
+              <h3 className="text-base sm:text-lg font-bold">Nico(demus) Landaverde</h3>
             </div>
             <button
               onClick={() => setIsOpen(false)}
