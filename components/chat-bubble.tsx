@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { Spinner } from '@/components/ui/spinner';
-import { PaperPlaneIcon, Cross2Icon } from '@radix-ui/react-icons';
+import { PaperPlaneIcon, Cross2Icon, SpeakerLoudIcon, SpeakerOffIcon } from '@radix-ui/react-icons';
 import { useChat, Message } from '@/contexts/chat-context';
 import { useInactivityHook } from '@/hooks/useInactivityHook';
 import { Emote } from '@/types/types';
@@ -47,6 +47,7 @@ export default function ChatBubble() {
   const { messages, setMessages, isOpen, setIsOpen, unreadCount, setUnreadCount } = useChat();
   const [inputValue, setInputValue] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatWindowRef = useRef<HTMLDivElement>(null);
   const lastReadMessageIdRef = useRef<string | null>(null);
@@ -104,7 +105,7 @@ export default function ChatBubble() {
         unreadBotMessages.forEach((message) => {
           if (!playedSoundForMessageIdsRef.current.has(message.id)) {
             playedSoundForMessageIdsRef.current.add(message.id);
-            if (notificationSoundRef.current) {
+            if (notificationSoundRef.current && !isMuted) {
               notificationSoundRef.current.play().catch((error) => {
                 // Handle autoplay restrictions - user interaction may be required
                 console.log('Could not play notification sound:', error);
@@ -114,7 +115,7 @@ export default function ChatBubble() {
         });
       }
     }
-  }, [messages, isOpen, setUnreadCount]);
+  }, [messages, isOpen, setUnreadCount, isMuted]);
 
   // Clear unread count and mark all messages as read when chat opens
   useEffect(() => {
@@ -259,12 +260,24 @@ export default function ChatBubble() {
               />
               <h3 className="text-base sm:text-lg font-bold">Nico(demus) Landaverde</h3>
             </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="text-white/70 hover:text-white transition-colors p-1 rounded hover:bg-indigo-800/50"
-              aria-label="Close chat">
-              <Cross2Icon className="w-5 h-5 cursor-pointer" />
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setIsMuted(!isMuted)}
+                className="text-white/70 hover:text-white transition-colors p-1 rounded hover:bg-indigo-800/50"
+                aria-label={isMuted ? 'Unmute notifications' : 'Mute notifications'}>
+                {isMuted ? (
+                  <SpeakerOffIcon className="w-5 h-5 cursor-pointer" />
+                ) : (
+                  <SpeakerLoudIcon className="w-5 h-5 cursor-pointer" />
+                )}
+              </button>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-white/70 hover:text-white transition-colors p-1 rounded hover:bg-indigo-800/50"
+                aria-label="Close chat">
+                <Cross2Icon className="w-5 h-5 cursor-pointer" />
+              </button>
+            </div>
           </div>
 
           {/* Messages area */}
