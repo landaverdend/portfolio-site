@@ -42,6 +42,8 @@ export default function ChatBubble() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatWindowRef = useRef<HTMLDivElement>(null);
   const lastReadMessageIdRef = useRef<string | null>(null);
+  const playedSoundForMessageIdsRef = useRef<Set<string>>(new Set());
+  const notificationSoundRef = useRef<HTMLAudioElement | null>(null);
 
   // Hook to send cold messages when user is inactive
   useInactivityHook();
@@ -53,6 +55,19 @@ export default function ChatBubble() {
   useEffect(() => {
     scrollToBottom();
   }, [messages, isSubmitting]);
+
+  // Initialize notification sound
+  useEffect(() => {
+    notificationSoundRef.current = new Audio('/sounds/notification.mp3');
+    notificationSoundRef.current.volume = 0.5; // Set volume to 50%
+
+    return () => {
+      if (notificationSoundRef.current) {
+        notificationSoundRef.current.pause();
+        notificationSoundRef.current = null;
+      }
+    };
+  }, []);
 
   // Track unread messages when chat is closed
   useEffect(() => {
@@ -68,6 +83,19 @@ export default function ChatBubble() {
 
       if (unreadBotMessages.length > 0) {
         setUnreadCount(unreadBotMessages.length);
+
+        // Play notification sound for new bot messages that haven't played yet
+        unreadBotMessages.forEach((message) => {
+          if (!playedSoundForMessageIdsRef.current.has(message.id)) {
+            playedSoundForMessageIdsRef.current.add(message.id);
+            if (notificationSoundRef.current) {
+              notificationSoundRef.current.play().catch((error) => {
+                // Handle autoplay restrictions - user interaction may be required
+                console.log('Could not play notification sound:', error);
+              });
+            }
+          }
+        });
       }
     }
   }, [messages, isOpen, setUnreadCount]);
@@ -78,6 +106,10 @@ export default function ChatBubble() {
       setUnreadCount(0);
       if (messages.length > 0) {
         lastReadMessageIdRef.current = messages[messages.length - 1].id;
+        // Mark all current messages as having played sound
+        messages.forEach((msg) => {
+          playedSoundForMessageIdsRef.current.add(msg.id);
+        });
       }
     }
   }, [isOpen, messages, setUnreadCount]);
