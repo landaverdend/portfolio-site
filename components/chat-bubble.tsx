@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Spinner } from '@/components/ui/spinner';
 import { PaperPlaneIcon, Cross2Icon } from '@radix-ui/react-icons';
 import { useChat, Message } from '@/contexts/chat-context';
+import { useInactivityHook } from '@/hooks/useInactivityHook';
 
 function TypingIndicator() {
   return (
@@ -40,6 +41,9 @@ export default function ChatBubble() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatWindowRef = useRef<HTMLDivElement>(null);
+
+  // Hook to send cold messages when user is inactive
+  useInactivityHook();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
