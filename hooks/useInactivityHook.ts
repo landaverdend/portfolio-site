@@ -107,7 +107,7 @@ export function useInactivityHook() {
       inactivityTimerRef.current = setTimeout(() => {
         sendColdMessage();
         scheduleNextColdMessage();
-      }, 20000);
+      }, 6000);
     }
 
     return () => {
