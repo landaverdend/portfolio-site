@@ -36,11 +36,12 @@ function TypingIndicator() {
 }
 
 export default function ChatBubble() {
-  const { messages, setMessages, isOpen, setIsOpen } = useChat();
+  const { messages, setMessages, isOpen, setIsOpen, unreadCount, setUnreadCount } = useChat();
   const [inputValue, setInputValue] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatWindowRef = useRef<HTMLDivElement>(null);
+  const lastReadMessageIdRef = useRef<string | null>(null);
 
   // Hook to send cold messages when user is inactive
   useInactivityHook();
@@ -53,13 +54,41 @@ export default function ChatBubble() {
     scrollToBottom();
   }, [messages, isSubmitting]);
 
+  // Track unread messages when chat is closed
+  useEffect(() => {
+    if (!isOpen && messages.length > 0) {
+      // Find the index of the last read message
+      let lastReadIndex = -1;
+      if (lastReadMessageIdRef.current) {
+        lastReadIndex = messages.findIndex((msg) => msg.id === lastReadMessageIdRef.current);
+      }
+
+      // Count bot messages after the last read message
+      const unreadBotMessages = messages.slice(lastReadIndex + 1).filter((msg) => msg.sender === 'bot');
+
+      if (unreadBotMessages.length > 0) {
+        setUnreadCount(unreadBotMessages.length);
+      }
+    }
+  }, [messages, isOpen, setUnreadCount]);
+
+  // Clear unread count and mark all messages as read when chat opens
+  useEffect(() => {
+    if (isOpen) {
+      setUnreadCount(0);
+      if (messages.length > 0) {
+        lastReadMessageIdRef.current = messages[messages.length - 1].id;
+      }
+    }
+  }, [isOpen, messages, setUnreadCount]);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (!isOpen || !chatWindowRef.current) return;
 
       const target = event.target as Node;
       const element = target as Element;
-      
+
       // Don't close if clicking on a navigation link
       if (element.closest('a[href]')) {
         return;
@@ -145,18 +174,25 @@ export default function ChatBubble() {
   return (
     <>
       {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-50 hover:scale-110 transition-transform duration-300 drop-shadow-lg cursor-pointer"
-          aria-label="Open chat">
-          <Image
-            src="/chatBubble.png"
-            alt="Chat bubble"
-            width={90}
-            height={90}
-            className="drop-shadow-lg rounded-full border border-indigo-300/50 w-16 h-16 sm:w-16 sm:h-16"
-          />
-        </button>
+        <div className="fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-50">
+          <button
+            onClick={() => setIsOpen(true)}
+            className="relative hover:scale-110 transition-transform duration-300 drop-shadow-lg cursor-pointer"
+            aria-label="Open chat">
+            <Image
+              src="/chatBubble.png"
+              alt="Chat bubble"
+              width={90}
+              height={90}
+              className="drop-shadow-lg rounded-full border border-indigo-300/50 w-16 h-16 sm:w-16 sm:h-16"
+            />
+            {unreadCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 shadow-lg ">
+                {unreadCount > 99 ? '99+' : unreadCount}
+              </span>
+            )}
+          </button>
+        </div>
       )}
 
       {isOpen && (
