@@ -7,6 +7,14 @@ import Link from 'next/link';
 
 const projects: Project[] = [
   {
+    title: 'mempool.channel',
+    description:
+      'A real-time room-based Jukebox application with Lightning Network payment integration. Users can create or join rooms, submit content requests via Bitcoin Lightning payments, and interact through a live chat and request queue system.',
+    href: '/projects/mempoolchannel.png',
+    link: 'https://mempool.channel',
+  },
+
+  {
     title: 'Battle Snakes',
     description:
       'A multiplayer, round-based snake game where you can battle other players online in real time. Built with React, Node.js, and Websockets.',
