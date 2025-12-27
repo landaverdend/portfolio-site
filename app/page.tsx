@@ -60,9 +60,6 @@ export default function Home() {
           </p>
 
           <div className="flex flex-row items-center gap-2 animate-slide-up-fade opacity-0" style={{ animationDelay: '0.6s' }}>
-            {/* <Button onClick={() => alert('Hello!')}>
-              <span className="text-nowrap">Click Here! 🤡</span>
-            </Button> */}
             <Button
               onClick={() => {
                 const link = document.createElement('a');
