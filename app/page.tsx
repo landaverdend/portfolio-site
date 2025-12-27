@@ -55,9 +55,8 @@ export default function Home() {
           </div>
 
           <p className="mx-5 lg:text-left lg:mx-auto animate-slide-up-fade opacity-0" style={{ animationDelay: '0.5s' }}>
-            I'm a Full stack developer that likes to build end-to-end applications with modern technologies like React and
-            Next.js. I'm particularly interested in Bitcoin, financial technology, and creating solutions that span the entire
-            development stack. I like to work across different domains and technologies.
+            Full-stack developer who enjoys building end-to-end applications and tackling problems across the entire stack, with a
+            strong interest in Bitcoin, fintech, and cross-domain systems.
           </p>
 
           <div className="flex flex-row items-center gap-2 animate-slide-up-fade opacity-0" style={{ animationDelay: '0.6s' }}>

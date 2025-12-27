@@ -82,6 +82,7 @@ export default function Projects() {
             key={index}
             project={project}
             index={index}
+            isSelected={isDialogOpen && selectedProject?.title === project.title}
             onClick={() => {
               // Cancel any pending close timeout
               if (closeTimeoutRef.current) {
@@ -94,6 +95,14 @@ export default function Projects() {
           />
         ))}
       </div>
+
+      {/* Blur overlay */}
+      {isDialogOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+          onClick={() => setIsDialogOpen(false)}
+        />
+      )}
 
       <Dialog
         open={isDialogOpen}
@@ -114,7 +123,11 @@ export default function Projects() {
           }
         }}
         modal={false}>
-        <DialogContent className="max-w-3xl bg-indigo-950/95 backdrop-blur-md border-indigo-300/50 text-white shadow-[0_0_60px_rgba(129,140,248,0.4)]">
+        <DialogContent
+          className="max-w-3xl bg-indigo-950/95 backdrop-blur-md border-indigo-300/50 text-white shadow-[0_0_60px_rgba(129,140,248,0.4)]"
+          onInteractOutside={() => setIsDialogOpen(false)}
+          showCloseButton={true}
+          hideOverlay={true}>
           {selectedProject && (
             <div className="flex flex-col gap-6">
               <DialogTitle className="text-3xl lg:text-4xl font-bold text-white">{selectedProject.title}</DialogTitle>
@@ -147,34 +160,35 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ project, onClick, index }: { project: Project; onClick: () => void; index: number }) {
+function ProjectCard({ project, onClick, index, isSelected }: { project: Project; onClick: () => void; index: number; isSelected: boolean }) {
   return (
     <div
       onClick={onClick}
-      className="group relative bg-indigo-900/30 backdrop-blur-sm border border-indigo-300/50 p-1 rounded-xl cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_50px_rgba(129,140,248,0.6)] hover:border-indigo-300/80 animate-slide-up-fade opacity-0"
+      data-selected={isSelected}
+      className="group relative bg-indigo-900/30 backdrop-blur-sm border border-indigo-300/50 p-1 rounded-xl cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_50px_rgba(129,140,248,0.6)] hover:border-indigo-300/80 data-[selected=true]:scale-[1.02] data-[selected=true]:shadow-[0_0_50px_rgba(129,140,248,0.6)] data-[selected=true]:border-indigo-300/80 animate-slide-up-fade opacity-0"
       style={{ animationDelay: `${index * 0.1}s` }}>
       <div className="relative w-full aspect-video overflow-hidden rounded-lg">
         <Image
           src={project.href}
           alt={project.title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          className="object-cover transition-transform duration-500 group-hover:scale-110 group-data-[selected=true]:scale-110"
           sizes="(max-width: 768px) 80vw, (max-width: 1024px) 40vw, 35vw"
           loading="eager"
         />
 
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-linear-to-t from-indigo-950/90 via-indigo-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-linear-to-t from-indigo-950/90 via-indigo-950/20 to-transparent opacity-0 group-hover:opacity-100 group-data-[selected=true]:opacity-100 transition-opacity duration-300" />
 
         {/* Static project name - bottom left */}
-        <div className="absolute bottom-0 left-0 p-4 group-hover:opacity-0 transition-opacity duration-300 z-10">
+        <div className="absolute bottom-0 left-0 p-4 group-hover:opacity-0 group-data-[selected=true]:opacity-0 transition-opacity duration-300 z-10">
           <h3 className="text-white font-bold bg-indigo-900/80 backdrop-blur-md px-4 py-2 rounded-lg text-lg lg:text-xl shadow-lg border border-indigo-400/30">
             {project.title}
           </h3>
         </div>
 
         {/* Hover overlay - bottom portion */}
-        <div className="absolute bottom-0 left-0 right-0 bg-indigo-900/95 backdrop-blur-xl border-t border-indigo-400/40 flex flex-col gap-3 py-5 px-5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100 z-20">
+        <div className="absolute bottom-0 left-0 right-0 bg-indigo-900/95 backdrop-blur-xl border-t border-indigo-400/40 flex flex-col gap-3 py-5 px-5 transform translate-y-full group-hover:translate-y-0 group-data-[selected=true]:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100 group-data-[selected=true]:opacity-100 z-20">
           <h3 className="text-white font-bold text-xl lg:text-2xl">{project.title}</h3>
           <p className="text-white/90 text-sm lg:text-base leading-relaxed line-clamp-3">{project.description}</p>
           <Link
