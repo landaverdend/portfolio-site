@@ -188,6 +188,13 @@ function ProjectCard({ project, onClick, index, isSelected }: { project: Project
         <div className="absolute -bottom-2 left-0 right-0 bg-zinc-900/95 backdrop-blur-sm flex flex-col gap-3 pt-5 pb-6 px-5 transform translate-y-full group-hover:translate-y-0 group-data-[selected=true]:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100 group-data-[selected=true]:opacity-100 z-20">
           <h3 className="text-white font-semibold text-xl lg:text-2xl">{project.title}</h3>
           <p className="text-zinc-300 text-sm lg:text-base leading-relaxed line-clamp-3">{project.description}</p>
+          <Link
+            href={project.link}
+            target="_blank"
+            onClick={(e) => e.stopPropagation()}
+            className="self-start px-4 py-2 bg-white text-zinc-900 font-medium rounded-lg transition-colors duration-200 hover:bg-zinc-200 text-sm">
+            Visit Project →
+          </Link>
         </div>
       </div>
     </div>
