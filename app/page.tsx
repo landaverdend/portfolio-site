@@ -55,8 +55,9 @@ export default function Home() {
           </div>
 
           <p className="mx-5 lg:text-left lg:mx-auto animate-slide-up-fade opacity-0" style={{ animationDelay: '0.5s' }}>
-            Full-stack developer who enjoys building end-to-end applications and tackling problems across the entire stack, with a
-            strong interest in Bitcoin, fintech, and cross-domain systems.
+            I like solving problems with computers, especially when a simple piece of software can save someone time or effort.
+            I’ve been working as a developer for about five years, across both small teams and larger, Fortune 50 companies.
+            Strong interest in Bitcoin, decentralized systems, and making silly little projects.
           </p>
 
           <div className="flex flex-row items-center gap-2 animate-slide-up-fade opacity-0" style={{ animationDelay: '0.6s' }}>
