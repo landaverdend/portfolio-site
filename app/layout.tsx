@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased pb-[100px] lg:pt-[130px] text-white`}>
         {process.env.NODE_ENV === 'production' && (
-          <Script defer src="https://umami.landaverde.in/script.js" data-website-id="17a3552e-fa37-4300-8d28-b2cdf08abaec" />
+          <Script defer src="http://analytics.landaverde.io/script.js" data-website-id="7708a149-940a-43ab-bec1-59bd8929e88a" />
         )}
 
         <ChatProvider>
