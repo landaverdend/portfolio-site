@@ -40,7 +40,7 @@ export default function Experience() {
               <TimelineBody className="-translate-y-1.5 min-w-0">
                 <ExperienceItem
                   title="Full Stack Developer at Clearwave Corporation"
-                  date="March 2022"
+                  date="August 2023 - Present"
                   techLogos={[React, Java, Spring, PostgreSQL, Mongo, RabbitMQ]}>
                   <p className={paragraphStyle}>
                     Current position working as a Full Stack Developer on a variety of projects within the Healthcare Industry for
@@ -79,7 +79,7 @@ export default function Experience() {
               <TimelineBody className="-translate-y-1.5 min-w-0">
                 <ExperienceItem
                   title="Full Stack Developer at ECS Federal"
-                  date="March 2022"
+                  date="March 2022 - August 2023"
                   techLogos={[Angular, Aws, Typescript, Spring, Java]}>
                   <p className={paragraphStyle}>
                     Worked on applications for the USPS that track carrier locations and packages nationwide.
@@ -116,7 +116,7 @@ export default function Experience() {
               <TimelineBody className="-translate-y-1.5 min-w-0">
                 <ExperienceItem
                   title="Associate Backend Developer at Lowe's Home Improvement"
-                  date="May 2021"
+                  date="May 2020 - March 2022"
                   techLogos={[Spring, Kafka, Couchbase, Redis, Java]}>
                   <p className={paragraphStyle}>
                     Worked on the pricing API for Lowe's.com and the mobile app, as well as price reports for marketing teams.
