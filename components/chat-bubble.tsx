@@ -48,6 +48,8 @@ export default function ChatBubble() {
   const [inputValue, setInputValue] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [isBubbleImageLoaded, setIsBubbleImageLoaded] = useState(false);
+  const [isHeaderImageLoaded, setIsHeaderImageLoaded] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatWindowRef = useRef<HTMLDivElement>(null);
   const lastReadMessageIdRef = useRef<string | null>(null);
@@ -228,13 +230,21 @@ export default function ChatBubble() {
             onClick={() => setIsOpen(true)}
             className="relative hover:scale-110 transition-transform duration-300 drop-shadow-lg cursor-pointer"
             aria-label="Open chat">
-            <Image
-              src={chatBubbleImage}
-              alt="Chat bubble"
-              width={120}
-              height={120}
-              className="drop-shadow-lg rounded-full border border-indigo-300/50 w-16 h-16 sm:w-24 sm:h-24"
-            />
+            <div className="relative w-16 h-16 sm:w-24 sm:h-24">
+              {!isBubbleImageLoaded && (
+                <div className="absolute inset-0 bg-zinc-800 animate-pulse rounded-full">
+                  <div className="absolute inset-0 bg-linear-to-r from-zinc-800 via-zinc-700 to-zinc-800 animate-[shimmer_1.5s_infinite] rounded-full overflow-hidden" />
+                </div>
+              )}
+              <Image
+                src={chatBubbleImage}
+                alt="Chat bubble"
+                width={120}
+                height={120}
+                className={`drop-shadow-lg rounded-full border border-indigo-300/50 w-16 h-16 sm:w-24 sm:h-24 transition-opacity duration-300 ${isBubbleImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                onLoad={() => setIsBubbleImageLoaded(true)}
+              />
+            </div>
             {unreadCount > 0 && (
               <span className="absolute  -top-0.5 -right-0.5 sm:-top-1 sm:right-1 bg-red-500 text-white text-md sm:text-lg font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 shadow-lg ">
                 {unreadCount > 99 ? '99+' : unreadCount}
@@ -251,13 +261,21 @@ export default function ChatBubble() {
           {/* Header */}
           <div className="px-4 sm:px-6 pt-4 pb-3 border-b border-indigo-300/30 flex items-center justify-between">
             <div className="flex items-center gap-2 justify-center">
-              <Image
-                src={chatBubbleImage}
-                alt="Chat bubble"
-                width={36}
-                height={36}
-                className="rounded-full border border-indigo-300/50 w-9 h-9 lg:w-12 lg:h-12"
-              />
+              <div className="relative w-9 h-9 lg:w-12 lg:h-12">
+                {!isHeaderImageLoaded && (
+                  <div className="absolute inset-0 bg-zinc-800 animate-pulse rounded-full">
+                    <div className="absolute inset-0 bg-linear-to-r from-zinc-800 via-zinc-700 to-zinc-800 animate-[shimmer_1.5s_infinite] rounded-full overflow-hidden" />
+                  </div>
+                )}
+                <Image
+                  src={chatBubbleImage}
+                  alt="Chat bubble"
+                  width={36}
+                  height={36}
+                  className={`rounded-full border border-indigo-300/50 w-9 h-9 lg:w-12 lg:h-12 transition-opacity duration-300 ${isHeaderImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                  onLoad={() => setIsHeaderImageLoaded(true)}
+                />
+              </div>
               <h3 className="text-base sm:text-lg font-bold">Nico(demus) Landaverde</h3>
             </div>
             <div className="flex items-center gap-2">

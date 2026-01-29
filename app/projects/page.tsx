@@ -189,7 +189,7 @@ function ProjectCard({ project, onClick, index, isSelected }: { project: Project
           fill
           className={`object-cover transition-all duration-500 group-hover:scale-105 group-data-[selected=true]:scale-105 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           sizes="(max-width: 768px) 80vw, (max-width: 1024px) 40vw, 35vw"
-          onLoad={() => setTimeout(() => setIsLoaded(true), 2000)}
+          onLoad={() => setIsLoaded(true)}
         />
 
         {/* Static project name - bottom left */}
