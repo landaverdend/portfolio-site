@@ -66,6 +66,7 @@ type Project = {
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isDialogImageLoaded, setIsDialogImageLoaded] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   return (
@@ -89,6 +90,7 @@ export default function Projects() {
                 clearTimeout(closeTimeoutRef.current);
                 closeTimeoutRef.current = null;
               }
+              setIsDialogImageLoaded(false);
               setSelectedProject(project);
               setIsDialogOpen(true);
             }}
@@ -132,13 +134,18 @@ export default function Projects() {
             <div className="flex flex-col gap-5">
               <DialogTitle className="text-2xl lg:text-3xl font-semibold text-white">{selectedProject.title}</DialogTitle>
               <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-zinc-700/50">
+                {!isDialogImageLoaded && (
+                  <div className="absolute inset-0 bg-zinc-800 animate-pulse rounded-lg">
+                    <div className="absolute inset-0 bg-linear-to-r from-zinc-800 via-zinc-700 to-zinc-800 animate-[shimmer_1.5s_infinite]" />
+                  </div>
+                )}
                 <Image
                   src={selectedProject.href}
                   alt={selectedProject.title}
                   fill
-                  className="object-cover"
+                  className={`object-cover transition-opacity duration-300 ${isDialogImageLoaded ? 'opacity-100' : 'opacity-0'}`}
                   sizes="(max-width: 768px) 90vw, 672px"
-                  loading="eager"
+                  onLoad={() => setIsDialogImageLoaded(true)}
                 />
               </div>
               <DialogDescription className="text-base lg:text-lg text-zinc-300 leading-relaxed">
@@ -161,6 +168,8 @@ export default function Projects() {
 }
 
 function ProjectCard({ project, onClick, index, isSelected }: { project: Project; onClick: () => void; index: number; isSelected: boolean }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <div
       onClick={onClick}
@@ -168,13 +177,19 @@ function ProjectCard({ project, onClick, index, isSelected }: { project: Project
       className="group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] data-[selected=true]:scale-[1.02] animate-slide-up-fade opacity-0"
       style={{ animationDelay: `${index * 0.1}s` }}>
       <div className="relative w-full aspect-video overflow-hidden rounded-xl">
+        {/* Skeleton placeholder */}
+        {!isLoaded && (
+          <div className="absolute inset-0 bg-zinc-800 animate-pulse rounded-xl">
+            <div className="absolute inset-0 bg-linear-to-r from-zinc-800 via-zinc-700 to-zinc-800 animate-[shimmer_1.5s_infinite]" />
+          </div>
+        )}
         <Image
           src={project.href}
           alt={project.title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105 group-data-[selected=true]:scale-105"
+          className={`object-cover transition-all duration-500 group-hover:scale-105 group-data-[selected=true]:scale-105 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           sizes="(max-width: 768px) 80vw, (max-width: 1024px) 40vw, 35vw"
-          loading="eager"
+          onLoad={() => setTimeout(() => setIsLoaded(true), 2000)}
         />
 
         {/* Static project name - bottom left */}

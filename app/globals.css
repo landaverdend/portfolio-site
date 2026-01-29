@@ -180,6 +180,15 @@
   .animate-typing {
     animation: typing-bounce 1.4s ease-in-out infinite;
   }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
 }
 
 @keyframes typing-bounce {
