@@ -14,7 +14,7 @@ export default function Home() {
         className="w-full flex flex-col items-center justify-center gap-4 
         lg:flex-row lg:gap-10 lg:items-start">
         <div
-          className="flex flex-col items-center justify-center gap-2 animate-slide-up-fade opacity-0"
+          className="flex flex-col items-center justify-center gap-2 animate-fade-in opacity-0"
           style={{ animationDelay: '0.1s' }}>
           <div className="relative w-[148px] h-[148px]">
             {!isProfileLoaded && (
