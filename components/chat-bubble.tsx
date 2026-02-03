@@ -233,7 +233,7 @@ export default function ChatBubble() {
               alt="Chat bubble"
               width={120}
               height={120}
-              className="drop-shadow-lg rounded-full border border-indigo-300/50 w-16 h-16 sm:w-24 sm:h-24"
+              className="drop-shadow-lg rounded-full border border-zinc-600 w-16 h-16 sm:w-24 sm:h-24"
             />
             {unreadCount > 0 && (
               <span className="absolute  -top-0.5 -right-0.5 sm:-top-1 sm:right-1 bg-red-500 text-white text-md sm:text-lg font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 shadow-lg ">
@@ -247,23 +247,23 @@ export default function ChatBubble() {
       {isOpen && (
         <div
           ref={chatWindowRef}
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100%-2rem)] max-w-[320px] h-[500px] max-h-[calc(100vh-2rem)] sm:w-[380px] sm:h-[600px] sm:max-h-[calc(100vh-3rem)] bg-indigo-950/95 backdrop-blur-md border border-indigo-300/50 text-white shadow-[0_0_60px_rgba(129,140,248,0.4)] rounded-lg flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100%-2rem)] max-w-[320px] h-[500px] max-h-[calc(100vh-2rem)] sm:w-[380px] sm:h-[600px] sm:max-h-[calc(100vh-3rem)] bg-zinc-900 border border-zinc-700 text-white rounded-lg flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
           {/* Header */}
-          <div className="px-4 sm:px-6 pt-4 pb-3 border-b border-indigo-300/30 flex items-center justify-between">
+          <div className="px-4 sm:px-6 pt-4 pb-3 border-b border-zinc-700 flex items-center justify-between">
             <div className="flex items-center gap-2 justify-center">
               <Image
                 src={chatBubbleImage}
                 alt="Chat bubble"
                 width={36}
                 height={36}
-                className="rounded-full border border-indigo-300/50 w-9 h-9 lg:w-12 lg:h-12"
+                className="rounded-full border border-zinc-600 w-9 h-9 lg:w-12 lg:h-12"
               />
               <h3 className="text-base sm:text-lg font-bold">Nico(demus) Landaverde</h3>
             </div>
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setIsMuted(!isMuted)}
-                className="text-white/70 hover:text-white transition-colors p-1 rounded hover:bg-indigo-800/50"
+                className="text-white/70 hover:text-white transition-colors p-1 rounded hover:bg-zinc-700"
                 aria-label={isMuted ? 'Unmute notifications' : 'Mute notifications'}>
                 {isMuted ? (
                   <SpeakerOffIcon className="w-5 h-5 cursor-pointer" />
@@ -273,7 +273,7 @@ export default function ChatBubble() {
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-white/70 hover:text-white transition-colors p-1 rounded hover:bg-indigo-800/50"
+                className="text-white/70 hover:text-white transition-colors p-1 rounded hover:bg-zinc-700"
                 aria-label="Close chat">
                 <Cross2Icon className="w-5 h-5 cursor-pointer" />
               </button>
@@ -287,8 +287,8 @@ export default function ChatBubble() {
                 <div
                   className={`max-w-[85%] sm:max-w-[75%] rounded-2xl px-3 sm:px-4 py-2 ${
                     message.sender === 'user'
-                      ? 'bg-indigo-600 text-white rounded-br-sm'
-                      : 'bg-indigo-800/60 text-white rounded-bl-sm border border-indigo-400/30'
+                      ? 'bg-zinc-600 text-white rounded-br-sm'
+                      : 'bg-zinc-800 text-white rounded-bl-sm'
                   }`}>
                   <p className="text-sm whitespace-pre-wrap wrap-break-word">{message.text}</p>
                 </div>
@@ -296,7 +296,7 @@ export default function ChatBubble() {
             ))}
             {isSubmitting && (
               <div className="flex justify-start">
-                <div className="max-w-[85%] sm:max-w-[75%] rounded-2xl px-3 sm:px-4 py-2 bg-indigo-800/60 text-white rounded-bl-sm border border-indigo-400/30">
+                <div className="max-w-[85%] sm:max-w-[75%] rounded-2xl px-3 sm:px-4 py-2 bg-zinc-800 text-white rounded-bl-sm">
                   <TypingIndicator />
                 </div>
               </div>
@@ -307,20 +307,20 @@ export default function ChatBubble() {
           {/* Input area */}
           <form
             onSubmit={handleSendMessage}
-            className="px-3 sm:px-4 pb-4 sm:pb-4 pt-3 border-t border-indigo-300/30 safe-area-inset-bottom">
+            className="px-3 sm:px-4 pb-4 sm:pb-4 pt-3 border-t border-zinc-700 safe-area-inset-bottom">
             <div className="flex gap-2 items-end">
               <input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Type a message..."
-                className="flex-1 bg-indigo-800/60 border border-indigo-400/50 text-white placeholder:text-white/50 p-2.5 sm:p-3 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition-all duration-300 resize-none"
+                className="flex-1 bg-zinc-800 border border-zinc-600 text-white placeholder:text-white/50 p-2.5 sm:p-3 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all duration-300 resize-none"
                 disabled={isSubmitting}
               />
               <button
                 type="submit"
                 disabled={!inputValue.trim() || isSubmitting}
-                className="bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed p-2.5 sm:p-3 rounded-lg transition-colors duration-300 flex items-center justify-center shrink-0 cursor-pointer">
+                className="bg-zinc-600 hover:bg-zinc-500 disabled:opacity-50 disabled:cursor-not-allowed p-2.5 sm:p-3 rounded-lg transition-colors duration-300 flex items-center justify-center shrink-0 cursor-pointer">
                 {isSubmitting ? (
                   <Spinner className="w-4 h-4 sm:w-5 sm:h-5" />
                 ) : (
