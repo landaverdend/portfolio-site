@@ -1,6 +1,5 @@
 'use client';
 
-import Button from '@/components/button';
 import { GlobeIcon, GitHubLogoIcon, LinkedInLogoIcon, EnvelopeClosedIcon, DownloadIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -35,7 +34,7 @@ export default function Home() {
             className="flex flex-row items-center justify-center gap-2 animate-slide-up-fade opacity-0"
             style={{ animationDelay: '0.2s' }}>
             <GlobeIcon className="w-4 h-4" />
-            <span>Americas (EST)</span>
+            <span>Buenos Aires, Argentina</span>
           </div>
 
           <div
@@ -51,7 +50,7 @@ export default function Home() {
             className="flex flex-col items-center lg:items-start animate-slide-up-fade opacity-0"
             style={{ animationDelay: '0.2s' }}>
             <h1 className="text-4xl font-extrabold tracking-tighter lg:text-6xl">
-              Nico <span className="animate-gradient">Landaverde</span>
+              Nic(o) <span className="text-indigo-400">Landaverde</span>
             </h1>
             <span className="text-xl text-gray-500 font-light lg:text-2xl">Full Stack Developer</span>
           </div>
@@ -71,13 +70,12 @@ export default function Home() {
           </div>
 
           <p className="mx-5 lg:text-left lg:mx-auto animate-slide-up-fade opacity-0" style={{ animationDelay: '0.5s' }}>
-            I like solving problems with computers, especially when a simple piece of software can save someone time or effort.
-            I’ve been working as a developer for about five years, across both small teams and larger, Fortune 50 companies.
+            Software developer with 6 years of experience building software for a variety of companies and clients.
             Strong interest in Bitcoin, decentralized systems, and making silly little projects.
           </p>
 
           <div className="flex flex-row items-center gap-2 animate-slide-up-fade opacity-0" style={{ animationDelay: '0.6s' }}>
-            <Button
+            <button
               onClick={() => {
                 const link = document.createElement('a');
                 link.href = '/docs/landaverde_resume.pdf';
@@ -85,12 +83,11 @@ export default function Home() {
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-              }}>
-              <span className="flex flex-row items-center gap-2 text-nowrap">
-                Download CV
-                <DownloadIcon className="w-4 h-4" />
-              </span>
-            </Button>
+              }}
+              className="flex items-center gap-2 text-nowrap px-4 py-2 rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm text-white/80 hover:bg-white/20 hover:text-white transition-all duration-200 cursor-pointer text-sm">
+              Download CV
+              <DownloadIcon className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </main>

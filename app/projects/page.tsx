@@ -1,11 +1,27 @@
 'use client';
 
 import Image from 'next/image';
+import type { ReactNode } from 'react';
 import { useState, useRef } from 'react';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import Link from 'next/link';
 
 const projects: Project[] = [
+
+  {
+    title: 'Stacktris',
+    description: (
+      <>
+        Battle Tetris with Lightning Network betting - built for the lightning hackathon at{' '}
+        <a href="https://hackaton.lacrypta.ar" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">
+          La Crypta
+        </a>{' '}
+        where it tied for first place. Built with websockets, Node.js, and react.
+      </>
+    ),
+    href: '/projects/stacktris.png',
+    link: 'https://stacktris.app/',
+  },
   {
     title: 'mempool.channel',
     description:
@@ -55,11 +71,12 @@ const projects: Project[] = [
     href: '/projects/voltorb_flip.png',
     link: 'https://voltorb.landaverde.io/',
   },
+
 ];
 
 type Project = {
   title: string;
-  description: string;
+  description: ReactNode;
   href: string;
   link: string;
 };
