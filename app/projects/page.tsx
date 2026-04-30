@@ -9,6 +9,20 @@ import Link from 'next/link';
 const projects: Project[] = [
 
   {
+    title: 'predictr',
+    description: (
+      <>
+        A peer-to-peer prediction betting app built on Bitcoin and Nostr. Uses Taproot scripts to trustlessly lock funds, with bets settled on-chain and coordination over Nostr relays. Built for the{' '}
+        <a href="https://hackaton.lacrypta.ar" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">
+          La Crypta
+        </a>{' '}
+        hackathon.
+      </>
+    ),
+    href: '/projects/predictr.png',
+    link: 'https://github.com/landaverdend/predictr',
+  },
+  {
     title: 'Stacktris',
     description: (
       <>
