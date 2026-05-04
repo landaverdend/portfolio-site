@@ -7,27 +7,35 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/compone
 import Link from 'next/link';
 
 const projects: Project[] = [
-
   {
     title: 'predictr',
     description: (
       <>
-        A peer-to-peer prediction betting app built on Bitcoin and Nostr. Uses Taproot scripts to trustlessly lock funds, with bets settled on-chain and coordination over Nostr relays. Built for the{' '}
-        <a href="https://hackaton.lacrypta.ar" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">
+        A peer-to-peer prediction betting app built on Bitcoin and Nostr. Uses Taproot scripts to trustlessly lock funds, with
+        bets settled on-chain and coordination over Nostr relays. Built for the{' '}
+        <a
+          href="https://hackaton.lacrypta.ar"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-white transition-colors">
           La Crypta
         </a>{' '}
         hackathon.
       </>
     ),
     href: '/projects/predictr.png',
-    link: 'https://github.com/landaverdend/predictr',
+    link: 'https://predictr.landaverde.io/',
   },
   {
     title: 'Stacktris',
     description: (
       <>
         Battle Tetris with Lightning Network betting - built for the lightning hackathon at{' '}
-        <a href="https://hackaton.lacrypta.ar" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">
+        <a
+          href="https://hackaton.lacrypta.ar"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-white transition-colors">
           La Crypta
         </a>{' '}
         where it tied for first place. Built with websockets, Node.js, and react.
@@ -85,7 +93,6 @@ const projects: Project[] = [
     href: '/projects/voltorb_flip.png',
     link: 'https://voltorb.landaverde.io/',
   },
-
 ];
 
 type Project = {
@@ -130,12 +137,7 @@ export default function Projects() {
       </div>
 
       {/* Blur overlay */}
-      {isDialogOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
-          onClick={() => setIsDialogOpen(false)}
-        />
-      )}
+      {isDialogOpen && <div className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm" onClick={() => setIsDialogOpen(false)} />}
 
       <Dialog
         open={isDialogOpen}
@@ -198,7 +200,17 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ project, onClick, index, isSelected }: { project: Project; onClick: () => void; index: number; isSelected: boolean }) {
+function ProjectCard({
+  project,
+  onClick,
+  index,
+  isSelected,
+}: {
+  project: Project;
+  onClick: () => void;
+  index: number;
+  isSelected: boolean;
+}) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
