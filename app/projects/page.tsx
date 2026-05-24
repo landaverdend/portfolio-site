@@ -57,7 +57,7 @@ const projects: Project[] = [
     description:
       'A multiplayer, round-based snake game where you can battle other players online in real time. Built with React, Node.js, and Websockets.',
     href: '/projects/battle_snakes.png',
-    link: 'https://battlesnakes.io',
+    link: 'https://battlesnakes.landaverde.io',
   },
   {
     title: 'Bitcoin Script Debugger',
