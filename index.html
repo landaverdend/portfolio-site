@@ -1,426 +1,694 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nic(o) Landaverde</title>
-<meta name="description" content="Nic(o) Landaverde, software developer. Bitcoin, decentralized systems, and small projects.">
-<link rel="icon" href="assets/favicon.png">
-<link rel="stylesheet" href="style.css">
-<script defer src="https://umami.landaverde.in/script.js" data-website-id="17a3552e-fa37-4300-8d28-b2cdf08abaec"></script>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nic(o) Landaverde</title>
+    <meta
+      name="description"
+      content="Nic(o) Landaverde, software developer. Bitcoin, decentralized systems, and small projects." />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="https://umami.landaverde.in/script.js" data-website-id="17a3552e-fa37-4300-8d28-b2cdf08abaec"></script>
+  </head>
+  <body>
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden" aria-hidden="true">
+      <symbol id="icon-github" viewBox="0 0 16 16">
+        <path
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path>
+      </symbol>
+      <symbol id="icon-external" viewBox="0 0 16 16">
+        <path d="M6 3H3.5A1.5 1.5 0 0 0 2 4.5v8A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V10"></path>
+        <path d="M9.5 2H14v4.5"></path>
+        <path d="M7 9l7-7"></path>
+      </symbol>
+    </svg>
 
-<header class="site-header">
-  <a class="wordmark" href="#top">Nic(o) Landaverde</a>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#work">Work</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+    <header class="site-header">
+      <a class="wordmark" href="#top">Nic(o) Landaverde</a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+      </nav>
+    </header>
 
-<main id="top">
-
-  <section id="about" class="about">
-    <img class="portrait" src="assets/me.jpg" alt="Portrait of Nic(o) Landaverde" width="120" height="120">
-    <div>
-      <h1>Nic(o) Landaverde</h1>
-      <p class="role">Software developer &middot; Buenos Aires, Argentina</p>
-      <p class="bio">
-        I build software across the web, games, and Bitcoin. Six years in,
-        currently most interested in decentralized systems and making small,
-        weird projects just to see if they work.
-      </p>
-      <ul class="links">
-        <li><a href="https://github.com/landaverdend" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/nicodemus-landaverde-7562ba19a/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="mailto:nicodemus.landaverde98@gmail.com">Email</a></li>
-        <li><a href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="work" class="work">
-    <h2>Stuff I've built/worked on</h2>
-
-    <div class="tabs" role="tablist">
-      <button type="button" role="tab" id="tab-bitcoin" aria-controls="panel-bitcoin" aria-selected="true" class="tab active">Bitcoin</button>
-      <button type="button" role="tab" id="tab-professional" aria-controls="panel-professional" aria-selected="false" class="tab">Professional</button>
-      <button type="button" role="tab" id="tab-misc" aria-controls="panel-misc" aria-selected="false" class="tab">Misc / Fun</button>
-    </div>
-
-    <ul class="projects" id="panel-bitcoin" role="tabpanel" aria-labelledby="tab-bitcoin">
-
-      <li class="project" data-title="Zaptris" data-link="https://github.com/landaverdend/Zaptris">
-        <button type="button" class="thumb" data-images="assets/projects/zaptris_menu.jpg,assets/projects/zaptris_multiplayer.jpg" aria-label="View screenshots of Zaptris">
-          <img src="assets/projects/zaptris_menu.jpg" alt="Screenshot of the Zaptris title screen" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3><a href="https://github.com/landaverdend/Zaptris" target="_blank" rel="noopener">Zaptris</a></h3>
-          <p>"Pay To Win Tetris." A four-player local multiplayer Tetris party game built in Godot, where players wager sats via Lightning invoices and identity runs through Nostr.</p>
-          <ul class="tech">
-            <li>Godot</li>
-            <li>GDScript</li>
-            <li>Lightning Network</li>
-            <li>Nostr</li>
+    <main id="top">
+      <section id="about" class="about">
+        <img class="portrait" src="assets/me.jpg" alt="Portrait of Nic(o) Landaverde" width="120" height="120" />
+        <div>
+          <h1>Nic(o) Landaverde</h1>
+          <p class="role">Software developer &middot; Buenos Aires, Argentina</p>
+          <p class="bio">
+            From the US, but now living in Buenos Aires. I like Bitcoin and building useful (and sometimes unuseful) software.
+          </p>
+          <ul class="links">
+            <li><a href="https://github.com/landaverdend" target="_blank" rel="noopener">GitHub</a></li>
+            <li>
+              <a href="https://www.linkedin.com/in/nicodemus-landaverde-7562ba19a/" target="_blank" rel="noopener">LinkedIn</a>
+            </li>
+            <li><a href="mailto:nicodemus.landaverde98@gmail.com">Email</a></li>
+            <li><a href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a></li>
           </ul>
         </div>
-      </li>
+      </section>
 
-      <li class="project" data-title="predictr" data-link="https://predictr.landaverde.io/">
-        <button type="button" class="thumb" data-images="assets/projects/predictr.jpg" aria-label="View screenshot of predictr">
-          <img src="assets/projects/predictr.jpg" alt="Screenshot of predictr" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3><a href="https://predictr.landaverde.io/" target="_blank" rel="noopener">predictr</a></h3>
-          <p>A peer-to-peer prediction betting app built on Bitcoin and Nostr. Uses Taproot scripts to lock funds trustlessly, with bets settled on-chain and coordination over Nostr relays. Built for the La Crypta hackathon.</p>
-          <ul class="tech">
-            <li>Bitcoin</li>
-            <li>Taproot</li>
-            <li>Nostr</li>
-          </ul>
+      <section id="work" class="work">
+        <h2>Stuff I've worked on</h2>
+
+        <div class="tabs" role="tablist">
+          <button type="button" role="tab" id="tab-bitcoin" aria-controls="panel-bitcoin" aria-selected="true" class="tab active">
+            Bitcoin
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-professional"
+            aria-controls="panel-professional"
+            aria-selected="false"
+            class="tab">
+            Professional
+          </button>
+          <button type="button" role="tab" id="tab-misc" aria-controls="panel-misc" aria-selected="false" class="tab">
+            Misc / Fun
+          </button>
         </div>
-      </li>
 
-      <li class="project" data-title="Stacktris" data-link="https://stacktris.app/">
-        <button type="button" class="thumb" data-images="assets/projects/stacktris.jpg" aria-label="View screenshot of Stacktris">
-          <img src="assets/projects/stacktris.jpg" alt="Screenshot of Stacktris" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3><a href="https://stacktris.app/" target="_blank" rel="noopener">Stacktris</a></h3>
-          <p>Battle Tetris with Lightning Network betting, built for a hackathon at La Crypta where it tied for first place. Websockets, Node.js, and React.</p>
-          <ul class="tech">
-            <li>React</li>
-            <li>Node.js</li>
-            <li>WebSockets</li>
-            <li>Lightning Network</li>
-          </ul>
-        </div>
-      </li>
+        <ul class="projects" id="panel-bitcoin" role="tabpanel" aria-labelledby="tab-bitcoin">
+          <li class="project" data-title="Zaptris" data-link="https://github.com/landaverdend/Zaptris">
+            <button
+              type="button"
+              class="thumb"
+              data-images="assets/projects/zaptris_menu.jpg,assets/projects/zaptris_multiplayer.jpg"
+              aria-label="View screenshots of Zaptris">
+              <img
+                src="assets/projects/zaptris_menu.jpg"
+                alt="Screenshot of the Zaptris title screen"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </button>
+            <div class="project-body">
+              <h3><a href="https://github.com/landaverdend/Zaptris" target="_blank" rel="noopener">Zaptris</a></h3>
+              <p>Four-player local Tetris with Lightning Network stakes, built in Godot for La Crypta's Gaming hackathon.</p>
+              <ul class="tech">
+                <li>Godot</li>
+                <li>Rust</li>
+                <li>Lightning Network</li>
+                <li>Nostr</li>
+              </ul>
+            </div>
+          </li>
 
-      <li class="project" data-title="mempool.channel" data-link="https://mempool.channel">
-        <button type="button" class="thumb" data-images="assets/projects/mempoolchannel.jpg" aria-label="View screenshot of mempool.channel">
-          <img src="assets/projects/mempoolchannel.jpg" alt="Screenshot of mempool.channel" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3><a href="https://mempool.channel" target="_blank" rel="noopener">mempool.channel</a></h3>
-          <p>A real-time, room-based jukebox with Lightning Network payments. Users create or join rooms, queue songs by paying sats, and chat live.</p>
-          <ul class="tech">
-            <li>Node.js</li>
-            <li>WebSockets</li>
-            <li>Lightning Network</li>
-          </ul>
-        </div>
-      </li>
+          <li class="project" data-title="mempool.channel" data-link="https://mempool.channel">
+            <button
+              type="button"
+              class="thumb"
+              data-images="assets/projects/mempoolchannel.jpg"
+              aria-label="View screenshot of mempool.channel">
+              <img
+                src="assets/projects/mempoolchannel.jpg"
+                alt="Screenshot of mempool.channel"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </button>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3><a href="https://mempool.channel" target="_blank" rel="noopener">mempool.channel</a></h3>
+                <a
+                  class="icon-link"
+                  href="https://mempool.channel"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="mempool.channel demo">
+                  <svg class="icon icon-external" aria-hidden="true"><use href="#icon-external"></use></svg>
+                </a>
+                <a
+                  class="icon-link"
+                  href="https://github.com/landaverdend/mempool.channel"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="mempool.channel on GitHub">
+                  <svg class="icon icon-github" aria-hidden="true"><use href="#icon-github"></use></svg>
+                </a>
+              </div>
+              <p>
+                A real-time, room-based jukebox with Lightning Network payments. Users create or join rooms, queue songs by paying
+                sats, and chat live.
+              </p>
+              <ul class="tech">
+                <li>Node.js</li>
+                <li>WebSockets</li>
+                <li>Lightning Network</li>
+              </ul>
+            </div>
+          </li>
 
-      <li class="project" data-title="Bitcoin Script Debugger" data-link="https://bitcointools.landaverde.io/">
-        <button type="button" class="thumb" data-images="assets/projects/btc_tools.jpg" aria-label="View screenshot of Bitcoin Script Debugger">
-          <img src="assets/projects/btc_tools.jpg" alt="Screenshot of Bitcoin Script Debugger" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3><a href="https://bitcointools.landaverde.io/" target="_blank" rel="noopener">Bitcoin Script Debugger</a></h3>
-          <p>Tools for writing and debugging Bitcoin scripts in the browser, including a step debugger and a transaction parser with legacy and segwit support.</p>
-          <ul class="tech">
-            <li>Bitcoin Script</li>
-            <li>JavaScript</li>
-          </ul>
-        </div>
-      </li>
+          <li class="project" data-title="predictr" data-link="https://predictr.landaverde.io/">
+            <button
+              type="button"
+              class="thumb"
+              data-images="assets/projects/predictr.jpg"
+              aria-label="View screenshot of predictr">
+              <img src="assets/projects/predictr.jpg" alt="Screenshot of predictr" loading="lazy" width="900" height="506" />
+            </button>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3><a href="https://predictr.landaverde.io/" target="_blank" rel="noopener">predictr</a></h3>
+                <a
+                  class="icon-link"
+                  href="https://predictr.landaverde.io/"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="predictr demo">
+                  <svg class="icon icon-external" aria-hidden="true"><use href="#icon-external"></use></svg>
+                </a>
+                <a
+                  class="icon-link"
+                  href="https://github.com/landaverdend/predictr"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="predictr on GitHub">
+                  <svg class="icon icon-github" aria-hidden="true"><use href="#icon-github"></use></svg>
+                </a>
+              </div>
+              <p>
+                A peer-to-peer prediction market using Bitcoin Taproot scripts and Nostr coordination, built at La Crypta's Nostr
+                hackathon.
+              </p>
+              <ul class="tech">
+                <li>Bitcoin</li>
+                <li>Taproot</li>
+                <li>Nostr</li>
+              </ul>
+            </div>
+          </li>
 
-      <li class="project" data-title="WapuBot" data-link="https://github.com/landaverdend/WhatsUpay">
-        <button type="button" class="thumb" data-images="assets/projects/wapubot.jpg" aria-label="View image for WapuBot">
-          <img src="assets/projects/wapubot.jpg" alt="WapuBot illustration" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3><a href="https://github.com/landaverdend/WhatsUpay" target="_blank" rel="noopener">WapuBot</a></h3>
-          <p>A Telegram bot AI agent built on top of the Wapu CLI that checks balances, converts Bitcoin and USDT to pesos, sends transfers, creates Lightning invoices, and sets bill reminders through natural language. Any action that moves money requires an explicit confirmation step before it executes.</p>
-          <ul class="tech">
-            <li>Python</li>
-            <li>Telegram Bot API</li>
-            <li>LiteLLM</li>
-            <li>Lightning Network</li>
-          </ul>
-        </div>
-      </li>
+          <li class="project" data-title="WapuBot" data-link="https://github.com/landaverdend/WapuBot">
+            <button type="button" class="thumb" data-images="assets/projects/wapubot.jpg" aria-label="View image for WapuBot">
+              <img src="assets/projects/wapubot.jpg" alt="WapuBot illustration" loading="lazy" width="900" height="506" />
+            </button>
+            <div class="project-body">
+              <h3><a href="https://github.com/landaverdend/WapuBot" target="_blank" rel="noopener">WapuBot</a></h3>
+              <p>
+                A Telegram bot AI agent built on the
+                <a href="https://github.com/wapu-app/wapu-cli" target="_blank" rel="noopener">Wapu CLI</a>
+                for La Crypta's Commerce hackathon. Checks balances, converts Bitcoin and USDT to pesos, sends transfers, creates
+                Lightning invoices, and sets bill reminders through natural language, with explicit confirmation required before
+                anything that moves money.
+              </p>
+              <ul class="tech">
+                <li>Python</li>
+                <li>Telegram Bot API</li>
+                <li>LiteLLM</li>
+                <li>Lightning Network</li>
+              </ul>
+            </div>
+          </li>
 
-    </ul>
+          <li class="project" data-title="Stacktris" data-link="https://stacktris.app/">
+            <button
+              type="button"
+              class="thumb"
+              data-images="assets/projects/stacktris.jpg"
+              aria-label="View screenshot of Stacktris">
+              <img src="assets/projects/stacktris.jpg" alt="Screenshot of Stacktris" loading="lazy" width="900" height="506" />
+            </button>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3><a href="https://stacktris.app/" target="_blank" rel="noopener">Stacktris</a></h3>
+                <a class="icon-link" href="https://stacktris.app/" target="_blank" rel="noopener" aria-label="Stacktris demo">
+                  <svg class="icon icon-external" aria-hidden="true"><use href="#icon-external"></use></svg>
+                </a>
+                <a
+                  class="icon-link"
+                  href="https://github.com/landaverdend/stacktris"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Stacktris on GitHub">
+                  <svg class="icon icon-github" aria-hidden="true"><use href="#icon-github"></use></svg>
+                </a>
+              </div>
+              <p>Battle Tetris with Lightning Network betting. Tied for first place at the first La Crypta hackathon.</p>
+              <ul class="tech">
+                <li>React</li>
+                <li>Node.js</li>
+                <li>WebSockets</li>
+                <li>Lightning Network</li>
+              </ul>
+            </div>
+          </li>
 
-    <ul class="projects" id="panel-professional" role="tabpanel" aria-labelledby="tab-professional" hidden>
+          <li class="project" data-title="Bitcoin Script Debugger" data-link="https://bitcointools.landaverde.io/">
+            <button
+              type="button"
+              class="thumb"
+              data-images="assets/projects/btc_tools.jpg"
+              aria-label="View screenshot of Bitcoin Script Debugger">
+              <img
+                src="assets/projects/btc_tools.jpg"
+                alt="Screenshot of Bitcoin Script Debugger"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </button>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3><a href="https://bitcointools.landaverde.io/" target="_blank" rel="noopener">Bitcoin Script Debugger</a></h3>
+                <a
+                  class="icon-link"
+                  href="https://bitcointools.landaverde.io/"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Bitcoin Script Debugger demo">
+                  <svg class="icon icon-external" aria-hidden="true"><use href="#icon-external"></use></svg>
+                </a>
+                <a
+                  class="icon-link"
+                  href="https://github.com/landaverdend/btc-web-tools"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Bitcoin Script Debugger on GitHub">
+                  <svg class="icon icon-github" aria-hidden="true"><use href="#icon-github"></use></svg>
+                </a>
+              </div>
+              <p>
+                Tools for writing and debugging Bitcoin scripts in the browser, including a step debugger and a transaction parser
+                with legacy and segwit support.
+              </p>
+              <ul class="tech">
+                <li>Bitcoin Script</li>
+                <li>JavaScript</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
 
-      <li class="project" data-title="MCAA NFT" data-link="https://www.mcaanft.org/home">
-        <button type="button" class="thumb" data-images="assets/projects/mcaa_home.jpg,assets/projects/mcaa_mint.jpg" aria-label="View screenshots of MCAA NFT">
-          <img src="assets/projects/mcaa_home.jpg" alt="Screenshot of the MCAA NFT home page" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3>MCAA NFT</h3>
-          <p class="project-meta">MCAA</p>
-          <p>Built the full-stack minting platform for MCAA's Buddha Boy NFT Club, an ERC-721 membership collection on Ethereum with tiered access, DAO governance, and live wallet-connected minting. Mints have raised over $100,000 to date.</p>
-          <ul class="tech">
-            <li>Solidity</li>
-            <li>Ethereum</li>
-            <li>React</li>
-            <li>Web3</li>
-          </ul>
-        </div>
-      </li>
+        <ul class="projects" id="panel-professional" role="tabpanel" aria-labelledby="tab-professional" hidden>
+          <li class="project" data-title="MCAA NFT" data-link="https://www.mcaanft.org/home">
+            <button
+              type="button"
+              class="thumb"
+              data-images="assets/projects/mcaa_home.jpg,assets/projects/mcaa_mint.jpg"
+              aria-label="View screenshots of MCAA NFT">
+              <img
+                src="assets/projects/mcaa_home.jpg"
+                alt="Screenshot of the MCAA NFT home page"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </button>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3>MCAA NFT</h3>
+                <a class="icon-link" href="https://www.mcaanft.org/" target="_blank" rel="noopener" aria-label="MCAA NFT demo">
+                  <svg class="icon icon-external" aria-hidden="true"><use href="#icon-external"></use></svg>
+                </a>
+              </div>
+              <p class="project-meta">MCAA</p>
+              <p>
+                Built the full-stack minting platform for MCAA's Buddha Boy NFT Club, an ERC-721 membership collection on Ethereum
+                with tiered access, DAO governance, and live wallet-connected minting. Mints have raised over $100,000 to date.
+              </p>
+              <ul class="tech">
+                <li>Solidity</li>
+                <li>Ethereum</li>
+                <li>React</li>
+                <li>Web3</li>
+              </ul>
+            </div>
+          </li>
 
-      <li class="project" data-title="Scheduling Workflow">
-        <button type="button" class="thumb" data-images="assets/projects/scheduling_workflow.jpg" aria-label="View screenshot of Scheduling Workflow">
-          <img src="assets/projects/scheduling_workflow.jpg" alt="Screenshot of the patient scheduling workflow" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3>Scheduling Workflow</h3>
-          <p class="project-meta">Clearwave Corporation</p>
-          <p>Built the scheduling workflow patients use to book appointments with their associated practice, letting them pick a provider, location, date, and time and book in real time against the practice's PMS. Worked full stack across a suite of Java microservices, with careful handling and storage of PHI.</p>
-          <ul class="tech">
-            <li>Java</li>
-            <li>RabbitMQ</li>
-            <li>PostgreSQL</li>
-            <li>Svelte</li>
-          </ul>
-        </div>
-      </li>
+          <li class="project" data-title="Scheduling Workflow">
+            <button
+              type="button"
+              class="thumb"
+              data-images="assets/projects/scheduling_workflow.jpg"
+              aria-label="View screenshot of Scheduling Workflow">
+              <img
+                src="assets/projects/scheduling_workflow.jpg"
+                alt="Screenshot of the patient scheduling workflow"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </button>
+            <div class="project-body">
+              <h3>Scheduling Workflow</h3>
+              <p class="project-meta">Clearwave Corporation</p>
+              <p>
+                Built the scheduling workflow patients use to book appointments with their associated practice, letting them pick
+                a provider, location, date, and time and book in real time against the practice's PMS. Worked full stack across a
+                suite of Java microservices, with careful handling and storage of PHI.
+              </p>
+              <ul class="tech">
+                <li>Java</li>
+                <li>RabbitMQ</li>
+                <li>PostgreSQL</li>
+                <li>Svelte</li>
+              </ul>
+            </div>
+          </li>
 
-      <li class="project" data-title="Healthcare ETL Dashboard">
-        <button type="button" class="thumb" data-images="assets/projects/cw_etl_dashboard_2.jpg,assets/projects/cw_etl_dashboard_1.jpg" aria-label="View screenshots of Healthcare ETL Dashboard">
-          <img src="assets/projects/cw_etl_dashboard_2.jpg" alt="Screenshot of the ETL entity mapping and sync status dashboard" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3>Healthcare ETL Dashboard</h3>
-          <p class="project-meta">Clearwave Corporation</p>
-          <p>Designed and built a dashboard that significantly streamlined a complex healthcare ETL pipeline and centralized ETL job status tracking.</p>
-          <ul class="tech">
-            <li>Spring Boot</li>
-            <li>MongoDB</li>
-            <li>AWS</li>
-          </ul>
-        </div>
-      </li>
+          <li class="project" data-title="Healthcare ETL Dashboard">
+            <button
+              type="button"
+              class="thumb"
+              data-images="assets/projects/cw_etl_dashboard_2.jpg,assets/projects/cw_etl_dashboard_1.jpg"
+              aria-label="View screenshots of Healthcare ETL Dashboard">
+              <img
+                src="assets/projects/cw_etl_dashboard_2.jpg"
+                alt="Screenshot of the ETL entity mapping and sync status dashboard"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </button>
+            <div class="project-body">
+              <h3>Healthcare ETL Dashboard</h3>
+              <p class="project-meta">Clearwave Corporation</p>
+              <p>
+                Designed and built a dashboard that significantly streamlined a complex healthcare ETL pipeline and centralized
+                ETL job status tracking.
+              </p>
+              <ul class="tech">
+                <li>Spring Boot</li>
+                <li>MongoDB</li>
+                <li>AWS</li>
+              </ul>
+            </div>
+          </li>
 
-      <li class="project">
-        <div class="thumb thumb-placeholder" aria-hidden="true"><span>?</span></div>
-        <div class="project-body">
-          <h3>System Wide Audit Tool</h3>
-          <p class="project-meta">Clearwave Corporation</p>
-          <p>Built a set of microservices that consumed system events from RabbitMQ, persisted them to MongoDB, and exposed a queryable API for a frontend to surface audit events to users. Proprietary, no screenshots available.</p>
-          <ul class="tech">
-            <li>Java</li>
-            <li>Spring</li>
-            <li>RabbitMQ</li>
-            <li>MongoDB</li>
-          </ul>
-        </div>
-      </li>
+          <li class="project">
+            <div class="thumb thumb-placeholder" aria-hidden="true"><span>?</span></div>
+            <div class="project-body">
+              <h3>System Wide Audit Tool</h3>
+              <p class="project-meta">Clearwave Corporation</p>
+              <p>
+                Built a set of microservices that consumed system events from RabbitMQ, persisted them to MongoDB, and exposed a
+                queryable API for a frontend to surface audit events to users. Proprietary, no screenshots available.
+              </p>
+              <ul class="tech">
+                <li>Java</li>
+                <li>Spring</li>
+                <li>RabbitMQ</li>
+                <li>MongoDB</li>
+              </ul>
+            </div>
+          </li>
 
-      <li class="project">
-        <div class="thumb thumb-placeholder" aria-hidden="true"><span>?</span></div>
-        <div class="project-body">
-          <h3>USPS Carrier Location Tracker</h3>
-          <p class="project-meta">ECS Federal</p>
-          <p>Worked on a real-time application tracking carrier locations nationwide using GPS-enabled devices for the United States Postal Service. Proprietary, no screenshots available.</p>
-          <ul class="tech">
-            <li>Angular</li>
-            <li>TypeScript</li>
-            <li>AWS</li>
-          </ul>
-        </div>
-      </li>
+          <li class="project">
+            <div class="thumb thumb-placeholder" aria-hidden="true"><span>?</span></div>
+            <div class="project-body">
+              <h3>USPS Carrier Location Tracker</h3>
+              <p class="project-meta">ECS Federal</p>
+              <p>
+                Worked on a real-time application tracking carrier locations nationwide using GPS-enabled devices for the United
+                States Postal Service. Proprietary, no screenshots available.
+              </p>
+              <ul class="tech">
+                <li>Angular</li>
+                <li>TypeScript</li>
+                <li>AWS</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
 
-    </ul>
+        <ul class="projects" id="panel-misc" role="tabpanel" aria-labelledby="tab-misc" hidden>
+          <li class="project" data-title="Battle Snakes" data-link="https://battlesnakes.landaverde.io">
+            <button
+              type="button"
+              class="thumb"
+              data-images="assets/projects/battle_snakes.jpg"
+              aria-label="View screenshot of Battle Snakes">
+              <img
+                src="assets/projects/battle_snakes.jpg"
+                alt="Screenshot of Battle Snakes"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </button>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3><a href="https://battlesnakes.landaverde.io" target="_blank" rel="noopener">Battle Snakes</a></h3>
+                <a
+                  class="icon-link"
+                  href="https://battlesnakes.landaverde.io"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Battle Snakes demo">
+                  <svg class="icon icon-external" aria-hidden="true"><use href="#icon-external"></use></svg>
+                </a>
+                <a
+                  class="icon-link"
+                  href="https://github.com/landaverdend/battle-snakes"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Battle Snakes on GitHub">
+                  <svg class="icon icon-github" aria-hidden="true"><use href="#icon-github"></use></svg>
+                </a>
+              </div>
+              <p>
+                A multiplayer, round-based snake game where you battle other players in real time. React, Node.js, and Websockets.
+              </p>
+              <ul class="tech">
+                <li>React</li>
+                <li>Node.js</li>
+                <li>WebSockets</li>
+              </ul>
+            </div>
+          </li>
 
-    <ul class="projects" id="panel-misc" role="tabpanel" aria-labelledby="tab-misc" hidden>
+          <li class="project" data-title="Fox Archives" data-link="https://whatdidthefoxsay.com/">
+            <button
+              type="button"
+              class="thumb"
+              data-images="assets/projects/fox_site.jpg"
+              aria-label="View screenshot of Fox Archives">
+              <img src="assets/projects/fox_site.jpg" alt="Screenshot of Fox Archives" loading="lazy" width="900" height="506" />
+            </button>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3><a href="https://whatdidthefoxsay.com/" target="_blank" rel="noopener">Fox Archives</a></h3>
+                <a
+                  class="icon-link"
+                  href="https://whatdidthefoxsay.com/"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Fox Archives demo">
+                  <svg class="icon icon-external" aria-hidden="true"><use href="#icon-external"></use></svg>
+                </a>
+                <a
+                  class="icon-link"
+                  href="https://github.com/landaverdend/fox-repository"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Fox Archives on GitHub">
+                  <svg class="icon icon-github" aria-hidden="true"><use href="#icon-github"></use></svg>
+                </a>
+              </div>
+              <p>
+                A progressive web app that archives memorable quotes from my friend Ryan Fox, with admin and user roles for
+                adding, editing, and reacting to them.
+              </p>
+              <ul class="tech">
+                <li>PWA</li>
+                <li>JavaScript</li>
+              </ul>
+            </div>
+          </li>
 
-      <li class="project" data-title="Battle Snakes" data-link="https://battlesnakes.landaverde.io">
-        <button type="button" class="thumb" data-images="assets/projects/battle_snakes.jpg" aria-label="View screenshot of Battle Snakes">
-          <img src="assets/projects/battle_snakes.jpg" alt="Screenshot of Battle Snakes" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3><a href="https://battlesnakes.landaverde.io" target="_blank" rel="noopener">Battle Snakes</a></h3>
-          <p>A multiplayer, round-based snake game where you battle other players in real time. React, Node.js, and Websockets.</p>
-          <ul class="tech">
-            <li>React</li>
-            <li>Node.js</li>
-            <li>WebSockets</li>
-          </ul>
-        </div>
-      </li>
+          <li class="project" data-title="Isle Advance" data-link="https://github.com/landaverdend/Procgen-GBA">
+            <button
+              type="button"
+              class="thumb"
+              data-images="assets/projects/isle_advance.jpg"
+              aria-label="View screenshot of Isle Advance">
+              <img
+                src="assets/projects/isle_advance.jpg"
+                alt="Screenshot of Isle Advance"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </button>
+            <div class="project-body">
+              <h3><a href="https://github.com/landaverdend/Procgen-GBA" target="_blank" rel="noopener">Isle Advance</a></h3>
+              <p>
+                A homebrew Game Boy Advance game in the spirit of Minecraft, built with a friend as a university capstone, with
+                procedural generation tuned for the hardware.
+              </p>
+              <ul class="tech">
+                <li>C</li>
+                <li>Game Boy Advance</li>
+              </ul>
+            </div>
+          </li>
 
-      <li class="project" data-title="Fox Archives" data-link="https://whatdidthefoxsay.com/">
-        <button type="button" class="thumb" data-images="assets/projects/fox_site.jpg" aria-label="View screenshot of Fox Archives">
-          <img src="assets/projects/fox_site.jpg" alt="Screenshot of Fox Archives" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3><a href="https://whatdidthefoxsay.com/" target="_blank" rel="noopener">Fox Archives</a></h3>
-          <p>A progressive web app that archives memorable quotes from my friend Ryan Fox, with admin and user roles for adding, editing, and reacting to them.</p>
-          <ul class="tech">
-            <li>PWA</li>
-            <li>JavaScript</li>
-          </ul>
-        </div>
-      </li>
+          <li class="project" data-title="Tetris Galaxy" data-link="https://github.com/landaverdend/tetrisGalaxy">
+            <button
+              type="button"
+              class="thumb"
+              data-images="assets/projects/galaxy.jpg"
+              aria-label="View screenshot of Tetris Galaxy">
+              <img src="assets/projects/galaxy.jpg" alt="Screenshot of Tetris Galaxy" loading="lazy" width="900" height="506" />
+            </button>
+            <div class="project-body">
+              <h3><a href="https://github.com/landaverdend/tetrisGalaxy" target="_blank" rel="noopener">Tetris Galaxy</a></h3>
+              <p>A Tetris spinoff built with three friends that won first place at our university hackathon, AppalHack 2019.</p>
+              <ul class="tech">
+                <li>JavaScript</li>
+              </ul>
+            </div>
+          </li>
 
-      <li class="project" data-title="Isle Advance" data-link="https://github.com/landaverdend/Procgen-GBA">
-        <button type="button" class="thumb" data-images="assets/projects/isle_advance.jpg" aria-label="View screenshot of Isle Advance">
-          <img src="assets/projects/isle_advance.jpg" alt="Screenshot of Isle Advance" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3><a href="https://github.com/landaverdend/Procgen-GBA" target="_blank" rel="noopener">Isle Advance</a></h3>
-          <p>A homebrew Game Boy Advance game in the spirit of Minecraft, built with a friend as a university capstone, with procedural generation tuned for the hardware.</p>
-          <ul class="tech">
-            <li>C</li>
-            <li>Game Boy Advance</li>
-          </ul>
-        </div>
-      </li>
+          <li class="project" data-title="Voltorb Flip" data-link="https://voltorb.landaverde.io/">
+            <button
+              type="button"
+              class="thumb"
+              data-images="assets/projects/voltorb_flip.jpg"
+              aria-label="View screenshot of Voltorb Flip">
+              <img
+                src="assets/projects/voltorb_flip.jpg"
+                alt="Screenshot of Voltorb Flip"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </button>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3><a href="https://voltorb.landaverde.io/" target="_blank" rel="noopener">Voltorb Flip</a></h3>
+                <a
+                  class="icon-link"
+                  href="https://voltorb.landaverde.io/"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Voltorb Flip demo">
+                  <svg class="icon icon-external" aria-hidden="true"><use href="#icon-external"></use></svg>
+                </a>
+                <a
+                  class="icon-link"
+                  href="https://github.com/landaverdend/supervoltorbflip"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Voltorb Flip on GitHub">
+                  <svg class="icon icon-github" aria-hidden="true"><use href="#icon-github"></use></svg>
+                </a>
+              </div>
+              <p>A browser recreation of the Voltorb Flip minigame from the classic Pokémon games.</p>
+              <ul class="tech">
+                <li>JavaScript</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
 
-      <li class="project" data-title="Tetris Galaxy" data-link="https://github.com/landaverdend/tetrisGalaxy">
-        <button type="button" class="thumb" data-images="assets/projects/galaxy.jpg" aria-label="View screenshot of Tetris Galaxy">
-          <img src="assets/projects/galaxy.jpg" alt="Screenshot of Tetris Galaxy" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3><a href="https://github.com/landaverdend/tetrisGalaxy" target="_blank" rel="noopener">Tetris Galaxy</a></h3>
-          <p>A Tetris spinoff built with three friends that won first place at our university hackathon, AppalHack 2019.</p>
-          <ul class="tech">
-            <li>JavaScript</li>
-          </ul>
-        </div>
-      </li>
+    <script>
+      var tabs = document.querySelectorAll('.tab');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(function (t) {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
 
-      <li class="project" data-title="Voltorb Flip" data-link="https://voltorb.landaverde.io/">
-        <button type="button" class="thumb" data-images="assets/projects/voltorb_flip.jpg" aria-label="View screenshot of Voltorb Flip">
-          <img src="assets/projects/voltorb_flip.jpg" alt="Screenshot of Voltorb Flip" loading="lazy" width="900" height="506">
-        </button>
-        <div class="project-body">
-          <h3><a href="https://voltorb.landaverde.io/" target="_blank" rel="noopener">Voltorb Flip</a></h3>
-          <p>A browser recreation of the Voltorb Flip minigame from the classic Pokémon games.</p>
-          <ul class="tech">
-            <li>JavaScript</li>
-          </ul>
-        </div>
-      </li>
-
-    </ul>
-  </section>
-
-  <section id="contact" class="contact">
-    <h2>Get in touch</h2>
-    <p>Have a project in mind, or just want to say hi? <a href="mailto:nicodemus.landaverde98@gmail.com">Email me</a>, I read everything.</p>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <p>&copy; 2026 Nic(o) Landaverde</p>
-</footer>
-
-<script>
-  var tabs = document.querySelectorAll('.tab');
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      tabs.forEach(function (t) {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
+          document.querySelectorAll('[role="tabpanel"]').forEach(function (panel) {
+            panel.hidden = panel.id !== tab.getAttribute('aria-controls');
+          });
+        });
       });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
+    </script>
 
-      document.querySelectorAll('[role="tabpanel"]').forEach(function (panel) {
-        panel.hidden = panel.id !== tab.getAttribute('aria-controls');
-      });
-    });
-  });
-</script>
-
-<div class="lightbox" id="lightbox" hidden>
-  <button type="button" class="lightbox-overlay" aria-label="Close"></button>
-  <div class="lightbox-content">
-    <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
-    <button type="button" class="lightbox-arrow lightbox-prev" aria-label="Previous image">&#8249;</button>
-    <img class="lightbox-img" src="" alt="">
-    <button type="button" class="lightbox-arrow lightbox-next" aria-label="Next image">&#8250;</button>
-    <div class="lightbox-caption">
-      <span class="lightbox-title"></span>
-      <a class="lightbox-link" href="#" target="_blank" rel="noopener">Visit Project &rarr;</a>
+    <div class="lightbox" id="lightbox" hidden>
+      <button type="button" class="lightbox-overlay" aria-label="Close"></button>
+      <div class="lightbox-content">
+        <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+        <button type="button" class="lightbox-arrow lightbox-prev" aria-label="Previous image">&#8249;</button>
+        <img class="lightbox-img" src="" alt="" />
+        <button type="button" class="lightbox-arrow lightbox-next" aria-label="Next image">&#8250;</button>
+        <div class="lightbox-caption">
+          <span class="lightbox-title"></span>
+          <a class="lightbox-link" href="#" target="_blank" rel="noopener">Visit Project &rarr;</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<script>
-  (function () {
-    var lightbox = document.getElementById('lightbox');
-    var imgEl = lightbox.querySelector('.lightbox-img');
-    var titleEl = lightbox.querySelector('.lightbox-title');
-    var linkEl = lightbox.querySelector('.lightbox-link');
-    var prevBtn = lightbox.querySelector('.lightbox-prev');
-    var nextBtn = lightbox.querySelector('.lightbox-next');
-    var closeBtn = lightbox.querySelector('.lightbox-close');
-    var overlay = lightbox.querySelector('.lightbox-overlay');
+    <script>
+      (function () {
+        var lightbox = document.getElementById('lightbox');
+        var imgEl = lightbox.querySelector('.lightbox-img');
+        var titleEl = lightbox.querySelector('.lightbox-title');
+        var linkEl = lightbox.querySelector('.lightbox-link');
+        var prevBtn = lightbox.querySelector('.lightbox-prev');
+        var nextBtn = lightbox.querySelector('.lightbox-next');
+        var closeBtn = lightbox.querySelector('.lightbox-close');
+        var overlay = lightbox.querySelector('.lightbox-overlay');
 
-    var images = [];
-    var index = 0;
+        var images = [];
+        var index = 0;
 
-    function update() {
-      imgEl.src = images[index];
-      var multiple = images.length > 1;
-      prevBtn.hidden = !multiple;
-      nextBtn.hidden = !multiple;
-    }
+        function update() {
+          imgEl.src = images[index];
+          var multiple = images.length > 1;
+          prevBtn.hidden = !multiple;
+          nextBtn.hidden = !multiple;
+        }
 
-    function open(thumb) {
-      images = thumb.getAttribute('data-images').split(',');
-      index = 0;
+        function open(thumb) {
+          images = thumb.getAttribute('data-images').split(',');
+          index = 0;
 
-      var project = thumb.closest('.project');
-      titleEl.textContent = project.getAttribute('data-title') || '';
+          var project = thumb.closest('.project');
+          titleEl.textContent = project.getAttribute('data-title') || '';
 
-      var link = project.getAttribute('data-link');
-      if (link) {
-        linkEl.href = link;
-        linkEl.hidden = false;
-      } else {
-        linkEl.hidden = true;
-      }
+          var link = project.getAttribute('data-link');
+          if (link) {
+            linkEl.href = link;
+            linkEl.hidden = false;
+          } else {
+            linkEl.hidden = true;
+          }
 
-      update();
-      lightbox.hidden = false;
-      document.body.style.overflow = 'hidden';
-    }
+          update();
+          lightbox.hidden = false;
+          document.body.style.overflow = 'hidden';
+        }
 
-    function close() {
-      lightbox.hidden = true;
-      document.body.style.overflow = '';
-    }
+        function close() {
+          lightbox.hidden = true;
+          document.body.style.overflow = '';
+        }
 
-    function prev() {
-      index = (index - 1 + images.length) % images.length;
-      update();
-    }
+        function prev() {
+          index = (index - 1 + images.length) % images.length;
+          update();
+        }
 
-    function next() {
-      index = (index + 1) % images.length;
-      update();
-    }
+        function next() {
+          index = (index + 1) % images.length;
+          update();
+        }
 
-    document.querySelectorAll('.thumb[data-images]').forEach(function (thumb) {
-      thumb.addEventListener('click', function () {
-        open(thumb);
-      });
-    });
+        document.querySelectorAll('.thumb[data-images]').forEach(function (thumb) {
+          thumb.addEventListener('click', function () {
+            open(thumb);
+          });
+        });
 
-    prevBtn.addEventListener('click', prev);
-    nextBtn.addEventListener('click', next);
-    closeBtn.addEventListener('click', close);
-    overlay.addEventListener('click', close);
+        prevBtn.addEventListener('click', prev);
+        nextBtn.addEventListener('click', next);
+        closeBtn.addEventListener('click', close);
+        overlay.addEventListener('click', close);
 
-    document.addEventListener('keydown', function (e) {
-      if (lightbox.hidden) return;
-      if (e.key === 'Escape') close();
-      if (e.key === 'ArrowLeft') prev();
-      if (e.key === 'ArrowRight') next();
-    });
-  })();
-</script>
-
-</body>
+        document.addEventListener('keydown', function (e) {
+          if (lightbox.hidden) return;
+          if (e.key === 'Escape') close();
+          if (e.key === 'ArrowLeft') prev();
+          if (e.key === 'ArrowRight') next();
+        });
+      })();
+    </script>
+  </body>
 </html>
