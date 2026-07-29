@@ -1,235 +1,310 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nic(o) Landaverde</title>
-<meta name="description" content="Nic(o) Landaverde — software developer. Bitcoin, decentralized systems, and small projects.">
-<link rel="icon" href="assets/favicon.png">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nic(o) Landaverde</title>
+    <meta
+      name="description"
+      content="Nic(o) Landaverde — software developer. Bitcoin, decentralized systems, and small projects." />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#top">Nic(o) Landaverde</a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-<header class="site-header">
-  <a class="wordmark" href="#top">Nic(o) Landaverde</a>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#work">Work</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<main id="top">
-
-  <section id="about" class="about">
-    <img class="portrait" src="assets/me.jpg" alt="Portrait of Nic(o) Landaverde" width="120" height="120">
-    <div>
-      <h1>Nic(o) Landaverde</h1>
-      <p class="role">Software developer &middot; Buenos Aires, Argentina</p>
-      <p class="bio">
-        I build software across the web, games, and Bitcoin. Six years in,
-        currently most interested in decentralized systems and making small,
-        weird projects just to see if they work.
-      </p>
-      <ul class="links">
-        <li><a href="https://github.com/landaverdend" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/nicodemus-landaverde-7562ba19a/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="mailto:nicodemus.landaverde98@gmail.com">Email</a></li>
-        <li><a href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="work" class="work">
-    <h2>Selected work</h2>
-
-    <div class="tabs" role="tablist">
-      <button type="button" role="tab" id="tab-bitcoin" aria-controls="panel-bitcoin" aria-selected="true" class="tab active">Bitcoin</button>
-      <button type="button" role="tab" id="tab-professional" aria-controls="panel-professional" aria-selected="false" class="tab">Professional</button>
-      <button type="button" role="tab" id="tab-misc" aria-controls="panel-misc" aria-selected="false" class="tab">Misc / Fun</button>
-    </div>
-
-    <ul class="projects" id="panel-bitcoin" role="tabpanel" aria-labelledby="tab-bitcoin">
-
-      <li class="project">
-        <a class="thumb" href="https://sabio.landaverde.io/" target="_blank" rel="noopener">
-          <img src="assets/projects/sabio.png" alt="Sabio chat showing cited Bitcoin development research" loading="lazy" width="900" height="506">
-        </a>
-        <div class="project-body">
-          <h3><a href="https://sabio.landaverde.io/" target="_blank" rel="noopener">Sabio</a></h3>
-          <p>A research tool for following Bitcoin development across code, pull requests, mailing lists, BitcoinTalk, and IRC. It connects discussions to the people and code behind them with an AI chat interface</p>
+    <main id="top">
+      <section id="about" class="about">
+        <img class="portrait" src="assets/me.jpg" alt="Portrait of Nic(o) Landaverde" width="120" height="120" />
+        <div>
+          <h1>Nic(o) Landaverde</h1>
+          <p class="role">Software developer &middot; Buenos Aires, Argentina</p>
+          <p class="bio">
+            From the US, but now living in Buenos Aires. I like Bitcoin and building useful (and sometimes unuseful) software.
+          </p>
+          <ul class="links">
+            <li><a href="https://github.com/landaverdend" target="_blank" rel="noopener">GitHub</a></li>
+            <li>
+              <a href="https://www.linkedin.com/in/nicodemus-landaverde-7562ba19a/" target="_blank" rel="noopener">LinkedIn</a>
+            </li>
+            <li><a href="mailto:nicodemus.landaverde98@gmail.com">Email</a></li>
+            <li><a href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+          </ul>
         </div>
-      </li>
+      </section>
 
-      <li class="project">
-        <a class="thumb" href="https://predictr.landaverde.io/" target="_blank" rel="noopener">
-          <img src="assets/projects/predictr.jpg" alt="Screenshot of predictr" loading="lazy" width="900" height="506">
-        </a>
-        <div class="project-body">
-          <h3><a href="https://predictr.landaverde.io/" target="_blank" rel="noopener">predictr</a></h3>
-          <p>A peer-to-peer prediction betting app built on Bitcoin and Nostr. Uses Taproot scripts to lock funds trustlessly, with bets settled on-chain and coordination over Nostr relays. Built for the La Crypta hackathon.</p>
+      <section id="work" class="work">
+        <h2>Selected work</h2>
+
+        <div class="tabs" role="tablist">
+          <button type="button" role="tab" id="tab-bitcoin" aria-controls="panel-bitcoin" aria-selected="true" class="tab active">
+            Bitcoin
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-professional"
+            aria-controls="panel-professional"
+            aria-selected="false"
+            class="tab">
+            Professional
+          </button>
+          <button type="button" role="tab" id="tab-misc" aria-controls="panel-misc" aria-selected="false" class="tab">
+            Misc / Fun
+          </button>
         </div>
-      </li>
 
-      <li class="project">
-        <a class="thumb" href="https://stacktris.app/" target="_blank" rel="noopener">
-          <img src="assets/projects/stacktris.jpg" alt="Screenshot of Stacktris" loading="lazy" width="900" height="506">
-        </a>
-        <div class="project-body">
-          <h3><a href="https://stacktris.app/" target="_blank" rel="noopener">Stacktris</a></h3>
-          <p>Battle Tetris with Lightning Network betting, built for a hackathon at La Crypta where it tied for first place. Websockets, Node.js, and React.</p>
-        </div>
-      </li>
+        <ul class="projects" id="panel-bitcoin" role="tabpanel" aria-labelledby="tab-bitcoin">
+          <li class="project">
+            <a class="thumb" href="https://sabio.landaverde.io/" target="_blank" rel="noopener">
+              <img
+                src="assets/projects/sabio.png"
+                alt="Sabio chat showing cited Bitcoin development research"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </a>
+            <div class="project-body">
+              <h3><a href="https://sabio.landaverde.io/" target="_blank" rel="noopener">Sabio</a></h3>
+              <p>
+                A research tool for following Bitcoin development across code, pull requests, mailing lists, BitcoinTalk, and IRC.
+                It connects discussions to the people and code behind them with an AI chat interface
+              </p>
+            </div>
+          </li>
 
-      <li class="project">
-        <a class="thumb" href="https://mempool.channel" target="_blank" rel="noopener">
-          <img src="assets/projects/mempoolchannel.jpg" alt="Screenshot of mempool.channel" loading="lazy" width="900" height="506">
-        </a>
-        <div class="project-body">
-          <h3><a href="https://mempool.channel" target="_blank" rel="noopener">mempool.channel</a></h3>
-          <p>A real-time, room-based jukebox with Lightning Network payments. Users create or join rooms, queue songs by paying sats, and chat live.</p>
-        </div>
-      </li>
+          <li class="project">
+            <a class="thumb" href="https://predictr.landaverde.io/" target="_blank" rel="noopener">
+              <img src="assets/projects/predictr.jpg" alt="Screenshot of predictr" loading="lazy" width="900" height="506" />
+            </a>
+            <div class="project-body">
+              <h3><a href="https://predictr.landaverde.io/" target="_blank" rel="noopener">predictr</a></h3>
+              <p>
+                A peer-to-peer prediction betting app built on Bitcoin and Nostr. Uses Taproot scripts to lock funds trustlessly,
+                with bets settled on-chain and coordination over Nostr relays. Built for the La Crypta hackathon.
+              </p>
+            </div>
+          </li>
 
-      <li class="project">
-        <a class="thumb" href="https://bitcointools.landaverde.io/" target="_blank" rel="noopener">
-          <img src="assets/projects/btc_tools.jpg" alt="Screenshot of Bitcoin Script Debugger" loading="lazy" width="900" height="506">
-        </a>
-        <div class="project-body">
-          <h3><a href="https://bitcointools.landaverde.io/" target="_blank" rel="noopener">Bitcoin Script Debugger</a></h3>
-          <p>Tools for writing and debugging Bitcoin scripts in the browser, including a step debugger and a transaction parser with legacy and segwit support.</p>
-        </div>
-      </li>
+          <li class="project">
+            <a class="thumb" href="https://stacktris.app/" target="_blank" rel="noopener">
+              <img src="assets/projects/stacktris.jpg" alt="Screenshot of Stacktris" loading="lazy" width="900" height="506" />
+            </a>
+            <div class="project-body">
+              <h3><a href="https://stacktris.app/" target="_blank" rel="noopener">Stacktris</a></h3>
+              <p>
+                Battle Tetris with Lightning Network betting, built for a hackathon at La Crypta where it tied for first place.
+                Websockets, Node.js, and React.
+              </p>
+            </div>
+          </li>
 
-    </ul>
+          <li class="project">
+            <a class="thumb" href="https://mempool.channel" target="_blank" rel="noopener">
+              <img
+                src="assets/projects/mempoolchannel.jpg"
+                alt="Screenshot of mempool.channel"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </a>
+            <div class="project-body">
+              <h3><a href="https://mempool.channel" target="_blank" rel="noopener">mempool.channel</a></h3>
+              <p>
+                A real-time, room-based jukebox with Lightning Network payments. Users create or join rooms, queue songs by paying
+                sats, and chat live.
+              </p>
+            </div>
+          </li>
 
-    <ul class="projects projects-text" id="panel-professional" role="tabpanel" aria-labelledby="tab-professional" hidden>
+          <li class="project">
+            <a class="thumb" href="https://bitcointools.landaverde.io/" target="_blank" rel="noopener">
+              <img
+                src="assets/projects/btc_tools.jpg"
+                alt="Screenshot of Bitcoin Script Debugger"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </a>
+            <div class="project-body">
+              <h3><a href="https://bitcointools.landaverde.io/" target="_blank" rel="noopener">Bitcoin Script Debugger</a></h3>
+              <p>
+                Tools for writing and debugging Bitcoin scripts in the browser, including a step debugger and a transaction parser
+                with legacy and segwit support.
+              </p>
+            </div>
+          </li>
+        </ul>
 
-      <li class="project project-text">
-        <div class="project-body">
-          <h3>System Wide Audit Tool</h3>
-          <p class="project-meta">Clearwave Corporation</p>
-          <p>Built a set of microservices that consumed system events from RabbitMQ, persisted them to MongoDB, and exposed a queryable API for a frontend to surface audit events to users.</p>
-        </div>
-      </li>
+        <ul class="projects projects-text" id="panel-professional" role="tabpanel" aria-labelledby="tab-professional" hidden>
+          <li class="project project-text">
+            <div class="project-body">
+              <h3>System Wide Audit Tool</h3>
+              <p class="project-meta">Clearwave Corporation</p>
+              <p>
+                Built a set of microservices that consumed system events from RabbitMQ, persisted them to MongoDB, and exposed a
+                queryable API for a frontend to surface audit events to users.
+              </p>
+            </div>
+          </li>
 
-      <li class="project project-text">
-        <div class="project-body">
-          <h3>EHR Rate-Limit Cache</h3>
-          <p class="project-meta">Clearwave Corporation</p>
-          <p>Developed a caching layer to work around hard rate limits on an Electronic Health Record API, with a change listener to keep cached data fresh and avoid violations.</p>
-        </div>
-      </li>
+          <li class="project project-text">
+            <div class="project-body">
+              <h3>EHR Rate-Limit Cache</h3>
+              <p class="project-meta">Clearwave Corporation</p>
+              <p>
+                Developed a caching layer to work around hard rate limits on an Electronic Health Record API, with a change
+                listener to keep cached data fresh and avoid violations.
+              </p>
+            </div>
+          </li>
 
-      <li class="project project-text">
-        <div class="project-body">
-          <h3>USPS Carrier Location Tracker</h3>
-          <p class="project-meta">ECS Federal</p>
-          <p>Worked on a real-time application tracking carrier locations nationwide using GPS-enabled devices for the United States Postal Service.</p>
-        </div>
-      </li>
+          <li class="project project-text">
+            <div class="project-body">
+              <h3>USPS Carrier Location Tracker</h3>
+              <p class="project-meta">ECS Federal</p>
+              <p>
+                Worked on a real-time application tracking carrier locations nationwide using GPS-enabled devices for the United
+                States Postal Service.
+              </p>
+            </div>
+          </li>
 
-      <li class="project project-text">
-        <div class="project-body">
-          <h3>Package Success Dashboard</h3>
-          <p class="project-meta">ECS Federal</p>
-          <p>Added a feature overlaying National Weather Service data onto package delivery metrics, giving weather-specific context to success-rate analytics.</p>
-        </div>
-      </li>
+          <li class="project project-text">
+            <div class="project-body">
+              <h3>Package Success Dashboard</h3>
+              <p class="project-meta">ECS Federal</p>
+              <p>
+                Added a feature overlaying National Weather Service data onto package delivery metrics, giving weather-specific
+                context to success-rate analytics.
+              </p>
+            </div>
+          </li>
 
-      <li class="project project-text">
-        <div class="project-body">
-          <h3>Pricing API</h3>
-          <p class="project-meta">Lowe's Home Improvement</p>
-          <p>Built backend APIs serving real-time pricing data to tens of thousands of concurrent users on lowes.com and the mobile app, backed by asynchronous, Couchbase-driven catalog microservices.</p>
-        </div>
-      </li>
+          <li class="project project-text">
+            <div class="project-body">
+              <h3>Pricing API</h3>
+              <p class="project-meta">Lowe's Home Improvement</p>
+              <p>
+                Built backend APIs serving real-time pricing data to tens of thousands of concurrent users on lowes.com and the
+                mobile app, backed by asynchronous, Couchbase-driven catalog microservices.
+              </p>
+            </div>
+          </li>
+        </ul>
 
-    </ul>
+        <ul class="projects" id="panel-misc" role="tabpanel" aria-labelledby="tab-misc" hidden>
+          <li class="project">
+            <a class="thumb" href="https://battlesnakes.landaverde.io" target="_blank" rel="noopener">
+              <img
+                src="assets/projects/battle_snakes.jpg"
+                alt="Screenshot of Battle Snakes"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </a>
+            <div class="project-body">
+              <h3><a href="https://battlesnakes.landaverde.io" target="_blank" rel="noopener">Battle Snakes</a></h3>
+              <p>
+                A multiplayer, round-based snake game where you battle other players in real time. React, Node.js, and Websockets.
+              </p>
+            </div>
+          </li>
 
-    <ul class="projects" id="panel-misc" role="tabpanel" aria-labelledby="tab-misc" hidden>
+          <li class="project">
+            <a class="thumb" href="https://whatdidthefoxsay.com/" target="_blank" rel="noopener">
+              <img src="assets/projects/fox_site.jpg" alt="Screenshot of Fox Archives" loading="lazy" width="900" height="506" />
+            </a>
+            <div class="project-body">
+              <h3><a href="https://whatdidthefoxsay.com/" target="_blank" rel="noopener">Fox Archives</a></h3>
+              <p>
+                A progressive web app that archives memorable quotes from my friend Ryan Fox, with admin and user roles for
+                adding, editing, and reacting to them.
+              </p>
+            </div>
+          </li>
 
-      <li class="project">
-        <a class="thumb" href="https://battlesnakes.landaverde.io" target="_blank" rel="noopener">
-          <img src="assets/projects/battle_snakes.jpg" alt="Screenshot of Battle Snakes" loading="lazy" width="900" height="506">
-        </a>
-        <div class="project-body">
-          <h3><a href="https://battlesnakes.landaverde.io" target="_blank" rel="noopener">Battle Snakes</a></h3>
-          <p>A multiplayer, round-based snake game where you battle other players in real time. React, Node.js, and Websockets.</p>
-        </div>
-      </li>
+          <li class="project">
+            <a class="thumb" href="https://github.com/landaverdend/Procgen-GBA" target="_blank" rel="noopener">
+              <img
+                src="assets/projects/isle_advance.jpg"
+                alt="Screenshot of Isle Advance"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </a>
+            <div class="project-body">
+              <h3><a href="https://github.com/landaverdend/Procgen-GBA" target="_blank" rel="noopener">Isle Advance</a></h3>
+              <p>
+                A homebrew Game Boy Advance game in the spirit of Minecraft, built with a friend as a university capstone, with
+                procedural generation tuned for the hardware.
+              </p>
+            </div>
+          </li>
 
-      <li class="project">
-        <a class="thumb" href="https://whatdidthefoxsay.com/" target="_blank" rel="noopener">
-          <img src="assets/projects/fox_site.jpg" alt="Screenshot of Fox Archives" loading="lazy" width="900" height="506">
-        </a>
-        <div class="project-body">
-          <h3><a href="https://whatdidthefoxsay.com/" target="_blank" rel="noopener">Fox Archives</a></h3>
-          <p>A progressive web app that archives memorable quotes from my friend Ryan Fox, with admin and user roles for adding, editing, and reacting to them.</p>
-        </div>
-      </li>
+          <li class="project">
+            <a class="thumb" href="https://github.com/landaverdend/tetrisGalaxy" target="_blank" rel="noopener">
+              <img src="assets/projects/galaxy.jpg" alt="Screenshot of Tetris Galaxy" loading="lazy" width="900" height="506" />
+            </a>
+            <div class="project-body">
+              <h3><a href="https://github.com/landaverdend/tetrisGalaxy" target="_blank" rel="noopener">Tetris Galaxy</a></h3>
+              <p>A Tetris spinoff built with three friends that won first place at our university hackathon, AppalHack 2019.</p>
+            </div>
+          </li>
 
-      <li class="project">
-        <a class="thumb" href="https://github.com/landaverdend/Procgen-GBA" target="_blank" rel="noopener">
-          <img src="assets/projects/isle_advance.jpg" alt="Screenshot of Isle Advance" loading="lazy" width="900" height="506">
-        </a>
-        <div class="project-body">
-          <h3><a href="https://github.com/landaverdend/Procgen-GBA" target="_blank" rel="noopener">Isle Advance</a></h3>
-          <p>A homebrew Game Boy Advance game in the spirit of Minecraft, built with a friend as a university capstone, with procedural generation tuned for the hardware.</p>
-        </div>
-      </li>
+          <li class="project">
+            <a class="thumb" href="https://voltorb.landaverde.io/" target="_blank" rel="noopener">
+              <img
+                src="assets/projects/voltorb_flip.jpg"
+                alt="Screenshot of Voltorb Flip"
+                loading="lazy"
+                width="900"
+                height="506" />
+            </a>
+            <div class="project-body">
+              <h3><a href="https://voltorb.landaverde.io/" target="_blank" rel="noopener">Voltorb Flip</a></h3>
+              <p>A browser recreation of the Voltorb Flip minigame from the classic Pokémon games.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
 
-      <li class="project">
-        <a class="thumb" href="https://github.com/landaverdend/tetrisGalaxy" target="_blank" rel="noopener">
-          <img src="assets/projects/galaxy.jpg" alt="Screenshot of Tetris Galaxy" loading="lazy" width="900" height="506">
-        </a>
-        <div class="project-body">
-          <h3><a href="https://github.com/landaverdend/tetrisGalaxy" target="_blank" rel="noopener">Tetris Galaxy</a></h3>
-          <p>A Tetris spinoff built with three friends that won first place at our university hackathon, AppalHack 2019.</p>
-        </div>
-      </li>
+      <section id="contact" class="contact">
+        <h2>Get in touch</h2>
+        <p>
+          Have a project in mind, or just want to say hi? <a href="mailto:nicodemus.landaverde98@gmail.com">Email me</a> — I read
+          everything.
+        </p>
+      </section>
+    </main>
 
-      <li class="project">
-        <a class="thumb" href="https://voltorb.landaverde.io/" target="_blank" rel="noopener">
-          <img src="assets/projects/voltorb_flip.jpg" alt="Screenshot of Voltorb Flip" loading="lazy" width="900" height="506">
-        </a>
-        <div class="project-body">
-          <h3><a href="https://voltorb.landaverde.io/" target="_blank" rel="noopener">Voltorb Flip</a></h3>
-          <p>A browser recreation of the Voltorb Flip minigame from the classic Pokémon games.</p>
-        </div>
-      </li>
+    <footer class="site-footer">
+      <p>&copy; 2026 Nic(o) Landaverde</p>
+    </footer>
 
-    </ul>
-  </section>
+    <script>
+      var tabs = document.querySelectorAll('.tab');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(function (t) {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
 
-  <section id="contact" class="contact">
-    <h2>Get in touch</h2>
-    <p>Have a project in mind, or just want to say hi? <a href="mailto:nicodemus.landaverde98@gmail.com">Email me</a> — I read everything.</p>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <p>&copy; 2026 Nic(o) Landaverde</p>
-</footer>
-
-<script>
-  var tabs = document.querySelectorAll('.tab');
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      tabs.forEach(function (t) {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
+          document.querySelectorAll('[role="tabpanel"]').forEach(function (panel) {
+            panel.hidden = panel.id !== tab.getAttribute('aria-controls');
+          });
+        });
       });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-
-      document.querySelectorAll('[role="tabpanel"]').forEach(function (panel) {
-        panel.hidden = panel.id !== tab.getAttribute('aria-controls');
-      });
-    });
-  });
-</script>
-
-</body>
+    </script>
+  </body>
 </html>
